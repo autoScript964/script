@@ -920,7 +920,7 @@ public class OtherGame extends TaskContent {
                     } else {
 
                         if (AtFairyConfig.getOption("qianghb").equals("1")) {
-                            grabRed(99);
+                            grabRed(10);
                             setTaskName(0);
                             return;
                         }

@@ -58,10 +58,10 @@ public class TaskMain {
         taskList = new ArrayList();
 
         taskMap = new HashMap<String, Integer>();
-          mFairy.setGameName("新剑侠情缘");
-            mFairy.setGameVersion(581);
+        mFairy.setGameName("新剑侠情缘");
+        mFairy.setGameVersion(583);
         publicFunction = new PublicFunction(mFairy);
-//        publicFunction=mFairy.publicFunction;
+//      publicFunction=mFairy.publicFunction;
         limitlessTask = new LimitlessTask(mFairy);
         teamTask = new TeamTask(mFairy);
         singleTask = new SingleTask(mFairy);
@@ -69,6 +69,7 @@ public class TaskMain {
         gamePublicFunction = new GamePublicFunction(mFairy);
         redPackage = new RedPackage(mFairy);
         functionClass = new FunctionClass(mFairy, mFairy.getContext());
+
     }
 
     private int week;

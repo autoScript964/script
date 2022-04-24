@@ -45,7 +45,6 @@ public class Answer {
 
     }
 
-    //大航海验证
     public String haoai(int x,int y,int width, int height,String ID ) throws Exception {
         Thread.sleep(500);
 
@@ -67,7 +66,7 @@ public class Answer {
 
         //将图片存入路径
         //Mat转byte[]
-        Imgcodecs.imwrite("/sdcard/yunpai_files/111.png", mat2);
+        Imgcodecs.imwrite("/sdcard/111.png", mat2);
 
         //这里获取好爱HOST
         LtLog.i(mFairy.getLineInfo("开始获取好爱的HOST"));
@@ -108,7 +107,7 @@ public class Answer {
                     .addFormDataPart("beizhu", "2222")
                     .addFormDataPart("ver", "web2")
                     .addFormDataPart("key", suiji)
-                    .addFormDataPart("img", GetImageStr("/sdcard/yunpai_files/111.png"))
+                    .addFormDataPart("img", GetImageStr("/sdcard/111.png"))
                     .build();
             Request request = new Request.Builder()
                     .url("http://" + host + "/UploadBase64.aspx")

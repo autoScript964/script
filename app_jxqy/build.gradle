@@ -8,8 +8,8 @@ android {
         //applicationId "com.jxqy.qwe.tes"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 581
-        versionName "581"
+        versionCode 583
+        versionName "583"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 

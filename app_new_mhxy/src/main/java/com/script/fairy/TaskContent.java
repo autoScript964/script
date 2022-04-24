@@ -1,12 +1,9 @@
 package com.script.fairy;
 
+import com.script.framework.AtFairyImpl;
 import com.script.opencvapi.FindResult;
 import com.script.opencvapi.LtLog;
-import com.script.opencvapi.AtFairyConfig;
-import com.script.framework.AtFairyImpl;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,8 +20,8 @@ public abstract class TaskContent {
     public Map<String, Integer> m = new HashMap<>();
     public Map<String, Long> tm = new HashMap<>();
     GamePublicFuntion gamePublicFuntion = null;
-    Slide activitySlide = new Slide(602, 201, 627, 425);
-    Slide taskSlide = new Slide(1145, 258, 1177, 402);
+    Slide activitySlide = new Slide(new int[]{602, 201, 627, 425});
+    Slide taskSlide = new Slide(new int[]{1145, 258, 1177, 402},new int[]{1134,90,1154,236});
 
     public void setName(String name) {
         this.name = name;
@@ -285,18 +282,23 @@ public abstract class TaskContent {
      * 滑动
      **/
     class Slide {
-
+        private int[] initSlideRangeIndex = new int[4];
         private int[] slideRangeIndex = new int[4];
         private int moveTime = 200;
-        private long endTime = 200;
+        private long endTime = 1000;
         private int moveInitTime = 200;
-        private long endInitTime = 20;
+        private long endInitTime = 1000;
 
-        public Slide(int x, int y, int x1, int y1) {
-            slideRangeIndex[0] = x;
-            slideRangeIndex[1] = y;
-            slideRangeIndex[2] = x1;
-            slideRangeIndex[3] = y1;
+        public Slide(int[] slideXY) {
+            slideRangeIndex = slideXY;
+            initSlideRangeIndex = slideXY;
+            LtLog.e("new Slide >>>>>");
+        }
+
+
+        public Slide(int[] initXY, int[] slideXY) {
+            slideRangeIndex = slideXY;
+            initSlideRangeIndex = initXY;
             LtLog.e("new Slide >>>>>");
         }
 
@@ -304,10 +306,10 @@ public abstract class TaskContent {
             if (count.length > 0) {
                 if (err == count[0]) {
                     LtLog.e(mFairy.getLineInfo("slideRange init滑动>>>"));
-                    LtLog.e(mFairy.getLineInfo(slideRangeIndex[0] + "," + slideRangeIndex[1] + "," +
-                            slideRangeIndex[2] + "," + slideRangeIndex[3] + ""));
+                    LtLog.e(mFairy.getLineInfo(initSlideRangeIndex[0] + "," + initSlideRangeIndex[1] + "," +
+                            initSlideRangeIndex[2] + "," + initSlideRangeIndex[3] + ""));
                     for (int i = 0; i < 5; i++) {
-                        mFairy.ranSwipe(slideRangeIndex[0], slideRangeIndex[1], slideRangeIndex[2], slideRangeIndex[3], init, moveInitTime, endInitTime);
+                        mFairy.ranSwipe(initSlideRangeIndex[0], initSlideRangeIndex[1], initSlideRangeIndex[2], initSlideRangeIndex[3], init, moveInitTime, endInitTime);
                     }
                     Thread.sleep(endTime);
                 }

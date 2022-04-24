@@ -33,7 +33,7 @@ public class TaskMain {
     public TaskMain(AtFairyImpl ypFairy) throws Exception {
         mFairy = ypFairy;
         mFairy.setGameName("新倩女幽魂");
-        mFairy.setGameVersion(542);
+        mFairy.setGameVersion(548);
         init();
         gameUtil = new GameUtil(mFairy);
         teamTask = new TeamTask(mFairy);

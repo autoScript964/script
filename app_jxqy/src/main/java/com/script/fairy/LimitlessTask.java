@@ -166,6 +166,7 @@ public class LimitlessTask {
 
         int[] xy = {Integer.parseInt(TaskMain.xystr.split(",")[0]), Integer.parseInt(TaskMain.xystr.split(",")[1])};
         while (mFairy.condit()) {
+
             timex = System.currentTimeMillis() / 1000 - time;
             if (timex >= 300) {
 //              location = true;
@@ -173,6 +174,9 @@ public class LimitlessTask {
             } else if (timex % 60 >= 0 && timex % 60 <= 3) {
                 LtLog.i(publicFunction.getLineInfo() + "无限挂机中：" + "定位时间：" + time1x + ",当前时间为：" + publicFunction.getMinuteNumber() + "星期：" + publicFunction.getCurrSun() + ",Data:" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
                 LtLog.i(publicFunction.getLineInfo() + "--------->>" + ",TaskMain.taskMap=" + TaskMain.taskMap);
+
+                LtLog.i(publicFunction.getLineInfo() + "---------time1x=" + time1x + ",location=" + location);
+
             }
 
             mAimingActivity();//定时活动
@@ -205,11 +209,12 @@ public class LimitlessTask {
                     LtLog.i(publicFunction.getLineInfo() + "【在秘境或者凌绝峰】");
                     continue;
                 }
-                result = publicFunction.localFindPic(1140, 1, 1279, 44, "bandit1.png");
+
+                /*result = publicFunction.localFindPic(1140, 1, 1279, 44, "bandit1.png");
                 if (result.sim >= 0.8) {
                     LtLog.i(publicFunction.getLineInfo() + "【在山贼秘窟】");
                     continue;
-                }
+                }*/
 
                 if (!judgeMap(TaskMain.taskMap.get("OnHookMap"))) {
 
@@ -283,7 +288,6 @@ public class LimitlessTask {
                     if (result.sim >= 0.8) {
                         publicFunction.rndTap(457, 46, 472, 58);
                         Thread.sleep(2000);
-
 
                         findResult = mFairy.findPic(477,90,561,162,"heping.png");
                         if(findResult.sim>0.8f){

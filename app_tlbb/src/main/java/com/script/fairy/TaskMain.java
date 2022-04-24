@@ -66,7 +66,6 @@ public class TaskMain {
     protected boolean mtaskState = true;
     protected List<Integer> roleList = new ArrayList();
 
-
     protected FunctionClass functionClass;
 
     private TimingActivity timingActivity;
@@ -94,7 +93,7 @@ public class TaskMain {
         publicFunction = new PublicFunction(ypFairy);
         functionClass = new FunctionClass(ypFairy, mContext);
         mFairy.setGameName("天龙手游");
-        mFairy.setGameVersion(429);
+        mFairy.setGameVersion(434);
         singleTask = new SingleTask(mFairy);
         limitlessTask = new LimitlessTask(mFairy);
         timingActivity = new TimingActivity(mFairy);
@@ -158,15 +157,7 @@ public class TaskMain {
                 taskState = singleTask.everydayTask();
                 break;
             case "TeamTask":
-                LtLog.i(publicFunction.getLineInfo()+"开始组队任务");
-                LtLog.i(publicFunction.getLineInfo() + "------TaskTread-mFairy.taskList.indexOf(radio1)->" + optionJson.optString("radio1").equals("1"));
-                if (optionJson.optString("radio1").equals("1")) {
-                    LtLog.i(publicFunction.getLineInfo()+"带队");
-                    taskState = teamTask.leadTeam();//带队
-                } else {
-                    LtLog.i(publicFunction.getLineInfo()+"跟随");
-                    taskState = teamTask.followTeam();//跟随
-                }
+                    role2();
                 break;
             case "collection"://采集
                 LtLog.i(publicFunction.getLineInfo() + "------collection");
@@ -185,7 +176,6 @@ public class TaskMain {
 
         LtLog.i(publicFunction.getLineInfo() + "------taskState=" + taskState);
         UpState(taskState);
-//        Thread.sleep(1000);
         mFairy.finish(FAIRY_TYPE_TASK, taskID, TASK_STATE_FINISH);
 
     }
@@ -421,7 +411,7 @@ public class TaskMain {
             }
 
             if (judgeSelected("collectionTime1") || judgeSelected("collectionTime2") || judgeSelected("collectionTime3") || judgeSelected("collectionTime4")) {
-                for (int i = 1; i <= 4; i++) {
+                for (int i = 1; i <= 5; i++) {
                     if (judgeSelected("skill" + Integer.toString(i)) == true) {
                         this.collectionSkill = i - 1;
                         break;
@@ -807,6 +797,94 @@ public class TaskMain {
 
         return 99;
     }
+
+    private int role2() throws Exception {
+
+        LtLog.i(publicFunction.getLineInfo()+"开始组队任务");
+        LtLog.i(publicFunction.getLineInfo() + "------TaskTread-mFairy.taskList.indexOf(radio1)->" + optionJson.optString("radio1").equals("1"));
+        if (optionJson.optString("radio1").equals("1")) {
+            LtLog.i(publicFunction.getLineInfo()+"带队");
+            teamTask.leadTeam();//带队
+        } else {
+            LtLog.i(publicFunction.getLineInfo()+"跟随");
+            teamTask.followTeam();//跟随
+        }
+
+        for (int i = 0; i < roleList.size(); i++) {
+            LtLog.i(publicFunction.getLineInfo() + "【开始切换角色 ： " + roleList + "】");
+            //mFairy.killUserGame();//由于切换角色会导致网络异常，所以，直接把游戏杀掉。异常线程会负责重启
+
+            gamePublicFunction.switchRole();
+
+            int num = roleList.get(i);
+
+            LtLog.i(publicFunction.getLineInfo() + "【要切换角色：" +num+ "】");
+
+            while (mFairy.condit()) {
+                //进入游戏
+                result = publicFunction.localFindPic(822, 24, 954, 72, "activity.png");
+                if (result.sim >= 0.8) {
+                    LtLog.i(publicFunction.getLineInfo() + "【主场景】");
+                    break;
+                }
+
+                AtFairy2.OpencvResult result1 = publicFunction.localFindPic(1155, 603, 1253, 703, "playGame.png");
+                if (result1.sim >= 0.8) {
+                    LtLog.i(publicFunction.getLineInfo() + "【选择角色界面】");
+
+                    result = publicFunction.localFindPic(72, 110 + ((num - 1) * 119), 190, 210 + ((num - 1) * 119), "createRole.png");
+                    if (result.sim >= 0.8) {
+                        LtLog.i(publicFunction.getLineInfo() + "【角色未创建】");
+                        return 99;
+                    } else {
+                        LtLog.i(publicFunction.getLineInfo() + "【选择角色】");
+                        publicFunction.rndTap(121, 163 + ((num - 1) * 119), 140, 170 + ((num - 1) * 119));
+                        Thread.sleep(1000);
+                    }
+                    publicFunction.rndTapWH(result1.x, result1.y, 116, 27);
+
+                    Thread.sleep(5000);
+                }
+
+                gamePublicFunction.closeWindow();
+
+                Thread.sleep(2000);
+            }
+
+            LtLog.i(publicFunction.getLineInfo() + "【切换角色 ： " + roleList + " - 结束】");
+
+
+            if(i ==roleList.size()-1) {
+                boolean bool = false;
+
+                for (int j = 1; j <= 4; j++) {
+                    if (AtFairyConfig.getOption("role" + j).equals("1")) {
+                        bool=true;
+                        break;
+                    }
+                }
+
+                if(bool){
+                    LtLog.i(publicFunction.getLineInfo() + "【全部的角色已完成任务】");
+                    return 99;
+                }
+            }
+
+            LtLog.i(publicFunction.getLineInfo()+"开始组队任务");
+            LtLog.i(publicFunction.getLineInfo() + "------TaskTread-mFairy.taskList.indexOf(radio1)->" + optionJson.optString("radio1").equals("1"));
+            if (optionJson.optString("radio1").equals("1")) {
+                LtLog.i(publicFunction.getLineInfo()+"带队");
+               teamTask.leadTeam();//带队
+            } else {
+                LtLog.i(publicFunction.getLineInfo()+"跟随");
+                teamTask.followTeam();//跟随
+            }
+        }
+
+
+        return 99;
+    }
+
 
     protected static boolean judgeSelected(String str) {
         if (AtFairyConfig.getOption(str).equals("1")) {

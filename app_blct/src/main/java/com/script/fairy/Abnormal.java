@@ -21,7 +21,11 @@ public class Abnormal {
         mFairy.onTap(0.85f, result, "err是", 1000);
 
         result = mFairy.findPic("fan.png");
-        mFairy.onTap(0.85f, result, "err返回游戏", 1000);
+        mFairy.onTap(0.75f, result, "err返回游戏", 1000);
+
+
+        result = mFairy.findPic("fan1.png");
+        mFairy.onTap(0.75f, result, "err返回游戏", 1000);
 
         result = mFairy.findPic(578,432,945,669,"login1.png");
         mFairy.onTap(0.85f, result, "err同意", 1000);

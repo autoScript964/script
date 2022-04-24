@@ -19,7 +19,7 @@ public class LimitlessTask {
     private int Resurrection_index = 0;//记录复活次数
     private FamilyTask familyTask;
     private TimingActivity timingActivity;
-    private int ResurrectionIndex=0;
+    public static int ResurrectionIndex=0;
 
     public LimitlessTask(AtFairyImpl ypFairy) {
         mFairy = ypFairy;
@@ -38,11 +38,9 @@ public class LimitlessTask {
         long time1 = System.currentTimeMillis() / 1000 - 960, time1x = 0;
         long treasureTime = System.currentTimeMillis() / 1000 - 1260, treasureTimex;//挖宝间隔
 
-
         long sleepTime = 60;
-
+        ResurrectionIndex = 0;
         LtLog.i(publicFunction.getLineInfo() + "------outdoorsOnHook->");
-
         while (mFairy.condit()) {
             int currentTime = publicFunction.getMinuteNumber();
 
@@ -98,6 +96,7 @@ public class LimitlessTask {
             }
 
             timex = System.currentTimeMillis() / 1000 - time;
+
             if (timex % 60 == 0) {
                 LtLog.i(publicFunction.getLineInfo() + "------outdoorsOnHook   timex->" + timex + ",time1x=" + time1x);
             }
@@ -112,18 +111,22 @@ public class LimitlessTask {
                 }
             }
 
+
             result = publicFunction.localFindPic(284, 295, 498, 393, "Resurrection.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "------Resurrection->" + result);
                 publicFunction.rndTap(result.x, result.y, result.x + 30, result.y + 10);
-                Thread.sleep(2000);
+                Thread.sleep(5000);
                 ResurrectionIndex=ResurrectionIndex+1;
                 timex = 301;
             }
 
             //间隔10分钟定位一次
             if (timex >= 300) {
-                for (int i = 0; i < 3; i++) {
+
+                time = System.currentTimeMillis() / 1000;
+
+                xh:for (int i = 0; i < 3; i++) {
 //                    result = publicFunction.localFindPic(1085, 0, 1270, 79, "LuoYang2.png");
                     if (!rolePosition()) {      //判断角色当前位置与设置挂机图是否匹配
                         LtLog.i(publicFunction.getLineInfo() +"不在目标地图中 - 开始选择地图");
@@ -147,13 +150,31 @@ public class LimitlessTask {
 
                         screenXY(((int[]) TaskMain.xyList.get(ResurrectionIndex))[0], ((int[]) TaskMain.xyList.get(ResurrectionIndex))[1]);
 
-                        openCombat();
+
+                        for (int n = 0; n < 60; n++) {
+                            long sleepTime1 = mFairy.mMatTime(1117, 51, 77, 22, 0.95f);
+                            LtLog.i(publicFunction.getLineInfo() + "------sleepTime->" + sleepTime1);
+                            if (sleepTime1 >= 5) {
+                                break;
+                            }
+
+                            Thread.sleep(1000);
+
+                            result = publicFunction.localFindPic(284, 295, 498, 393, "Resurrection.png");
+                            if (result.sim >= 0.8) {
+                                LtLog.i(publicFunction.getLineInfo() + "------Resurrection->" + result);
+                                publicFunction.rndTap(result.x, result.y, result.x + 30, result.y + 10);
+                                Thread.sleep(2000);
+                                ResurrectionIndex=ResurrectionIndex+1;
+                                continue xh;
+                            }
+                        }
+                        gamePublicFunction.automaticCombat(1);
                         break;
                     }
                 }
-                time = System.currentTimeMillis() / 1000;
-            }
 
+            }
 
             //掉队经验领取
             time1x = System.currentTimeMillis() / 1000 - time1;
@@ -418,15 +439,7 @@ public class LimitlessTask {
 
 
     private void openCombat() throws Exception {
-        for (int i = 0; i < 60; i++) {
-            long sleepTime = mFairy.mMatTime(1117, 51, 77, 22, 0.95f);
-            LtLog.i(publicFunction.getLineInfo() + "------sleepTime->" + sleepTime);
-            if (sleepTime >= 5) {
-                break;
-            }
-            Thread.sleep(1000);
-        }
-        gamePublicFunction.automaticCombat(1);
+
     }
 
     //移动到洛阳

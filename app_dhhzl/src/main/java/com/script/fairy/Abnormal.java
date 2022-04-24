@@ -21,6 +21,10 @@ public class Abnormal {
 
         taskEvent();//任务点击
 
+
+        result = mFairy.findPic(302,358,557,530,"hwq.png");
+        mFairy.onTap(0.8f, result, "err华为取消安装", 1000);
+
         result = mFairy.findPic("new sure.png");
         mFairy.onTap(0.8f, result, "err新版qq隐私政策同意", 1000);
 

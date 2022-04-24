@@ -40,7 +40,7 @@ public class TaskMain extends TaskContent {
         teamTask = new TeamTask(ypFairy);
         mFairy = ypFairy;
         mFairy.setGameName("大航海之路");
-        mFairy.setGameVersion(316);
+        mFairy.setGameVersion(318);
         qhBool = false;
         SHANGHUI = true;
         rankBool = true;

@@ -8,8 +8,8 @@ android {
         applicationId "com.ylzt.uio.ylm"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 153
-        versionName "153"
+        versionCode 156
+        versionName "156"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -25,7 +25,6 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-
     /*repositories {
         flatDir {
             dirs 'libs'
@@ -34,6 +33,7 @@ android {
 
     productFlavors {}
 }
+
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 

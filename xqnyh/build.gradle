@@ -3,12 +3,13 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
+
     defaultConfig {
         applicationId "com.xqnyh.haj"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 542
-        versionName "542"
+        versionCode 548
+        versionName "548"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -36,15 +37,14 @@ android {
     }
 
     dependencies {
+
+
         implementation fileTree(include: ['*.jar'], dir: 'libs')
-
         implementation 'io.sentry:sentry-android:5.7.0'
-
         testImplementation 'junit:junit:4.12'
         implementation 'com.lzy.net:okhttputils:+'
         implementation project(':openCVLibrary341')
         implementation 'com.rmtheis:tess-two:9.0.0'
-
         implementation project(':opencvapi-debug')
         implementation project(':scriptSdkProxy')
         implementation project(':scriptSdk')

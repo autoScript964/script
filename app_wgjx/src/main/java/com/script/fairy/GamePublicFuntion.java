@@ -259,7 +259,6 @@ public class GamePublicFuntion {
             ImageJudgeThread.EXIT = true;
             mFairy.finish(AtFairyConfig.getTaskID(), 58801);
         }
+
     }//验证
-
-
 }

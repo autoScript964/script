@@ -539,13 +539,12 @@ public class GamePublicFuntion extends TaskContent {
         以下功能不能用
      */
     public void wendaAIAnswer() throws Exception {
-        //answer.wendaAIAnswer();
+        answer.wendaAIAnswer();
     }
     public void srAIAnswer() throws Exception {
-        //answer.srAIAnswer();
+        answer.srAIAnswer();
     }
     public String getPictureText(int x, int y, int width, int height){
-        //return  answer.getPictureText(x,y,width,height);
-        return "";
+        return  answer.getPictureText(x,y,width,height);
     }
 }

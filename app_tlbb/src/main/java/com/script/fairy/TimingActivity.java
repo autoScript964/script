@@ -1,5 +1,6 @@
 package com.script.fairy;
 
+import com.script.opencvapi.FindResult;
 import com.script.opencvapi.LtLog;
 import com.script.opencvapi.AtFairy2;
 import com.script.framework.AtFairyImpl;
@@ -22,6 +23,7 @@ public class TimingActivity {
 
     private AtFairyImpl mFairy;
     AtFairy2.OpencvResult result;
+    FindResult findResult;
     private PublicFunction publicFunction;
     private int indianaIndex = 0;
     private GamePublicFunction gamePublicFunction;
@@ -1004,6 +1006,10 @@ public class TimingActivity {
             gamePublicFunction.automaticCombat(1);//开启战斗
         }
 
+        findResult = mFairy.findPic("hslj2.png");
+        if(findResult.sim>0.8f){
+            gamePublicFunction.automaticCombat(1);//开启战斗
+        }
     }
 
     private void zlqj() throws Exception {

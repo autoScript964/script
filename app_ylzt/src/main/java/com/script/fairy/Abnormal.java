@@ -36,7 +36,7 @@ public class Abnormal {
         answer_picTime = new PicTime(396, 269, 584, 389, "answer.png|answer1.png", 0.8, mFairy);
         pic_ok = new PicTime(516, 577, 778, 696, "ok.png", 0.8, mFairy);
         fork_picTime = new PicTime(643, 5, 1278, 445, "fork.png", 0.8, mFairy);
-        Resurrection_picTime = new PicTime(284, 295, 498, 393, "Resurrection4.png|Resurrection.png", 0.8, mFairy);
+        Resurrection_picTime = new PicTime(284, 295, 498, 393, "Resurrection4.png"+"|"+"Resurrection.png", 0.8, mFairy);
         delivery1_picTime = new PicTime(517, 289, 857, 410, "delivery1.png", 0.8, mFairy);
         cat_picTime = new PicTime(666, 215, 808, 353, "cat.png", 0.8, mFairy);
         QSHL_picTime = new PicTime(420, 293, 613, 370, "QSHL.png", 0.8, mFairy);
@@ -86,7 +86,11 @@ public class Abnormal {
             Thread.sleep(1000);
             delivery1_picTime.resetTime();
         }
+
         if (Resurrection_picTime.getPicTime() >= 15) {
+
+            LimitlessTask.ResurrectionIndex++;
+
             LtLog.i(publicFunction.getLineInfo() + "******Resurrection_picTime > 15->");
             int x = Resurrection_picTime.getPicX();
             int y = Resurrection_picTime.getPicY();

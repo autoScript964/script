@@ -53,6 +53,8 @@ public class Abnormal {
 
     public void erro() throws Exception {
 
+        findResult =mFairy.findPic(384,252,752,428,"err6.png");
+        mFairy.onTap(0.8f,findResult,484,459,527,481,"err6",1000);
 
         findResult =mFairy.findPic("ganxie.png");
         mFairy.onTap(0.8f,findResult,1166,93,1191,109,"ganxie",1000);
@@ -74,6 +76,10 @@ public class Abnormal {
 
         findResult =mFairy.findPic(1174,27,1271,106,"hdclose8.png");
         mFairy.onTap(0.8f,findResult,"hdclose8",1000);
+
+
+        findResult =mFairy.findPic(434,612,764,697,"hdclose13.png");
+        mFairy.onTap(0.8f,findResult,1074,67,1093,85,"hdclose13",1000);
 
         findResult =mFairy.findPic(504,125,711,265,"bx.png");
         mFairy.onTap(0.8f,findResult,683,321,712,349,"",1000);

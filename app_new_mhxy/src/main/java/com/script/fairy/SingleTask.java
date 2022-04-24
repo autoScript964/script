@@ -20,8 +20,6 @@ public class SingleTask {
         gamePublicFuntion = new GamePublicFuntion(ypFairy);
     }
 
-
-
     class SingleContent extends TaskContent {
 
         public SingleContent(AtFairyImpl mFairy, String name) throws Exception {
@@ -117,7 +115,7 @@ public class SingleTask {
             result = mFairy.findPic("nn5.png");
             mFairy.onTap(0.8f, result, "奖励", 500);
 
-            result = mFairy.findPic("jia1.png");
+            result = mFairy.findPic("fls.png");
             mFairy.onTap(0.8f, result, 1068, 65, 1082, 82, "福利界面-关闭", 500);
 
             result = mFairy.findPic("nn6.png");
@@ -455,7 +453,6 @@ public class SingleTask {
             void content_02() throws Exception {
                 timeCount(5, 0);
 
-
                 gamePublicFuntion.close();
 
                 if (gamePublicFuntion.shi()) {
@@ -697,7 +694,7 @@ public class SingleTask {
 
 
                 if (gamePublicFuntion.mainScene()) {
-                    if (gamePublicFuntion.judgeStop(1)) {
+                    if (gamePublicFuntion.judgeStop(2)) {
                         result = mFairy.findPic(1032, 169, 1102, 519, new String[]{"bp2.png", "bp3.png", "bp4.png"});
                         if (result.sim > 0.7f) {
                             err = 0;
@@ -863,12 +860,10 @@ public class SingleTask {
                     }
                 }
 
-
                 if (jyl) {
                     FindResult rn = mFairy.findPic(1026, 168, 1277, 414, new String[]{"jyl4.png"});
                     if (rn.sim > 0.7f) {
                         err = 0;
-
                         result = mFairy.findPic(rn.x - 30, rn.y + 20, rn.x + 212, rn.y + 125, "jyl5.png");
                         if (result.sim < 0.7f) {
                             gamePublicFuntion.stopBattle();
@@ -878,7 +873,6 @@ public class SingleTask {
                             return;
                         }
 
-
                         if (timeMap("stopBattle", 300000)) {
                             gamePublicFuntion.stopBattle();
                             err = 0;
@@ -886,6 +880,8 @@ public class SingleTask {
                         }
                     }
                 }
+
+
 
                 if (gamePublicFuntion.mainScene()) {
                     if (gamePublicFuntion.judgeStop(4)) {
@@ -911,7 +907,6 @@ public class SingleTask {
                                 timeMapInit("stopBattle");
                                 mFairy.onTap(0.7f, r, "经验链任务", 1000);
                             }
-
                             return;
                         }
                         taskSlide.slideRange(new int[]{3, 5, 7, 8, 9}, 2, 0);
@@ -1811,6 +1806,10 @@ public class SingleTask {
                 result = mFairy.findPic("yb4.png");
                 if (result.sim > 0.8f) {
                     err = 0;
+
+                    result = mFairy.findPic(104,69,202,460,"jian.png");
+                    mFairy.onTap(0.8f,result,146,30,160,48,"关掉npc栏",3000);
+
                     mFairy.onTap(272,420,283,424, "郑捕头", 1500);
                     gamePublicFuntion.close();
                     setTaskName(2);
@@ -2982,7 +2981,7 @@ public class SingleTask {
                     if (gamePublicFuntion.judgeStop(3)) {
                         mFairy.initMatTime();
 
-                        result = mFairy.findPic("nn17.png");
+                        result = mFairy.findPic(new String[]{"nn17.png","nn22.png"});
                         if (result.sim > 0.75f) {
                             setTaskEnd();
                             return;

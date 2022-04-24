@@ -904,7 +904,7 @@ public class SingleTask extends TaskContent {
                 result = mFairy.findPic("xuyuan.png");
                 if (result.sim > 0.8f) {
                     mFairy.onTap(0.8f, result, 496, 346, 513, 354, "许愿输入框", 2000);
-                    mFairy.inputText("渣男");
+                    mFairy.inputText("123");
 
                     result1 = mFairy.findPic(1070, 68, 1274, 719, new String[]{"new_textsure.png", "new_textsure1.png"});
                     mFairy.onTap(0.8f, result1, "确定文本", 2000);
@@ -1232,11 +1232,12 @@ public class SingleTask extends TaskContent {
                     return;
                 }
 
-                /*result = mFairy.findPic("fullcomplete.png");
+                result = mFairy.findPic("fullcomplete.png");
                 if(result.sim>0.8f){
+                    mFairy.onTap(0.8f, result, 647, 592, 648, 593, "完成装填", 4000);
                     setTaskName(4);
                     return;
-                }*/
+                }
 
                 overtime(20, 0);
             }

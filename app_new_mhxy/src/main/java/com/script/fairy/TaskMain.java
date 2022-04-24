@@ -1,9 +1,9 @@
 package com.script.fairy;
 
+import com.script.framework.AtFairyImpl;
+import com.script.opencvapi.AtFairyConfig;
 import com.script.opencvapi.FindResult;
 import com.script.opencvapi.LtLog;
-import com.script.opencvapi.AtFairyConfig;
-import com.script.framework.AtFairyImpl;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,7 +29,7 @@ public class TaskMain {
         gamePublicFuntion = new GamePublicFuntion(ypFairy);
         mFairy = ypFairy;
         mFairy.setGameName("梦幻西游");
-        mFairy.setGameVersion(311);
+        mFairy.setGameVersion(321);
         init();
         GamePublicFuntion.ACTLING = 1;
     }
@@ -41,6 +41,7 @@ public class TaskMain {
         }
 
         taskStartTime(AtFairyConfig.getOption("start_time"));
+
 
         switch (taskId) {
             case 1905:

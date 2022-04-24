@@ -7,8 +7,8 @@ android {
         applicationId "com.tlbb.rty.tlbb"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 429
-        versionName "429"
+        versionCode 434
+        versionName "434"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 

@@ -14,18 +14,18 @@ import io.sentry.Sentry;
 
 public class MainActivity extends AppCompatActivity {
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         LtLog.e("onCreate >>>>");
 
+        super.onCreate(savedInstanceState);
         Sentry.captureMessage("testing SDK setup");
 
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         AtFairyService.startService(this, LocalFairyService.class);
     }
 
-    @Override
+
+
     protected void onResume() {
         super.onResume();
         boolean flag= ATSdk.getInstance().init(this);
@@ -33,8 +33,5 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
     }
-
-
-
 
 }

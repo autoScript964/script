@@ -19,7 +19,6 @@ public class GameUtil extends TaskContent {
     public GameUtil(AtFairyImpl ypFairy) throws Exception {
         mFairy = ypFairy;
     }
-
     public void inOperation() throws Exception {
         result = mFairy.findPic("Over drawing.png");
         if (result.sim > 0.85f) {
@@ -1165,7 +1164,7 @@ public class GameUtil extends TaskContent {
                 result = mFairy.findPic("package.png");
                 mFairy.onTap(0.8f, result, 1239, 206, 1240, 207, "切换栏", 3000);
 
-                result = mFairy.findPic(1164, 242, 1273, 699, new String[]{"Settingbutton.png","shezhi.png","shezhi1.png"});
+                result = mFairy.findPic(1164, 242, 1273, 710, new String[]{"Settingbutton.png","shezhi.png","shezhi1.png","shezhi2.png"});
                 mFairy.onTap(0.8f, result, "设置", Sleep);
 
                 result = mFairy.findPic("Settinginterface.png");
@@ -1473,7 +1472,6 @@ public class GameUtil extends TaskContent {
                 result = mFairy.findPic(103, 58, 516, 681, "qvElves.png");
                 mFairy.onTap(0.8f, result, "倩女小精灵", Sleep);
 
-
                 result = mFairy.findPic("qvrd.png");
                 if (result.sim > 0.8f) {
                     result1 = mFairy.findPic("qvknow.png");
@@ -1482,7 +1480,7 @@ public class GameUtil extends TaskContent {
                     mFairy.inputText(str);
                     mFairy.condit();
                     result = mFairy.findPic(1070, 68, 1274, 719, new String[]{"new_textsure.png", "new_textsure1.png"});
-                    mFairy.onTap(0.8f, result, "确定文本", 2000);
+                    mFairy.onTap(0.8f, result, "确定文本", 5000);
                     mFairy.onTap(0.8f, result, 876, 635, 901, 646, "发送", Sleep);
                     setTaskName(4);
                 }
@@ -1540,7 +1538,7 @@ public class GameUtil extends TaskContent {
                     LtLog.e(mFairy.getLineInfo("招魂中"));
                     err = 0;
                 }
-                if (timekeep(0, 1800000, "半个小时招魂重置")) {
+                if (timekeep(0, 2400000, "半个小时招魂重置")) {
                     setTaskName(0);
                     return;
                 }

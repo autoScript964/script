@@ -7,6 +7,7 @@ import com.script.opencvapi.AtFairyService;
 public class LocalFairyService extends AtFairyService {
     @Override
     protected void onYpFairyCreated(AtFairy2 mYpFairy) {
+
         if(mYpFairy instanceof AtFairyImpl) {
             ScriptSdkProxy.init((AtFairyImpl) mYpFairy);
         }

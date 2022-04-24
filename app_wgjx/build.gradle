@@ -7,10 +7,11 @@ android {
         applicationId "com.wgjx.ljx"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 165
-        versionName "165"
+        versionCode 168
+        versionName "168"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -23,14 +24,15 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-
     /*repositories {
         flatDir {
             dirs 'libs'
         }h
     }*/
 
-    productFlavors {}
+    productFlavors {
+
+    }
 }
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')

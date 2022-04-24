@@ -1,19 +1,9 @@
 package com.script.fairy;
-
-
 import com.script.opencvapi.LtLog;
 import com.script.opencvapi.AtFairy2;
 import com.script.framework.AtFairyImpl;
-
 import org.json.JSONException;
-
 import java.util.Random;
-
-//import com.script.opencvapi.Thread.Thread;
-
-/**
- * Created by Administrator on 2018/3/9.
- */
 
 public class TeamTask {
     //组队任务

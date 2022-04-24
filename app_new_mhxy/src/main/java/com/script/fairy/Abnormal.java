@@ -21,48 +21,21 @@ public class Abnormal  {
          * 临时
          */
 
-        result = mFairy.findPic("hdclose1.png");
-        mFairy.onTap(0.8f,result,958,157,974,174,"err 关闭 活动",1000);
 
-        result = mFairy.findPic("hdclose2.png");
-        mFairy.onTap(0.8f,result,908,100,929,117,"err 关闭 活动",1000);
+        result = mFairy.findPic("hdclose19.png");
+        mFairy.onTap(0.8f,result,909,99,929,114,"err 关闭 活动",1000);
 
-        result = mFairy.findPic("hdclose3.png");
-        mFairy.onTap(0.8f,result,1021,115,1035,135,"err 关闭 活动",1000);
+        result = mFairy.findPic("hdclose15.png");
+        mFairy.onTap(0.8f,result,1094,99,1112,122,"err 关闭 活动",1000);
 
-        result = mFairy.findPic("hdclose4.png");
-        mFairy.onTap(0.8f,result,1096,70,1108,80,"err 关闭 活动",1000);
+        result = mFairy.findPic("hdclose16.png");
+        mFairy.onTap(0.8f,result,1070,75,1090,92,"err 关闭 活动",1000);
 
-        result = mFairy.findPic(398,176,590,312,"hdclose5.png");
-        mFairy.onTap(0.8f,result,861,200,873,218,"err 关闭 活动",1000);
-
-        result = mFairy.findPic("hdclose6.png");
-        mFairy.onTap(0.8f,result,1089,41,1101,54,"err 关闭 活动",1000);
-
-        result = mFairy.findPic("hdclose7.png");
-        mFairy.onTap(0.8f,result,1128,55,1149,69,"err 关闭 活动",1000);
-
-        result = mFairy.findPic("hdclose8.png");
-        mFairy.onTap(0.8f,result,1100,65,1113,78,"err 关闭 活动",1000);
-
-        result = mFairy.findPic("hdclose9.png");
-        mFairy.onTap(0.8f,result,910,94,930,114,"err 关闭 活动",1000);
-
-        result = mFairy.findPic(852,36,971,156,"hdclose10.png");
+        result = mFairy.findPic("hdclose17.png");
         mFairy.onTap(0.8f,result,"err 关闭 活动",1000);
 
-        result = mFairy.findPic(485,25,794,123,"hdclose11.png");
-        mFairy.onTap(0.8f,result,1100,50,1131,81,"err 关闭 活动",1000);
-
-        result = mFairy.findPic(485,25,794,123,"hdclose12.png");
-        mFairy.onTap(0.8f,result,1103,54,1129,72,"err 关闭 活动",1000);
-
-        result = mFairy.findPic(160,82,311,305,"hdclose13.png");
-        mFairy.onTap(0.8f,result,1094,123,1116,143,"err 关闭 活动",1000);
-
-
-        result = mFairy.findPic("hdui1.png");
-        mFairy.onTap(0.8f,result,1105,92,1123,105,"err 关闭 活动",1000);
+        result = mFairy.findPic("hdclose18.png");
+        mFairy.onTap(0.8f,result,1110,76,1134,99,"err 关闭 活动",1000);
 
         result = mFairy.findPic(589,15,1254,380,new String[]{"close13.png"});
         mFairy.onTap(0.8f,result,"err 关闭 活动",1000);

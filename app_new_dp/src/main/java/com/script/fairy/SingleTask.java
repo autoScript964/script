@@ -1681,9 +1681,9 @@ public class SingleTask {
 
             @Override
             void content_01() throws Exception {
-                timeCount(10, 0);
+                timeCount(10, 99);
 
-                result = mFairy.findPic(772, 5, 1115, 257, "sj1.png");
+                result = mFairy.findPic(450, 5, 1115, 257, "sj1.png");
                 mFairy.onTap(0.9f, result, "上架", 500);
 
                 result = mFairy.findPic("sj2.png");

@@ -702,7 +702,7 @@ public class GamePublicFunction {
         //关闭窗口
         for (int i = 0; i < 5; i++) {
             findResult = mFairy.findPic(1173, 46, 1249, 154,"close3.png");
-            mFairy.onTap(0.8f,findResult,"关闭",2000);
+            mFairy.onTap(0.8f,findResult,"关闭",3000);
             /*result = publicFunction.localOptimalFindPic(1173, 46, 1249, 154, 120.0, 255.0, 0, "fork1.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "------closeWindow----closeWindow--fork=" + result);
@@ -1181,7 +1181,7 @@ public class GamePublicFunction {
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "---------activity.png=" + result);
                 publicFunction.rndTap(1172, 53, 1248, 107);
-                Thread.sleep(200);
+                Thread.sleep(1500);
             }
             if (str.equals("current")) {
                 result = publicFunction.localFindPic(733, 572, 1190, 701, "goTo.png");
@@ -1442,7 +1442,6 @@ public class GamePublicFunction {
                         break;
                     }
                 }
-
 
             } else {
                 switchSkillOrSet("set");

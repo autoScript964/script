@@ -27,7 +27,7 @@ public class TaskMain extends TaskContent {
         gamePublicFuntion = new GamePublicFuntion(ypFairy);
         mFairy = ypFairy;
         mFairy.setGameName("万国觉醒");
-        mFairy.setGameVersion(165);
+        mFairy.setGameVersion(167);
         init();
     }
 
