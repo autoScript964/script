@@ -16,6 +16,8 @@ import static com.script.opencvapi.AtFairy2.TASK_STATE_FINISH;
 
 /**
  * Created by Administrator on 2019/1/24 0024.
+ *
+ *
  */
 
 public class TaskMain {
@@ -33,7 +35,7 @@ public class TaskMain {
     public TaskMain(AtFairyImpl ypFairy) throws Exception {
         mFairy = ypFairy;
         mFairy.setGameName("新倩女幽魂");
-        mFairy.setGameVersion(548);
+        mFairy.setGameVersion(549);
         init();
         gameUtil = new GameUtil(mFairy);
         teamTask = new TeamTask(mFairy);
@@ -54,7 +56,6 @@ public class TaskMain {
         String[] arrstr = string.split("\\|\\|");
 
         if (arrstr.length < 2) {
-
             return;
 
         } else {

@@ -21,6 +21,12 @@ public class TaskMain extends TaskContent {
 
     private static boolean SET_SWITCH = true;
 
+
+
+
+
+
+
     public TaskMain(AtFairyImpl ypFairy) throws Exception {
         super(ypFairy);
         singleTask = new SingleTask(ypFairy);

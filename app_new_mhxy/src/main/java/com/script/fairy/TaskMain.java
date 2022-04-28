@@ -29,7 +29,7 @@ public class TaskMain {
         gamePublicFuntion = new GamePublicFuntion(ypFairy);
         mFairy = ypFairy;
         mFairy.setGameName("梦幻西游");
-        mFairy.setGameVersion(321);
+        mFairy.setGameVersion(322);
         init();
         GamePublicFuntion.ACTLING = 1;
     }

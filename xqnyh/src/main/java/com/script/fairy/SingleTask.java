@@ -1,6 +1,5 @@
 package com.script.fairy;
 
-
 import com.script.opencvapi.FindResult;
 import com.script.opencvapi.LtLog;
 import com.script.opencvapi.AtFairyConfig;
@@ -9,6 +8,10 @@ import com.script.framework.AtFairyImpl;
 
 /**
  * Created by Administrator on 2019/3/25 0025.
+ *
+ *
+ *
+ *
  */
 @SuppressWarnings("all")
 public class SingleTask extends TaskContent {
@@ -24,9 +27,25 @@ public class SingleTask extends TaskContent {
     }
 
     public int task_err = 0;
+
     public int nn_err = 0;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public void content_2() throws Exception {
+
         if (overtime(8, 0)) {
             task_err++;
             if (task_err > 1) {
@@ -39,6 +58,7 @@ public class SingleTask extends TaskContent {
         mFairy.onTap(0.85f, result, "切换到任务栏", Sleep);
 
         mFairy.taskSlid(err, new int[]{2, 4, 6}, 3, 88, 400, 88, 216, 1500, 1000);
+
     }
 
     public void content_3() throws Exception {

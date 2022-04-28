@@ -156,7 +156,6 @@ public class GamePublicFuntion {
         }
     }//关闭
 
-
     SimpleDateFormat df = new SimpleDateFormat("MM-dd HH:mm:ss");
     public int yanzheng_err = 0;
     public long time_err = System.currentTimeMillis();
@@ -217,7 +216,7 @@ public class GamePublicFuntion {
          //好爱网址 http://feng.suanst.com/
 
 
-            String result_ha =answer.haoai(382, 77, 505, 640,"6005");;
+            String result_ha =answer.haoai(382, 77, 505, 640,"6005");
 
             if (!result_ha.equals("") && result_ha != null) {
                 try {

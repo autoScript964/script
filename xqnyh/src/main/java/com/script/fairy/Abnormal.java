@@ -36,6 +36,9 @@ public class Abnormal extends TaskContent {
         result = mFairy.findPic("hdclose2.png");
         mFairy.onTap(0.8f, result, "err hdclose2", 2000);
 
+        result = mFairy.findPic("hdclose4.png");
+        mFairy.onTap(0.8f, result, 919,41,938,59,"err hdclose4", 2000);
+
         result = mFairy.findPic("jiayuan.png");
         mFairy.onTap(0.8f, result, "err 退出装修", 2000);
 

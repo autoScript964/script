@@ -8,8 +8,8 @@ android {
         applicationId "com.mhxy.wyj"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 321
-        versionName "321"
+        versionCode 322
+        versionName "322"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 

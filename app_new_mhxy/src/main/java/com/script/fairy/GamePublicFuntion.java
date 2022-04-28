@@ -98,6 +98,9 @@ public class GamePublicFuntion {
         result = mFairy.findPic("close10.png");
         mFairy.onTap(0.8f, result, "close10", 1500);
 
+        result = mFairy.findPic(948,11,1270,136,"close16.png");
+        mFairy.onTap(0.8f, result, "close11", 1500);
+
         result = mFairy.findPic(948,11,1270,136,"close11.png");
         mFairy.onTap(0.8f, result, "close11", 1500);
 

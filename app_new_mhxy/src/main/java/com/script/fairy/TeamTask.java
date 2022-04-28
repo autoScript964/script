@@ -89,6 +89,7 @@ public class TeamTask {
                         return;
                     }
                 }
+
                 activitySlide.slideRange(new int[]{3, 4, 5}, 2, 0);
             }
         }
