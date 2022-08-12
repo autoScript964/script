@@ -3,6 +3,7 @@ package com.script.fairy;
 import com.example.publicfunctionlibrary.FunctionClass;
 import com.script.framework.AtFairyImpl;
 import com.script.opencvapi.AtFairy2;
+import com.script.opencvapi.FindResult;
 import com.script.opencvapi.LtLog;
 
 public class Abnormal {
@@ -19,6 +20,7 @@ public class Abnormal {
     private PublicFunction publicFunction;
     private GamePublicFunction gamePublicFunction;
     private FunctionClass functionClass;
+    private FindResult findResult;
 
     PicTime answer_picTime;
     PicTime pic_ok;
@@ -87,7 +89,7 @@ public class Abnormal {
             delivery1_picTime.resetTime();
         }
 
-        if (Resurrection_picTime.getPicTime() >= 15) {
+        if (Resurrection_picTime.getPicTime() >= 20) {
 
             LimitlessTask.ResurrectionIndex++;
 
@@ -98,6 +100,8 @@ public class Abnormal {
             Thread.sleep(1000);
             Resurrection_picTime.resetTime();
         }
+
+
         if (cat_picTime.getPicTime() >= 10) {
             LtLog.i(publicFunction.getLineInfo() + "******cat_picTime > 10->");
             publicFunction.rndTap(934, 286, 960, 314);
@@ -113,6 +117,15 @@ public class Abnormal {
             mFairy.touchUp();
             Thread.sleep(1000);
         }
+
+
+
+        findResult = mFairy.findPic("hdclose.png");
+       mFairy.onTap(0.8f,findResult,"hdclose",1000);
+
+        findResult = mFairy.findPic("sd.png");
+        mFairy.onTap(0.8f,findResult,1217,22,1239,36,"商店界面",1000);
+
         //温泉
         result = publicFunction.localFindPic(597, 269, 832, 386, "hot_spring2.png");//温泉经验上限
         if (result.sim >= 0.8) {

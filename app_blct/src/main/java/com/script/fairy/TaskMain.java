@@ -29,7 +29,7 @@ public class TaskMain extends TaskContent {
         limitlessTask = new LimitlessTask(ypFairy);
         mFairy = ypFairy;
         mFairy.setGameName("部落冲突");
-        mFairy.setGameVersion(151);
+        mFairy.setGameVersion(159);
         init();
     }
 

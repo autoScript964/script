@@ -629,10 +629,10 @@ public class SingleTask {
                     if (result.sim > 0.85f) {
                         switch (AtFairyConfig.getOption("skill")) {
                             case "1":
-                                mFairy.onTap(309,329,346,339, "左侧技能激活", 500);
+                                mFairy.onTap(383,525,410,539, "左侧技能激活", 500);
                                 break;
                             case "2":
-                                mFairy.onTap(302,533,349,546, "右侧技能激活", 500);
+                                mFairy.onTap(898,520,935,529, "右侧技能激活", 500);
                                 break;
                         }
                         mFairy.onTap(1132, 74, 1159, 96, "", 500);
@@ -658,12 +658,14 @@ public class SingleTask {
             }
 
             void content_01() throws Exception {
-                timeCount(10, 0);
+                if(timeCount(10, 99)){
+                    gamePublicFuntion.close(1);
+                }
 
                 result = mFairy.findPic(1,1,85,214,"rankScene.png");
                 LtLog.e(mFairy.getLineInfo("组队场景 sim:"+result.sim));
                 if (result.sim > 0.85f) {
-                    err = 0;
+                    //err = 0;
 
                     result = mFairy.findPic("rank5.png");
                     mFairy.onTap(0.85f, result, "退出队伍", 500);
@@ -1623,7 +1625,7 @@ public class SingleTask {
                         return;
                     }
 
-                    result = mFairy.findPic(new String[]{"bpps11.png",""});
+                    result = mFairy.findPic(new String[]{"bpps11.png"});
                     if (result.sim > 0.8f) {
                         for (int i = 0; i < 25; i++) {
                             long n = mFairy.getColorNum(734, 227, 747, 236, 0.98f, 0, "188,142,109");

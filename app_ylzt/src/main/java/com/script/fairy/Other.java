@@ -644,12 +644,12 @@ public class Other {
                 Thread.sleep(500);
             }
         } else {
-            result = publicFunction.localFindPic(1000, 386, 1259, 710, "everday_union.png");
+            result = publicFunction.localFindPic(1000, 386, 1259, 710, "everday_union.png"+"|"+"everday_union1.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "------everday_union->" + result);
                 for (int i = 0; i < 5; i++) {
                     //如果连续点击4次联盟日常还存在，有可能已经完成，点任其他地方取消对话
-                    result = publicFunction.localFindPic(1000, 386, 1259, 710, "everday_union.png");
+                    result = publicFunction.localFindPic(1000, 386, 1259, 710, "everday_union.png"+"|"+"everday_union1.png");
                     if (result.sim >= 0.8) {
                         publicFunction.rndTapWH(result.x, result.y, 93, 23);
                         Thread.sleep(500);

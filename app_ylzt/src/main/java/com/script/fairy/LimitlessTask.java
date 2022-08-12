@@ -111,8 +111,7 @@ public class LimitlessTask {
                 }
             }
 
-
-            result = publicFunction.localFindPic(284, 295, 498, 393, "Resurrection.png");
+            result = publicFunction.localFindPic(284, 295, 498, 393, "Resurrection4.png"+"|"+"Resurrection.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "------Resurrection->" + result);
                 publicFunction.rndTap(result.x, result.y, result.x + 30, result.y + 10);
@@ -651,6 +650,7 @@ public class LimitlessTask {
                 case 26:
                     publicFunction.rndTap(1037,367,1059,388);//龟骆林
                     break;
+
 
             }
 

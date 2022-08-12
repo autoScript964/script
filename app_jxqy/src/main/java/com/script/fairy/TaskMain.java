@@ -59,7 +59,7 @@ public class TaskMain {
 
         taskMap = new HashMap<String, Integer>();
         mFairy.setGameName("新剑侠情缘");
-        mFairy.setGameVersion(583);
+        mFairy.setGameVersion(604);
         publicFunction = new PublicFunction(mFairy);
 //      publicFunction=mFairy.publicFunction;
         limitlessTask = new LimitlessTask(mFairy);
@@ -90,7 +90,7 @@ public class TaskMain {
 
         LtLog.e(mFairy.getLineInfo("start:"+AtFairyConfig.getOption("task_id")));
 
-        if(AtFairyConfig.getOption("task_id").equals("2683")){
+        if(AtFairyConfig.getOption("task_id").equals("2751")){
             mTask = "sgame";
         }else if(AtFairyConfig.getOption("task_id").equals("2715")){
             mTask = "juan";
@@ -126,7 +126,6 @@ public class TaskMain {
                 singleTask.familyDonate();
 
                 break;
-
             case "sgame":
                 LtLog.i(publicFunction.getLineInfo() + "开始小游戏任务");
                 singleTask.sgame();
@@ -243,7 +242,7 @@ public class TaskMain {
                 taskMap.put("OnHookMap", 999);
             } else {
                 //添加地图 需要修改的函数 goSecurity; selectMap2 ,initMapNameList,screenXY
-                for (int i = 1; i <= 40; i++) {
+                for (int i = 1; i <= 41; i++) {
                     if (AtFairyConfig.getOption("map" + Integer.toString(i)).equals("1")) {
                         taskMap.put("OnHookMap", i);
                         break;

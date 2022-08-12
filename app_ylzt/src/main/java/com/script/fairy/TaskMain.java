@@ -70,7 +70,7 @@ public class TaskMain {
         functionClass = new FunctionClass(ypFairy, mContext);
 
         mFairy.setGameName("御龙在天");
-        mFairy.setGameVersion(156);
+        mFairy.setGameVersion(163);
 
     }
 
@@ -304,7 +304,7 @@ public class TaskMain {
             }
 
             if (sun.equals("星期二") || sun.equals("星期四") || sun.equals("星期六") || sun.equals("星期日")) {
-                if (currentTime > 840 && currentTime < 1260) {
+                if (currentTime > 480 && currentTime < 1380) {
                     addTaskList("guandu");
                 }
             }

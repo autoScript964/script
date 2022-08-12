@@ -28,7 +28,7 @@ public class TaskMain {
         limitlessTask = new LimitlessTask(ypFairy);
         mFairy = ypFairy;
         mFairy.setGameName("new斗破苍穹");
-        mFairy.setGameVersion(286);
+        mFairy.setGameVersion(292);
         init();
     }
 
@@ -40,6 +40,9 @@ public class TaskMain {
             result = mFairy.findPic("battleH.png");
             LtLog.e(""+result.sim);
         }*/
+
+
+        if(taskId!=1226){singleTask.setup();}
 
         switch (taskId) {
             case 1855:
@@ -112,8 +115,12 @@ public class TaskMain {
                 break;
             case 1593:
 
-                if (AtFairyConfig.getOption("dqg").equals("1")) {
-                    teamTask.dqg();
+                if (AtFairyConfig.getOption("dqgnd").equals("1")) {
+                    teamTask.dqg(0);
+                }
+
+                if (AtFairyConfig.getOption("dqgnd").equals("2")) {
+                    teamTask.dqg(1);
                 }
 
                 if (AtFairyConfig.getOption("ylsl").equals("1")) {

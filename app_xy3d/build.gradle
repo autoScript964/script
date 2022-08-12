@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 
-
         android {
             compileSdkVersion 29
             buildToolsVersion "29.0.2"
@@ -9,8 +8,8 @@ apply plugin: 'com.android.application'
                 applicationId "com.xy3d.dhw"
                 minSdkVersion 21
                 targetSdkVersion 29
-                versionCode 137
-                versionName "1.37"
+                versionCode 143
+                versionName "143"
                 testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
             }
 

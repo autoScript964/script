@@ -1,25 +1,9 @@
 package com.script.fairy;
 
-import android.util.Log;
-import android.widget.EdgeEffect;
-
-import com.script.content.DTimer;
-import com.script.fairy.content.CompatPicFinder;
+import com.script.framework.AtFairyImpl;
+import com.script.opencvapi.AtFairyConfig;
 import com.script.opencvapi.FindResult;
 import com.script.opencvapi.LtLog;
-import com.script.opencvapi.ScreenInfo;
-import com.script.opencvapi.AtFairyConfig;
-import com.script.opencvapi.utils.TemplateInfo;
-import com.script.framework.AtFairyImpl;
-
-import org.opencv.core.Mat;
-import org.opencv.core.Rect;
-import org.opencv.features2d.Feature2D;
-import org.opencv.imgcodecs.Imgcodecs;
-
-import java.util.List;
-
-import static com.script.opencvapi.AtFairy2.TASK_STATE_FINISH;
 
 public class GamePublicFuntion {
     public AtFairyImpl mFairy;
@@ -377,7 +361,7 @@ public class GamePublicFuntion {
                     result1 = mFairy.findPic(result.x -50, result.y +50, result.x + 150, result.y + 230, new String[]{"canjia.png","canjia1.png"});//未完成
 
                     LtLog.e((result.x -50)+","+(result.y +50)+","+(result.x + 150)+","+(result.y + 230)+" 参加 sim:"+result1.sim);
-
+//08-05 15:54:09.771 28167 28219 W yp      : 08/05 15:54:09 ypfairy-->36.1: 参加 sim:0.7299056
                     if (result1.sim > 0.8f) {
                         mFairy.onTap(0.8f, result1,  "参加",9000);
                         bj = 3;

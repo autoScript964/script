@@ -39,6 +39,7 @@ dependencies {
 
     testImplementation 'junit:junit:4.12'
     implementation 'com.lzy.net:okhttputils:+'
+
     implementation project(':openCVLibrary341')
     implementation 'com.rmtheis:tess-two:9.0.0'
     implementation project(':answer')

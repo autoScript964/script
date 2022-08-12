@@ -1,11 +1,9 @@
 package com.script.fairy;
 
+import com.script.framework.AtFairyImpl;
+import com.script.opencvapi.AtFairyConfig;
 import com.script.opencvapi.FindResult;
 import com.script.opencvapi.LtLog;
-import com.script.opencvapi.AtFairyConfig;
-import com.script.framework.AtFairyImpl;
-
-import static com.script.opencvapi.AtFairy2.TASK_STATE_FINISH;
 
 public class GamePublicFuntion {
     public AtFairyImpl mFairy;
@@ -372,7 +370,7 @@ public class GamePublicFuntion {
     }//队伍
 
     public void clickRank() throws Exception {
-        result = mFairy.findPic(109, 85, 195, 134, new String[]{"rank.png", "rank4.png"});
+        result = mFairy.findPic(109, 85, 195, 134, new String[]{"rank.png", "rank4.png","rank26.png"});
         mFairy.onTap(0.75f, result, "clickRank", 1000);
     }//点击队伍
 

@@ -279,6 +279,7 @@ public class TeamTask {
                                 mFairy.onTap(0.9f, result, "自动匹配", 500);
 
                                 mFairy.onTap(969, 581, 1026, 603, "开始匹配", 2000);
+                                mFairy.onTap(1109,117,1126,129,"",1000);
                                 return;
                             }
                         }
@@ -293,7 +294,8 @@ public class TeamTask {
                             result = mFairy.findPic("rank13.png");
                             mFairy.onTap(0.9f, result, "自动匹配", 500);
 
-                            mFairy.onTap(969, 581, 1026, 603, "开始匹配", 500);
+                            mFairy.onTap(969, 581, 1026, 603, "开始匹配", 2000);
+                            mFairy.onTap(1109,117,1126,129,"",1000);
                             return;
                         }
                     }
@@ -313,7 +315,6 @@ public class TeamTask {
                         mFairy.onTap(0.85f, result, "创建队伍", 500);
                         bool_dairank_state = true;
                     }
-
                     if (bool_dairank_state == false) {
                         result = mFairy.findPic("rank5.png");
                         mFairy.onTap(0.85f, result, "退出队伍", 500);

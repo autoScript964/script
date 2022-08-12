@@ -29,7 +29,7 @@ public class TaskMain {
         limitlessTask = new LimitlessTask(ypFairy);
         mFairy = ypFairy;
         mFairy.setGameName("梦幻西游三维版");
-        mFairy.setGameVersion(125);
+        mFairy.setGameVersion(143);
         init();
         BANG = true;
     }
@@ -71,7 +71,7 @@ public class TaskMain {
             case 1949:
                 singleTask.setUp();
 
-                singleTask.li_rank();
+                //singleTask.li_rank();
 
                 if (!AtFairyConfig.getOption("skill").equals("") && !AtFairyConfig.getOption("skill").equals("0")) {
                     singleTask.skill();

@@ -8,8 +8,8 @@ android {
         applicationId "com.dpcq.hji"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 286
-        versionName "2.8.6"
+        versionCode 292
+        versionName "2.9.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 

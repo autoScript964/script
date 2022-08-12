@@ -75,6 +75,22 @@ public class Abnormal  {
         result = mFairy.findPic(401,242,871,387, "qmx.png");
         mFairy.onTap(0.8f, result, 722,420,775,435,"err驱魔香确定", 1000);
 
+        result = mFairy.findPic("yp.png");
+        mFairy.onTap(0.8f, result, "启动游戏", 1000);
+
+        result = mFairy.findPic("ty.png");
+        mFairy.onTap(0.8f, result, "同意并进入", 1000);
+
+        result = mFairy.findPic(412,287,693,487,"jy.png");
+        mFairy.onTap(0.8f, result, 727,444,751,454,"确定更新", 1000);
+
+        result = mFairy.findPic("gongg.png");
+        mFairy.onTap(0.8f, result, 1082,56,1096,64,"关闭公告", 1000);
+
+        result = mFairy.findPic("login.png");
+        mFairy.onTap(0.8f, result, "进入游戏", 1000);
+
+
         result = mFairy.findPic(533, 72, 764, 185, "laojun.png");
         if (result.sim > 0.8f) {
             LtLog.e(mFairy.getLineInfo(0.8f,result,"老君查岗了"));

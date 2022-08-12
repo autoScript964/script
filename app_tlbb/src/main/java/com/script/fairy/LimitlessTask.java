@@ -134,6 +134,7 @@ public class LimitlessTask {
                 LtLog.i(publicFunction.getLineInfo() + "---------移动到挂机目标位置" + ",,,currTime=" + currTime);
 
                 this.location = false;
+
                 delivery(TaskMain.map);
 
                 for (int i = 0; i < 30; i++) {
@@ -170,6 +171,7 @@ public class LimitlessTask {
                 }
                 Thread.sleep(500);
 
+
                 gamePublicFunction.automaticCombat(1);//开启自动战斗
 
                 if (TaskMain.optionJson.optString("captain").equals("1")) {
@@ -187,13 +189,16 @@ public class LimitlessTask {
                     gamePublicFunction.outMercenary();
                 } else if (TaskMain.optionJson.optString("team").equals("1")) {
                     //队员
+
                     result = publicFunction.localFindPic(61, 2, 104, 61, "captain.png"+"|"+"captain-1.png");
                     if (result.sim >= 0.8) {
                         LtLog.i(publicFunction.getLineInfo() + "------------captain=" + result);
                         gamePublicFunction.exitTeam();
                     }
+
                     joinRanks();
                 }
+
 
 
             } else if (this.location) {
@@ -201,6 +206,7 @@ public class LimitlessTask {
                 this.location = false;
                 int mythicalMap = 0;
                 String mythicalXY = "";
+
                 switch (TaskMain.mythicalSet) {
                     case 1:
                         mythicalMap = 1;
@@ -242,6 +248,10 @@ public class LimitlessTask {
                 }
                 gamePublicFunction.closeWindow();
                 Thread.sleep(2000);
+
+
+
+
                 LtLog.i(publicFunction.getLineInfo() + "---------移动到神兽位置=" + ",mythicalMap=" + mythicalMap);
                 delivery(mythicalMap);
                 for (int i = 0; i < 30; i++) {
@@ -260,6 +270,7 @@ public class LimitlessTask {
                     }
                     Thread.sleep(500);
                 }
+
                 gamePublicFunction.openMap("current");//打开当前地图
                 screenXY(Integer.parseInt(mythicalXY.split(",")[0]), Integer.parseInt(mythicalXY.split(",")[1]), mythicalMap);//点击对应坐标
                 gamePublicFunction.closeWindow();
@@ -271,6 +282,8 @@ public class LimitlessTask {
                     Thread.sleep(500);
                 }
                 Thread.sleep(500);
+
+
                 gamePublicFunction.automaticCombat(1);//开启自动战斗
                 if (TaskMain.optionJson.optString("captain").equals("1")) {
                     gamePublicFunction.openTeam();

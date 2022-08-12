@@ -137,7 +137,7 @@ public class GamePublicFunction {
                         }
                     }
                 } else {
-                    result = publicFunction.localFindPic(151, 115, 790, 526, list1.get(0));
+                    result = publicFunction.localFindPic(141,130,790,458, list1.get(0));
                 }
 
 

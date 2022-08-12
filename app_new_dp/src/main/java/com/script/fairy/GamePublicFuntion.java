@@ -108,13 +108,14 @@ public class GamePublicFuntion {
     }//结束战斗
 
     public void task() throws Exception {
+
         result = mFairy.findPic("task.png");
         mFairy.onTap(0.96f, result, "任务", 1500);
-
 
     }//点击任务
 
     public void chat() throws Exception {
+
         for (int i = 0; i < 10; i++) {
             result = mFairy.findPic("chat.png");
             if (result.sim > 0.92f) {
@@ -126,6 +127,7 @@ public class GamePublicFuntion {
 
         result = mFairy.findPic("novice3.png");
         mFairy.onTap(0.9f, result, "聊天中...", 1000);
+
     }//聊天
 
     public void close() throws Exception {

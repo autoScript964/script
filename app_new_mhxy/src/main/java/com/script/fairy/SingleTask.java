@@ -712,7 +712,6 @@ public class SingleTask {
     }//帮派任务
 
     private boolean jyl = false;
-
     public void jyl() throws Exception {
         new SingleContent(mFairy, "经验链") {
 

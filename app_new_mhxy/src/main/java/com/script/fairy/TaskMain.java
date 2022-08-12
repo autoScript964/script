@@ -29,7 +29,7 @@ public class TaskMain {
         gamePublicFuntion = new GamePublicFuntion(ypFairy);
         mFairy = ypFairy;
         mFairy.setGameName("梦幻西游");
-        mFairy.setGameVersion(322);
+        mFairy.setGameVersion(345);
         init();
         GamePublicFuntion.ACTLING = 1;
     }
@@ -317,29 +317,15 @@ public class TaskMain {
         if (AtFairyConfig.getOption("7596").equals("1")) {
             singleTask.cjmy();
         }
+
+
+
+
+
     }//单人任务
 
     public void yjrc_teamTask() throws Exception {
-        /**
-         * 普通*/
-        if (AtFairyConfig.getOption("lyrm").equals("1")) {
-            teamTask.lyrm();
-        }
-        if (AtFairyConfig.getOption("lls").equals("1")) {
-            teamTask.lls();
-        }
-        if (AtFairyConfig.getOption("lsj").equals("1")) {
-            teamTask.lsj();
-        }
-        if (AtFairyConfig.getOption("thdq").equals("1")) {
-            teamTask.thdq();
-        }
-        if (AtFairyConfig.getOption("ecy").equals("1")) {
-            teamTask.ecy();
-        }
-        if (AtFairyConfig.getOption("wzs").equals("1")) {
-            teamTask.wzs();
-        }
+
 
         /**
          * 侠士*/
@@ -363,6 +349,28 @@ public class TaskMain {
         }
         if (AtFairyConfig.getOption("wzss").equals("1")) {
             teamTask.wzss();
+        }
+
+
+        /**
+         * 普通*/
+        if (AtFairyConfig.getOption("lyrm").equals("1")) {
+            teamTask.lyrm();
+        }
+        if (AtFairyConfig.getOption("lls").equals("1")) {
+            teamTask.lls();
+        }
+        if (AtFairyConfig.getOption("lsj").equals("1")) {
+            teamTask.lsj();
+        }
+        if (AtFairyConfig.getOption("thdq").equals("1")) {
+            teamTask.thdq();
+        }
+        if (AtFairyConfig.getOption("ecy").equals("1")) {
+            teamTask.ecy();
+        }
+        if (AtFairyConfig.getOption("wzs").equals("1")) {
+            teamTask.wzs();
         }
 
 

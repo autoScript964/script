@@ -525,7 +525,7 @@ public class GamePublicFunction {
 
     public void clickDetermine(int x1, int y1, int x2, int y2) throws Exception {
         AtFairy2.OpencvResult result;
-        result = publicFunction.localFindPic(x1, y1, x2, y2, "determine.png|determine1.png");
+        result = publicFunction.localFindPic(x1, y1, x2, y2, "determine.png"+"|"+"determine1.png");
         if (result.sim >= 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "------determine->" + result);
             publicFunction.rndTapWH(result.x,result.y,27,13);

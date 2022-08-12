@@ -693,12 +693,12 @@ public class TeamTask {
     }//秘境话本-困难
 
     private int dqg = 0;
-    public void dqg() throws Exception {
+    public void dqg(int em) throws Exception {
         new TeamTaskContent(mFairy) {
             @Override
             void create() throws Exception {
                 super.create();
-                TaskMain.TASKNAME = "斗气阁";
+                TaskMain.TASKNAME = "斗气阁"+em;
                 taskName = "dqg.png";
                 ranksName = "dqg0.png";
                 ranksNum = 3;
@@ -765,6 +765,12 @@ public class TeamTask {
                     result = mFairy.findPic(1131, 1, 1277, 28, "dqg1.png");
                     if (result.sim > 0.8f) {
                         LtLog.e(mFairy.getLineInfo("进入斗气阁"));
+
+                        if(em==1){
+                            gamePublicFuntion.battle(0);
+                            Thread.sleep(5000);
+                            return;
+                        }
 
                         result = mFairy.findPic("dqg3.png");
                         if (result.sim > 0.8f) {
@@ -835,6 +841,7 @@ public class TeamTask {
             }
         };
     }//斗气阁
+
 
     public void tftz() throws Exception {
         new TeamTaskContent(mFairy) {

@@ -183,7 +183,7 @@ public class LimitlessTask {//无限任务
                 }
 
                 if (err == 2 || err == 4 || err == 6 || err == 8) {
-                    mFairy.ranSwipe(499, 235, 543, 430, 2, 1000, (long)1500);
+                    mFairy.ranSwipe(499, 235, 543, 430, 2, 1000, (long) 1500);
                     continue;
                 }
             }
@@ -441,7 +441,7 @@ public class LimitlessTask {//无限任务
 
     private int go1 = 0, go2 = 0, go3 = 0, go4 = 0, go5 = 0, go6 = 0, go7 = 0, go8 = 0, go9 = 0,
             go10 = 0, go11 = 0, go12 = 0, go13 = 0, go14 = 0, go15 = 0, go16 = 0, go17 = 0, go18 = 0,
-            go19 = 0, go20 = 0, go21 = 0, go22 = 0,go23=0;
+            go19 = 0, go20 = 0, go21 = 0, go22 = 0, go23 = 0,go24=0;
 
     public void initLimitedTime() {
         go1 = 0;
@@ -466,7 +466,8 @@ public class LimitlessTask {//无限任务
         go20 = 0;
         go21 = 0;
         go22 = 0;
-        go23=0;
+        go23 = 0;
+        go24 = 0;
     }
 
     public boolean limitedTime() throws Exception {
@@ -496,7 +497,6 @@ public class LimitlessTask {//无限任务
                     continue;
                 }
             }
-
 
             if (AtFairyConfig.getOption("tmsl").equals("1") && go11 == 0) {//天墓试炼
                 week = mFairy.week();
@@ -654,6 +654,20 @@ public class LimitlessTask {//无限任务
                 }
             }
 
+            if (AtFairyConfig.getOption("jhyh").equals("1") && go24 == 0) {//净化妖火
+                week = mFairy.week();
+                hour = mFairy.dateHour();
+                minute = mFairy.dateMinute();
+                if (week == 5 &&
+                        hour == 20 && minute >=30 ) {
+                    gamePublicFuntion.battleEnd();
+                    gamePublicFuntion.initGo();
+                    jhyh();
+                    go24 = 1;
+                    go = true;
+                    continue;
+                }
+            }
 
             if (AtFairyConfig.getOption("zjlx").equals("1") && go10 == 0) {//筑基灵修
                 week = mFairy.week();
@@ -800,7 +814,7 @@ public class LimitlessTask {//无限任务
 
             if (AtFairyConfig.getOption("3237").equals("1") && go21 == 0) {//携宝强者
                 hour = mFairy.dateHour();
-                if (hour == 11 || hour == 13 || hour == 15 || hour == 17 || hour==23) {
+                if (hour == 11 || hour == 13 || hour == 15 || hour == 17 || hour == 23) {
                     gamePublicFuntion.battleEnd();
                     gamePublicFuntion.err();
                     xbqz();
@@ -816,7 +830,7 @@ public class LimitlessTask {//无限任务
                     gamePublicFuntion.battleEnd();
                     gamePublicFuntion.err();
                     lmqz();
-                    go22=1;
+                    go22 = 1;
                     go = true;
                     continue;
                 }
@@ -914,13 +928,13 @@ public class LimitlessTask {//无限任务
         }
 
         void content_02() throws Exception {
-            if (timeCount(12, 0)) {
+            if (timeCount(20, 0)) {
                 if (activityJudgeCount(2)) {
                     setTaskEnd();
                 }
                 return;
             }
-            Thread.sleep(1000);
+            Thread.sleep(1500);
 
             result = mFairy.findPic("activity.png");
             if (result.sim > 0.8f) {
@@ -1035,18 +1049,18 @@ public class LimitlessTask {//无限任务
                 mFairy.onTap(0.85f, result, "任务聊天", 1000);
 
                 result = mFairy.findPic("ai.png");
-                if(result.sim>0.85f){
-                    mFairy.onTap(0.85f,result,"爱的守护地",1000);
+                if (result.sim > 0.85f) {
+                    mFairy.onTap(0.85f, result, "爱的守护地", 1000);
 
-                    for(int i =0;i<10;i++){
+                    for (int i = 0; i < 10; i++) {
 
                         result = mFairy.findPic("moshou1.png");
-                        if(result.sim>0.85f){
-                            for(int j=0;j<3;j++){
+                        if (result.sim > 0.85f) {
+                            for (int j = 0; j < 3; j++) {
                                 result = mFairy.findPic("moshou2.png");
                                 if (result.sim > 0.85f) {
-                                    mFairy.onTap(0.85f,result,"费雷",500);
-                                    mFairy.onTap(1145,64,1162,83,"",500);
+                                    mFairy.onTap(0.85f, result, "费雷", 500);
+                                    mFairy.onTap(1145, 64, 1162, 83, "", 500);
                                     return;
                                 } else {
                                     result = mFairy.findPic(1111, 95, 1173, 375, "g.png");
@@ -1056,8 +1070,8 @@ public class LimitlessTask {//无限任务
                                     mFairy.onTap(0.9f, result, "怪物", 1500);
                                 }
                             }
-                        }else{
-                            mFairy.onTap(1226,23,1244,48,"点击地图",1500);
+                        } else {
+                            mFairy.onTap(1226, 23, 1244, 48, "点击地图", 1500);
                         }
 
                     }
@@ -1065,7 +1079,7 @@ public class LimitlessTask {//无限任务
                 }
 
 
-                result = mFairy.findPic(new String[]{"msxs1.png","msxs5.png"});
+                result = mFairy.findPic(new String[]{"msxs1.png", "msxs5.png"});
                 if (result.sim > 0.85f) {
                     err = 0;
                     mFairy.onTap(0.85f, result, "开始挑战", 500);
@@ -1073,7 +1087,7 @@ public class LimitlessTask {//无限任务
                         setTaskEnd();
                         return;
                     }
-                }else{
+                } else {
                     gamePublicFuntion.chat();
                 }
 
@@ -1175,6 +1189,10 @@ public class LimitlessTask {//无限任务
 
             }
 
+            void content_01() throws Exception {
+                setTaskName(2);
+            }
+
             @Override
             void content_03() throws Exception {
                 timeCount(10, 0);
@@ -1186,7 +1204,7 @@ public class LimitlessTask {//无限任务
                     result = mFairy.findPic("dsyj2.png");
                     if (result.sim > 0.85f) {
                     } else {
-                        mFairy.onTap(1050, 636, 1052, 640, "组队匹配", 3000);
+                        /*mFairy.onTap(1050, 636, 1052, 640, "组队匹配", 3000);*/
                         mFairy.onTap(818, 627, 860, 647, "单人匹配", 1000);
                     }
                 }
@@ -1222,6 +1240,7 @@ public class LimitlessTask {//无限任务
     }//斗圣遗迹
 
     private int zzxdz = 0;
+
     public void zzxdz() throws Exception {
         new limitedTime(mFairy) {
             @Override
@@ -1266,7 +1285,9 @@ public class LimitlessTask {//无限任务
                 }
 
             }
-
+            void content_01() throws Exception {
+                setTaskName(2);
+            }
             @Override
             void content_03() throws Exception {
                 timeCount(15, 0);
@@ -1279,7 +1300,7 @@ public class LimitlessTask {//无限任务
                     result = mFairy.findPic("dsyj2.png");
                     if (result.sim > 0.85f) {
                     } else {
-                        mFairy.onTap(1050, 636, 1052, 640, "组队匹配", 3000);
+                        //mFairy.onTap(1050, 636, 1052, 640, "组队匹配", 3000);
                         mFairy.onTap(818, 627, 860, 647, "单人匹配", 1000);
                     }
                 }
@@ -1386,6 +1407,9 @@ public class LimitlessTask {//无限任务
 
             }
 
+            void content_01() throws Exception {
+                setTaskName(2);
+            }
             @Override
             void content_03() throws Exception {
                 timeCount(15, 0);
@@ -1397,7 +1421,7 @@ public class LimitlessTask {//无限任务
                     if (result.sim > 0.85f) {
 
                     } else {
-                        mFairy.onTap(1050, 636, 1052, 640, "组队匹配", 3000);
+                        //mFairy.onTap(1050, 636, 1052, 640, "组队匹配", 3000);
                         mFairy.onTap(818, 627, 860, 647, "单人匹配", 1000);
                     }
                 }
@@ -1418,9 +1442,9 @@ public class LimitlessTask {//无限任务
                 if (result.sim > 0.85f) {
                     err = 0;
 
-                    if(timeMap("move",30000)){
-                        mFairy.ranSwipe(190,571,312,598,1,500,(long)800);
-                        mFairy.ranSwipe(57,570,175,600,3,500,(long)800);
+                    if (timeMap("move", 30000)) {
+                        mFairy.ranSwipe(190, 571, 312, 598, 1, 500, (long) 800);
+                        mFairy.ranSwipe(57, 570, 175, 600, 3, 500, (long) 800);
                     }
 
 
@@ -1503,7 +1527,7 @@ public class LimitlessTask {//无限任务
                 timeCount(15, 0);
                 Thread.sleep(1000);
 
-                result = mFairy.findPic("wy2.png");
+                result = mFairy.findPic(new String[]{"wy2.png","ljwy.png"});
                 if (result.sim > 0.85f) {
                     err = 0;
                     result = mFairy.findPic("dsyj2.png");
@@ -1633,9 +1657,9 @@ public class LimitlessTask {//无限任务
                         return;
                     }
 
-                    if(timeMap("move",50000)){
-                        mFairy.ranSwipe(190,571,312,598,1,500,(long)800);
-                        mFairy.ranSwipe(57,570,175,600,3,500,(long)800);
+                    if (timeMap("move", 50000)) {
+                        mFairy.ranSwipe(190, 571, 312, 598, 1, 500, (long) 800);
+                        mFairy.ranSwipe(57, 570, 175, 600, 3, 500, (long) 800);
                     }
                 }
 
@@ -1679,6 +1703,7 @@ public class LimitlessTask {//无限任务
                     setTaskName(2);
                 }
             }
+
             void inOperation() throws Exception {
                 super.inOperation();
 
@@ -1797,9 +1822,9 @@ public class LimitlessTask {//无限任务
                     }
                     gamePublicFuntion.battle(0);
 
-                    if(timeMap("move",50000)){
-                        mFairy.ranSwipe(190,571,312,598,1,500,(long)800);
-                        mFairy.ranSwipe(57,570,175,600,3,500,(long)800);
+                    if (timeMap("move", 50000)) {
+                        mFairy.ranSwipe(190, 571, 312, 598, 1, 500, (long) 800);
+                        mFairy.ranSwipe(57, 570, 175, 600, 3, 500, (long) 800);
                     }
 
                 }
@@ -1895,9 +1920,9 @@ public class LimitlessTask {//无限任务
                         return;
                     }
 
-                    if(timeMap("move",50000)){
-                        mFairy.ranSwipe(190,571,312,598,1,500,(long)800);
-                        mFairy.ranSwipe(57,570,175,600,3,500,(long)800);
+                    if (timeMap("move", 50000)) {
+                        mFairy.ranSwipe(190, 571, 312, 598, 1, 500, (long) 800);
+                        mFairy.ranSwipe(57, 570, 175, 600, 3, 500, (long) 800);
                     }
 
                     gamePublicFuntion.battle(0);
@@ -2002,6 +2027,89 @@ public class LimitlessTask {//无限任务
             }
         };
     }//家族纷争
+
+
+    public boolean jhyh = false;
+
+    public void jhyh() throws Exception {
+        new limitedTime(mFairy) {
+            @Override
+            void create() throws Exception {
+                super.create();
+                TaskMain.TASKNAME = "净化妖火";
+                taskType = 2;
+                ranksType = 2;
+                taskName = "jhyh.png";
+                jhyh = false;
+            }
+
+            @Override
+            void init() throws Exception {
+                super.init();
+                gamePublicFuntion.ranksSetUp(3);
+                if (ranksType == 2) {
+                    setTaskName(2);
+                }
+            }
+
+            @Override
+            void inOperation() throws Exception {
+                super.inOperation();
+
+                gamePublicFuntion.qx();
+                gamePublicFuntion.chat();
+
+                result = mFairy.findPic(300, 404, 509, 579, "resurrection.png");
+                mFairy.onTap(0.8f, result, "安全复活", 1000);
+
+                if (timeRanks.timeJudge(60000)) {
+                    gamePublicFuntion.ranksSetUp(3);
+                }
+
+                hour = mFairy.dateHour();
+                if (hour >= 21) {
+                    setTaskEnd();
+                    return;
+                }
+            }
+
+            @Override
+            void content_03() throws Exception {
+                timeCount(15, 0);
+                Thread.sleep(1000);
+
+                result = mFairy.findPic("jz.png");
+                if (result.sim > 0.85f) {
+                    LtLog.e(mFairy.getLineInfo("玩家没有加入家族,End!"));
+                    setTaskEnd();
+                    return;
+                }
+
+                result = mFairy.findPic("jhyh1.png");
+                mFairy.onTap(0.8f, result, "前往", 1000);
+
+                result = mFairy.findPic("jhyh2.png");
+                mFairy.onTap(0.8f, result, 847, 494, 872, 505, "确定进去", 5000);
+
+                result = mFairy.findPic(1199, 98, 1279, 334, "leave.png");
+                if (result.sim > 0.85f) {
+                    err = 0;
+                    mFairy.onTap(71, 177, 99, 193, "点击据点", 1000);
+                    gamePublicFuntion.battle(0);
+                    Thread.sleep(5000);
+                    jhyh = true;
+                    frequencyInit("fbjh");
+                } else {
+                    if (jhyh) {
+                        if (frequencyMap("fbjh", 10)) {
+                            setTaskEnd();
+                            return;
+                        }
+                    }
+                }
+            }
+        };
+    }//净化妖火
 
     public void tmsl() throws Exception {
         new limitedTime(mFairy) {
@@ -2173,6 +2281,7 @@ public class LimitlessTask {//无限任务
     }//魂殿尊者
 
     private int xbqz = 1;
+
     public void xbqz() throws Exception {
         new limitedTime(mFairy) {
             @Override
@@ -2231,7 +2340,7 @@ public class LimitlessTask {//无限任务
                 result = mFairy.findPic("xbqz5.png");
                 if (result.sim > 0.85f) {
                     err = 0;
-                    if(oneSecond()){
+                    if (oneSecond()) {
                         other();
                     }
                     switch (xbqz) {
@@ -2246,20 +2355,20 @@ public class LimitlessTask {//无限任务
                                 return;
                             }
 
-                            if (AtFairyConfig.getOption("xx1").equals("1") && xbqz==1) {
+                            if (AtFairyConfig.getOption("xx1").equals("1") && xbqz == 1) {
                                 mFairy.onTap(160, 253, 229, 268, "曼舞藤华", 1000);
-                            }else if (AtFairyConfig.getOption("xx2").equals("1")&& xbqz==2) {
+                            } else if (AtFairyConfig.getOption("xx2").equals("1") && xbqz == 2) {
                                 mFairy.onTap(171, 326, 228, 346, "合欢巨猿", 1000);
-                            }else if (AtFairyConfig.getOption("xx3").equals("1")&& xbqz==3) {
+                            } else if (AtFairyConfig.getOption("xx3").equals("1") && xbqz == 3) {
                                 mFairy.onTap(169, 411, 220, 426, "紫翼烈鹰", 1000);
-                            }else if (AtFairyConfig.getOption("xx4").equals("1")&& xbqz==4) {
+                            } else if (AtFairyConfig.getOption("xx4").equals("1") && xbqz == 4) {
                                 mFairy.onTap(164, 488, 224, 507, "遗弃玩偶", 1000);
-                            }else if (AtFairyConfig.getOption("xx5").equals("1")&& xbqz==5) {
+                            } else if (AtFairyConfig.getOption("xx5").equals("1") && xbqz == 5) {
                                 mFairy.onTap(162, 570, 223, 585, "寒齿巨狼", 1000);
                             }
 
-                            if(xbqz==5){
-                                oneSecond=0;
+                            if (xbqz == 5) {
+                                oneSecond = 0;
                             }
                             break;
                         case 6:
@@ -2267,111 +2376,111 @@ public class LimitlessTask {//无限任务
                         case 8:
                         case 9:
                         case 10:
-                            result = mFairy.findPic(257,239,318,281, "xbqz6.png");
+                            result = mFairy.findPic(257, 239, 318, 281, "xbqz6.png");
                             if (result.sim < 0.85f) {
-                                mFairy.onTap(159,250,215,267, "大沙漠", 1000);
+                                mFairy.onTap(159, 250, 215, 267, "大沙漠", 1000);
                                 return;
                             }
 
-                            if (AtFairyConfig.getOption("xx6").equals("1")&& xbqz==6) {
-                                mFairy.onTap(157,337,220,356, "黑煞冥龙", 1000);
-                            }else if (AtFairyConfig.getOption("xx7").equals("1")&& xbqz==7) {
-                                mFairy.onTap(151,414,226,430, "噬魂刺客", 1000);
-                            }else if (AtFairyConfig.getOption("xx8").equals("1")&& xbqz==8) {
-                                mFairy.onTap(152,487,238,515, "血魔一刀斩", 1000);
-                            }else if (AtFairyConfig.getOption("xx9").equals("1")&& xbqz==9) {
-                                mFairy.onTap(168,568,217,587, "炎沙龙皇", 1000);
-                            }else if (AtFairyConfig.getOption("xx10").equals("1")&& xbqz==10) {
-                                mFairy.onTap(155,646,227,659, "八翼蛇皇", 1000);
+                            if (AtFairyConfig.getOption("xx6").equals("1") && xbqz == 6) {
+                                mFairy.onTap(157, 337, 220, 356, "黑煞冥龙", 1000);
+                            } else if (AtFairyConfig.getOption("xx7").equals("1") && xbqz == 7) {
+                                mFairy.onTap(151, 414, 226, 430, "噬魂刺客", 1000);
+                            } else if (AtFairyConfig.getOption("xx8").equals("1") && xbqz == 8) {
+                                mFairy.onTap(152, 487, 238, 515, "血魔一刀斩", 1000);
+                            } else if (AtFairyConfig.getOption("xx9").equals("1") && xbqz == 9) {
+                                mFairy.onTap(168, 568, 217, 587, "炎沙龙皇", 1000);
+                            } else if (AtFairyConfig.getOption("xx10").equals("1") && xbqz == 10) {
+                                mFairy.onTap(155, 646, 227, 659, "八翼蛇皇", 1000);
                             }
-                            if(xbqz==10){
-                                oneSecond=0;
+                            if (xbqz == 10) {
+                                oneSecond = 0;
                             }
                             break;
                         case 11:
                         case 12:
-                            result = mFairy.findPic(248,317,322,369, "xbqz6.png");
+                            result = mFairy.findPic(248, 317, 322, 369, "xbqz6.png");
                             if (result.sim < 0.85f) {
-                                mFairy.onTap(161,331,227,347, "地心岩洞", 1000);
+                                mFairy.onTap(161, 331, 227, 347, "地心岩洞", 1000);
                                 return;
                             }
 
-                            if (AtFairyConfig.getOption("xx11").equals("1")&& xbqz==11) {
-                                mFairy.onTap(164,417,222,434, "蒙面巫女", 1000);
-                            }else if (AtFairyConfig.getOption("xx12").equals("1")&& xbqz==12) {
-                                mFairy.onTap(159,493,243,518, "游荡怨灵", 1000);
+                            if (AtFairyConfig.getOption("xx11").equals("1") && xbqz == 11) {
+                                mFairy.onTap(164, 417, 222, 434, "蒙面巫女", 1000);
+                            } else if (AtFairyConfig.getOption("xx12").equals("1") && xbqz == 12) {
+                                mFairy.onTap(159, 493, 243, 518, "游荡怨灵", 1000);
                             }
-                            if(xbqz==12){
-                                oneSecond=0;
+                            if (xbqz == 12) {
+                                oneSecond = 0;
                             }
                             break;
                         case 13:
                         case 14:
-                            result = mFairy.findPic(242,391,331,460, "xbqz6.png");
+                            result = mFairy.findPic(242, 391, 331, 460, "xbqz6.png");
                             if (result.sim < 0.85f) {
-                                mFairy.onTap(145,417,243,437, "地心岩洞 二层", 1000);
+                                mFairy.onTap(145, 417, 243, 437, "地心岩洞 二层", 1000);
                                 return;
                             }
 
-                            if (AtFairyConfig.getOption("xx13").equals("1")&& xbqz==13) {
-                                mFairy.onTap(158,501,229,522, "双沟魂殿", 1000);
-                            }else if (AtFairyConfig.getOption("xx14").equals("1")&& xbqz==14) {
-                                mFairy.onTap(160,577,228,601, "毒瘴傀儡", 1000);
+                            if (AtFairyConfig.getOption("xx13").equals("1") && xbqz == 13) {
+                                mFairy.onTap(158, 501, 229, 522, "双沟魂殿", 1000);
+                            } else if (AtFairyConfig.getOption("xx14").equals("1") && xbqz == 14) {
+                                mFairy.onTap(160, 577, 228, 601, "毒瘴傀儡", 1000);
                             }
-                            if(xbqz==14){
-                                oneSecond=0;
+                            if (xbqz == 14) {
+                                oneSecond = 0;
                             }
                             break;
                         case 15:
-                            result = mFairy.findPic(254,489,314,531, "xbqz6.png");
+                            result = mFairy.findPic(254, 489, 314, 531, "xbqz6.png");
                             if (result.sim < 0.85f) {
-                                mFairy.onTap(153,506,224,520, "地心岩洞 三层", 1000);
+                                mFairy.onTap(153, 506, 224, 520, "地心岩洞 三层", 1000);
                                 return;
                             }
 
-                            if (AtFairyConfig.getOption("xx15").equals("1")&& xbqz==15) {
-                                mFairy.onTap(159,580,202,596, "神秘斗灵", 1000);
+                            if (AtFairyConfig.getOption("xx15").equals("1") && xbqz == 15) {
+                                mFairy.onTap(159, 580, 202, 596, "神秘斗灵", 1000);
                             }
-                            oneSecond=0;
+                            oneSecond = 0;
                             break;
                         case 16:
                         case 17:
                         case 18:
                         case 19:
                         case 20:
-                            result = mFairy.findPic(257,201,320,274, "xbqz6.png");
+                            result = mFairy.findPic(257, 201, 320, 274, "xbqz6.png");
                             if (result.sim < 0.85f) {
-                                mFairy.onTap(160,580,233,605, "地心岩洞 三层", 1000);
-                                for(int i=0;i<3;i++){
-                                    mFairy.ranSwipe(168,281,202,559,2,500,(long)200);
+                                mFairy.onTap(160, 580, 233, 605, "地心岩洞 三层", 1000);
+                                for (int i = 0; i < 3; i++) {
+                                    mFairy.ranSwipe(168, 281, 202, 559, 2, 500, (long) 200);
                                 }
                                 Thread.sleep(1500);
                                 return;
                             }
 
-                            if (AtFairyConfig.getOption("xx16").equals("1")&& xbqz==16) {
-                                mFairy.onTap(161,314,228,329, "搜魂傀儡", 1000);
-                            }else if (AtFairyConfig.getOption("xx17").equals("1")&& xbqz==17) {
-                                mFairy.onTap(159,388,229,401, "魂殿密使", 1000);
-                            }else if (AtFairyConfig.getOption("xx18").equals("1")&& xbqz==18) {
-                                mFairy.onTap(160,471,228,487, "虚无吞炎兽", 1000);
-                            }else if (AtFairyConfig.getOption("xx19").equals("1")&& xbqz==19) {
-                                mFairy.onTap(163,550,237,570, "雷池魔灵", 1000);
-                            }else if (AtFairyConfig.getOption("xx20").equals("1")&& xbqz==20) {
-                                mFairy.onTap(161,632,238,652, "虚空雷灵", 1000);
+                            if (AtFairyConfig.getOption("xx16").equals("1") && xbqz == 16) {
+                                mFairy.onTap(161, 314, 228, 329, "搜魂傀儡", 1000);
+                            } else if (AtFairyConfig.getOption("xx17").equals("1") && xbqz == 17) {
+                                mFairy.onTap(159, 388, 229, 401, "魂殿密使", 1000);
+                            } else if (AtFairyConfig.getOption("xx18").equals("1") && xbqz == 18) {
+                                mFairy.onTap(160, 471, 228, 487, "虚无吞炎兽", 1000);
+                            } else if (AtFairyConfig.getOption("xx19").equals("1") && xbqz == 19) {
+                                mFairy.onTap(163, 550, 237, 570, "雷池魔灵", 1000);
+                            } else if (AtFairyConfig.getOption("xx20").equals("1") && xbqz == 20) {
+                                mFairy.onTap(161, 632, 238, 652, "虚空雷灵", 1000);
                             }
                             break;
                     }
 
                     result = mFairy.findPic("xbqz7.png");
                     if (result.sim > 0.85f) {
-                        oneSecond=0;
-                        mFairy.onTap(0.85f,result,"前往",5000);
+                        oneSecond = 0;
+                        mFairy.onTap(0.85f, result, "前往", 5000);
                         return;
                     }
 
                     xbqz++;
-                    if(xbqz>20){
+                    if (xbqz > 20) {
                         setTaskEnd();
                         return;
                     }
@@ -2381,6 +2490,7 @@ public class LimitlessTask {//无限任务
     }//携宝强者
 
     private int lmqz = 1;
+
     public void lmqz() throws Exception {
         new limitedTime(mFairy) {
             @Override
@@ -2439,7 +2549,7 @@ public class LimitlessTask {//无限任务
                 result = mFairy.findPic("lmqz1.png");
                 if (result.sim > 0.85f) {
                     err = 0;
-                    if(oneSecond()){
+                    if (oneSecond()) {
                         other();
                     }
                     switch (lmqz) {
@@ -2453,74 +2563,74 @@ public class LimitlessTask {//无限任务
                                 return;
                             }
 
-                            if (AtFairyConfig.getOption("ll1").equals("1") && lmqz==1) {
+                            if (AtFairyConfig.getOption("ll1").equals("1") && lmqz == 1) {
                                 mFairy.onTap(160, 253, 229, 268, "1", 1000);
-                            }else if (AtFairyConfig.getOption("ll2").equals("1")&& lmqz==2) {
+                            } else if (AtFairyConfig.getOption("ll2").equals("1") && lmqz == 2) {
                                 mFairy.onTap(171, 326, 228, 346, "2", 1000);
-                            }else if (AtFairyConfig.getOption("ll3").equals("1")&& lmqz==3) {
+                            } else if (AtFairyConfig.getOption("ll3").equals("1") && lmqz == 3) {
                                 mFairy.onTap(169, 411, 220, 426, "3", 1000);
-                            }else if (AtFairyConfig.getOption("ll4").equals("1")&& lmqz==4) {
+                            } else if (AtFairyConfig.getOption("ll4").equals("1") && lmqz == 4) {
                                 mFairy.onTap(164, 488, 224, 507, "4", 1000);
                             }
 
-                            if(lmqz==4){
-                                oneSecond=0;
+                            if (lmqz == 4) {
+                                oneSecond = 0;
                             }
                             break;
                         case 5:
                         case 6:
                         case 7:
                         case 8:
-                            result = mFairy.findPic(257,239,318,281, "xbqz6.png");
+                            result = mFairy.findPic(257, 239, 318, 281, "xbqz6.png");
                             if (result.sim < 0.85f) {
-                                mFairy.onTap(159,250,215,267, "丹塔会", 1000);
+                                mFairy.onTap(159, 250, 215, 267, "丹塔会", 1000);
                                 return;
                             }
 
-                            if (AtFairyConfig.getOption("ll5").equals("1")&& lmqz==5) {
-                                mFairy.onTap(157,337,220,356, "5", 1000);
-                            }else if (AtFairyConfig.getOption("ll6").equals("1")&& lmqz==6) {
-                                mFairy.onTap(151,414,226,430, "6", 1000);
-                            }else if (AtFairyConfig.getOption("ll7").equals("1")&& lmqz==7) {
-                                mFairy.onTap(152,487,238,515, "7", 1000);
-                            }else if (AtFairyConfig.getOption("ll8").equals("1")&& lmqz==8) {
-                                mFairy.onTap(168,568,217,587, "8", 1000);
+                            if (AtFairyConfig.getOption("ll5").equals("1") && lmqz == 5) {
+                                mFairy.onTap(157, 337, 220, 356, "5", 1000);
+                            } else if (AtFairyConfig.getOption("ll6").equals("1") && lmqz == 6) {
+                                mFairy.onTap(151, 414, 226, 430, "6", 1000);
+                            } else if (AtFairyConfig.getOption("ll7").equals("1") && lmqz == 7) {
+                                mFairy.onTap(152, 487, 238, 515, "7", 1000);
+                            } else if (AtFairyConfig.getOption("ll8").equals("1") && lmqz == 8) {
+                                mFairy.onTap(168, 568, 217, 587, "8", 1000);
                             }
-                            if(lmqz==8){
-                                oneSecond=0;
+                            if (lmqz == 8) {
+                                oneSecond = 0;
                             }
                             break;
                         case 9:
                         case 10:
                         case 11:
                         case 12:
-                            result = mFairy.findPic(248,317,322,369, "xbqz6.png");
+                            result = mFairy.findPic(248, 317, 322, 369, "xbqz6.png");
                             if (result.sim < 0.85f) {
-                                mFairy.onTap(161,331,227,347, "星陨阁", 1000);
+                                mFairy.onTap(161, 331, 227, 347, "星陨阁", 1000);
                                 return;
                             }
 
-                            if (AtFairyConfig.getOption("ll9").equals("1")&& lmqz==9) {
-                                mFairy.onTap(157,413,215,430, "5", 1000);
-                            }else if (AtFairyConfig.getOption("ll10").equals("1")&& lmqz==10) {
-                                mFairy.onTap(166,493,222,512, "6", 1000);
-                            }else if (AtFairyConfig.getOption("ll11").equals("1")&& lmqz==11) {
-                                mFairy.onTap(157,578,218,588, "7", 1000);
-                            }else if (AtFairyConfig.getOption("ll12").equals("1")&& lmqz==12) {
-                                mFairy.onTap(143,644,241,666, "8", 1000);
+                            if (AtFairyConfig.getOption("ll9").equals("1") && lmqz == 9) {
+                                mFairy.onTap(157, 413, 215, 430, "5", 1000);
+                            } else if (AtFairyConfig.getOption("ll10").equals("1") && lmqz == 10) {
+                                mFairy.onTap(166, 493, 222, 512, "6", 1000);
+                            } else if (AtFairyConfig.getOption("ll11").equals("1") && lmqz == 11) {
+                                mFairy.onTap(157, 578, 218, 588, "7", 1000);
+                            } else if (AtFairyConfig.getOption("ll12").equals("1") && lmqz == 12) {
+                                mFairy.onTap(143, 644, 241, 666, "8", 1000);
                             }
                             break;
                     }
 
                     result = mFairy.findPic("xbqz7.png");
                     if (result.sim > 0.85f) {
-                        oneSecond=0;
-                        mFairy.onTap(0.85f,result,"前往",5000);
+                        oneSecond = 0;
+                        mFairy.onTap(0.85f, result, "前往", 5000);
                         return;
                     }
 
                     lmqz++;
-                    if(lmqz>12){
+                    if (lmqz > 12) {
                         setTaskEnd();
                         return;
                     }

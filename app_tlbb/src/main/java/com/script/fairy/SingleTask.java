@@ -204,6 +204,9 @@ public class SingleTask {
 
         while (mFairy.condit()) {
             gamePublicFunction.follow(0);//取消跟随
+
+
+
             result = publicFunction.localFindPic(582, 8, 721, 80, "activitiesWindow.png" + "|" + "activitiesWindow1.png|activitiesWindow2.png");
             if (result.sim >= 0.8) {
                 //如果在
@@ -214,6 +217,10 @@ public class SingleTask {
                 //currentTask=taskList.get(0);
                 Thread.sleep(1000);
             }
+
+
+
+
             if (TaskMain.taskList.size() == 0) {
                 gamePublicFunction.closeWindow();
                 LtLog.i(publicFunction.getLineInfo() + "------SingleTask--everydayTask--taskList.size()>" + "任务已完成");
@@ -222,8 +229,11 @@ public class SingleTask {
                 LtLog.i(publicFunction.getLineInfo() + "当前执行任务=" + TaskMain.taskList.get(0));
             }
 
-            result = publicFunction.localFindPic(822, 24, 954, 72, "activity.png");
-            if (result.sim > 0.8) {
+
+
+
+            findResult = mFairy.findPic(822, 24, 954, 72, "activity.png");
+            if (findResult.sim > 0.8f) {
                 //没有活动按钮 不识别坐标
                 LtLog.i(publicFunction.getLineInfo() + "在主场景,识别坐标");
 
@@ -542,6 +552,7 @@ public class SingleTask {
                     publicFunction.rndTapWH(result.x, result.y, 45, 21);
                     Thread.sleep(2000);
                 }
+
                 for (int i = 0; i < 10; i++) {
                     result = publicFunction.localFindPic(189, 85, 334, 677, "linkTask5.png");
                     if (result.sim >= 0.8) {
@@ -1127,6 +1138,40 @@ public class SingleTask {
                 result2 = publicFunction.localFindPic(452, 11, 681, 83, "acupoint1.png" + "|" + "help1.png");
                 if (result.sim >= 0.8 || result2.sim > 0.8) {
 
+
+                    findResult = mFairy.findPic("dianxue5.png");
+                    if (findResult.sim > 0.8f) {
+                        LtLog.i(publicFunction.getLineInfo() + "【dianxue5】");
+                        mFairy.touchDown(639,134);
+                        mFairy.touchMove(602,267, 300);
+                        mFairy.touchMove(739,383, 300);
+                        mFairy.touchMove(735,595, 300);
+                        mFairy.touchMove(483,484, 300);
+                        mFairy.touchUp();
+                        return;
+                    }
+
+
+
+
+                    findResult = mFairy.findPic("dianxue4.png");
+                    if (findResult.sim > 0.8f) {
+                        LtLog.i(publicFunction.getLineInfo() + "【dianxue4】");
+                        mFairy.touchDown(616,78);
+                        mFairy.touchMove(756,172, 300);
+                        mFairy.touchMove(682,250, 300);
+                        mFairy.touchMove(776,355, 300);
+                        mFairy.touchMove(780,461, 300);
+                        mFairy.touchMove(759,589, 300);
+                        mFairy.touchMove(562,462, 300);
+                        mFairy.touchUp();
+                        return;
+                    }
+
+
+
+
+
                     findResult = mFairy.findPic("dianxue3.png");
                     if (findResult.sim > 0.8f) {
                         LtLog.i(publicFunction.getLineInfo() + "【dianxue3】");
@@ -1138,6 +1183,10 @@ public class SingleTask {
                         mFairy.touchUp();
                         return;
                     }
+
+
+
+
 
 
                     findResult = mFairy.findPic("dianxue2.png");
@@ -1217,14 +1266,24 @@ public class SingleTask {
             Thread.sleep(500);
             LtLog.i(publicFunction.getLineInfo() + "商店界面");
 
+
+
+
+
             result = publicFunction.localFindPic(164, 103, 1153, 563, "demand.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "------SingleTask--demand.png>" + result);
                 publicFunction.rndTap(result.x + 300, result.y + 45, result.x + 310, result.y + 50);
                 Thread.sleep(500);
             }
+
+            findResult = mFairy.findPic(481,373,794,552,"queding.png");
+            mFairy.onTap(0.75f,findResult,"确定",1000);
+
+
         }
-        result = publicFunction.localFindPic(598, 451, 683, 498, "determine.png");
+
+        result = publicFunction.localFindPic(536,377,749,539, "determine.png");
         if (result.sim >= 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "确定");
             publicFunction.rndTap(result.x, result.y, result.x + 100, result.y + 20);

@@ -43,6 +43,12 @@ public class Abnormal {
         result=mFairy.findPic("qq.png");
         mFairy.onTap(0.85f,result,"qq登录",1000);
 
+        result=mFairy.findPic("tongyi.png");
+        mFairy.onTap(0.85f,result,"同意",1000);
+
+        result=mFairy.findPic("queding.png");
+        mFairy.onTap(0.85f,result,"确定",1000);
+
         result = mFairy.findPic(134, 742, 572, 1129, "qqlogin1.png");
         mFairy.onTap(0.85f, result, "errQQ登录重新获取", 2000);
 

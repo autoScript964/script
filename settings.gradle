@@ -21,6 +21,7 @@ include ":opencvapi-debug", ':openCVLibrary341', ':scriptSdk', "scriptSdkProxy",
         "new-wendao",
         "app_dldl",
         'app_hdjy',
-        "app_jyry"
-
+        "app_jyry",
+        "app_rxcqmds",
+        "app_ahphs"
 

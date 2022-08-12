@@ -153,7 +153,7 @@ public class TimingActivity {
                 }
 
                 time1x = System.currentTimeMillis() / 1000 - time1;
-                if (time1x >= 80) {
+                if (time1x >= 90) {
                     gamePublicFunction.closeWindow();
                     LtLog.i(publicFunction.getLineInfo() + "---------------------outTime  not task----return---------------------->");
                     return;
@@ -946,7 +946,7 @@ public class TimingActivity {
             int currentlyTIME = publicFunction.getMinuteNumber();
             if (currentlyTIME >= 1290) {
                 break;
-            } else if (currentlyTIME > 1265) {
+            } else if (currentlyTIME > 1261) {
                 result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png");
                 if (result.sim >= 0.8) {
                     LtLog.i(publicFunction.getLineInfo() + "在主场景时间超时,end!");
@@ -983,7 +983,7 @@ public class TimingActivity {
         gamePublicFunction.goSecurity();//回安全区
 
 
-        LtLog.i(publicFunction.getLineInfo() + "------->等待40S=" + ",要开始执行的任务：龙门之争");
+        LtLog.i(publicFunction.getLineInfo() + "------->等待40S=" + ",要开始执行的任务：山河战境");
         //如果是在侠客岛挂机 ,就不等了。
         for (int i = 0; i < 19 && TaskMain.taskMap.get("OnHookMap") != 999; i++) {
             Thread.sleep(2000);//等待40S
@@ -1192,25 +1192,25 @@ public class TimingActivity {
                 Thread.sleep(1000);
             }
 
-            findResult = mFairy.findPic(11,61,89,375, "hsg2.png");
+            findResult = mFairy.findPic(11, 61, 89, 375, "hsg2.png");
             if (findResult.sim > 0.8f) {
                 switch (AtFairyConfig.getOption("hsgMap")) {
                     case "1":
-                        mFairy.onTap(545,305,570,321, "剑门蜀道", 2000);
+                        mFairy.onTap(545, 305, 570, 321, "剑门蜀道", 2000);
                         break;
                     case "2":
-                        mFairy.onTap(650,181,671,203, "太白古道", 2000);
+                        mFairy.onTap(650, 181, 671, 203, "太白古道", 2000);
                         break;
                     case "3":
-                        mFairy.onTap(819,241,836,262, "琼山商道", 2000);
+                        mFairy.onTap(819, 241, 836, 262, "琼山商道", 2000);
                         break;
                     case "4":
-                        mFairy.onTap(956,328,974,343, "秦岭古道", 2000);
+                        mFairy.onTap(956, 328, 974, 343, "秦岭古道", 2000);
                         break;
                 }
             }
 
-            findResult = mFairy.findPic(1141,3,1273,39, "hsg3.png");
+            findResult = mFairy.findPic(1141, 3, 1273, 39, "hsg3.png");
             if (findResult.sim > 0.8f) {
                 time = System.currentTimeMillis() / 1000;
                 LtLog.i(mFairy.getLineInfo("副本中"));
@@ -1223,43 +1223,151 @@ public class TimingActivity {
     }//智取花石纲
 
 
-    public void jzkh() throws Exception {
+    public void hgkm() throws Exception {
 
         gamePublicFunction.closeWindow();
 
         GoSecurityXiakeIsland();//如果在侠客岛,需要先回到安全区,,初始设计脚本时没有考虑到侠客岛这个奇葩,所以这个地方还要调用一次。
 
+        gamePublicFunction.closeWindow();
+
         gamePublicFunction.exitTeam();
 
         gamePublicFunction.goSecurity();//回安全区
 
+        LtLog.i(publicFunction.getLineInfo() + "------->等待40S=" + ",要开始执行的任务：山河战境");
+        //如果是在侠客岛挂机 ,就不等了。
+        for (int i = 0; i < 19 && TaskMain.taskMap.get("OnHookMap") != 999; i++) {
+            Thread.sleep(2000);//等待40S
+        }
+
+        gamePublicFunction.openActivity();
+
+        LtLog.i(publicFunction.getLineInfo() + "打开活动窗口");
+
+        long time = System.currentTimeMillis() / 1000, timex = 0;
+        long time1 = System.currentTimeMillis() / 1000, time1x = 0;
 
         while (mFairy.condit()) {
 
-            LtLog.i(publicFunction.getLineInfo() + "龙门之争活动中");
+            LtLog.i(publicFunction.getLineInfo() + "灰谷矿脉活动中");
 
             int currentlyTIME = publicFunction.getMinuteNumber();
-            if (currentlyTIME > 1164) {
+            if (currentlyTIME >= 1248) {
                 break;
             }
 
-            findResult = mFairy.findPic(460, 579, 643, 665, "lmzz1.png");
-            mFairy.onTap(0.8f, findResult, "普通赛场", 1000);
+            result = publicFunction.localFindPic(0, 28, 113, 179, "activity1.png");
+            if (result.sim >= 0.8) {
+                LtLog.i(publicFunction.getLineInfo() + "【活动场景】");
 
-            findResult = mFairy.findPic(1050, 175, 1259, 293, "lmzz.png");
-            mFairy.onTap(0.8f, findResult, "龙门之争", 1000);
+                for (int i = 0; i < 2; i++) {
+                    publicFunction.RanSwipe(916, 153, 1038, 489, 0, 500);
+                }
 
-            findResult = mFairy.findPic(476, 25, 541, 692, "lmzz2.png");
-            if (findResult.sim > 0.8f) {
-                mFairy.onTap(0.8f, findResult, 1211, 578, 1222, 591, "结束!", 1000);
-                mFairy.onTap(0.8f, findResult, 1211, 578, 1222, 591, "结束!", 1000);
+                Thread.sleep(2000);
+
+                result = publicFunction.localFindPic(894, 126, 1076, 317, "hgkm.png");
+                if (result.sim >= 0.8) {
+                    LtLog.i(publicFunction.getLineInfo() + "发现活动");
+                    publicFunction.rndTap(result.x + 19, result.y + 33, result.x + 89, result.y + 59);
+                    Thread.sleep(3000);
+                } else {
+                    publicFunction.RanSwipe(916, 153, 1038, 489, 0, 500);
+                    Thread.sleep(500);
+                }
+
+                time1x = System.currentTimeMillis() / 1000 - time1;
+                if (time1x >= 60) {
+                    gamePublicFunction.closeWindow();
+                    LtLog.i(publicFunction.getLineInfo() + "---------------------outTime  not task----return---------------------->");
+                    return;
+                }
+
+            } else {
+                time1 = System.currentTimeMillis() / 1000;
+            }
+
+            timex = System.currentTimeMillis() / 1000 - time;
+            if (timex >= 90) {
+                LtLog.i(publicFunction.getLineInfo() + "超时 close");
+                LtLog.i(publicFunction.getLineInfo() + "超时 close");
+                LtLog.i(publicFunction.getLineInfo() + "超时 close");
                 gamePublicFunction.closeWindow();
+                gamePublicFunction.openActivity();
+                time = System.currentTimeMillis() / 1000;
+            }
+
+            result = publicFunction.localFindPic(335, 200, 870, 514, "goSecurity.png");
+            if (result.sim >= 0.8) {
+                LtLog.i(publicFunction.getLineInfo() + "------->goSecurity=" + result);
+                publicFunction.rndTap(734, 434, 805, 464);//点击同意
+                Thread.sleep(1000);
+            }
+
+
+            findResult = mFairy.findPic(684, 549, 1123, 674, "hgkm1.png");
+            mFairy.onTap(0.8f, findResult, "单人报名", 1000);
+
+
+            findResult = mFairy.findPic(950, 211, 1257, 417, "hgkm2.png");
+            if (findResult.sim > 0.8f) {
+                time = System.currentTimeMillis() / 1000;
+                LtLog.i(mFairy.getLineInfo("匹配队伍中"));
+
+            }
+
+
+            findResult = mFairy.findPic(483, 5, 792, 95, "hgkm3.png");
+            if (findResult.sim > 0.8f) {
+                time = System.currentTimeMillis() / 1000;
+                LtLog.i(mFairy.getLineInfo("副本中"));
+
+
+                long s = mFairy.mMatTime(1179, 135, 67, 17, 0.95f);
+                if (s > 8) {
+                    mFairy.onTap(1188, 68, 1215, 94, "点地图", 2000);
+                    continue;
+                }
+
+                gamePublicFunction.manualOrAutomatic("automatic");
+            }
+
+
+            findResult = mFairy.findPic(182,73,350,170, "hgkm5.png");
+            mFairy.onTap(0.8f,findResult,1215,41,1228,56,"排名界面",1000);
+
+
+            findResult = mFairy.findPic(170, 21, 625, 301, "shzj4.png");
+            if (findResult.sim > 0.8f) {
+
+                LtLog.i(mFairy.getLineInfo("地图界面"));
+
+                boolean bool = false;
+
+                for (int i = 0; i < 5; i++) {
+
+                    findResult = mFairy.findPic(507, 250, 760, 454, "hgkm4.png");
+                    if (findResult.sim > 0.8f) {
+                        mFairy.onTap(0.8f, findResult, "马车", 3000);
+                        bool=true;
+                        break;
+                    }
+                    Thread.sleep(300);
+                }
+
+                if(bool==false){
+                    mFairy.onTap(621,302,632,311,"点击默认位置",1000);
+                }
+
+                gamePublicFunction.closeWindow();
+                mFairy.initMatTime();
             }
 
             Thread.sleep(2000);
         }
 
-    }//家族烤火,科举
+    }//灰谷矿脉
 
 
     //心魔幻境
@@ -1617,8 +1725,8 @@ public class TimingActivity {
                 LtLog.i(publicFunction.getLineInfo() + "------->colorNunber=" + colorNunber);
                 if (colorNunber >= 20) {
                     LtLog.i(publicFunction.getLineInfo() + "------" + MJname + "-->已死=");
-                    findResult = mFairy.findPic(496,134,553,359,"mjtime.png");
-                    if(findResult.sim<0.85f){
+                    findResult = mFairy.findPic(496, 134, 553, 359, "mjtime.png");
+                    if (findResult.sim < 0.85f) {
                         break;
                     }
                 }
@@ -1670,12 +1778,12 @@ public class TimingActivity {
 
     private void setMJ(String actName) {
 
-        MJlist.add("MJQLY.png"+"|"+"MJQLY1.png");
+        MJlist.add("MJQLY.png" + "|" + "MJQLY1.png");
         MJlist.add("MJGCG.png|MJGCG1.png");
         MJlist.add("MJZB.png|MJZB1.png");
         MJlist.add("MJHSZ.png|MJHSZ1.png");
         MJlist.add("MJYCZ.png|MJYCZ1.png");
-        MJlist.add("MJAB.png"+"|"+"MJAB1.png");
+        MJlist.add("MJAB.png" + "|" + "MJAB1.png");
         MJlist.add("MJYF.png|MJYF1.png");
         MJlist.add("MJYJ.png|MJYJ1.png");
         MJlist.add("MJJK.png|MJJK1.png");
@@ -1685,11 +1793,11 @@ public class TimingActivity {
         //跨服 幻境 名将
         if (actName.equals("tenMJ1")) {
             MJlist.add("dreamlandLG.png" + "|" + "dreamlandLG1.png");
-            MJlist.add("dreamlandZY.png"+"|"+"dreamlandZY1.png");
-            MJlist.add("dreamlandLYB.png"+"|"+"dreamlandLYB1.png");
-            MJlist.add("dreamlandJK.png"+"|"+"dreamlandJK1.png");
-            MJlist.add("dreamlandYJ.png"+"|"+"dreamlandYJ1.png");
-            MJlist.add("dreamlandYF.png"+"|"+"dreamlandYF1.png");
+            MJlist.add("dreamlandZY.png" + "|" + "dreamlandZY1.png");
+            MJlist.add("dreamlandLYB.png" + "|" + "dreamlandLYB1.png");
+            MJlist.add("dreamlandJK.png" + "|" + "dreamlandJK1.png");
+            MJlist.add("dreamlandYJ.png" + "|" + "dreamlandYJ1.png");
+            MJlist.add("dreamlandYF.png" + "|" + "dreamlandYF1.png");
         }
 
         switch (TaskMain.taskMap.get("mj")) {
@@ -1719,7 +1827,7 @@ public class TimingActivity {
                 break;
             case 5:
                 //袁承志
-                MJname = "MJYCZ.png"+"|"+"MJYCZ1.png";
+                MJname = "MJYCZ.png" + "|" + "MJYCZ1.png";
                 MJXY = new int[][]{{494, 318}, {642, 241}, {771, 360}};
                 break;
 
@@ -1731,7 +1839,7 @@ public class TimingActivity {
             case 7:
                 //岳飞
                 if (actName.equals("tenMJ1")) { //幻境-岳飞
-                    MJname = "dreamlandYF.png"+"|"+"dreamlandYF1.png";
+                    MJname = "dreamlandYF.png" + "|" + "dreamlandYF1.png";
                     MJXY = new int[][]{{502, 341}, {644, 265}, {771, 366}};
                     return;
                 }
@@ -1749,7 +1857,7 @@ public class TimingActivity {
                     return;
                 }
 
-                MJname = "MJYJ.png"+"|"+"MJYJ1.png";
+                MJname = "MJYJ.png" + "|" + "MJYJ1.png";
                 MJXY = new int[][]{{493, 316}, {641, 239}, {771, 361}};
                 break;
             case 9:
@@ -1794,7 +1902,7 @@ public class TimingActivity {
                     return;
                 }
 
-                MJname = "MJLG.png"+"|"+"MJLG1.png";
+                MJname = "MJLG.png" + "|" + "MJLG1.png";
                 MJXY = new int[][]{{480, 357}, {638, 189}, {776, 356}};
                 break;
          /*   case 13:

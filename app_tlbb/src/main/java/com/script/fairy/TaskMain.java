@@ -6,6 +6,7 @@ import com.example.publicfunctionlibrary.FunctionClass;
 import com.script.framework.AtFairyImpl;
 import com.script.opencvapi.AtFairy2;
 import com.script.opencvapi.AtFairyConfig;
+import com.script.opencvapi.FindResult;
 import com.script.opencvapi.LtLog;
 
 import org.json.JSONException;
@@ -93,16 +94,18 @@ public class TaskMain {
         publicFunction = new PublicFunction(ypFairy);
         functionClass = new FunctionClass(ypFairy, mContext);
         mFairy.setGameName("天龙手游");
-        mFairy.setGameVersion(434);
+        mFairy.setGameVersion(452);
         singleTask = new SingleTask(mFairy);
         limitlessTask = new LimitlessTask(mFairy);
         timingActivity = new TimingActivity(mFairy);
         other = new Other(mFairy);
         teamTask = new TeamTask(mFairy);
+
     }
 
     public void main() throws Exception {
         /*Thread.sleep(8000);
+
         while (mFairy.condit()){
 
             gamePublicFunction.dianxues();
@@ -185,6 +188,24 @@ public class TaskMain {
         optionJson = new JSONObject();
         LtLog.i(publicFunction.getLineInfo() + "------ taskList ....." + taskList + ",,AtFairyConfig.getOption(\"task_id\")==" + AtFairyConfig.getOption("task_id"));
         taskID = AtFairyConfig.getOption("task_id");
+
+
+
+        for (int i = 5; i <= 8; i++) {
+            if (AtFairyConfig.getOption("role" + Integer.toString(i)).equals("1") == true) {
+                roleList.add(i - 4);
+            }
+        }
+
+        for (int i = 1; i <= 4; i++) {
+            if (AtFairyConfig.getOption("role" + i).equals("1") == true) {
+                roleList.add(i);
+                break;
+            }
+        }
+
+
+
         if (taskID.isEmpty()) {
             LtLog.i(publicFunction.getLineInfo() + "------ taskID.isEmpty");
             mtaskState = false;
@@ -294,18 +315,7 @@ public class TaskMain {
             LtLog.i(publicFunction.getLineInfo() + "------ silver=" + silver + ",copper=" + copper);
             //设置需要完成单人任务角色列表
 
-            for (int i = 5; i <= 8; i++) {
-                if (AtFairyConfig.getOption("role" + Integer.toString(i)).equals("1") == true) {
-                    roleList.add(i - 4);
-                }
-            }
 
-            for (int i = 1; i <= 4; i++) {
-                if (AtFairyConfig.getOption("role" + i).equals("1") == true) {
-                    roleList.add(i);
-                    break;
-                }
-            }
 
         } else if (taskID.equals("329") || taskID.equals("65")) {
             mTask = "outdoorsOnHook";
@@ -562,7 +572,7 @@ public class TaskMain {
             mTask = "mainTask";
         } else if (taskID.equals("361") || taskID.equals("449")) {
             mTask = "collection";
-            for (int i = 1; i <= 4; i++) {
+            for (int i = 1; i <= 5; i++) {
                 if (judgeSelected("skill" + Integer.toString(i)) == true) {
                     this.collectionSkill = i - 1;
                     break;
@@ -724,11 +734,11 @@ public class TaskMain {
                     break;
                 }
 
-                AtFairy2.OpencvResult result1 = publicFunction.localFindPic(1155, 603, 1253, 703, "playGame.png");
-                if (result1.sim >= 0.8) {
+                FindResult findResult = mFairy.findPic(1000, 614, 1269, 698, new String[]{"playGame.png","playGame2.png"});
+                if (findResult.sim >= 0.8) {
                     LtLog.i(publicFunction.getLineInfo() + "【选择角色界面】");
-
-                    result = publicFunction.localFindPic(72, 110 + ((num - 1) * 119), 190, 210 + ((num - 1) * 119), "createRole.png");
+    //
+                    result = publicFunction.localFindPic(15, 110 + ((num - 1) * 119), 190, 210 + ((num - 1) * 119), "createRole.png");
                     if (result.sim >= 0.8) {
                         LtLog.i(publicFunction.getLineInfo() + "【角色未创建】");
                         role = "not";
@@ -740,7 +750,7 @@ public class TaskMain {
                         Thread.sleep(1000);
                     }
 
-                    publicFunction.rndTapWH(result1.x, result1.y, 116, 27);
+                    publicFunction.rndTapWH(findResult.x, findResult.y, 116, 27);
 
                     Thread.sleep(5000);
                 }
@@ -800,6 +810,10 @@ public class TaskMain {
 
     private int role2() throws Exception {
 
+
+
+        roleTaskList.addAll(taskList);
+
         LtLog.i(publicFunction.getLineInfo()+"开始组队任务");
         LtLog.i(publicFunction.getLineInfo() + "------TaskTread-mFairy.taskList.indexOf(radio1)->" + optionJson.optString("radio1").equals("1"));
         if (optionJson.optString("radio1").equals("1")) {
@@ -828,11 +842,11 @@ public class TaskMain {
                     break;
                 }
 
-                AtFairy2.OpencvResult result1 = publicFunction.localFindPic(1155, 603, 1253, 703, "playGame.png");
+                AtFairy2.OpencvResult result1 = publicFunction.localFindPic(1000, 603, 1253, 703, "playGame.png");
                 if (result1.sim >= 0.8) {
                     LtLog.i(publicFunction.getLineInfo() + "【选择角色界面】");
 
-                    result = publicFunction.localFindPic(72, 110 + ((num - 1) * 119), 190, 210 + ((num - 1) * 119), "createRole.png");
+                    result = publicFunction.localFindPic(15, 110 + ((num - 1) * 119), 190, 210 + ((num - 1) * 119), "createRole.png");
                     if (result.sim >= 0.8) {
                         LtLog.i(publicFunction.getLineInfo() + "【角色未创建】");
                         return 99;
@@ -869,6 +883,15 @@ public class TaskMain {
                     return 99;
                 }
             }
+
+
+
+            if (taskList.size() == 0) {
+                taskList.addAll(roleTaskList);
+            }
+
+            LtLog.i(publicFunction.getLineInfo() + "【要执行的任务taskList ： " + taskList + "】");
+
 
             LtLog.i(publicFunction.getLineInfo()+"开始组队任务");
             LtLog.i(publicFunction.getLineInfo() + "------TaskTread-mFairy.taskList.indexOf(radio1)->" + optionJson.optString("radio1").equals("1"));

@@ -105,9 +105,12 @@ public class Other {
                         }
                         continue;
                     }
+//
+                    mFairy.onTap(235,219 + (114 * TaskMain.collectionSkill), 269, 226 + (114 * TaskMain.collectionSkill),"",1000);
+                    mFairy.onTap(235,219 + (114 * TaskMain.collectionSkill), 269, 226 + (114 * TaskMain.collectionSkill),"",1000);
+                    mFairy.onTap(235,219 + (114 * TaskMain.collectionSkill), 269, 226 + (114 * TaskMain.collectionSkill),"",1000);
 
-                    publicFunction.rndTap(235,219 + (114 * TaskMain.collectionSkill), 269, 230 + (114 * TaskMain.collectionSkill));//点技能
-                    Thread.sleep(2000);
+
                     publicFunction.rndTap(739, 86, 820, 110);//点采集指南
                     LtLog.i(publicFunction.getLineInfo()+"点采集指南");
                     Thread.sleep(2000);

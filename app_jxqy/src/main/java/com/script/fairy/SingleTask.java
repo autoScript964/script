@@ -94,18 +94,28 @@ public class SingleTask {
 
             if (taskList.size() > 0) {
 
-                taskList = gamePublicFunction.lookupTask(taskList);//判断活动状态
+                if(taskList.get(0).equals("wsxyx")){
+                    sgame();
+                    taskList.remove(0);
+                    gamePublicFunction.closeWindow();
+                    gamePublicFunction.goMainCity();
+                    gamePublicFunction.openActivity();
+                    mFairy.initMatTime();
 
-                LtLog.i(publicFunction.getLineInfo() + "【任务list: " + taskList + "】");
+                }else {
 
-                if (taskList.size() == 0) {
-                    return 99;
+                    taskList = gamePublicFunction.lookupTask(taskList);//判断活动状态
+
+                    LtLog.i(publicFunction.getLineInfo() + "【任务list: " + taskList + "】");
+
+                    if (taskList.size() == 0) {
+                        return 99;
+                    }
+
+                    LtLog.i(publicFunction.getLineInfo() + "每个任务特有的东西:" + taskList.get(0) + " 超时时间：" + timex);
+                    selectTask(taskList.get(0));//每个任务特有的东西
+                    LtLog.i(publicFunction.getLineInfo() + "每个任务特有的东西 - 结束");
                 }
-
-                LtLog.i(publicFunction.getLineInfo() + "每个任务特有的东西:" + taskList.get(0) + " 超时时间：" + timex);
-                selectTask(taskList.get(0));//每个任务特有的东西
-                LtLog.i(publicFunction.getLineInfo() + "每个任务特有的东西 - 结束");
-
             } else {
                 LtLog.i(publicFunction.getLineInfo() + "--------------------  任务完成");
                 gamePublicFunction.closeWindow();
@@ -380,6 +390,11 @@ public class SingleTask {
             list.add("treasure");
         }
 
+
+        if(AtFairyConfig.getOption("wsxyx").equals("1")){
+            list.add("wsxyx");
+        }
+
         if(AtFairyConfig.getOption("zhanlong").equals("1")){
             list.add("zhanlong");
         }
@@ -496,7 +511,17 @@ public class SingleTask {
                 LtLog.i(publicFunction.getLineInfo() + "--------------------  activity1=" + result);
                 taskStart = patronsTaskLookupTask();
 
-                if (taskStart == 2) {
+
+                if(taskStart == 1){
+                    LtLog.i(publicFunction.getLineInfo() + "--------------------  taskStart == 1");
+
+                    findResult = mFairy.findPic("li2.png");
+                    mFairy.onTap(0.8f,findResult,"关闭活动栏",1000);
+
+                    findResult = mFairy.findPic("li1.png");
+                    mFairy.onTap(0.8f,findResult,"离开家园",1000);
+
+                }else if (taskStart == 2) {
                     LtLog.i(publicFunction.getLineInfo() + "--------------------  patronsTask  over=");
                     gamePublicFunction.closeWindow();
                     break;
@@ -1670,7 +1695,7 @@ public class SingleTask {
 
                     findResult = mFairy.findPic(15,176,138,458,"zhanlong3.png");
                     if(findResult.sim>0.8f){
-                        mFairy.onTap(0.8f,findResult,"左侧战龙",3000);
+                        mFairy.onTap(0.8f,findResult,"左侧战龙",10000);
                         mFairy.initMatTime();
                         bool = false;
                         break;
@@ -2455,42 +2480,42 @@ public class SingleTask {
         }
 
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 10; i++) {
 
 
             findResult = mFairy.findPic(1144, 1, 1275, 41, "ws.png");
-            if (findResult.sim > 0.8f) {
+            if (findResult.sim > 0.75f) {
                 LtLog.i("勾栏瓦舍界面");
                 break;
-            }
+            }else {
 
 
-            gamePublicFunction.goLA();
+                gamePublicFunction.goLA();
 
-            gamePublicFunction.openMapWorldOrCurrent("current");
+                gamePublicFunction.openMapWorldOrCurrent("current");
 
-            mFairy.onTap(453,398,454,399, "瓦舍门口坐标", 500);
-            mFairy.onTap(453,398,454,399, "", 5000);
+                mFairy.onTap(453, 398, 454, 399, "瓦舍门口坐标", 500);
+                mFairy.onTap(453, 398, 454, 399, "", 5000);
 
-            mFairy.onTap(937, 36, 949, 49, "", 8000);
+                mFairy.onTap(937, 36, 949, 49, "", 8000);
 
             /*mFairy.touchDown(151, 580);
             mFairy.touchMove(63, 627, 500, 2000);
             mFairy.touchUp();*/
 
 
-            for (int j = 0; j < 20; j++) {
+                for (int j = 0; j < 30; j++) {
 
-                findResult = mFairy.findPic(599, 623, 706, 666, "jd.png");
-                if (findResult.sim > 0.8f) {
-                    Thread.sleep(500);
-                } else {
-                    break;
+                    findResult = mFairy.findPic(599, 623, 706, 666, "jd.png");
+                    if (findResult.sim > 0.8f) {
+                        Thread.sleep(1000);
+                    } else {
+                        break;
+                    }
                 }
+
+                Thread.sleep(2000);
             }
-
-            Thread.sleep(2000);
-
         }
 
 
@@ -2526,7 +2551,6 @@ public class SingleTask {
                 }
 
                 mFairy.onTap(937, 36, 949, 49, "", 1000);
-
             }
 
 
@@ -2554,7 +2578,7 @@ public class SingleTask {
                         bool=true;
                         continue;
                     }
-                    mFairy.onTap(0.8f, can, "参加游戏", 3000);
+                    mFairy.onTap(0.8f, can, "参加游戏", 8000);
                 }
             }
 

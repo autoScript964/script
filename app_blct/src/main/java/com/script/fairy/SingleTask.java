@@ -11,7 +11,9 @@ import org.opencv.core.Mat;
 import org.opencv.core.Scalar;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 
@@ -62,6 +64,15 @@ public class SingleTask {
 
     public int end_num = 10;
 
+    public boolean xunLianSwitch = false;
+
+    public boolean xunLian1 = false;
+    public boolean xunLian2 = false;
+    public boolean xunLian3 = false;
+    public boolean xunLian4 = false;
+
+    public int cxunCount = 0;
+
     public void szy() throws Exception {
 
         int j = 0;
@@ -72,7 +83,7 @@ public class SingleTask {
             if (result.sim > 0.86f) {
                 i = 0;
                 j++;
-                if(j>30){
+                if (j > 30) {
                     break;
                 }
                 mFairy.onTap(0.86f, result, "收资源", 300);
@@ -119,7 +130,7 @@ public class SingleTask {
 
                 result = mFairy.findPic("grade2.png");
                 if (result.sim > 0.8f) {
-                    err=0;
+                    err = 0;
                     mFairy.onTap(476, 445, 521, 472, "该建筑正在加速中,跳过！", 500);
                     grade++;
                     return;
@@ -127,7 +138,7 @@ public class SingleTask {
 
                 result = mFairy.findPic("shangdian.png");
                 if (result.sim > 0.8f) {
-                    err=0;
+                    err = 0;
                     mFairy.onTap(0.8f, result, "该建筑需要先建造，跳过！", 500);
                     grade++;
                     return;
@@ -137,7 +148,7 @@ public class SingleTask {
 
                     result = mFairy.findPic(415, 18, 706, 74, new String[]{"g5.png", "grade5.png"});
                     if (result.sim > 0.8f) {
-                        err=0;
+                        err = 0;
                         frequencyInit("grade_err");
                         mFairy.onTap(0.8f, result, 621, 630, 683, 642, "确定升级", 500);
 
@@ -213,9 +224,9 @@ public class SingleTask {
                         }
 
                         result = mFairy.findPic(282, 473, 1000, 693, new String[]{"g4.png", "chongjian.png"});
-                        if(result.sim>0.8f){
+                        if (result.sim > 0.8f) {
                             mFairy.onTap(0.8f, result, "升级", 300);
-                            err=0;
+                            err = 0;
                         }
 
                     } else {
@@ -676,10 +687,10 @@ public class SingleTask {
                 }
 
                 result = mFairy.findPic(84, 64, 1192, 712, new String[]{"z1.png", "z2.png", "z3.png", "z4.png", "z5.png", "z6.png"
-                       /* , "z7.png", "z8.png", "z9.png", "z10.png", "z11.png", "z12.png"*/, "z13.png"});
-                    mFairy.onTap(0.8f, result, "发现杂草", 1000);
+                        /* , "z7.png", "z8.png", "z9.png", "z10.png", "z11.png", "z12.png"*/, "z13.png"});
+                mFairy.onTap(0.8f, result, "发现杂草", 1000);
 
-                result = mFairy.findPic(428,590,841,668,"yc.png");
+                result = mFairy.findPic(428, 590, 841, 668, "yc.png");
                 mFairy.onTap(0.8f, result, "移除", 1000);
 
                 result = mFairy.findPic(330, 230, 914, 472, new String[]{"g6.png", "zybz.png"});
@@ -769,6 +780,133 @@ public class SingleTask {
 
     }//随机研究
 
+
+    public void cjb() throws Exception {
+        new sing(mFairy, "超级兵") {
+
+            void content_01() throws Exception {
+                setTaskName(2);
+                return;
+            }
+
+            void content_02() throws Exception {
+                if(timeCount(10, 99)){
+
+                    LtLog.e(mFairy.getLineInfo("超级兵训练异常！！！"));
+
+                    cjbList.clear();
+                }
+
+
+                result = mFairy.findPic(133,200,346,372, "cjb4.png");
+                mFairy.onTap(0.8f,result,"强化兵营",2500);
+
+
+                result = mFairy.findPic("cjb2.png");
+                if (result.sim > 0.8f) {
+                    err = 0;
+
+
+
+                    if(cjbList.size()==0){
+                        mFairy.onTap(1080,57,1104,74,"",2000);
+                        setTaskEnd();
+                        return;
+                    }
+
+                    LtLog.e(mFairy.getLineInfo("超级兵界面 :" + cjbList.get(0)));
+
+                    if (cjbList.get(0) < 9) {
+                        mFairy.ranSwipe(686, 305, 686, 645, 300, 2000);
+                    } else {
+                        mFairy.ranSwipe(686, 645, 686, 305, 300, 2000);
+                    }
+
+                    switch (cjbList.get(0)) {
+                        case 1:
+                            mFairy.onTap(269, 388, 287, 396, "", 1500);
+                            break;
+                        case 2:
+                            mFairy.onTap(494, 388, 516, 394, "", 1500);
+                            break;
+                        case 3:
+                            mFairy.onTap(758, 394, 777, 399, "", 1500);
+                            break;
+                        case 4:
+                            mFairy.onTap(967, 394, 987, 403, "", 1500);
+                            break;
+                        case 5:
+                            mFairy.onTap(266, 644, 276, 648, "", 1500);
+                            break;
+                        case 6:
+                            mFairy.onTap(508, 643, 523, 649, "", 1500);
+                            break;
+                        case 7:
+                            mFairy.onTap(739, 641, 751, 649, "", 1500);
+                            break;
+                        case 8:
+                            mFairy.onTap(984, 644, 1004, 653, "", 1500);
+                            break;
+                        case 9:
+                            mFairy.onTap(259, 243, 276, 255, "", 1500);
+                            break;
+                        case 10:
+                            mFairy.onTap(484, 237, 512, 258, "", 1500);
+                            break;
+                        case 11:
+                            mFairy.onTap(760, 242, 775, 252, "", 1500);
+                            break;
+                        case 12:
+                            mFairy.onTap(975, 250, 994, 260, "", 1500);
+                            break;
+                        case 13:
+                            mFairy.onTap(266, 539, 288, 556, "", 1500);
+                            break;
+                        case 14:
+                            mFairy.onTap(493, 528, 512, 548, "", 1500);
+                            break;
+                    }
+
+                    return;
+                }
+
+
+                result = mFairy.findPic("cjb3.png");
+                if(result.sim>0.8f){
+                    err=0;
+                    LtLog.e(mFairy.getLineInfo("训练超级兵界面"));
+
+                    if(AtFairyConfig.getOption("cjbqh").equals("1")) {
+                        long color1 = mFairy.getColorNum(723, 665, 741, 674, "124,138,255", 0.95f);
+                        if (color1 > 0) {
+                            mFairy.onTap(723, 665, 741, 674, "道具训练", 1500);
+                            mFairy.onTap(626, 527, 651, 541, "", 1000);
+                            return;
+                        }
+                    }
+
+                    long color2 = mFairy.getColorNum(1000,659,1022,672,"109,188,31",0.95f );
+                    if(color2>0){
+                        mFairy.onTap(1000,659,1022,672,"黑水训练",1500);
+                        mFairy.onTap(626,527,651,541,"",1000);
+                        return;
+                    }
+
+
+                    mFairy.onTap(1056,29,1078,52,"",1500);
+
+                    if(cjbList.size()!=0){
+                        cjbList.remove(0);
+                    }
+                }
+
+
+            }
+        };
+
+    }//超级兵
+
+
     public int y_grade = 1;
 
     public void ysj() throws Exception {
@@ -793,9 +931,8 @@ public class SingleTask {
                 } else {
                     gamePublicFuntion.narrow();
                     Thread.sleep(100);
-                    mFairy.ranSwipe(824, 437, 481, 145, 200, 10);
-                    //mFairy.ranSwipe(824, 437, 481, 145, 200, 10);
-                    Thread.sleep(1000);
+                    mFairy.ranSwipe(824, 437, 481, 145, 200, 1000);
+
 
                     result = mFairy.findPic(100, 329, 617, 611, new String[]{"chuan.png", "chuan2.png"});
                     mFairy.onTap(0.7f, result, "船", 3000);
@@ -1282,6 +1419,11 @@ public class SingleTask {
         }
     }
 
+
+    Map<String, Integer> mXLB;
+    Map<String, Integer> mXLFS;
+    List<Integer> cjbList;
+
     public void wxBattle() throws Exception {
         new TaskContent(mFairy, "无限战斗") {
 
@@ -1292,6 +1434,15 @@ public class SingleTask {
                 y_battle_bool = true;
                 end_num = 10;
 
+                mXLB = new HashMap();
+                mXLFS = new HashMap();
+                cjbList = new ArrayList<>();
+
+                xunLian1 = false;
+                xunLian2 = false;
+                xunLian3 = false;
+                xunLian4 = false;
+                cxunCount = 0;
                 if (getNumberAssembly(AtFairyConfig.getOption("count_xiuxi")) != -1 && (AtFairyConfig.getOption("7664").equals("1"))) {
                     num_xiuxi = getNumberAssembly(AtFairyConfig.getOption("count_xiuxi"));
                 }
@@ -1299,6 +1450,34 @@ public class SingleTask {
                 if (getNumberAssembly(AtFairyConfig.getOption("end_miao")) != -1 && (AtFairyConfig.getOption("7658").equals("1"))) {
                     end_num = getNumberAssembly(AtFairyConfig.getOption("end_miao"));
                 }
+
+
+                if (AtFairyConfig.getOption("custom").equals("1")) {
+                    xunLianSwitch = true;
+                }
+
+                for (int i = 1; i <= 8; i++) {
+                    if (!AtFairyConfig.getOption("xlbName" + i).equals("") && getNumberAssembly(AtFairyConfig.getOption("xlbNum" + i)) != -1) {
+                        mXLB.put(AtFairyConfig.getOption("xlbName" + i), getNumberAssembly(AtFairyConfig.getOption("xlbNum" + i)));
+                    }
+                }
+
+                for (int i = 1; i <= 3; i++) {
+                    if (!AtFairyConfig.getOption("fsName" + i).equals("") && getNumberAssembly(AtFairyConfig.getOption("fsNum" + i)) != -1) {
+                        mXLFS.put(AtFairyConfig.getOption("fsName" + i), getNumberAssembly(AtFairyConfig.getOption("fsNum" + i)));
+                    }
+                }
+
+                for (int i = 1; i <= 14; i++) {
+                    if (AtFairyConfig.getOption("cjb" + i).equals("1")) {
+                        cjbList.add(i);
+                        if (cjbList.size() == 2) {
+                            break;
+                        }
+                    }
+                }
+
+
             }
 
             void init() throws Exception {
@@ -1331,6 +1510,10 @@ public class SingleTask {
                     if (AtFairyConfig.getOption("yjs").equals("1")) {
                         yjs();//研究所
                     }
+                }
+
+                if(cjbList.size()!=0){
+                    cjb();
                 }
 
                 if (timeMap("jz_time", 3610000, true)) {
@@ -1455,6 +1638,24 @@ public class SingleTask {
                     boolean berr = false;
 
 
+                    result = mFairy.findPic("cxunlian1.png");
+                    if (result.sim < 0.85f && AtFairyConfig.getOption("cxunlian1").equals("1")) {
+                        xunLian1 = true;
+                    }
+                    result = mFairy.findPic("cxunlian2.png");
+                    if (result.sim < 0.85f && AtFairyConfig.getOption("cxunlian2").equals("1")) {
+                        xunLian2 = true;
+                    }
+                    result = mFairy.findPic("cxunlian3.png");
+                    if (result.sim < 0.85f && AtFairyConfig.getOption("cxunlian3").equals("1")) {
+                        xunLian3 = true;
+                    }
+                    result = mFairy.findPic("cxunlian4.png");
+                    if (result.sim < 0.85f && AtFairyConfig.getOption("cxunlian4").equals("1")) {
+                        xunLian4 = true;
+                    }
+
+
                     int user_bl = getNumberAssembly(AtFairyConfig.getOption("user_bl"));
 
                     result = mFairy.findPic(69, 82, 131, 126, "budui1.png");
@@ -1466,9 +1667,9 @@ public class SingleTask {
                         while (mFairy.condit()) {
                             leftTroops = gamePublicFuntion.get_number(0.9f, 127, 80, 140, 120, 3, 10, 30, "m", "budui.png");
 
-                            if(user_bl!=-1){
+                            if (user_bl != -1) {
                                 rightTroops = user_bl;
-                            }else{
+                            } else {
                                 result = mFairy.findPic(144, 85, 196, 119, "budui.png");
                                 if (result.sim > 0.9f) {
                                     rightTroops = gamePublicFuntion.get_number(0.85f, result.x + (result.width / 2), 80, result.x + result.width + 6, 120, 4, 10, 25, "m", null);
@@ -1572,20 +1773,16 @@ public class SingleTask {
 
                         while (mFairy.condit()) {
 
-                            LtLog.e(mFairy.getLineInfo("1111111"));
-
                             new_leftTroops = gamePublicFuntion.get_number(0.85f, 92, 70, 100, 105, 4, 13, 28, "k", "bl1.png");
                             new_rightTroops = 0;
 
 
-                            LtLog.e(mFairy.getLineInfo("222222"));
-
-                            if(user_bl!=-1) {
-                                new_rightTroops = user_bl*2;
-                            }else {
+                            if (user_bl != -1) {
+                                new_rightTroops = user_bl * 2;
+                            } else {
                                 result = mFairy.findPic(124, 77, 156, 107, "bl1.png");
                                 if (result.sim > 0.9f) {
-                                    LtLog.e(mFairy.getLineInfo("333333"));
+
                                     new_rightTroops = gamePublicFuntion.get_number(0.85f, result.x + result.width, 70, result.x + (result.width * 2), 105, 4, 13, 30, "k", null);
                                 }
                             }
@@ -1621,82 +1818,167 @@ public class SingleTask {
                             return;
                         }
 
+
+                        /**
+                         * 用户自定义训练
+                         */
+
+                        FindResult manren = mFairy.findPic(55, 361, 1229, 677, "bz1.png");
+                        FindResult juren = mFairy.findPic(55, 361, 1229, 677, "bz2.png");
+                        FindResult gongjian = mFairy.findPic(55, 361, 1229, 677, "bz10.png");
+
+
                         int t = rightTroops - leftTroops;
                         if (new_leftTroops < rightTroops) {
 
                             if (t > 0) {
 
-                                LtLog.e(mFairy.getLineInfo("训练野蛮人：" + Math.ceil(Math.abs(t) * 0.15)));
 
-                                if (gamePublicFuntion.judge_zy()) {
-                                    setTaskEnd();
-                                    return;
+                                if (xunLianSwitch && xunLian1 == false && xunLian2 == false && xunLian3 == false && xunLian4 == false) {
+
+                                    customXLB();
+
+                                    mFairy.ranSwipe(221, 511, 1026, 511, 500, 1000);
+
+                                    result = mFairy.findPic(47, 187, 1223, 252, "custom1.png");
+                                    if (result.sim < 0.8f) {
+
+                                        for (int i = 0; i < 300; i++) {
+
+                                            if (gamePublicFuntion.judge_zy()) {
+                                                setTaskEnd();
+                                                return;
+                                            }
+                                            if (gamePublicFuntion.judge_js()) {
+                                                break;
+                                            }
+
+                                            result = mFairy.findPic(47, 187, 1223, 252, "custom1.png");
+                                            if (result.sim > 0.8f) {
+                                                break;
+                                            } else {
+                                                if (i % 3 == 0) {
+                                                    mFairy.tap(juren.x, juren.y);
+                                                } else {
+                                                    mFairy.tap(gongjian.x, gongjian.y);
+                                                }
+                                                Thread.sleep(100);
+                                            }
+                                        }
+                                    }
+
+
+                                } else {
+
+
+                                    LtLog.e(mFairy.getLineInfo("训练野蛮人：" + Math.ceil(Math.abs(t) * 0.15)));
+
+                                    if (gamePublicFuntion.judge_zy()) {
+                                        setTaskEnd();
+                                        return;
+                                    }
+
+                                    for (int i = 0; i < Math.ceil(Math.abs(t) * 0.15); i++) {//计算兵力的20%来训练野蛮人
+                                        mFairy.tap(manren.x, manren.y);
+                                    }
+
+
+                                    LtLog.e(mFairy.getLineInfo("训练巨人：" + Math.ceil(Math.abs(t) * 0.4 / 5)));
+
+                                    if (gamePublicFuntion.judge_zy()) {
+                                        setTaskEnd();
+                                        return;
+                                    }
+                                    for (int i = 0; i < Math.ceil(Math.abs(t) * 0.4 / 5); i++) {//计算兵力的40%来训练巨人
+                                        mFairy.tap(juren.x, juren.y);
+                                    }
+
+
+                                    LtLog.e(mFairy.getLineInfo("训练弓箭手：" + Math.ceil(Math.abs(t) * 0.55)));
+
+                                    if (gamePublicFuntion.judge_zy()) {
+                                        setTaskEnd();
+                                        return;
+                                    }
+
+                                    for (int i = 0; i < Math.ceil(Math.abs(t) * 0.55); i++) {//计算兵力的50%来训练弓箭手
+                                        mFairy.tap(gongjian.x, gongjian.y);
+                                    }
                                 }
-
-                                for (int i = 0; i < Math.ceil(Math.abs(t) * 0.15); i++) {//计算兵力的20%来训练野蛮人
-                                    mFairy.tap(111, 423);
-                                }
-
-
-                                LtLog.e(mFairy.getLineInfo("训练巨人：" + Math.ceil(Math.abs(t) * 0.4 / 5)));
-
-                                if (gamePublicFuntion.judge_zy()) {
-                                    setTaskEnd();
-                                    return;
-                                }
-                                for (int i = 0; i < Math.ceil(Math.abs(t) * 0.4 / 5); i++) {//计算兵力的40%来训练巨人
-                                    mFairy.tap(238, 413);
-                                }
-
-
-                                LtLog.e(mFairy.getLineInfo("训练弓箭手：" + Math.ceil(Math.abs(t) * 0.55)));
-
-                                if (gamePublicFuntion.judge_zy()) {
-                                    setTaskEnd();
-                                    return;
-                                }
-
-                                for (int i = 0; i < Math.ceil(Math.abs(t) * 0.55); i++) {//计算兵力的50%来训练弓箭手
-                                    mFairy.tap(108, 554);
-                                }
-
                                 Thread.sleep(500);
                             }
                             new_leftTroops = rightTroops;
                         }
 
-                        t = new_rightTroops - new_leftTroops;
+
+                        if (xunLianSwitch && xunLian1 == false && xunLian2 == false && xunLian3 == false && xunLian4 == false) {
+
+                            customXLB();
+
+                            mFairy.ranSwipe(221, 511, 1026, 511, 500, 1000);
+
+                            if (gamePublicFuntion.judge_zy()) {
+                                setTaskEnd();
+                                return;
+                            }
+
+                            for (int i = 0; i < 30; i++) {
+
+                                if (gamePublicFuntion.judge_js()) {
+                                    break;
+                                }
 
 
-                        LtLog.e(mFairy.getLineInfo("训练野蛮人：" + Math.ceil(Math.abs(t) * 0.2)));
 
-                        if (gamePublicFuntion.judge_zy()) {
-                            setTaskEnd();
-                            return;
+                                mFairy.tap(juren.x, juren.y);
+                                mFairy.tap(gongjian.x, gongjian.y);
+                                mFairy.tap(gongjian.x, gongjian.y);
+                                mFairy.tap(gongjian.x, gongjian.y);
+                                mFairy.tap(gongjian.x, gongjian.y);
+                                mFairy.tap(gongjian.x, gongjian.y);
+                                Thread.sleep(100);
+                            }
+
+                          /*  mFairy.touchDown(132, 437);//野蛮人
+                            Thread.sleep(5000);
+                            mFairy.touchUp();*/
+                        } else {
+
+                            t = new_rightTroops - new_leftTroops;
+
+
+                            LtLog.e(mFairy.getLineInfo("训练野蛮人：" + Math.ceil(Math.abs(t) * 0.2)));
+                            if (gamePublicFuntion.judge_zy()) {
+                                setTaskEnd();
+                                return;
+                            }
+
+                            for (int i = 0; i < Math.ceil(Math.abs(t) * 0.15); i++) {//计算兵力的20%来训练野蛮人
+                                mFairy.tap(manren.x, manren.y);
+                            }
+
+
+                            LtLog.e(mFairy.getLineInfo("训练巨人：" + Math.ceil(Math.abs(t) * 0.4 / 5)));
+
+                            if (gamePublicFuntion.judge_zy()) {
+                                setTaskEnd();
+                                return;
+                            }
+
+                            for (int i = 0; i < Math.ceil(Math.abs(t) * 0.4 / 5); i++) {//计算兵力的30%来训练巨人
+                                mFairy.tap(juren.x, juren.y);
+                            }
+
+
+                            if (gamePublicFuntion.judge_zy()) {
+                                setTaskEnd();
+                                return;
+                            }
+                            mFairy.touchDown(gongjian.x, gongjian.y);//弓箭手
+                            Thread.sleep(5000);
+                            mFairy.touchUp();
                         }
-                        for (int i = 0; i < Math.ceil(Math.abs(t) * 0.15); i++) {//计算兵力的20%来训练野蛮人
-                            mFairy.tap(111, 423);
-                        }
 
-
-                        LtLog.e(mFairy.getLineInfo("训练巨人：" + Math.ceil(Math.abs(t) * 0.4 / 5)));
-
-                        if (gamePublicFuntion.judge_zy()) {
-                            setTaskEnd();
-                            return;
-                        }
-
-                        for (int i = 0; i < Math.ceil(Math.abs(t) * 0.4 / 5); i++) {//计算兵力的30%来训练巨人
-                            mFairy.tap(238, 413);
-                        }
-
-                        if (gamePublicFuntion.judge_zy()) {
-                            setTaskEnd();
-                            return;
-                        }
-                        mFairy.touchDown(139, 575);//弓箭手
-                        Thread.sleep(5000);
-                        mFairy.touchUp();
 
                         mFairy.onTap(565, 35, 635, 52, "部队训练完毕", 500);
                         return;
@@ -1932,7 +2214,7 @@ public class SingleTask {
 
                     if (sy_battle) {
 
-                        LtLog.e(mFairy.getLineInfo("死鱼判断成功,开始出兵"));
+                        LtLog.e(mFairy.getLineInfo("开始出兵"));
                         count_xiuxi = 0;
                         List<int[]> list = pos(cjq_a, cjq_b, cjq_c, cjq_d);
                         //resethxlist();
@@ -1940,11 +2222,14 @@ public class SingleTask {
                             case 1:
                             case 2:
                                 leftSlide();
+
                                 battle(list_up_left, list_up_right);
 
                                 rightSlide();
                                 battle(list_down_left, list_down_right);
                                 chu(list_down_left);
+
+
                                 break;
                             case 3:
                             case 4:
@@ -2030,17 +2315,69 @@ public class SingleTask {
 
                         count_end++;
 
+                        cxunCount++;//自定义训练次数判断
+
                         if (getNumberAssembly(AtFairyConfig.getOption("count_end")) != -1 && (AtFairyConfig.getOption("7664").equals("1"))) {
                             if (count_end >= getNumberAssembly(AtFairyConfig.getOption("count_end"))) {
                                 gamePublicFuntion.init(false);
                                 setTaskEnd();
                             }
                         }
+                        if (getNumberAssembly(AtFairyConfig.getOption("cxunCount")) != -1 && (AtFairyConfig.getOption("8859").equals("1"))) {
+                            if (cxunCount >= getNumberAssembly(AtFairyConfig.getOption("cxunCount"))) {
+                                xunLianSwitch = false;
+                            }
+                        }
+
                         setTaskName(0);
 
                         return;
                     } else {
                         xia();
+                    }
+                }
+            }
+
+            void customXLB() throws Exception {
+
+
+                for (String s :
+                        mXLB.keySet()) {
+
+
+                    if (gamePublicFuntion.judge_zy()) {
+                        setTaskEnd();
+                        return;
+                    }
+
+                    /*
+                        bz8  龙骑士
+                        bz16 大雪怪
+                        bz21 英雄猎手
+
+                        bz26 超级弓箭手
+                        bz27 超级巨人
+
+
+                     */
+
+
+                    for (int o = 0; o < 4; o++) {
+                        result = mFairy.findPic(55, 361, 1229, 677, "bz" + s + ".png");
+                        if (result.sim > 0.8f) {
+                            LtLog.e(mXLB.toString()+", "+"bz" + s + ".png");
+                            for (Integer i = 0; i < mXLB.get(s); i++) {
+                                mFairy.tap(result.x, result.y);
+                                Thread.sleep(100);
+                            }
+                            break;
+                        } else {
+                            if (o % 2 == 0) {
+                                mFairy.ranSwipe(221, 511, 1026, 511, 500, 1000);
+                            } else {
+                                mFairy.ranSwipe(1026, 511, 221, 511, 500, 1000);
+                            }
+                        }
                     }
                 }
             }
@@ -2075,7 +2412,6 @@ public class SingleTask {
                     setTaskEnd();
                     return;
                 }
-
             }//下一个
 
             public void chu(List<int[]> lw) throws Exception {
@@ -2121,10 +2457,12 @@ public class SingleTask {
                     }
                 }
 
-                for (int i = 0; i < 15; i++) {
-                    long color = mFairy.getColorNum(27 + (40 * i), 596, 51 + (40 * i), 611, "75,144,208", 0.92f);
-                    if (color > 20) {
-                        mFairy.onTap(27 + (40 * i), 596, 51 + (40 * i), 611, "【发现其他部队】", 300);
+                for (int i = 0; i < 30; i++) {
+                    //
+                    long color = mFairy.getColorNum(20 + (40 * i), 595, 50 + (40 * i), 610, "81,152,216", 0.9f);
+                    long color1 = mFairy.getColorNum(20 + (40 * i), 595, 50 + (40 * i), 610, "207,56,61", 0.9f);
+                    if (color > 10 || color1>10) {
+                        mFairy.onTap(20 + (40 * i), 595, 50 + (40 * i), 610, "【发现其他部队】", 500);
                         i--;
                         for (int j = 0; j < lw.size(); j++) {
                             mFairy.tap(lw.get(j)[0], lw.get(j)[1]);
@@ -2638,18 +2976,14 @@ public class SingleTask {
                         }
 
                     } catch (
-                            Exception e)
-
-                    {
+                            Exception e) {
                         e.printStackTrace();
                         man = true;
                         return;
                     }
 
                     for (
-                            int i = 0; i < list_up_left.size(); i++)
-
-                    {
+                            int i = 0; i < list_up_left.size(); i++) {
                         if (list_up_left.get(i)[0] > list_up_right.get(i)[0]) {
                             LtLog.e("remove list_up_left :" + list_up_left.get(i)[0] + "," + list_up_left.get(i)[1]);
                             LtLog.e("remove list_up_right :" + list_up_right.get(i)[0] + "," + list_up_right.get(i)[1]);
@@ -2685,9 +3019,7 @@ public class SingleTask {
 
 
                     for (
-                            int i = 0; i < list_up_left.size(); i++)
-
-                    {
+                            int i = 0; i < list_up_left.size(); i++) {
                         int x = list_up_left.get(i)[0];
                         int y = list_up_left.get(i)[1];
                         int x1 = list_up_left.get(i)[0] + 150;
@@ -2710,9 +3042,7 @@ public class SingleTask {
 
 
                     for (
-                            int i = 0; i < list_up_right.size() - 1; i++)
-
-                    {
+                            int i = 0; i < list_up_right.size() - 1; i++) {
 
                         int x = list_up_right.get(i)[0] - 150;
                         int y = list_up_right.get(i)[1];

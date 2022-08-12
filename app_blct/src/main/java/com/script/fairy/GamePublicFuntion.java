@@ -31,8 +31,8 @@ public class GamePublicFuntion {
             narrow();
 
             Thread.sleep(100);
-            mFairy.ranSwipe(478, 172, 635, 435, 100, 100);
-            Thread.sleep(1000);
+            mFairy.ranSwipe(316,201, 800, 550, 100, 1000);
+
             FindResult rejs = mFairy.findPic(214, 603, 389, 714, "jiasu.png");
             if(rejs.sim>0.7f){
                 LtLog.e(mFairy.getLineInfo("分辨率正确"));
@@ -45,9 +45,10 @@ public class GamePublicFuntion {
         LtLog.e(mFairy.getLineInfo("调整屏幕分辨率"));
 
         Thread.sleep(100);
-        mFairy.onTap(1215, 236, 1205, 238, "", 1000);
+        mFairy.onTap(1215, 236, 1225, 238, "", 1000);
         mFairy.touchUp(1);
         mFairy.touchUp(2);
+        Thread.sleep(100);
         mFairy.touchDown( 1,1028, 369);
         mFairy.touchDown(2, 142, 254);
         mFairy.touchMove(2, 1028, 369, 100, 100);
@@ -130,6 +131,16 @@ public class GamePublicFuntion {
     public boolean judge_zy() throws Exception {
         long c = mFairy.getColorNum(85, 474, 151, 499, "240,134,134", 0.92f);
         if (c > 100) {
+            return true;
+        }
+        return false;
+    }
+
+
+    public boolean judge_js() throws Exception {
+        long c = mFairy.getColorNum(160,386,183,406, "99,99,99", 0.95f);
+        if (c > 30) {
+            LtLog.e(mFairy.getLineInfo("出现灰色："+c));
             return true;
         }
         return false;

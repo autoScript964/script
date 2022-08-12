@@ -205,11 +205,13 @@ public class GamePublicFuntion {
                     }
                     break;
             }
-            mFairy.onTap(206,479,234,508, "", 500);
+            mFairy.onTap(201,435,227,442, "", 500);
+
             if (bool) {
                 continue;
             }
-            mFairy.onTap(206,479,234,508, "", 500);
+
+            mFairy.onTap(201,435,227,442, "", 500);
             return;
         }
     }//

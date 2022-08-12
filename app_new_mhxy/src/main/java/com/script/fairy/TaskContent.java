@@ -20,7 +20,7 @@ public abstract class TaskContent {
     public Map<String, Integer> m = new HashMap<>();
     public Map<String, Long> tm = new HashMap<>();
     GamePublicFuntion gamePublicFuntion = null;
-    Slide activitySlide = new Slide(new int[]{602, 201, 627, 425});
+    Slide activitySlide = new Slide(new int[]{602, 201, 627, 400});
     Slide taskSlide = new Slide(new int[]{1145, 258, 1177, 402},new int[]{1134,90,1154,236});
 
     public void setName(String name) {

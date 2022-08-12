@@ -6,8 +6,8 @@ android {
         applicationId "com.mhzx.oko"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 133
-        versionName "133"
+        versionCode 134
+        versionName "134"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 

@@ -243,7 +243,7 @@ public class TimingActivity extends TaskContent {
         return 0;
     }
 
-    public int timingActivity1() throws Exception {
+    public int  timingActivity1() throws Exception {
         int h = mFairy.dateHour();
         int m = mFairy.dateMinute();
         int w = mFairy.week();
@@ -302,9 +302,12 @@ public class TimingActivity extends TaskContent {
             }
         }
         //帮花大作战
-        if (AtFairyConfig.getOption("4839").equals("1") && w == bhweek.count && h == bhtime.h && m >= bhtime.m && bhdzz) {
-            bhdzz();
-            bhdzz = false;
+
+        if (bhweek != null) {
+            if (AtFairyConfig.getOption("4839").equals("1") && w == bhweek.count && h == bhtime.h && m >= bhtime.m && bhdzz) {
+                bhdzz();
+                bhdzz = false;
+            }
         }
         return 0;
     }
@@ -319,7 +322,7 @@ public class TimingActivity extends TaskContent {
                 if (m < min || m >= 55) {
                     LtLog.e(mFairy.getLineInfo("未达到任务时间去组人"));
                 } else if (m > min) {
-                    result = mFairy.findPic(830, 76, 1125, 173, new String[]{"Miser2.png", "Miser4.png"});
+                    result = mFairy.findPic(830, 76, 1125, 270, new String[]{"Miser2.png", "Miser4.png"});
                     if (result.sim > 0.8f) {
                         LtLog.e(mFairy.getLineInfo("活动时间内还有守财，去组人"));
                     } else {
@@ -410,7 +413,7 @@ public class TimingActivity extends TaskContent {
                     setTaskEnd();
                     return;
                 }
-                result = mFairy.findPic(830, 76, 1125, 173, new String[]{"Miser2.png", "Miser4.png"});
+                result = mFairy.findPic(830, 76, 1125, 270, new String[]{"Miser2.png", "Miser4.png"});
                 if (result.sim < 0.8f && m > min && m < 50) {
                     LtLog.e(mFairy.getLineInfo("还没组到人就没有守财了"));
                     setTaskEnd();
@@ -469,7 +472,7 @@ public class TimingActivity extends TaskContent {
 
                 int m = mFairy.dateMinute();
 
-                result = mFairy.findPic(830, 76, 1125, 173, new String[]{"Miser2.png", "Miser4.png"});
+                result = mFairy.findPic(830, 76, 1125, 270, new String[]{"Miser2.png", "Miser4.png"});
                 if (result.sim > 0.8f) {
                     mFairy.onTap(0.8f, result, "守财奴刷新出来了", 2000);
                     result = mFairy.findPic("Fulloftimes.png");
@@ -575,7 +578,7 @@ public class TimingActivity extends TaskContent {
                 if (m < 31) {
                     LtLog.e(mFairy.getLineInfo("未达到任务时间去组人"));
                 } else {
-                    result = mFairy.findPic(830, 76, 1125, 173, "Mined2.png");
+                    result = mFairy.findPic(830, 76, 1125, 270, "Mined2.png");
                     if (result.sim > 0.8f) {
                         LtLog.e(mFairy.getLineInfo("活动时间内还有采薇，去组人"));
                     } else {
@@ -672,7 +675,7 @@ public class TimingActivity extends TaskContent {
                     return;
                 }
                 if (m > 31) {
-                    result = mFairy.findPic(830, 76, 1125, 173, "Mined2.png");
+                    result = mFairy.findPic(830, 76, 1125, 270, "Mined2.png");
                     if (result.sim < 0.8f) {
                         LtLog.e(mFairy.getLineInfo("还没组到人就没有采薇了"));
                         setTaskEnd();
@@ -733,7 +736,7 @@ public class TimingActivity extends TaskContent {
                 result = mFairy.findPic("Hangup1.png");
                 mFairy.onTap(0.7f, result, 1236, 335, 1237, 336, "关闭挂机", Sleep);
                 int m = mFairy.dateMinute();
-                result = mFairy.findPic(830, 76, 1125, 173, new String[]{"Mined2.png", "Mined4.png"});
+                result = mFairy.findPic(830, 76, 1125, 270, new String[]{"Mined2.png", "Mined4.png"});
                 mFairy.onTap(0.8f, result, "采薇刷新出来了", 2000);
                 if (result.sim > 0.8f) {
                 } else {
@@ -1186,9 +1189,17 @@ public class TimingActivity extends TaskContent {
         }.taskContent(mFairy, "吉星高照带队");
     }
 
+
+    boolean guan = false;
     //关宁
     public void guanNing() throws Exception {
         new TimingActivity(mFairy) {
+
+            @Override
+            public void create() throws Exception {
+                super.create();
+                guan = false;
+            }
 
             public void inOperation() throws Exception {
                 result = mFairy.findPic("Over drawing.png");
@@ -1242,7 +1253,7 @@ public class TimingActivity extends TaskContent {
 
             public void content_3() throws Exception {
                 if (overtime(10, 0)) return;
-                gnnum = 1;
+                gnnum = 0;
 
 
                 result = mFairy.findPic(921, 211, 1061, 278, "signup.png");
@@ -1308,6 +1319,7 @@ public class TimingActivity extends TaskContent {
 
                 result = mFairy.findPic("guanningwithin.png");
                 if (result.sim > 0.8f) {
+                    guan=true;
                     LtLog.e(mFairy.getLineInfo("关宁内"));
                     mFairy.onTap(0.8f, result, 1225, 462, 1239, 473, "技能1", Sleep);
                     mFairy.onTap(0.8f, result, 1108, 459, 1132, 477, "技能2", Sleep);
@@ -1329,13 +1341,18 @@ public class TimingActivity extends TaskContent {
                 result = mFairy.findPic("guanningintask.png");
                 mFairy.onTap(0.8f, result, 1090, 82, 1091, 83, "关宁任务", Sleep);
 
+
+                result = mFairy.findPic(408, 264, 749, 372, "guanning2.png");
+                mFairy.onTap(0.8f,result,751, 423, 805, 439, "即将开战", 1000);
+
+
                 result = mFairy.findPic("guanningstop.png");
                 if (result.sim > 0.8f) {
                     LtLog.e(mFairy.getLineInfo("关宁结束了"));
 
-                    for (int i = 0; i < 15; i++) {
+                    for (int i = 0; i < 10; i++) {
 
-                        Thread.sleep(1000);
+                        Thread.sleep(500);
 
                         result = mFairy.findPic(408, 264, 749, 372, "guanning2.png");
                         if (result.sim > 0.8f) {
@@ -1358,17 +1375,32 @@ public class TimingActivity extends TaskContent {
                             } else {
                                 mFairy.onTap(472, 421, 492, 432, "取消", 2000);
                             }
+                            break;
                         }
                     }
 
-                    gnnum = gnnum - 1;
-                    LtLog.e(mFairy.getLineInfo("还剩【" + gnnum + "】场"));
-                    //gameUtil.close(0);
+                    if( guan) {
+                        gnnum = gnnum - 1;
+                        LtLog.e(mFairy.getLineInfo("还剩【" + gnnum + "】场"));
+                        //gameUtil.close(0);
+                    }
 
-                    for (int i = 0; i < 10; i++) {
+
+                    for (int i = 0; i < 30; i++) {
+                        Thread.sleep(2000);
+
+                        result = mFairy.findPic("guanningstop.png");
+                        if (result.sim < 0.8f) {
+                            break;
+                        }
+
                         result = mFairy.findPic(294, 5, 1275, 608, new String[]{"fork2.png", "fork1.png"});
                         mFairy.onTap(0.8f, result, "叉子", Sleep);
                     }
+
+
+                    guan=false;
+
                 }
 
                 Thread.sleep(1000);

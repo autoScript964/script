@@ -7,8 +7,8 @@ android {
         applicationId "com.blct.mry"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 151
-        versionName "151"
+        versionCode 159
+        versionName "159"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 

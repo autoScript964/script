@@ -43,7 +43,7 @@ public class TeamTask {
         }
 
         void content_01() throws Exception {
-            if (timeCount(7, 0)) {
+            if (timeCount(12, 0)) {
                 gamePublicFuntion.close();
                 if (frequencyMap("actcount", 2)) {
                     setTaskEnd();
@@ -67,7 +67,7 @@ public class TeamTask {
                 FindResult act = mFairy.findPic(304, 80, 1144, 458, activityName);
                 LtLog.e(mFairy.getLineInfo("activityName :" + result.sim));
                 if (act.sim > 0.8f) {
-
+//846,228   1026,208,1146,298
                     if (actEnd(act)) {
                         mFairy.onTap(1128, 37, 1151, 55, "", 500);
                         setTaskEnd();
@@ -90,7 +90,7 @@ public class TeamTask {
                     }
                 }
 
-                activitySlide.slideRange(new int[]{3, 4, 5}, 2, 0);
+                activitySlide.slideRange(new int[]{3, 5, 7,8,10}, 2, 0);
             }
         }
 
@@ -312,18 +312,22 @@ public class TeamTask {
                             if (result.sim > 0.8f) {
                                 mFairy.onTap(0.8f, result, "str2", 500);
                                 break;
+
                             }
 
                         } else {
                             break;
                         }
+
                         continue;
                     }
                     if (oneSecond()) {
                         for (int i = 0; i < 3; i++) {
                             mFairy.ranSwipe(490, 166, 518, 568, 0, 300, (long) 200);
                         }
+
                         Thread.sleep(1000);
+
                     } else {
                         mFairy.ranSwipe(470, 296, 496, 506, 2, 500, (long) 800);
                     }
@@ -500,6 +504,8 @@ public class TeamTask {
 
 
     int zg_count = 0;
+
+    int failcount = 0;
     public void ddzg() throws Exception {
         new TeamContent(mFairy, "带队捉鬼") {
 
@@ -510,11 +516,13 @@ public class TeamTask {
                 rankName = "ddzg1.png";
                 zg_count = 0;
                 tm.put("seeRank", System.currentTimeMillis());
+                failcount = 0;
             }
 
             void content_02() throws Exception {
                 super.content_02();
                 rank("ddzg2.png","zg.png");
+
             }
 
             void content_04() throws Exception {
@@ -542,7 +550,19 @@ public class TeamTask {
                     }
                 }
 
-                gamePublicFuntion.fail();
+                if(gamePublicFuntion.fail()){
+                    failcount++;
+                    LtLog.e(mFairy.getLineInfo("战斗失败！！！"));
+                    if(failcount>3){
+                        LtLog.e(mFairy.getLineInfo("战斗失败次数过多"));
+                        setTaskEnd();
+                        return;
+                    }else{
+                        gamePublicFuntion.home();
+                        setTaskName(0);
+                        return;
+                    }
+                }
 
                 if (gamePublicFuntion.mainScene()) {
                     if (gamePublicFuntion.judgeStop(3)) {
@@ -700,7 +720,7 @@ public class TeamTask {
 
             void create() throws Exception {
                 super.create();
-                rankName = "lyrm2.png";
+                rankName = "lyrm4.png";
             }
 
             void init() throws Exception {
@@ -1368,7 +1388,7 @@ public class TeamTask {
 
             void create() throws Exception {
                 super.create();
-                rankName = "thdq1.png";
+                rankName = "thdq4.png";
             }
 
             void init() throws Exception {

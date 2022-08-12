@@ -65,7 +65,6 @@ public class TeamTask {
                 Thread.sleep(10000);
             }
 
-
             result = publicFunction.localFindPic(1140, 1, 1279, 44, "bandit1.png");
             if (result.sim >= 0.8) {
                 //在山贼秘窟
@@ -526,10 +525,12 @@ return 0;
             if (result.sim >= 0.8 && peopleNum >= 3) {
                 LtLog.i(publicFunction.getLineInfo() + "--------------------  activity=" + result);
                 //判断当前跟战人数
+
                 if (peopleNum-1!=checkFollowCombatPeopleNumber()){
                     //如果队伍人数和跟战人数不符，调用拉队友跟战，如果不跟战，踢出队伍
                     teamCheck(peopleNum);
                 }
+
                 result = publicFunction.localFindPic(1127, 0, 1273, 81, "dianCangShan.png");
                 //如果在点苍山
                 if (result.sim >= 0.8) {
@@ -558,7 +559,7 @@ return 0;
                     LtLog.i(publicFunction.getLineInfo() + "--------------XYState=" + XYState);
                     Thread.sleep(1000);
                 }
-                result = publicFunction.localFindPic(313, 165, 815, 539, "reprimandDifficulty1.png|reprimandDifficulty2.png|reprimandDifficulty3.png|reprimandDifficulty4.png");
+                result = publicFunction.localFindPic(313, 165, 815, 539, "reprimandDifficulty1.png"+"|"+"reprimandDifficulty2.png|reprimandDifficulty3.png|reprimandDifficulty4.png");
                 if (result.sim >= 0.8) {
                     LtLog.i(publicFunction.getLineInfo() + "--------------------  reprimandDifficulty=" + result);
                     mFairy.tap(result.x + 79, result.y + 143);
@@ -642,8 +643,8 @@ return 0;
             Thread.sleep(2000);
             gamePublicFunction.clickDetermine();
             gamePublicFunction.closeWindow();
-            LtLog.i(publicFunction.getLineInfo() + "--------------------  sleep 20S");
-            Thread.sleep(25000);
+            LtLog.i(publicFunction.getLineInfo() + "--------------------  sleep 40S");
+            Thread.sleep(40000);
         }
 
         //检测跟战的人数

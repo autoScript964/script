@@ -1,11 +1,9 @@
 package com.script.fairy;
 
+import com.script.framework.AtFairyImpl;
+import com.script.opencvapi.AtFairyConfig;
 import com.script.opencvapi.FindResult;
 import com.script.opencvapi.LtLog;
-import com.script.opencvapi.AtFairyConfig;
-import com.script.framework.AtFairyImpl;
-
-import static com.script.opencvapi.AtFairy2.TASK_STATE_FINISH;
 
 public class SingleTask {
     public GamePublicFuntion gamePublicFuntion;
@@ -36,15 +34,15 @@ public class SingleTask {
                 }
 
                 result = mFairy.findPic(new String[]{"hz1.png","hz2.png","hz3.png"});
-                mFairy.onTap(0.8f, result, "更多", 500);
+                mFairy.onTap(0.8f, result, "更多", 1500);
 
                 result = mFairy.findPic(33,226,691,951,new String[]{"hz4.png","hz5.png","hz6.png"});
                 mFairy.onTap(0.85f, result, "设置", 1000);
 
                 result = mFairy.findPic(107,27,349,144,new String[]{"hz7.png","hz8.png","hz9.png","set3.png"});
                 if(result.sim>0.8f){
-                    mFairy.onTap(123,161,181,178,"选项",500);
-                    mFairy.onTap(45,447,67,464,"画质",500);
+                    mFairy.onTap(123,161,181,178,"选项",1500);
+                    mFairy.onTap(45,447,67,464,"画质",1500);
                     setTaskEnd();
                     return;
                 }
@@ -66,9 +64,10 @@ public class SingleTask {
                     result = mFairy.findPic(208, 475, 719, 537, "fuli7.png");
                     if (result.sim > 0.8f) {
                         i = 0;
-                        mFairy.onTap(0.8f, result, result.x - 35, result.y + 50, result.x + 30, result.y + 55, "点击领取宝箱", 1000);
+                        mFairy.onTap(0.8f, result, result.x - 40, result.y + 50, result.x - 35, result.y + 55, "点击领取宝箱", 3000);
                     }
                     gamePublicFuntion.click();
+                    Thread.sleep(1000);
                 }
                 setTaskName(2);
                 gamePublicFuntion.init();
@@ -90,7 +89,7 @@ public class SingleTask {
                 result = mFairy.findPic(282, 524, 594, 640, "fuli4.png");
                 if (result.sim > 0.85f) {
                     mFairy.onTap(420, 640, 436, 653, "不再提示", 200);
-                    mFairy.onTap(484, 717, 527, 737, "确定", 500);
+                    mFairy.onTap(484, 717, 527, 737, "确定", 1500);
                 }
 
                 result = mFairy.findPic("fuli8.png");
@@ -114,7 +113,7 @@ public class SingleTask {
                         result = mFairy.findPic("fuli5.png");
                         if (result.sim > 0.85f) {
                             err = 0;
-                            mFairy.onTap(0.85f, result, "补签", 500);
+                            mFairy.onTap(0.85f, result, "补签", 1500);
                         }
                     } else {
                         result = mFairy.findPic("fuli5.png");
@@ -131,7 +130,7 @@ public class SingleTask {
                     }
 
                     if (slide(2)) {
-                        mFairy.ranSwipe(169, 110, 655, 137, 3, 500, (long)1000);
+                        mFairy.ranSwipe(169, 110, 1500, 137, 3, 1500, (long)1000);
                     }
                 }
             }
@@ -148,8 +147,8 @@ public class SingleTask {
 
                 result = mFairy.findPic("chaozhi1.png");
                 if (result.sim > 0.85f) {
-                    mFairy.onTap(131, 153, 189, 170, "", 500);
-                    mFairy.onTap(626, 407, 654, 441, "免费领取", 500);
+                    mFairy.onTap(131, 153, 189, 170, "", 1500);
+                    mFairy.onTap(626, 407, 654, 441, "免费领取", 1500);
                     gamePublicFuntion.init();
                     setTaskEnd();
                     return;
@@ -175,7 +174,7 @@ public class SingleTask {
 
                 result = mFairy.findPic("guizu1.png");
                 if (result.sim > 0.85f) {
-                    mFairy.onTap(0.85f, result, 566, 1134, 617, 1152, "领取", 1000);
+                    mFairy.onTap(0.85f, result, 518,1158,549,1174, "领取", 1000);
                     gamePublicFuntion.init();
                     setTaskEnd();
                     return;
@@ -212,28 +211,28 @@ public class SingleTask {
 
                     switch (i) {
                         case 1:
-                            mFairy.onTap(101, 339, 131, 361, "活跃" + i, 500);
+                            mFairy.onTap(101, 339, 131, 361, "活跃" + i, 1500);
                             break;
                         case 2:
-                            mFairy.onTap(181, 237, 199, 254, "活跃" + i, 500);
+                            mFairy.onTap(181, 237, 199, 254, "活跃" + i, 1500);
                             break;
                         case 3:
-                            mFairy.onTap(256, 336, 274, 353, "活跃" + i, 500);
+                            mFairy.onTap(256, 336, 274, 353, "活跃" + i, 1500);
                             break;
                         case 4:
-                            mFairy.onTap(332, 235, 361, 253, "活跃" + i, 500);
+                            mFairy.onTap(332, 235, 361, 253, "活跃" + i, 1500);
                             break;
                         case 5:
-                            mFairy.onTap(410, 335, 428, 349, "活跃" + i, 500);
+                            mFairy.onTap(410, 335, 428, 349, "活跃" + i, 1500);
                             break;
                         case 6:
-                            mFairy.onTap(489, 236, 511, 262, "活跃" + i, 500);
+                            mFairy.onTap(489, 236, 511, 262, "活跃" + i, 1500);
                             break;
                         case 7:
-                            mFairy.onTap(565, 333, 587, 350, "活跃" + i, 500);
+                            mFairy.onTap(565, 333, 587, 350, "活跃" + i, 1500);
                             break;
                         case 8:
-                            mFairy.onTap(656, 233, 675, 254, "活跃" + i, 500);
+                            mFairy.onTap(656, 233, 675, 254, "活跃" + i, 1500);
                             break;
                     }
 
@@ -266,7 +265,7 @@ public class SingleTask {
                                     result = mFairy.findPic(541, 291, 696, 736, new String[]{"rchy5.png","rchy8.png"});
                                     if (result.sim > 0.85f) {
                                         j = 0;
-                                        mFairy.onTap(0.85f, result, "领取", 500);
+                                        mFairy.onTap(0.85f, result, "领取", 1500);
                                     }
                                 }
                                 break;
@@ -307,7 +306,7 @@ public class SingleTask {
 
 
                 result = mFairy.findPic("email1.png");
-                mFairy.onTap(0.85f, result, "邮件", 500);
+                mFairy.onTap(0.85f, result, "邮件", 1500);
 
                 result = mFairy.findPic("email.png");
                 if (result.sim > 0.85f) {
@@ -315,16 +314,16 @@ public class SingleTask {
 
                     gamePublicFuntion.click();
 
-                    mFairy.onTap(49, 61, 80, 91, "", 500);
+                    mFairy.onTap(49, 61, 80, 91, "", 1500);
                 }
 
                 result = mFairy.findPic("email4.png");
                 if (result.sim > 0.85f) {
-                    mFairy.onTap(0.85f, result, "删除", 500);
+                    mFairy.onTap(0.85f, result, "删除", 1500);
 
                     gamePublicFuntion.click();
 
-                    mFairy.onTap(49, 61, 80, 91, "", 500);
+                    mFairy.onTap(49, 61, 80, 91, "", 1500);
                 }
 
                 result = mFairy.findPic("email2.png");
@@ -332,7 +331,7 @@ public class SingleTask {
                     result = mFairy.findPic(9, 300, 547, 879, "email3.png");
                     if (result.sim > 0.85f) {
                         oneJudgeCount = 0;
-                        mFairy.onTap(0.85f, result, "发现红标", 500);
+                        mFairy.onTap(0.85f, result, "发现红标", 1500);
                     } else {
                         if (oneJudgeCount(2)) {
                             setTaskEnd();
@@ -357,19 +356,19 @@ public class SingleTask {
                 mFairy.onTap(0.85f, result, "坐标", 1000);
 
                 result = mFairy.findPic(551, 468, 716, 770, "zonglan.png");
-                mFairy.onTap(0.8f, result, "总览", 500);
+                mFairy.onTap(0.8f, result, "总览", 1500);
 
                 result = mFairy.findPic(177, 509, 320, 651, "zonglan1.png");
-                mFairy.onTap(0.85f,result,642,287,673,317,"特殊",500);
+                mFairy.onTap(0.85f,result,642,287,673,317,"特殊",1500);
 
                 result = mFairy.findPic("teshu.png");
-                mFairy.onTap(0.85f, result,371,469,450,483, "勇士殿堂", 500);
+                mFairy.onTap(0.85f, result,371,469,450,483, "勇士殿堂", 1500);
 
                 result = mFairy.findPic("ysdt1.png");
-                mFairy.onTap(0.85f, result, "勇士殿堂", 500);
+                mFairy.onTap(0.85f, result, "勇士殿堂", 1500);
 
                 result = mFairy.findPic("ysdt2.png");
-                mFairy.onTap(0.85f, result, "开始试炼", 500);
+                mFairy.onTap(0.85f, result, "开始试炼", 1500);
             }
         };
     }//勇士
@@ -389,7 +388,7 @@ public class SingleTask {
                 timeCount(10, 99);
 
                 result = mFairy.findPic("yingxiong.png");
-                mFairy.onTap(0.85f, result, "英雄", 500);
+                mFairy.onTap(0.85f, result, "英雄", 1500);
 
                 result = mFairy.findPic("yingxiong3.png");
                 if (result.sim > 0.85f) {
@@ -408,7 +407,7 @@ public class SingleTask {
                     result = mFairy.findPic(70, 470, 378, 578, "yingxiong2.png");
                     if (result.sim > 0.85f) {
                         oneJudgeCount = 0;
-                        mFairy.onTap(0.85f, result, "升星", 500);
+                        mFairy.onTap(0.85f, result, "升星", 1500);
                         return;
                     } else {
                         if (oneJudgeCount(2)) {
@@ -429,22 +428,22 @@ public class SingleTask {
                 timeCount(10, 99);
 
                 result = mFairy.findPic("haoyou.png");
-                mFairy.onTap(0.85f, result, "更多", 500);
+                mFairy.onTap(0.85f, result, "更多", 1500);
 
                 result = mFairy.findPic(33,226,691,951,new String[]{"haoyou1.png","yin_hy.png"});
-                mFairy.onTap(0.85f, result, "好友", 500);
+                mFairy.onTap(0.85f, result, "好友", 1500);
 
                 result = mFairy.findPic("haoyou2.png");
                 if (result.sim > 0.85f) {
                     for (int i = 1; i <= 2; i++) {
                         switch (i) {
                             case 1:
-                                mFairy.onTap(126, 159, 196, 179, "qq好友", 500);
-                                mFairy.onTap(553, 1185, 584, 1217, "一键赠送", 500);
+                                mFairy.onTap(126, 159, 196, 179, "qq好友", 1500);
+                                mFairy.onTap(553, 1185, 584, 1217, "一键赠送", 1500);
                                 break;
                             case 2:
-                                mFairy.onTap(322, 161, 415, 181, "游戏好友", 500);
-                                mFairy.onTap(469, 1181, 505, 1223, "一键赠送", 500);
+                                mFairy.onTap(322, 161, 415, 181, "游戏好友", 1500);
+                                mFairy.onTap(469, 1181, 505, 1223, "一键赠送", 1500);
                                 break;
                         }
                     }
@@ -469,7 +468,7 @@ public class SingleTask {
                     result = mFairy.findPic("cheng1.png");
                     if (result.sim > 0.85f) {
                         oneJudgeCount = 0;
-                        mFairy.onTap(0.85f, result, "成就", 500);
+                        mFairy.onTap(0.85f, result, "成就", 1500);
                     } else {
                         if (oneJudgeCount(2)) {
                             setTaskEnd();
@@ -487,14 +486,14 @@ public class SingleTask {
                     result = mFairy.findPic(521, 321, 702, 908, new String[]{"cheng4.png","yin_lq.png"});
                     if (result.sim > 0.85f) {
                         twoJudgeCount = 0;
-                        mFairy.onTap(0.85f, result, "可领取", 500);
+                        mFairy.onTap(0.85f, result, "可领取", 1500);
                         return;
                     }
 
                     result = mFairy.findPic(7, 143, 719, 187, "cheng2.png");
                     if (result.sim > 0.85f) {
                         twoJudgeCount = 0;
-                        mFairy.onTap(0.85f, result, "发现红标", 500);
+                        mFairy.onTap(0.85f, result, "发现红标", 1500);
                         return;
                     }
 
@@ -528,7 +527,7 @@ public class SingleTask {
                 result = mFairy.findPic(173, 376, 461, 996, new String[]{"suiji3.png","suiji6.png"});
                 if (result.sim > 0.8f) {
                     err = 0;
-                    mFairy.onTap(0.8f, result, "升级", 500);
+                    mFairy.onTap(0.8f, result, "升级", 1500);
                 } else {
                     result = mFairy.findPic(new String[]{"suiji1.png", "suiji2.png"});
                     if (result.sim > 0.85f) {
@@ -544,7 +543,7 @@ public class SingleTask {
                 }
 
                 result = mFairy.findPic(2, 159, 155, 457, "mainfei.png");
-                mFairy.onTap(0.8f, result, "免费升级", 500);
+                mFairy.onTap(0.8f, result, "免费升级", 1500);
 
                 result = mFairy.findPic("shuiji4.png");
                 mFairy.onTap(0.8f, result, "升级", 1000);
@@ -582,11 +581,11 @@ public class SingleTask {
                 result = mFairy.findPic(9, 1184, 151, 1276, "hui.png");
                 if (result.sim > 0.8f) {
                     err = 0;
-                    mFairy.onTap(0.8f, result, "回城", 500);
+                    mFairy.onTap(0.8f, result, "回城", 1500);
                     judgeOneSecond = 1;
                 }
                 result = mFairy.findPic("buji1.png");
-                mFairy.onTap(0.8f, result, "领取", 500);
+                mFairy.onTap(0.8f, result, "领取", 1500);
 
             }
 
@@ -595,25 +594,35 @@ public class SingleTask {
                 timeCount(10, 99);
 
                 result = mFairy.findPic("zhaomu4.png");
-                mFairy.onTap(0.85f, result, 506, 1052, 553, 1078, "购买经验胶囊成功", 500);
+                mFairy.onTap(0.85f, result, 506, 1052, 553, 1078, "购买经验胶囊成功", 1500);
 
-                result = mFairy.findPic("zhaomu5.png");
-                mFairy.onTap(0.85f, result, "确定", 500);
+                result = mFairy.findPic(277,520,711,1272, "ok2.png");
+                mFairy.onTap(0.85f, result, "ok2", 1000);
 
-                result = mFairy.findPic(500, 17, 678, 149, "main.png");
+                result = mFairy.findPic(1500, 17, 678, 149, "main.png");
                 if (result.sim > 0.75f) {
+
+                    if(judgeOneSecond == 1) {
+                        mFairy.touchDown(162, 685);
+                        mFairy.touchMove(384, 685, 1000);
+                        mFairy.touchMove(380, 685, 1500);
+                        Thread.sleep(1000);
+                        mFairy.touchUp();
+                        judgeOneSecond =2;
+                    }
+
                     result = mFairy.findPic(257, 428, 468, 616, "buji.png");
                     if (result.sim > 0.8f) {
                         judgeOneSecond = 0;
                         err = 0;
-                        mFairy.onTap(0.8f, result, "补给箱", 500);
+                        mFairy.onTap(0.8f, result, "补给箱", 1500);
                         return;
                     }
 
-                    result = mFairy.findPic(4, 619, 139, 875, "zhaomu1.png");
+                    result = mFairy.findPic(103,407,682,1063, "zhaomu1.png");
                     if (result.sim > 0.85f) {
                         err = 0;
-                        mFairy.onTap(0.85f, result, "招募", 500);
+                        mFairy.onTap(0.85f, result, "招募", 1500);
                         return;
                     }
 
@@ -630,7 +639,7 @@ public class SingleTask {
                     result = mFairy.findPic("zhaomu3.png");
                     if (result.sim > 0.85f) {
                         oneJudgeCount = 0;
-                        mFairy.onTap(0.85f, result, "免费", 500);
+                        mFairy.onTap(0.85f, result, "免费", 1500);
                     } else {
                         if (oneJudgeCount(2)) {
                             setTaskEnd();
@@ -658,11 +667,11 @@ public class SingleTask {
                 result = mFairy.findPic(9, 1184, 151, 1276, "hui.png");
                 if (result.sim > 0.8f) {
                     err = 0;
-                    mFairy.onTap(0.8f, result, "回城", 500);
+                    mFairy.onTap(0.8f, result, "回城", 1500);
                     judgeOneSecond = 1;
                 }
                 result = mFairy.findPic("buji1.png");
-                mFairy.onTap(0.85f, result, "领取", 500);
+                mFairy.onTap(0.85f, result, "领取", 1500);
             }
 
             @Override
@@ -670,25 +679,34 @@ public class SingleTask {
                 timeCount(10, 99);
 
                 result = mFairy.findPic("zhaomu7.png");
-                mFairy.onTap(0.85f, result, 506, 1052, 553, 1078, "研究芯片成功", 500);
+                mFairy.onTap(0.85f, result, 506, 1052, 553, 1078, "研究芯片成功", 1500);
 
                 result = mFairy.findPic("zhaomu5.png");
-                mFairy.onTap(0.8f, result, "确定", 500);
+                mFairy.onTap(0.8f, result, "确定", 1500);
 
-                result = mFairy.findPic(500, 17, 678, 149, "main.png");
+                result = mFairy.findPic(1500, 17, 678, 149, "main.png");
                 if (result.sim > 0.75f) {
+                    if(judgeOneSecond == 1) {
+                        mFairy.touchDown(162, 685);
+                        mFairy.touchMove(384, 685, 1000);
+                        mFairy.touchMove(380, 685, 1500);
+                        Thread.sleep(1000);
+                        mFairy.touchUp();
+                        judgeOneSecond =2;
+                    }
+
                     result = mFairy.findPic(257, 428, 468, 616, "buji.png");
                     if (result.sim > 0.8f) {
                         judgeOneSecond = 0;
                         err = 0;
-                        mFairy.onTap(0.85f, result, "补给箱", 500);
+                        mFairy.onTap(0.8f, result, "补给箱", 1500);
                         return;
                     }
 
-                    result = mFairy.findPic(4, 619, 139, 875, "zhaomu0.png");
+                    result = mFairy.findPic(103,407,682,1063, new String[]{"zhaomu1.png","xinp.png"});
                     if (result.sim > 0.85f) {
                         err = 0;
-                        mFairy.onTap(0.85f, result, "研究", 500);
+                        mFairy.onTap(0.85f, result, "招募", 1500);
                         return;
                     }
 
@@ -702,10 +720,13 @@ public class SingleTask {
                 result = mFairy.findPic("zhaomu2.png");
                 if (result.sim > 0.85f) {
                     err = 0;
+
+                    mFairy.onTap(461,158,506,176,"芯片研究",1000);
+
                     result = mFairy.findPic("zhaomu6.png");
                     if (result.sim > 0.85f) {
                         oneJudgeCount = 0;
-                        mFairy.onTap(0.85f, result, "免费", 500);
+                        mFairy.onTap(0.85f, result, "免费", 1500);
                     } else {
                         if (oneJudgeCount(2)) {
                             setTaskEnd();
@@ -731,11 +752,11 @@ public class SingleTask {
                 result = mFairy.findPic(9, 1184, 151, 1276, "hui.png");
                 if (result.sim > 0.8f) {
                     err = 0;
-                    mFairy.onTap(0.8f, result, "回城", 500);
+                    mFairy.onTap(0.8f, result, "回城", 1500);
                     judgeOneSecond = 1;
                 }
                 result = mFairy.findPic("buji1.png");
-                mFairy.onTap(0.85f, result, "领取", 500);
+                mFairy.onTap(0.85f, result, "领取", 1500);
 
             }
 
@@ -744,22 +765,22 @@ public class SingleTask {
                 timeCount(10, 99);
 
                 result = mFairy.findPic("zhuangbei4.png");
-                mFairy.onTap(0.85f, result, "确定", 500);
+                mFairy.onTap(0.85f, result, "确定", 1500);
 
-                result = mFairy.findPic(500, 17, 678, 149, "main.png");
+                result = mFairy.findPic(1500, 17, 678, 149, "main.png");
                 if (result.sim > 0.75f) {
                     result = mFairy.findPic(257, 428, 468, 616, "buji.png");
                     if (result.sim > 0.85f) {
                         judgeOneSecond = 0;
                         err = 0;
-                        mFairy.onTap(0.85f, result, "补给箱", 500);
+                        mFairy.onTap(0.85f, result, "补给箱", 1500);
                         return;
                     }
 
                     result = mFairy.findPic(147, 468, 324, 668, "zhuangbei1.png");
                     if (result.sim > 0.85f) {
                         err = 0;
-                        mFairy.onTap(0.85f, result, "打造", 500);
+                        mFairy.onTap(0.85f, result, "打造", 1500);
                         return;
                     }
 
@@ -776,7 +797,7 @@ public class SingleTask {
                     result = mFairy.findPic("zhuangbei2.png");
                     if (result.sim > 0.85f) {
                         oneJudgeCount = 0;
-                        mFairy.onTap(0.85f, result, "免费", 500);
+                        mFairy.onTap(0.85f, result, "免费", 1500);
                     } else {
                         if (oneJudgeCount(2)) {
                             setTaskEnd();
@@ -798,11 +819,11 @@ public class SingleTask {
                 result = mFairy.findPic(9, 1184, 151, 1276, "hui.png");
                 if (result.sim > 0.8f) {
                     err = 0;
-                    mFairy.onTap(0.8f, result, "回城", 500);
+                    mFairy.onTap(0.8f, result, "回城", 1500);
                     judgeOneSecond = 1;
                 }
                 result = mFairy.findPic("buji1.png");
-                mFairy.onTap(0.85f, result, "领取", 500);
+                mFairy.onTap(0.85f, result, "领取", 1500);
 
             }
 
@@ -810,13 +831,13 @@ public class SingleTask {
             void content_01() throws Exception {
                 timeCount(10, 99);
 
-                result = mFairy.findPic(500, 17, 678, 149, "main.png");
+                result = mFairy.findPic(1500, 17, 678, 149, "main.png");
                 if (result.sim > 0.75f) {
                     result = mFairy.findPic(257, 428, 468, 616, "buji.png");
                     if (result.sim > 0.85f) {
                         judgeOneSecond = 0;
                         err = 0;
-                        mFairy.onTap(0.85f, result, "补给箱", 500);
+                        mFairy.onTap(0.85f, result, "补给箱", 1500);
                         return;
                     }
 
@@ -831,9 +852,10 @@ public class SingleTask {
                             case 0:
                             case 1:
                             case 2:
-                                mFairy.touchDown(580, 430);
-                                mFairy.touchMove(140, 430, 200);
-                                mFairy.touchMove(135, 430, 200);
+
+                                mFairy.touchDown(580, 563);
+                                mFairy.touchMove(120, 563, 1500);
+                                mFairy.touchMove(122, 563, 1500);
                                 mFairy.touchUp();
                                 break;
                             case 3:
@@ -849,8 +871,8 @@ public class SingleTask {
                                     }
                                 }
                                 mFairy.touchDown(250, 650);
-                                mFairy.touchMove(485, 285, 200);
-                                mFairy.touchMove(485, 290, 200);
+                                mFairy.touchMove(485, 285, 1500);
+                                mFairy.touchMove(485, 290, 1500);
                                 mFairy.touchUp();
                                 break;
                         }
@@ -879,11 +901,11 @@ public class SingleTask {
                 result = mFairy.findPic(9, 1184, 151, 1276, "hui.png");
                 if (result.sim > 0.8f) {
                     err = 0;
-                    mFairy.onTap(0.8f, result, "回城", 500);
+                    mFairy.onTap(0.8f, result, "回城", 1500);
                     judgeOneSecond = 1;
                 }
                 result = mFairy.findPic("buji1.png");
-                mFairy.onTap(0.85f, result, "领取", 500);
+                mFairy.onTap(0.85f, result, "领取", 1500);
             }
 
 
@@ -939,13 +961,13 @@ public class SingleTask {
                     }
                 }
 
-                result = mFairy.findPic(500, 17, 678, 149, "main.png");
+                result = mFairy.findPic(1500, 17, 678, 149, "main.png");
                 if (result.sim > 0.75f) {
                     result = mFairy.findPic(257, 428, 468, 616, "buji.png");
                     if (result.sim > 0.85f) {
                         judgeOneSecond = 0;
                         err = 0;
-                        mFairy.onTap(0.85f, result, "补给箱", 500);
+                        mFairy.onTap(0.85f, result, "补给箱", 1500);
                         return;
                     }
 
@@ -998,7 +1020,7 @@ public class SingleTask {
                     }
 
                     result = mFairy.findPic(9, 1184, 151, 1276, "hui.png");
-                    mFairy.onTap(0.8f, result, "回城", 1000);
+                    mFairy.onTap(0.8f, result, "回城", 1500);
                 }
 
                 result = mFairy.findPic(9, 1184, 151, 1276, "chu.png");
@@ -1120,7 +1142,7 @@ public class SingleTask {
                                 }
 
                                 mFairy.onTap(0.85f, zengRe, "军费缩减", 1000);
-                                mFairy.ranSwipe(459, 552, 491, 701, 2, 500, (long)1000);
+                                mFairy.ranSwipe(459, 552, 491, 701, 2, 1500, (long)1000);
                             }
                         } else {
                             zeng++;
@@ -1143,7 +1165,7 @@ public class SingleTask {
 
                                     break;
                                 } else {
-                                    mFairy.ranSwipe(444, 535, 497, 860, 2, 500,  (long)1000);
+                                    mFairy.ranSwipe(444, 535, 497, 860, 2, 1500,  (long)1000);
                                 }
 
                                 if (i == 4) {
@@ -1172,7 +1194,7 @@ public class SingleTask {
                                     mFairy.onTap(0.85f, zengRe, "部队镜像", 1000);
                                     break;
                                 } else {
-                                    mFairy.ranSwipe(444, 535, 497, 860, 2, 500,  (long)1000);
+                                    mFairy.ranSwipe(444, 535, 497, 860, 2, 1500,  (long)1000);
                                 }
 
                                 if (i == 4) {
@@ -1198,10 +1220,10 @@ public class SingleTask {
                                     }
 
                                     mFairy.onTap(0.85f, zengRe, "行军上限", 1000);
-                                    mFairy.ranSwipe(423, 376, 471, 1025, 2, 500,  (long)1500);
+                                    mFairy.ranSwipe(423, 376, 471, 1025, 2, 1500,  (long)1500);
                                     break;
                                 } else {
-                                    mFairy.ranSwipe(444, 535, 497, 860, 2, 500,  (long)1000);
+                                    mFairy.ranSwipe(444, 535, 497, 860, 2, 1500,  (long)1000);
                                 }
 
                                 if (i == 4) {
@@ -1226,10 +1248,10 @@ public class SingleTask {
                                         return;
                                     }
                                     mFairy.onTap(0.85f, zengRe, "采集加速", 1000);
-                                    mFairy.ranSwipe(423, 376, 471, 1025, 2, 500,  (long)1500);
+                                    mFairy.ranSwipe(423, 376, 471, 1025, 2, 1500,  (long)1500);
                                     break;
                                 } else {
-                                    mFairy.ranSwipe(444, 535, 497, 860, 2, 500,  (long)1000);
+                                    mFairy.ranSwipe(444, 535, 497, 860, 2, 1500,  (long)1000);
                                 }
 
                                 if (i == 4) {
@@ -1296,7 +1318,7 @@ public class SingleTask {
                     }
 
                     result = mFairy.findPic(9, 1184, 151, 1276, "hui.png");
-                    mFairy.onTap(0.9f, result, "回城", 1000);
+                    mFairy.onTap(0.9f, result, "回城", 1500);
                 }
 
                 result = mFairy.findPic(9, 1184, 151, 1276, "chu.png");
@@ -1333,7 +1355,7 @@ public class SingleTask {
                 mFairy.onTap(0.85f, result, "坐标", 1000);
 
                 result = mFairy.findPic(551, 468, 716, 770, "zonglan.png");
-                mFairy.onTap(0.8f, result, 679, 675, 702, 700, "战略", 500);
+                mFairy.onTap(0.8f, result, 679, 675, 702, 700, "战略", 1500);
 
                 result = mFairy.findPic(272, 34, 391, 404, "zhanlue.png");
                 if (result.sim > 0.8f) {
@@ -1346,7 +1368,7 @@ public class SingleTask {
                                     mFairy.onTap(0.8f, result, "高效采集", 1500);
 
                                     result = mFairy.findPic(360, 118, 603, 1095, "zhanlue0.png");
-                                    mFairy.onTap(0.8f, result, "使用", 500);
+                                    mFairy.onTap(0.8f, result, "使用", 1500);
                                     oneJudgeCount = 0;
                                     zhanlue++;
                                     return;
@@ -1363,7 +1385,7 @@ public class SingleTask {
                                     mFairy.onTap(0.8f, result, "资源补给", 1000);
 
                                     result = mFairy.findPic(360, 118, 603, 1095, "zhanlue0.png");
-                                    mFairy.onTap(0.8f, result, "使用", 500);
+                                    mFairy.onTap(0.8f, result, "使用", 1500);
                                     oneJudgeCount = 0;
                                     zhanlue++;
                                     return;
@@ -1380,7 +1402,7 @@ public class SingleTask {
                                     mFairy.onTap(0.8f, result, "行军扩编", 1000);
 
                                     result = mFairy.findPic(360, 118, 603, 1095, "zhanlue0.png");
-                                    mFairy.onTap(0.8f, result, "使用", 500);
+                                    mFairy.onTap(0.8f, result, "使用", 1500);
                                     oneJudgeCount = 0;
                                     zhanlue++;
                                     return;
@@ -1397,7 +1419,7 @@ public class SingleTask {
                                     mFairy.onTap(0.8f, result, "精力倍增", 1000);
 
                                     result = mFairy.findPic(360, 118, 603, 1095, "zhanlue0.png");
-                                    mFairy.onTap(0.8f, result, "使用", 500);
+                                    mFairy.onTap(0.8f, result, "使用", 1500);
                                     oneJudgeCount = 0;
                                     zhanlue++;
                                     return;
@@ -1415,7 +1437,7 @@ public class SingleTask {
                                     mFairy.onTap(0.8f, result, "城防急援", 1000);
 
                                     result = mFairy.findPic(360, 118, 603, 1095, "zhanlue0.png");
-                                    mFairy.onTap(0.8f, result, "使用", 500);
+                                    mFairy.onTap(0.8f, result, "使用", 1500);
                                     oneJudgeCount = 0;
                                     setTaskEnd();
                                     return;
@@ -1430,11 +1452,11 @@ public class SingleTask {
                             break;
                     }
 
-                    mFairy.ranSwipe(455, 496, 501, 738, 2, 500,  (long)500);
+                    mFairy.ranSwipe(455, 496, 501, 738, 2, 1500,  (long)1500);
                     if (oneJudgeCount(3)) {
                         zhanlue++;
                         for (int i = 0; i < 3; i++) {
-                            mFairy.ranSwipe(455, 496, 501, 738, 0, 500,  (long)100);
+                            mFairy.ranSwipe(455, 496, 501, 738, 0, 1500,  (long)100);
                         }
                     }
 
@@ -1765,11 +1787,11 @@ public class SingleTask {
                 result = mFairy.findPic(9, 1184, 151, 1276, "hui.png");
                 if (result.sim > 0.8f) {
                     err = 0;
-                    mFairy.onTap(0.8f, result, "回城", 500);
+                    mFairy.onTap(0.8f, result, "回城", 1500);
                     judgeOneSecond = 1;
                 }
                 result = mFairy.findPic("buji1.png");
-                mFairy.onTap(0.85f, result, "领取", 500);
+                mFairy.onTap(0.85f, result, "领取", 1500);
             }
 
             @Override
@@ -1779,19 +1801,19 @@ public class SingleTask {
                 result = mFairy.findPic("hei.png");
                 mFairy.onTap(0.85f, result, 484, 755, 530, 773, "确定刷新", 1000);
 
-                result = mFairy.findPic(500, 17, 678, 149, "main.png");
+                result = mFairy.findPic(1500, 17, 678, 149, "main.png");
                 if (result.sim > 0.75f) {
                     result = mFairy.findPic(257, 428, 468, 616, "buji.png");
                     if (result.sim > 0.85f) {
                         judgeOneSecond = 0;
                         err = 0;
-                        mFairy.onTap(0.85f, result, "补给箱", 500);
+                        mFairy.onTap(0.85f, result, "补给箱", 1500);
                         return;
                     }
                     result = mFairy.findPic(349, 772, 622, 1054, "shangren8.png");
                     if (result.sim > 0.85f) {
                         err = 0;
-                        mFairy.onTap(0.85f, result, "特惠商人", 500);
+                        mFairy.onTap(0.85f, result, "特惠商人", 1500);
                         return;
                     }
                     if (judgeOneSecond()) {
@@ -1845,7 +1867,7 @@ public class SingleTask {
 
 
                 result = mFairy.findPic("lmqian.png");
-                mFairy.onTap(0.85f, result, "联盟", 500);
+                mFairy.onTap(0.85f, result, "联盟", 1500);
 
                 result = mFairy.findPic(346, 1141, 677, 1263, "zdlm.png");
                 if (result.sim > 0.8f) {
@@ -1866,7 +1888,7 @@ public class SingleTask {
                 result = mFairy.findPic("lm.png");
                 if (result.sim > 0.85f) {
                     err = 0;
-                    mFairy.onTap(339, 964, 366, 998, "任务", 500);
+                    mFairy.onTap(339, 964, 366, 998, "任务", 1500);
                     return;
                 }
 
@@ -1884,17 +1906,17 @@ public class SingleTask {
 
                         switch (i) {
                             case 1:
-                                mFairy.onTap(217, 156, 279, 173, "日常任务", 500);
+                                mFairy.onTap(217, 156, 279, 173, "日常任务", 1500);
                                 result = mFairy.findPic("lmqian2.png");
                                 if (result.sim > 0.85f) {
-                                    mFairy.onTap(592, 381, 615, 394, "签到", 500);
-                                    mFairy.onTap(310, 1215, 408, 1231, "全部领取", 500);
+                                    mFairy.onTap(592, 381, 615, 394, "签到", 1500);
+                                    mFairy.onTap(310, 1215, 408, 1231, "全部领取", 1500);
                                 }
 
                                 break;
                             case 2:
                                 mFairy.onTap(448, 157, 502, 176, "随机任务", 1000);
-                                mFairy.onTap(310, 1215, 408, 1231, "全部领取", 500);
+                                mFairy.onTap(310, 1215, 408, 1231, "全部领取", 1500);
                                 break;
                         }
                     }
@@ -1921,7 +1943,7 @@ public class SingleTask {
                 timeCount(6, 0);
 
                 result = mFairy.findPic("lmqian.png");
-                mFairy.onTap(0.85f, result, "联盟", 500);
+                mFairy.onTap(0.85f, result, "联盟", 1500);
 
                 result = mFairy.findPic(346, 1141, 677, 1263, "zdlm.png");
                 if (result.sim > 0.8f) {
@@ -1942,7 +1964,7 @@ public class SingleTask {
                 result = mFairy.findPic("lm.png");
                 if (result.sim > 0.85f) {
                     err = 0;
-                    mFairy.onTap(100, 719, 132, 757, "科技", 500);
+                    mFairy.onTap(100, 719, 132, 757, "科技", 1500);
                     return;
                 }
 
@@ -1954,7 +1976,7 @@ public class SingleTask {
 
                         result = mFairy.findPic(96, 374, 346, 570, "lmkeji3.png");
                         if (result.sim > 0.85f) {
-                            mFairy.onTap(181, 601, 221, 615, "次数不足", 500);
+                            mFairy.onTap(181, 601, 221, 615, "次数不足", 1500);
                             setTaskEnd();
                             gamePublicFuntion.close();
                             return;
@@ -1999,7 +2021,7 @@ public class SingleTask {
                                 result = mFairy.findPic("lmkeji.png");
                                 if (result.sim < 0.85f) {
                                     result = mFairy.findPic(387, 5, 713, 999, new String[]{"close1.png", "close2.png", "close3.png"});
-                                    mFairy.onTap(0.85f, result, "关闭", 500);
+                                    mFairy.onTap(0.85f, result, "关闭", 1500);
                                 }
                                 break;
                             }
@@ -2032,7 +2054,7 @@ public class SingleTask {
                 timeCount(6, 0);
 
                 result = mFairy.findPic("lmqian.png");
-                mFairy.onTap(0.85f, result, "联盟", 500);
+                mFairy.onTap(0.85f, result, "联盟", 1500);
 
                 result = mFairy.findPic(346, 1141, 677, 1263, "zdlm.png");
                 if (result.sim > 0.8f) {
@@ -2052,14 +2074,14 @@ public class SingleTask {
                 result = mFairy.findPic("lm.png");
                 if (result.sim > 0.85f) {
                     err = 0;
-                    mFairy.onTap(208, 1195, 228, 1220, "礼物", 500);
+                    mFairy.onTap(208, 1195, 228, 1220, "礼物", 1500);
                     return;
                 }
 
                 result = mFairy.findPic("lmliwu.png");
                 if (result.sim > 0.85f) {
-                    mFairy.onTap(305, 1217, 393, 1230, "全部开启", 500);
-                    mFairy.onTap(305, 1217, 393, 1230, "全部开启", 500);
+                    mFairy.onTap(305, 1217, 393, 1230, "全部开启", 1500);
+                    mFairy.onTap(305, 1217, 393, 1230, "全部开启", 1500);
                     gamePublicFuntion.click();
                     setTaskEnd();
                     gamePublicFuntion.close();
@@ -2080,27 +2102,27 @@ public class SingleTask {
         new TaskContent(mFairy, "联盟宝藏") {
 
             boolean other(final String color) throws Exception {
-                if (mFairy.getColorNum(range1, color, 0.95f, 1) > 100) {
+                if (mFairy.getColorNum(range1, color, 0.9f, 1) > 30) {
 
                     result = mFairy.findPic(525, 415, 704, 601, new String[]{"lmbz6.png","wj.png"});
-                    mFairy.onTap(0.8f, result, "挖掘", 500);
+                    mFairy.onTap(0.8f, result, "挖掘", 1500);
 
                     return false;
                 } else {
                     result = mFairy.findPic("lmbz3.png");
                     if (result.sim > 0.8f) {
-                        mFairy.onTap(0.8f, result, "免费刷新", 500);
+                        mFairy.onTap(0.8f, result, "免费刷新", 1500);
                         return true;
                     } else {
                         if (AtFairyConfig.getOption("shua").equals("2")) {
                             result = mFairy.findPic(242, 1201, 379, 1273, "lmbz4.png");
                             if (result.sim > 0.8f) {
-                                mFairy.onTap(0.8f, result, "金币刷新", 500);
+                                mFairy.onTap(0.8f, result, "金币刷新", 1500);
                                 return true;
                             }
                         } else {
                             result = mFairy.findPic(525, 415, 704, 601, new String[]{"lmbz6.png","wj.png"});
-                            mFairy.onTap(0.8f, result, "挖掘", 500);
+                            mFairy.onTap(0.8f, result, "挖掘", 1500);
                         }
                     }
                 }
@@ -2121,7 +2143,7 @@ public class SingleTask {
                 timeCount(6, 0);
 
                 result = mFairy.findPic("lmqian.png");
-                mFairy.onTap(0.85f, result, "联盟", 500);
+                mFairy.onTap(0.85f, result, "联盟", 1500);
 
                 result = mFairy.findPic(346, 1141, 677, 1263, "zdlm.png");
                 if (result.sim > 0.8f) {
@@ -2136,7 +2158,7 @@ public class SingleTask {
                 result = mFairy.findPic("lmbz5.png");
                 if (result.sim > 0.85f) {
                     mFairy.onTap(418, 638, 434, 657, "不再提示", 300);
-                    mFairy.onTap(477, 716, 536, 737, "确定", 500);
+                    mFairy.onTap(477, 716, 536, 737, "确定", 1500);
                 }
 
                 result = mFairy.findPic("lm1.png");
@@ -2148,7 +2170,7 @@ public class SingleTask {
                 result = mFairy.findPic("lm.png");
                 if (result.sim > 0.85f) {
                     err = 0;
-                    mFairy.onTap(349, 1196, 375, 1211, "宝藏", 500);
+                    mFairy.onTap(349, 1196, 375, 1211, "宝藏", 1500);
                     return;
                 }
 
@@ -2157,7 +2179,7 @@ public class SingleTask {
                     for (int i = 1; i <= 3; ) {
                         switch (i) {
                             case 1:
-                                mFairy.onTap(125, 165, 203, 187, "宝藏列表", 500);
+                                mFairy.onTap(125, 165, 203, 187, "宝藏列表", 1500);
 
                                 result = mFairy.findPic("lmbz2.png");
                                 if (result.sim > 0.85f) {
@@ -2189,13 +2211,13 @@ public class SingleTask {
                                 break;
                             case 2:
 
-                                mFairy.onTap(335, 166, 422, 185, "我的宝藏", 500);
+                                mFairy.onTap(335, 166, 422, 185, "我的宝藏", 1500);
 
                                 result = mFairy.findPic(504, 400, 710, 1162, "lmbz7.png");
-                                mFairy.onTap(0.8f, result, "求助", 500);
+                                mFairy.onTap(0.8f, result, "求助", 1500);
 
                                 result = mFairy.findPic(504, 400, 710, 1162, "baozang.png");
-                                mFairy.onTap(0.8f, result, "领取", 500);
+                                mFairy.onTap(0.8f, result, "领取", 1500);
 
                                 if (oneJudgeCount(3)) {
                                     i++;
@@ -2203,10 +2225,10 @@ public class SingleTask {
 
                                 break;
                             case 3:
-                                mFairy.onTap(545, 164, 634, 185, "帮助列表", 500);
+                                mFairy.onTap(545, 164, 634, 185, "帮助列表", 1500);
 
                                 result = mFairy.findPic(516, 423, 710, 585, new String[]{"lmbz8.png", "lmbz9.png"});
-                                mFairy.onTap(0.85f, result, "帮助", 500);
+                                mFairy.onTap(0.85f, result, "帮助", 1500);
 
                                 if (twoJudgeCount(3)) {
                                     i++;
@@ -2535,11 +2557,11 @@ public class SingleTask {
                         return false;
                     } else if (x > num) {
                         for (int j = 0; j < (x - num); j++) {
-                            mFairy.onTap(662, 869, 684, 920, "右侧", 500);
+                            mFairy.onTap(662, 869, 684, 920, "右侧", 1500);
                         }
                     } else if (x < num) {
                         for (int j = 0; j < (num - x); j++) {
-                            mFairy.onTap(35, 872, 54, 921, "左侧", 500);
+                            mFairy.onTap(35, 872, 54, 921, "左侧", 1500);
                         }
                     }
                 }
@@ -2610,12 +2632,12 @@ public class SingleTask {
                     if (cf > 0) {
 
                         for (int i = 0; i < 16; i++) {
-                            mFairy.onTap(35, 872, 54, 921, "左侧", 500);
+                            mFairy.onTap(35, 872, 54, 921, "左侧", 1500);
                         }
-                        Thread.sleep(500);
+                        Thread.sleep(1500);
 
                         for (int i = 0; i < (cf - 1); i++) {
-                            mFairy.onTap(662, 869, 684, 920, "右侧", 500);
+                            mFairy.onTap(662, 869, 684, 920, "右侧", 1500);
                         }
                     }
 
@@ -2724,14 +2746,14 @@ public class SingleTask {
 
                     result = mFairy.findPic(7, 1023, 712, 1117, img);
                     if (result.sim > 0.8f) {
-                        mFairy.onTap(0.8f, result, result.x + 40, result.y - 50, result.x + 50, result.y - 30, "找到：" + img, 500);
+                        mFairy.onTap(0.8f, result, result.x + 40, result.y - 50, result.x + 50, result.y - 30, "找到：" + img, 1500);
                         break;
                     }
 
                     if (i == 2) {
-                        mFairy.ranSwipe(177, 978, 659, 1008, 1, 500,  (long)2000);
+                        mFairy.ranSwipe(177, 978, 659, 1008, 1, 1500,  (long)2000);
                     } else if (i == 4) {
-                        mFairy.ranSwipe(177, 978, 659, 1008, 3, 500,  (long)2000);
+                        mFairy.ranSwipe(177, 978, 659, 1008, 3, 1500,  (long)2000);
                     } else if (i > 5) {
                         return;
                     }
@@ -2744,7 +2766,7 @@ public class SingleTask {
 
                     result = mFairy.findPic(50, 1158, 507, 1236, "chazhao2.png");
                     if (result.sim > 0.85f) {
-                        mFairy.ranSwipe(1, result.y, result.x, result.y + 2, 3, 800,  (long)500);
+                        mFairy.ranSwipe(1, result.y, result.x, result.y + 2, 3, 800,  (long)1500);
                     }
 
                     for (int q = 0; q < (c - 1); q++) {
@@ -2770,7 +2792,9 @@ public class SingleTask {
             void chuzheng() throws Exception {
                 int err = 0;
                 while (mFairy.condit()) {
-                    result = mFairy.findPic(200, 122, 500, 987, "faxian.png");
+
+
+                    result = mFairy.findPic(239,391,479,759, "faxian.png");
                     if (result.sim > 0.8f) {
                         mFairy.onTap(result.x, result.y + 100, result.x + 3, result.y + 110, "发现野怪", 1000);
                         continue;
@@ -2789,14 +2813,14 @@ public class SingleTask {
                     }
 
                     result = mFairy.findPic("chuzheng1.png");
-                    mFairy.onTap(0.85f, result, "快速搜索", 500);
+                    mFairy.onTap(0.85f, result, "快速搜索", 1500);
 
                     result = mFairy.findPic("chuzheng2.png");
-                    mFairy.onTap(0.85f, result, "进攻", 500);
+                    mFairy.onTap(0.85f, result, "进攻", 1500);
 
                     result = mFairy.findPic("chuzheng3.png");
                     if (result.sim > 0.8f) {
-
+                        LtLog.e(mFairy.getLineInfo("出征界面"));
                         if (chazhao == 8) {
                             result = mFairy.findPic("jidi.png");
                             if (result.sim > 0.9f) {
@@ -2829,7 +2853,7 @@ public class SingleTask {
                         }
 
                         result = mFairy.findPic("chuzheng4.png");
-                        mFairy.onTap(0.85f, result, "快速选择", 500);
+                        mFairy.onTap(0.85f, result, "快速选择", 1500);
 
                         mFairy.onTap(529, 1193, 566, 1215, "出征", 1000);
 
@@ -2850,19 +2874,19 @@ public class SingleTask {
                     switch (yanjiu) {
                         case 0:
                             result = mFairy.findPic(68, 1161, 691, 1273, "yanjiu2.png");
-                            mFairy.onTap(0.85f, result, "推荐研究", 500);
+                            mFairy.onTap(0.85f, result, "推荐研究", 1500);
                             break;
                         case 1:
-                            mFairy.onTap(162, 290, 202, 327, "军事", 500);
+                            mFairy.onTap(162, 290, 202, 327, "军事", 1500);
                             break;
                         case 2:
-                            mFairy.onTap(504, 283, 535, 315, "资源", 500);
+                            mFairy.onTap(504, 283, 535, 315, "资源", 1500);
                             break;
                         case 3:
-                            mFairy.onTap(75, 498, 113, 536, "发展", 500);
+                            mFairy.onTap(75, 498, 113, 536, "发展", 1500);
                             break;
                         case 4:
-                            mFairy.onTap(601, 501, 640, 532, "城防", 500);
+                            mFairy.onTap(601, 501, 640, 532, "城防", 1500);
                             break;
                     }
                 }
@@ -2918,7 +2942,7 @@ public class SingleTask {
                 mFairy.onTap(0.8f, result, "出城", 1000);
 
                 result = mFairy.findPic("buji1.png");
-                mFairy.onTap(0.8f, result, "补给箱领取", 500);
+                mFairy.onTap(0.8f, result, "补给箱领取", 1500);
 
                 if (zonglan == 1) {
                     result = mFairy.findPic(217, 588, 495, 797, "xunlian11.png");
@@ -2943,7 +2967,7 @@ public class SingleTask {
 
                     result = mFairy.findPic("xunlian10.png");
                     if (result.sim > 0.85f) {
-                        mFairy.onTap(425, 1028, 440, 1043, "今日不再提示", 500);
+                        mFairy.onTap(425, 1028, 440, 1043, "今日不再提示", 1500);
                         mFairy.onTap(483, 1079, 520, 1099, "确定", 1000);
                     }
 
@@ -2960,14 +2984,14 @@ public class SingleTask {
 
                     result = mFairy.findPic("zhiliao5.png");
                     if (result.sim > 0.8f) {
-                        mFairy.onTap(0.8f, result, "治疗", 500);
+                        mFairy.onTap(0.8f, result, "治疗", 1500);
                         gamePublicFuntion.close();
                         return;
                     }
 
                     if (zljiasu) {
                         result = mFairy.findPic("zhiliao3.png");
-                        mFairy.onTap(0.85f, result, "道具加速", 500);
+                        mFairy.onTap(0.85f, result, "道具加速", 1500);
                     }
                 }
 
@@ -2999,14 +3023,22 @@ public class SingleTask {
 
                 result = mFairy.findPic(515, 11, 677, 153, "map.png");
                 if (result.sim > 0.75f) {
+                    LtLog.e(mFairy.getLineInfo("世界地图界面"));
                     if (zonglanBool) {
+
                         result = mFairy.findPic("chazhao.png");
                         if (result.sim < 0.8f) {
+
+
+
                             result = mFairy.findPic(551, 468, 716, 770, "zonglan.png");
+                            LtLog.e(mFairy.getLineInfo("总览："+result.sim));
                             if (result.sim > 0.8f) {
                                 errZong = 0;
-                                mFairy.onTap(0.8f, result, "总览", 500);
+                                mFairy.onTap(0.8f, result, "总览", 1500);
                             } else {
+
+
                                 errZong++;
                                 if (errZong > 15) {
                                     setTaskEnd();
@@ -3049,18 +3081,18 @@ public class SingleTask {
                                 result = mFairy.findPic(288, 403, 710, 848, "xunlian2.png");
                                 if (result.sim > 0.8f) {
                                     oneJudgeCount = 0;
-                                    mFairy.onTap(0.8f, result, "可收取", 500);
+                                    mFairy.onTap(0.8f, result, "可收取", 1500);
                                     return;
                                 }
 
                                 if (tk != -1) {
                                     result = mFairy.findPic(297, 433, 499, 515, "xunlian1.png");
                                     if (result.sim > 0.75f) {
-                                        mFairy.onTap(0.75f, result, "可训练", 500);
+                                        mFairy.onTap(0.75f, result, "可训练", 1500);
                                         return;
                                     } else {
                                         if (jiasu == 1) {
-                                            mFairy.onTap(370, 414, 421, 440, "勾选了加速 :" + jiasu, 500);
+                                            mFairy.onTap(370, 414, 421, 440, "勾选了加速 :" + jiasu, 1500);
                                             return;
                                         }
                                     }
@@ -3069,11 +3101,11 @@ public class SingleTask {
                                 if (fj != -1) {
                                     result = mFairy.findPic(508, 434, 708, 509, "xunlian1.png");
                                     if (result.sim > 0.75f) {
-                                        mFairy.onTap(0.75f, result, "可训练", 500);
+                                        mFairy.onTap(0.75f, result, "可训练", 1500);
                                         return;
                                     } else {
                                         if (jiasu == 2) {
-                                            mFairy.onTap(579, 419, 632, 438, "勾选了加速 :" + jiasu, 500);
+                                            mFairy.onTap(579, 419, 632, 438, "勾选了加速 :" + jiasu, 1500);
                                             return;
                                         }
                                     }
@@ -3081,11 +3113,11 @@ public class SingleTask {
                                 if (by != -1) {
                                     result = mFairy.findPic(294, 602, 496, 664, "xunlian1.png");
                                     if (result.sim > 0.75f) {
-                                        mFairy.onTap(0.75f, result, "可训练", 500);
+                                        mFairy.onTap(0.75f, result, "可训练", 1500);
                                         return;
                                     } else {
                                         if (jiasu == 3) {
-                                            mFairy.onTap(368, 574, 443, 615, "勾选了加速 :" + jiasu, 500);
+                                            mFairy.onTap(368, 574, 443, 615, "勾选了加速 :" + jiasu, 1500);
                                             return;
                                         }
                                     }
@@ -3093,11 +3125,11 @@ public class SingleTask {
                                 if (zc != -1) {
                                     result = mFairy.findPic(510, 603, 706, 667, "xunlian1.png");
                                     if (result.sim > 0.75f) {
-                                        mFairy.onTap(0.75f, result, "可训练", 500);
+                                        mFairy.onTap(0.75f, result, "可训练", 1500);
                                         return;
                                     } else {
                                         if (jiasu == 4) {
-                                            mFairy.onTap(585, 579, 644, 614, "勾选了加速 :" + jiasu, 500);
+                                            mFairy.onTap(585, 579, 644, 614, "勾选了加速 :" + jiasu, 1500);
                                             return;
                                         }
                                     }
@@ -3105,11 +3137,11 @@ public class SingleTask {
                                 if (cf != -1) {
                                     result = mFairy.findPic(295, 768, 489, 819, "xunlian3.png");
                                     if (result.sim > 0.75f) {
-                                        mFairy.onTap(0.75f, result, "可训练", 500);
+                                        mFairy.onTap(0.75f, result, "可训练", 1500);
                                         return;
                                     } else {
                                         if (jiasu == 5) {
-                                            mFairy.onTap(374, 732, 412, 753, "勾选了加速 :" + jiasu, 500);
+                                            mFairy.onTap(374, 732, 412, 753, "勾选了加速 :" + jiasu, 1500);
                                             return;
                                         }
                                     }
@@ -3120,21 +3152,24 @@ public class SingleTask {
                                     return;
                                 }
                             } else {
-                                mFairy.onTap(330, 285, 360, 319, "训练", 500);
+                                mFairy.onTap(330, 285, 360, 319, "训练", 1500);
                             }
                             break;
                         case 2:
                             result = mFairy.findPic("xingjun.png");
-                            if (result.sim > 0.85f) {
+                            if (result.sim > 0.8f) {
+
+                                LtLog.e(mFairy.getLineInfo("行军界面"));
 
                                 if (c1 == 0 && c2 == 0 && c3 == 0 && c4 == 0 && c5 == 0 && c6 == 0 && c7 == 0 && c8 == 0) {
                                     zonglan = 3;
                                     return;
                                 }
                                 result = mFairy.findPic(288, 428, 705, 859, "xingjun1.png");
+                                LtLog.e(mFairy.getLineInfo("空闲 "+result.sim));
                                 if (result.sim > 0.85f) {
                                     twoJudgeCount = 0;
-                                    mFairy.onTap(0.85f, result, "空闲", 500);
+                                    mFairy.onTap(0.85f, result, "空闲", 1500);
                                     return;
                                 }
 
@@ -3161,14 +3196,14 @@ public class SingleTask {
                                 result = mFairy.findPic(510, 436, 699, 517, "xunlian2.png");
                                 if (result.sim > 0.8f) {
                                     threeJudgeCount = 0;
-                                    mFairy.onTap(0.8f, result, "可收取", 500);
+                                    mFairy.onTap(0.8f, result, "可收取", 1500);
                                     return;
                                 }
 
                                 if (yanjiu != -1) {
                                     result = mFairy.findPic(304, 436, 497, 511, "qita1.png");
                                     if (result.sim > 0.8f && yanjiuBool) {
-                                        mFairy.onTap(0.8f, result, "前往研究", 500);
+                                        mFairy.onTap(0.8f, result, "前往研究", 1500);
                                         return;
                                     }
                                 }
@@ -3176,7 +3211,7 @@ public class SingleTask {
                                 if (zhiliao) {
                                     if (AtFairyConfig.getOption("zhiliao").equals("1")) {
                                         result = mFairy.findPic(510, 436, 699, 517, "zhiliao.png");
-                                        mFairy.onTap(0.8f, result, "治疗修复", 500);
+                                        mFairy.onTap(0.8f, result, "治疗修复", 1500);
                                         zhiliao = false;
                                         return;
                                     }
@@ -3185,14 +3220,14 @@ public class SingleTask {
                                 if (zljiasu) {
                                     result = mFairy.findPic(510, 436, 699, 517, "zhiliao1.png");
                                     if (result.sim > 0.8f) {
-                                        mFairy.onTap(0.8f, result, "治疗加速", 500);
+                                        mFairy.onTap(0.8f, result, "治疗加速", 1500);
                                         return;
                                     }
                                 }
 
                                 result = mFairy.findPic(331, 495, 454, 631, "buji2.png");
                                 if (result.sim > 0.8f) {
-                                    mFairy.onTap(0.8f, result, "补给箱", 500);
+                                    mFairy.onTap(0.8f, result, "补给箱", 1500);
                                     return;
                                 }
 
@@ -3205,7 +3240,7 @@ public class SingleTask {
                                 }
 
                             } else {
-                                mFairy.onTap(539, 289, 572, 322, "其他", 500);
+                                mFairy.onTap(539, 289, 572, 322, "其他", 1500);
                             }
                             break;
                     }
@@ -3237,16 +3272,16 @@ public class SingleTask {
             @Override
             void inOperation() throws Exception {
                 result = mFairy.findPic("guan.png");
-                mFairy.onTap(0.85f, result, "guan", 500);
+                mFairy.onTap(0.85f, result, "guan", 1500);
 
                 result = mFairy.findPic(530, 995, 714, 1113, "nn20.png");
-                mFairy.onTap(0.85f, result, "点击继续", 500);
+                mFairy.onTap(0.85f, result, "点击继续", 1500);
 
                 result = mFairy.findPic("nn1.png");
-                mFairy.onTap(0.85f, result, "跳过", 500);
+                mFairy.onTap(0.85f, result, "跳过", 1500);
 
                 result = mFairy.findPic(1, 1, 719, 1279, "nn2.png");
-                mFairy.onTap(0.8f, result, result.x - 50, result.y + 30, result.x - 30, result.y + 50, "指引", 500);
+                mFairy.onTap(0.8f, result, result.x - 50, result.y + 30, result.x - 30, result.y + 50, "指引", 1500);
 
                 result = mFairy.findPic("nn49.png");
                 mFairy.onTap(0.85f, result, 649, 140, 675, 158, "关闭采集说明", 1000);
@@ -3262,7 +3297,7 @@ public class SingleTask {
 
                     result = mFairy.findPic(6, 1009, 108, 1141, new String[]{"nn5.png", "juqing2.png"});
                     if (result.sim > 0.75f) {
-                        mFairy.onTap(0.75f, result, "剧情", 500);
+                        mFairy.onTap(0.75f, result, "剧情", 1500);
                         break;
                     }
                 }
@@ -3275,7 +3310,7 @@ public class SingleTask {
                 timeCount(8, 0);
 
                 result = mFairy.findPic("nn24.png");
-                mFairy.onTap(0.85f, result, "取消开启第二列队", 500);
+                mFairy.onTap(0.85f, result, "取消开启第二列队", 1500);
 
                 result = mFairy.findPic("nn22.png");
                 mFairy.onTap(0.85f, result, "进攻", 1000);
@@ -3287,7 +3322,7 @@ public class SingleTask {
                 mFairy.onTap(0.85f, result, 32, 1071, 73, 1097, "解锁日常任务", 1000);
 
                 result = mFairy.findPic(413, 1088, 712, 1274, "nn23.png");
-                mFairy.onTap(0.85f, result, "出征", 500);
+                mFairy.onTap(0.85f, result, "出征", 1500);
 
                 result = mFairy.findPic("nn21.png");
                 if (result.sim > 0.85f) {
@@ -3301,33 +3336,33 @@ public class SingleTask {
                 }
 
                 result = mFairy.findPic("zhaomu5.png");
-                mFairy.onTap(0.85f, result, "确定", 500);
+                mFairy.onTap(0.85f, result, "确定", 1500);
 
                 result = mFairy.findPic(9, 1184, 151, 1276, "hui.png");
                 mFairy.onTap(0.8f, result, "回城", 1000);
 
                 result = mFairy.findPic(216, 877, 517, 1042, "nn14.png");
                 if (result.sim > 0.85f) {
-                    mFairy.onTap(0.85f, result, "确定", 500);
+                    mFairy.onTap(0.85f, result, "确定", 1500);
                     setTaskName(0);
                     return;
                 }
 
                 result = mFairy.findPic(619, 1147, 706, 1274, new String[]{"nn3.png", "nn17.png"});
-                mFairy.onTap(0.85f, result, "对话", 500);
+                mFairy.onTap(0.85f, result, "对话", 1500);
 
                 result = mFairy.findPic("nn19.png");
-                mFairy.onTap(0.85f, result, "训练", 500);
+                mFairy.onTap(0.85f, result, "训练", 1500);
 
                 result = mFairy.findPic("nn4.png");
-                mFairy.onTap(0.8f, result, 341, 724, 379, 784, "扫描指纹", 500);
+                mFairy.onTap(0.8f, result, 341, 724, 379, 784, "扫描指纹", 1500);
 
                 result = mFairy.findPic("nn15.png");
-                mFairy.onTap(0.85f, result, "研究", 500);
+                mFairy.onTap(0.85f, result, "研究", 1500);
 
                 result = mFairy.findPic("nn16.png");
                 if (result.sim > 0.85f) {
-                    mFairy.onTap(0.85f, result, "研究", 500);
+                    mFairy.onTap(0.85f, result, "研究", 1500);
                     setTaskName(0);
                     return;
                 }
@@ -3344,13 +3379,13 @@ public class SingleTask {
 
                     err = 0;
                     result = mFairy.findPic(145,628,577,1235,"nn56.png");
-                    mFairy.onTap(0.85f, result, "全部领取", 500);
+                    mFairy.onTap(0.85f, result, "全部领取", 1500);
 
                     for (int i = 0; i < 3; i++) {
 
 
                         result = mFairy.findPic(496, 341, 683, 846, "nn13.png");
-                        mFairy.onTap(0.85f, result, "剧情 领取", 500);
+                        mFairy.onTap(0.85f, result, "剧情 领取", 1500);
                     }
                     result = mFairy.findPic(506,340,676,592, "juqing1.png");
                     mFairy.onTap(0.8f, result, "剧情 前往", 1000);
@@ -3361,36 +3396,36 @@ public class SingleTask {
 
 
                 result = mFairy.findPic(134, 432, 613, 910, "nn8.png");
-                mFairy.onTap(0.85f, result, "建筑 升级", 500);
+                mFairy.onTap(0.85f, result, "建筑 升级", 1500);
 
 
                 result = mFairy.findPic(1, 1, 719, 1279, "nn2.png");
                 if (result.sim > 0.8f) {
                     err = 0;
-                    mFairy.onTap(0.8f, result, result.x - 50, result.y + 30, result.x - 30, result.y + 50, "指引", 500);
+                    mFairy.onTap(0.8f, result, result.x - 50, result.y + 30, result.x - 30, result.y + 50, "指引", 1500);
                 } else {
                     result = mFairy.findPic("nn6.png");
                     if (result.sim > 0.85f) {
                         LtLog.e("建筑界面");
                         result = mFairy.findPic(516, 764, 695, 1102, "nn59.png");
-                        mFairy.onTap(0.78f, result, "建筑 前往", 500);
+                        mFairy.onTap(0.78f, result, "建筑 前往", 1500);
                     }
 
                     result = mFairy.findPic(new String[]{"nn10.png", "nn12.png"});
                     if (result.sim > 0.85f) {
 
                         result = mFairy.findPic(516, 764, 695, 1102, "nn18.png");
-                        mFairy.onTap(0.78f, result, "建筑 免费加速", 500);
+                        mFairy.onTap(0.78f, result, "建筑 免费加速", 1500);
 
                         result = mFairy.findPic(516, 764, 695, 1102, "nn7.png");
-                        mFairy.onTap(0.78f, result, "建筑 前往", 500);
+                        mFairy.onTap(0.78f, result, "建筑 前往", 1500);
 
 
                         result = mFairy.findPic(116, 1066, 284, 1175, "nn9.png");
                         if (result.sim > 0.85f) {
-                            mFairy.onTap(162, 1174, 227, 1195, "建筑 升级", 500);
+                            mFairy.onTap(162, 1174, 227, 1195, "建筑 升级", 1500);
                         } else {
-                            mFairy.onTap(498, 1164, 583, 1199, "建筑 升级", 500);
+                            mFairy.onTap(498, 1164, 583, 1199, "建筑 升级", 1500);
                         }
                         if (oneJudgeCount(2)) {
                             setTaskName(0);
@@ -3408,7 +3443,7 @@ public class SingleTask {
                 }
 
                 result = mFairy.findPic("nn26.png");
-                mFairy.onTap(0.85f, result, "wupin", 500);
+                mFairy.onTap(0.85f, result, "wupin", 1500);
 
                 result = mFairy.findPic("nn27.png");
                 if (result.sim > 0.85f) {
@@ -3416,15 +3451,15 @@ public class SingleTask {
 
                         switch (i) {
                             case 1:
-                                mFairy.onTap(202, 325, 256, 340, "资源", 500);
+                                mFairy.onTap(202, 325, 256, 340, "资源", 1500);
                                 mFairy.onTap(316, 1219, 414, 1237, "一键使用", 1000);
 
                                 result = mFairy.findPic("nn28.png");
-                                mFairy.onTap(0.85f, result, "确定使用", 500);
+                                mFairy.onTap(0.85f, result, "确定使用", 1500);
 
                                 break;
                             case 2:
-                                mFairy.onTap(627, 321, 677, 341, "其他", 500);
+                                mFairy.onTap(627, 321, 677, 341, "其他", 1500);
 
                                 for (int j = 0; j < 5; j++) {
 
@@ -3433,7 +3468,7 @@ public class SingleTask {
 
                                     result = mFairy.findPic(new String[]{"nn34.png", "buzu.png"});
                                     if (result.sim > 0.8f) {
-                                        mFairy.onTap(334, 703, 382, 723, "工厂等级不足,确定", 500);
+                                        mFairy.onTap(334, 703, 382, 723, "工厂等级不足,确定", 1500);
                                         gamePublicFuntion.init();
                                         setTaskName(3);
                                         oneSecond = 0;
@@ -3444,18 +3479,18 @@ public class SingleTask {
                                     if (result.sim > 0.85f) {
                                         j = 0;
                                         err = 0;
-                                        mFairy.onTap(0.85f, result, "使用", 500);
+                                        mFairy.onTap(0.85f, result, "使用", 1500);
                                     } else {
                                         result = mFairy.findPic(8, 366, 705, 1112, "nn33.png");
                                         if (result.sim > 0.75f) {
                                             j = 0;
-                                            mFairy.onTap(0.75f, result, result.x, result.y - 50, result.x + 5, result.y - 40, "坦克传送", 500);
+                                            mFairy.onTap(0.75f, result, result.x, result.y - 50, result.x + 5, result.y - 40, "坦克传送", 1500);
                                         } else {
                                             result = mFairy.findPic(8, 366, 705, 1112, "nn29.png");
                                             if (result.sim > 0.8f) {
                                                 j = 0;
                                                 err = 0;
-                                                mFairy.onTap(0.8f, result, "发现新手礼包", 500);
+                                                mFairy.onTap(0.8f, result, "发现新手礼包", 1500);
                                             }
                                         }
                                     }
@@ -3468,7 +3503,7 @@ public class SingleTask {
                                         mFairy.touchUp(1);
 
                                         result = mFairy.findPic(192, 589, 536, 1105, "nn32.png");
-                                        mFairy.onTap(0.85f, result, "使用", 500);
+                                        mFairy.onTap(0.85f, result, "使用", 1500);
                                     }
                                 }
 
@@ -3489,11 +3524,11 @@ public class SingleTask {
                     }
 
                     result = mFairy.findPic(1, 1, 719, 1279, "nn2.png");
-                    mFairy.onTap(0.8f, result, result.x - 50, result.y + 30, result.x - 30, result.y + 50, "指引", 500);
+                    mFairy.onTap(0.8f, result, result.x - 50, result.y + 30, result.x - 30, result.y + 50, "指引", 1500);
 
                     result = mFairy.findPic(9, 1184, 151, 1276, "hui.png");
                     if (result.sim > 0.8f) {
-                        mFairy.onTap(0.8f, result, "回城", 500);
+                        mFairy.onTap(0.8f, result, "回城", 1500);
                         threeJudgeCount = 0;
                         judgeOneSecond = 1;
                     }
@@ -3505,7 +3540,7 @@ public class SingleTask {
 
                     result = mFairy.findPic("nn47.png");
                     if (result.sim > 0.85f) {
-                        mFairy.onTap(0.85f, result, "左侧免费", 500);
+                        mFairy.onTap(0.85f, result, "左侧免费", 1500);
                         judgeOneSecond = 0;
                     }
 
@@ -3514,13 +3549,13 @@ public class SingleTask {
                         threeJudgeCount = 0;
 
                         result = mFairy.findPic(516, 764, 695, 1102, "nn18.png");
-                        mFairy.onTap(0.85f, result, "建筑 免费加速", 500);
+                        mFairy.onTap(0.85f, result, "建筑 免费加速", 1500);
 
                         result = mFairy.findPic(116, 1066, 284, 1175, "nn9.png");
                         if (result.sim > 0.85f) {
-                            mFairy.onTap(162, 1174, 227, 1195, "建筑 升级", 500);
+                            mFairy.onTap(162, 1174, 227, 1195, "建筑 升级", 1500);
                         } else {
-                            mFairy.onTap(498, 1164, 583, 1199, "建筑 升级", 500);
+                            mFairy.onTap(498, 1164, 583, 1199, "建筑 升级", 1500);
                         }
                     }
 
@@ -3530,7 +3565,7 @@ public class SingleTask {
 
                         result = mFairy.findPic(116, 1066, 284, 1175, "nn9.png");
                         if (result.sim > 0.85f) {
-                            mFairy.onTap(0.85f, result, 162, 1174, 227, 1195, "免费升级建筑", 500);
+                            mFairy.onTap(0.85f, result, 162, 1174, 227, 1195, "免费升级建筑", 1500);
                             continue;
                         }
 
@@ -3540,7 +3575,7 @@ public class SingleTask {
                         }
 
                         result = mFairy.findPic(516, 764, 695, 1102, "nn18.png");
-                        mFairy.onTap(0.85f, result, "建筑 免费加速", 500);
+                        mFairy.onTap(0.85f, result, "建筑 免费加速", 1500);
 
                         result = mFairy.findPic(516, 764, 695, 1102, "nn7.png");
                         if (result.sim > 0.75f) {
@@ -3554,32 +3589,32 @@ public class SingleTask {
                             mFairy.onTap(0.85f, resultSj, "升级", 2000);
 
                             result = mFairy.findPic("nn50.png");
-                            mFairy.onTap(0.85f, result, 496, 670, 534, 687, "确定升级到8级", 500);
+                            mFairy.onTap(0.85f, result, 496, 670, 534, 687, "确定升级到8级", 1500);
 
                             return false;
                         } else {
-                            mFairy.onTap(0.85f, resultSj, "升级", 500);
+                            mFairy.onTap(0.85f, resultSj, "升级", 1500);
                             gamePublicFuntion.init();
                             judgeOneSecond = 0;
                         }
                     }
 
                     result = mFairy.findPic("buji1.png");
-                    mFairy.onTap(0.85f, result, "领取", 500);
+                    mFairy.onTap(0.85f, result, "领取", 1500);
 
                     result = mFairy.findPic(227, 602, 391, 792, "nn41.png");
                     if (result.sim > 0.85f) {
-                        mFairy.onTap(0.85f, result, "升级", 500);
+                        mFairy.onTap(0.85f, result, "升级", 1500);
                         threeJudgeCount = 0;
                     }
 
-                    result = mFairy.findPic(500, 17, 678, 149, "main.png");
+                    result = mFairy.findPic(1500, 17, 678, 149, "main.png");
                     if (result.sim > 0.75f) {
                         result = mFairy.findPic(257, 428, 468, 616, "buji.png");
                         if (result.sim > 0.85f) {
                             judgeOneSecond = 0;
                             threeJudgeCount = 0;
-                            mFairy.onTap(0.85f, result, "补给箱", 500);
+                            mFairy.onTap(0.85f, result, "补给箱", 1500);
                             continue;
                         }
 
@@ -3606,11 +3641,11 @@ public class SingleTask {
                 }
 
                 result = mFairy.findPic(9, 1184, 151, 1276, "chu.png");
-                mFairy.onTap(0.8f, result, "出城", 500);
+                mFairy.onTap(0.8f, result, "出城", 1500);
 
                 result = mFairy.findPic("birang.png");
                 if (result.sim > 0.85f) {
-                    mFairy.onTap(0.85f, result, 184, 698, 227, 717, "避让", 500);
+                    mFairy.onTap(0.85f, result, 184, 698, 227, 717, "避让", 1500);
                     gamePublicFuntion.close();
                 }
 
@@ -3625,7 +3660,7 @@ public class SingleTask {
                         }
                     }
 
-                    mFairy.onTap(0.85f, chu, "出征", 500);
+                    mFairy.onTap(0.85f, chu, "出征", 1500);
 
                     gamePublicFuntion.close();
 
@@ -3653,7 +3688,7 @@ public class SingleTask {
                         if (result.sim > 0.8f) {
                             tishi = true;
                         }
-                        mFairy.onTap(0.85f, zhao, "查找", 500);
+                        mFairy.onTap(0.85f, zhao, "查找", 1500);
                     }
 
                     result = mFairy.findPic("nn36.png");
@@ -3661,12 +3696,12 @@ public class SingleTask {
                         switch (nn) {
                             case 1:
                                 result = mFairy.findPic(7, 1026, 709, 1102, "nn37.png");
-                                mFairy.onTap(0.85f, result, result.x + 15, result.y - 50, result.x + 20, result.y - 40, "矿厂", 500);
+                                mFairy.onTap(0.85f, result, result.x + 15, result.y - 50, result.x + 20, result.y - 40, "矿厂", 1500);
                                 nn = 2;
                                 break;
                             case 2:
                                 result = mFairy.findPic(7, 1026, 709, 1102, "nn38.png");
-                                mFairy.onTap(0.85f, result, result.x + 15, result.y - 50, result.x + 20, result.y - 40, "石油", 500);
+                                mFairy.onTap(0.85f, result, result.x + 15, result.y - 50, result.x + 20, result.y - 40, "石油", 1500);
                                 nn = 1;
                                 judgeOneSecond = 1;
                                 break;

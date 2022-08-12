@@ -344,6 +344,10 @@ public class OtherGame extends TaskContent {
                 if (syyp != null && syyp.choice == 1 && timekeep(0, syyp.timeMillis, "释放技能while使用蓝药")) {
                     eatLan();
                 }
+
+                result = mFairy.findPic("hbScence.png");
+                mFairy.onTap(0.8f,result,1162,27,1183,49,"关闭红包界面",1000);
+
                 result = mFairy.findPic(new String[]{"gj.png", "guanningwithin.png"});
                 mFairy.onTap(0.8f, result, 1225, 462, 1239, 473, "技能1", Sleep);
                 result = mFairy.findPic(new String[]{"gj.png", "guanningwithin.png"});
@@ -438,6 +442,18 @@ public class OtherGame extends TaskContent {
             int gmx, gmy, num = 1, zw;
 
             public void content_1() throws Exception {
+
+
+                result = mFairy.findPic(1018,161,1264,305,"jiayuan2.png");
+                if(result.sim>0.8f){
+                    result = mFairy.findPic(952,98,1167,191,"jiayuan1.png");
+                    if(result.sim<0.8f){
+                        setTaskName(0);
+                        return;
+                    }
+                }
+
+
                 LtLog.e(mFairy.getLineInfo("获取坐标菜地坐标中"));
                 if (num == 1) {
                     if (AtFairyConfig.getOption("xystr1").equals("") || AtFairyConfig.getOption("zw1").equals("")) {
@@ -450,6 +466,7 @@ public class OtherGame extends TaskContent {
                         LtLog.e(mFairy.getLineInfo("苗圃1,坐标=" + gmx + "," + gmy));
                     }
                 }
+
                 if (num == 2) {
                     if (AtFairyConfig.getOption("xystr2").equals("") || AtFairyConfig.getOption("zw2").equals("")) {
                         num = 3;
@@ -496,6 +513,7 @@ public class OtherGame extends TaskContent {
                         LtLog.e(mFairy.getLineInfo("苗圃5,坐标=" + gmx + "," + gmy));
                     }
                 }
+
                 if (num == 6) {
                     if (AtFairyConfig.getOption("xystr6").equals("") || AtFairyConfig.getOption("zw6").equals("")) {
                         num = 7;
@@ -507,6 +525,7 @@ public class OtherGame extends TaskContent {
                         LtLog.e(mFairy.getLineInfo("苗圃6,坐标=" + gmx + "," + gmy));
                     }
                 }
+
                 if (num >= 7) {
                     setTaskEnd();
                     return;
@@ -516,6 +535,8 @@ public class OtherGame extends TaskContent {
 
             public void content_2() throws Exception {
                 num++;
+                mFairy.onTap(1231,201,1245,211,"界面异常点击",1000);
+
                 gameUtil.coordinate("家园", gmx, gmy);
                 setTaskName(3);
             }
@@ -524,22 +545,37 @@ public class OtherGame extends TaskContent {
                 if (overtime(20, 1)){
                     num--;
                     gameUtil.close(0);
-                    return;}
+                    return;
+                }
+
+                result = mFairy.findPic(760,27,1130,187,"jun.png");
+                if (result.sim > 0.8f) {
+                    setTaskName(0);
+                    return;
+                }
+
+
                 result = mFairy.findPic("package.png");
                 mFairy.onTap(0.8f, result, 590, 280, 680, 450, "点击苗圃", 2000);
                 if (result.sim > 0.8f) {
+
+
                     result = mFairy.findPic(254, 29, 1102, 625, "guoqi.png");
                     mFairy.onTap(0.72f, result, result.x + 100, result.y + 10, result.x + 101, result.y + 11, "作物过期了", Sleep);
                     mFairy.onTap(0.72f, result, 775, 423, 802, 438, "作物过期了", Sleep);
 
                     result = mFairy.findPic(254, 29, 1102, 625, "species.png");
                     mFairy.onTap(0.72f, result, "种菜", Sleep);
+
+
                     result = mFairy.findPic(254, 29, 1102, 625, "Unripe.png");
                     if (result.sim > 0.72f) {
                         LtLog.e(mFairy.getLineInfo("没有熟"));
                         setTaskName(1);
                         return;
                     }
+
+
                     result = mFairy.findPic(254, 29, 1102, 625, "Harvest.png");
                     mFairy.onTap(0.72f, result, "收获", Sleep);
                     if (result.sim > 0.72f) {
@@ -555,6 +591,10 @@ public class OtherGame extends TaskContent {
                         }
                     }
                 }
+
+
+
+
                 result = mFairy.findPic(new String[]{"speciesinterface.png", "jia1.png"});
                 if (result.sim > 0.8f) {
                     LtLog.e(mFairy.getLineInfo("种菜界面"));
@@ -1009,7 +1049,7 @@ public class OtherGame extends TaskContent {
                 result = mFairy.findPic("recovery.png");
                 if (result.sim > 0.8f) {
                     LtLog.e(mFairy.getLineInfo("包裹界面"));
-                    mFairy.taskSlid(err, new int[]{0, 2, 3, 4}, 0, 922, 593, 922, 172, 500, 2000);
+                    mFairy.taskSlid(err, new int[]{0, 2, 3, 4}, 0, 922, 400, 922, 172, 500, 2000);
                 }
 
                 result = mFairy.findPic(639, 152, 1116, 630, new String[]{"bagfood.png"});

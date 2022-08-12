@@ -433,6 +433,7 @@ public class GamePublicFunction {
         mapName.add("TY.png");//15
         mapName.add("YY.png");//16
         mapName.add("CZ.png");//17
+        mapName.add("LZ.png");//18
 
         XY=new ArrayList<>();
         XY.add(new int[]{649, 364});//1
@@ -452,55 +453,77 @@ public class GamePublicFunction {
         XY.add(new int[]{640,331});//15
         XY.add(new int[]{644,349});//16
         XY.add(new int[]{639,378});//17
+        XY.add(new int[]{584,366});//18
     }
 
     //回安全区
     public void goSecurity() throws Exception {
 
-        LtLog.i(publicFunction.getLineInfo() + "【开始回安全区】");
 
-        result = publicFunction.localFindPic(1138, 0, 1280, 80, "mainCity1.png"+"|"+"mainCity.png");
-        if (result.sim >= 0.8) {
-            LtLog.i(publicFunction.getLineInfo() + "【在安全区】" + result);
-            return;
-        }
+        for (int w = 0; w < 10; w++) {
 
-        openMapWorldOrCurrent("current");  //打开世界地图 world , 打开当前地图 current
+            closeWindow();
 
-        result = publicFunction.localFindPic(342, 57, 933, 649, "smallMap.png|smallMap1.png");
-        if (result.sim >= 0.8) {
-            LtLog.i(publicFunction.getLineInfo() + "【当前地图界面】");
-        } else {
-            return;
-        }
+            LtLog.i(publicFunction.getLineInfo() + "【开始回安全区】");
 
-        for (int i = 0; i < 4; i++) {
-            result = publicFunction.localFindPic(475, 216, 796, 531, "safetyZone1.png");
-            if (result.sim >= 0.75) {
-                LtLog.i(publicFunction.getLineInfo() + "【点击安全区】");
-                mFairy.tap(result.x + 25, result.y + 10);
-                Thread.sleep(500);
+            result = publicFunction.localFindPic(1138, 0, 1280, 80, "mainCity1.png" + "|" + "mainCity.png");
+            if (result.sim >= 0.8) {
+                LtLog.i(publicFunction.getLineInfo() + "【在安全区】" + result);
+                return;
             }
-            result = publicFunction.localFindPic(475, 216, 796, 531, "safetyZone.png");
-            if (result.sim >= 0.75) {
-                LtLog.i(publicFunction.getLineInfo() + "【点击安全区】");
-                mFairy.tap(result.x + 5, result.y + 5);
-                Thread.sleep(500);
+
+            openMapWorldOrCurrent("current");  //打开世界地图 world , 打开当前地图 current
+
+            result = publicFunction.localFindPic(342, 57, 933, 649, "smallMap.png"+"|"+"smallMap1.png");
+            if (result.sim >= 0.8) {
+                LtLog.i(publicFunction.getLineInfo() + "【当前地图界面】");
             } else {
-                //没有安全区标识
-                for (int j = 0; j <mapName.size() ; j++) {
-                    result = publicFunction.localFindPic(518, 29, 706, 149, mapName.get(j));
-                    LtLog.i(publicFunction.getLineInfo() + "------->"+ mapName.get(j) +"=" + result);
-                    if (result.sim >= 0.8) {
-                        LtLog.i(publicFunction.getLineInfo() + "【没有识别出安全区 - 点击已设置好的各场景坐标】");
-                        mFairy.tap(XY.get(j)[0],XY.get(j)[1]);
-                        Thread.sleep(500);
-                        break;
+                continue;
+            }
+
+
+            boolean bool = false;
+
+            for (int i = 0; i < 4; i++) {
+
+                result = publicFunction.localFindPic(475, 216, 796, 531, "safetyZone1.png");
+                if (result.sim >= 0.75) {
+                    LtLog.i(publicFunction.getLineInfo() + "【点击安全区】");
+                    mFairy.tap(result.x + 25, result.y + 10);
+                    Thread.sleep(500);
+                    bool=true;
+                }
+
+                result = publicFunction.localFindPic(475, 216, 796, 531, "safetyZone.png");
+                if (result.sim >= 0.75) {
+                    LtLog.i(publicFunction.getLineInfo() + "【点击安全区】");
+                    mFairy.tap(result.x + 5, result.y + 5);
+                    Thread.sleep(500);
+                    bool=true;
+                } else {
+                    //没有安全区标识
+                    for (int j = 0; j < mapName.size(); j++) {
+
+                        result = publicFunction.localFindPic(518, 29, 706, 149, mapName.get(j));
+                        LtLog.i(publicFunction.getLineInfo() + "------->" + mapName.get(j) + "=" + result);
+                        if (result.sim >= 0.85) {
+                            LtLog.i(publicFunction.getLineInfo() + "【没有识别出安全区 - 点击已设置好的各场景坐标】");
+                            mFairy.tap(XY.get(j)[0], XY.get(j)[1]);
+                            Thread.sleep(500);
+                            bool=true;
+                            break;
+                        }
                     }
                 }
+                Thread.sleep(500);
             }
-            Thread.sleep(500);
+
+            if(bool){
+                break;
+            }
+
         }
+
 
         closeWindow();
 
@@ -917,6 +940,14 @@ public class GamePublicFunction {
         }
 
        while (mFairy.condit()) {
+
+           //瓦舍小游戏
+           if(list.get(0).equals("wsxyx")){
+               closeWindow();
+               return list;
+           }
+
+
             AtFairy2.OpencvResult result1 = publicFunction.localFindPic(226, 87, 722, 414, list.get(0) + ".png");
             LtLog.i(publicFunction.getLineInfo() + "【活动 sim: " + list.get(0)+" 】");
             if (result1.sim >= 0.8) {

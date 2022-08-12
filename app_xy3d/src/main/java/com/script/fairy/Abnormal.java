@@ -43,7 +43,7 @@ public class Abnormal {
         result = mFairy.findPic("erryp.png");
         mFairy.onTap(0.85f, result, "err启动", 1000);
 
-        result = mFairy.findPic(new String[]{"shengddian.png","sd.png","sd1.png"});
+        result = mFairy.findPic(new String[]{"shengddian.png","sd.png","sd1.png","sd2.png","sd3.png"});
         mFairy.onTap(0.8f, result, "省电", 500);
 
         result = mFairy.findPic("err2.png");

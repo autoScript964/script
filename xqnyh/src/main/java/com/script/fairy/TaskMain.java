@@ -1,10 +1,11 @@
 package com.script.fairy;
-
 import com.script.content.ScProxy;
+import com.script.framework.AtFairyImpl;
+import com.script.opencvapi.AtFairyConfig;
 import com.script.opencvapi.FindResult;
 import com.script.opencvapi.LtLog;
-import com.script.opencvapi.AtFairyConfig;
-import com.script.framework.AtFairyImpl;
+
+
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,7 +36,7 @@ public class TaskMain {
     public TaskMain(AtFairyImpl ypFairy) throws Exception {
         mFairy = ypFairy;
         mFairy.setGameName("新倩女幽魂");
-        mFairy.setGameVersion(549);
+        mFairy.setGameVersion(586);
         init();
         gameUtil = new GameUtil(mFairy);
         teamTask = new TeamTask(mFairy);

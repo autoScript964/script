@@ -1,12 +1,11 @@
 package com.script.fairy;
 
-import com.script.opencvapi.FindResult;
 import com.script.framework.AtFairyImpl;
+import com.script.opencvapi.FindResult;
 
 /**
  * Created by Administrator on 2019/3/22 0022.
  */
-
 public class Abnormal  {
     AtFairyImpl mFairy;
     FindResult result;
@@ -19,8 +18,55 @@ public class Abnormal  {
     public void erro() throws Exception {
         /**
          * 临时
+         *
+         *
          */
 
+
+        result = mFairy.findPic(431,256,835,600,"login1.png");
+        mFairy.onTap(0.8f,result,"err 豌豆荚",1000);
+
+
+        result = mFairy.findPic("hdclose29.png");
+        mFairy.onTap(0.8f,result,1132,22,1150,39,"err hdclose29",1000);
+
+        result = mFairy.findPic("hdclose30.png");
+        mFairy.onTap(0.8f,result,971,108,993,121,"err hdclose30",1000);
+
+        result = mFairy.findPic("fen.png");
+        mFairy.onTap(0.8f,result,1098,87,1127,108,"err 分享",1000);
+
+
+        result = mFairy.findPic("hdclose25.png");
+        mFairy.onTap(0.8f,result,1132,21,1155,40,"err hdclose25",1000);
+
+        result = mFairy.findPic("hdclose26.png");
+        mFairy.onTap(0.8f,result,"err hdclose26",1000);
+
+        result = mFairy.findPic("hdclose24.png");
+        mFairy.onTap(0.8f,result,1102,86,1125,102,"err hdclose24",1000);
+
+        result = mFairy.findPic(387,587,892,710,"dianji.png");
+        mFairy.onTap(0.8f,result,980,632,1031,655,"err 点击下方按钮",1000);
+
+        result = mFairy.findPic("guan.png");
+        mFairy.onTap(0.8f,result,"err 确定关闭",1000);
+
+        result = mFairy.findPic(456,42,870,165,"hdclose23.png");
+        mFairy.onTap(0.9f,result,968,127,979,142,"err 关闭 活动",1000);
+
+        result = mFairy.findPic(644,11,1255,240,"hdclose22.png");
+        mFairy.onTap(0.9f,result,"err 关闭 活动",1000);
+
+        result = mFairy.findPic("hdclose20.png");
+        mFairy.onTap(0.8f,result,681,677,704,695,"err 关闭 活动",1000);
+
+        result = mFairy.findPic("hdclose21.png");
+        mFairy.onTap(0.8f,result,"err 关闭 活动",1000);
+
+
+        result = mFairy.findPic(new String[]{"hdclose27.png","hdclose28.png"});
+        mFairy.onTap(0.8f,result,"err 关闭 活动",1000);
 
         result = mFairy.findPic("hdclose19.png");
         mFairy.onTap(0.8f,result,909,99,929,114,"err 关闭 活动",1000);

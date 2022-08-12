@@ -451,6 +451,63 @@ public class SingleTask {
         }
     }
 
+    public void setup() throws Exception {
+        new singleTask(mFairy) {
+            void create() throws Exception {
+                super.create();
+                TaskMain.TASKNAME = "设置";
+            }
+
+            void content_01() throws Exception {
+
+                result = mFairy.findPic("setup.png");
+                if(result.sim>0.8f){
+
+                    result = mFairy.findPic(73,130,342,677,"setup2.png");
+                    if(result.sim>0.8f){
+
+                        for (int i = 0; i < 3; i++) {
+                            Thread.sleep(1000);
+
+                            result = mFairy.findPic(73,130,342,677,"setup2.png");
+                            mFairy.onTap(0.8f,result,result.x+33,result.y+77,result.x+34,result.y+78,"",1000);
+                        }
+
+
+
+                        mFairy.onTap(1221,76,1232,86,"",1000);
+                        setTaskEnd();
+                        return;
+
+                    }else{
+                        mFairy.ranSwipe(670,390,670,250,500,1500);
+                    }
+
+
+                }else {
+
+                    result = mFairy.findPic("main.png");
+                    mFairy.onTap(0.8f, result, 32, 37, 61, 59, "点击头像", 2000);
+
+                    result = mFairy.findPic(1102,337,1252,663,"setup1.png");
+                    mFairy.onTap(0.8f,result,"设置",1000);
+
+                }
+
+
+            timeCount(20,0);
+
+            }
+
+
+            void content_02() throws Exception {
+
+            }
+        };
+
+    }//设置
+
+
     public void xyxx() throws Exception {
         new singleTask(mFairy) {
             @Override

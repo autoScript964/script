@@ -7,8 +7,6 @@ import com.script.opencvapi.AtFairyConfig;
 import com.script.opencvapi.FindResult;
 import com.script.opencvapi.LtLog;
 
-import org.opencv.core.Mat;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -88,6 +86,7 @@ public class LimitlessTask {
         map_name_list.add("MAP_TY_ZS.png");//37泰远-宗师
         map_name_list.add("MAP_YY_ZS.png");//38炎州-宗师
         map_name_list.add("MAP_CZ_ZS.png");//39长洲-宗师
+        map_name_list.add("MAP_LZ_ZS.png");//40流洲-宗师
 
         //右上角的地图名称 图
         current_map_name_list.add("CURRENT_MAP_YDS.png");//0雁荡山,
@@ -130,7 +129,7 @@ public class LimitlessTask {
         current_map_name_list.add("CURRENT_MAP_TY_ZS.png");//37泰远-宗师
         current_map_name_list.add("CURRENT_MAP_YY_ZS.png");//38炎州-宗师
         current_map_name_list.add("CURRENT_MAP_CZ_ZS.png");//39长洲-宗师
-
+        current_map_name_list.add("CURRENT_MAP_LZ_ZS.png");//40流洲-宗师
 
 
         current_map_name_list.add("mainCity1.png");//襄阳
@@ -647,20 +646,6 @@ public class LimitlessTask {
             }
         }
 
-        //龙门之争
-        if (currentSun.equals("星期五")) {
-            if(currentlyTIME >= 1259 && currentlyTIME <= 1265){
-
-                if(AtFairyConfig.getOption("lmzz").equals("1")){
-
-                    LtLog.i(publicFunction.getLineInfo() + "开始龙门之争");
-                    LtLog.i(publicFunction.getLineInfo() + "开始龙门之争");
-                    LtLog.i(publicFunction.getLineInfo() + "开始龙门之争");
-                    timingActivity.lmzz();
-                    return 1;
-                }
-            }
-        }
 
         //山河战境
         if (currentSun.equals("星期二") || currentSun.equals("星期六")) {
@@ -675,16 +660,16 @@ public class LimitlessTask {
             }
         }
 
-        //家族烤火
-        if (currentSun.equals("星期五")) {
-            if(currentlyTIME >= 1155 && currentlyTIME <= 1164){
+        //灰谷矿脉
+        if (currentSun.equals("星期一")) {
+            if((currentlyTIME >= 989 && currentlyTIME <= 995) ||  (currentlyTIME >= 1229 && currentlyTIME <= 1235)){
 
-                if(AtFairyConfig.getOption("jzks").equals("1")){
+                if(AtFairyConfig.getOption("hgkm").equals("1")){
 
-                    LtLog.i(publicFunction.getLineInfo() + "开始家族烤火");
-                    LtLog.i(publicFunction.getLineInfo() + "开始家族烤火");
-                    LtLog.i(publicFunction.getLineInfo() + "开始家族烤火");
-                    timingActivity.jzkh();
+                    LtLog.i(publicFunction.getLineInfo() + "开始灰谷矿脉");
+                    LtLog.i(publicFunction.getLineInfo() + "开始灰谷矿脉");
+                    LtLog.i(publicFunction.getLineInfo() + "开始灰谷矿脉");
+                    timingActivity.hgkm();
                     return 1;
                 }
             }
@@ -704,6 +689,8 @@ public class LimitlessTask {
                 return 1;
             }
         }
+
+
         if (currentSun.equals("星期一") || currentSun.equals("星期三") || currentSun.equals("星期五") || currentSun.equals("星期日")) {
             //华山论剑
             LtLog.i(publicFunction.getLineInfo() + "---------currentSun=" + currentSun);
@@ -734,6 +721,25 @@ public class LimitlessTask {
                 return 1;
             }
         }
+
+
+        //龙门之争
+        if (currentSun.equals("星期五")) {
+            if(currentlyTIME >= 1259 && currentlyTIME <= 1261){
+
+                if(AtFairyConfig.getOption("lmzz").equals("1")){
+
+                    LtLog.i(publicFunction.getLineInfo() + "开始龙门之争");
+                    LtLog.i(publicFunction.getLineInfo() + "开始龙门之争");
+                    LtLog.i(publicFunction.getLineInfo() + "开始龙门之争");
+                    timingActivity.lmzz();
+                    return 1;
+                }
+            }
+        }
+
+
+
         if (currentlyTIME >= 1259 && currentlyTIME <= 1270) {
             //if (currentlyTIME >= 1259 && currentlyTIME <= 1290) {
             //九点活动
@@ -818,6 +824,12 @@ public class LimitlessTask {
                 }
             }
         }
+
+
+
+
+
+
         return 0;
     }
 
@@ -1062,21 +1074,34 @@ public class LimitlessTask {
             LtLog.i(publicFunction.getLineInfo() + "------->activity=" + result);
             return false;
         }
-        FunctionClass.ResultValue resultVal;
+       /* FunctionClass.ResultValue resultVal;
 
         Mat mat1 =functionClass.getScreenMat(1143, 0, 137, 34);
 
         Mat mat2 =functionClass.getAssetImageFileMat(current_map_name_list.get(targetMap - 1));
 
         resultVal =functionClass.comparisonMat(mat1, mat2,functionClass.RGB);
-        if (resultVal.sim > 0.8) {
+        if (resultVal.sim > 0.7) {
             LtLog.i(publicFunction.getLineInfo() + "目标地图正确");
             return true;
         }
-        mat1.release();
+*/
+
+
+
+        result = publicFunction.localFindPic(1127,2,1280,58, current_map_name_list.get(targetMap - 1));
+
+        LtLog.e("地图标号"+targetMap+"    result:"+result.sim);
+
+        if(result.sim>0.8){
+            LtLog.i(publicFunction.getLineInfo() + "目标地图正确");
+            return true;
+        }
+
+   /*     mat1.release();
         mat2.release();
         result = null;
-        resultVal = null;
+        resultVal = null;*/
         LtLog.i(publicFunction.getLineInfo() + "目标地图不正确,开始重新定位");
         return false;
     }
@@ -1260,6 +1285,9 @@ public class LimitlessTask {
         }else if(map == 40){
             x=x_1 *4.3951+y_1 *-4.4521+630.9668;
             y=x_1 *-4.3857+y_1 *-4.4477+708.5585;
+        }else if(map == 41){
+            x=x_1 *4.9228+y_1 *-4.8024+634.4325;
+            y=x_1 *-4.8252+y_1 *-4.8366+745.6211;
         }
 
 
@@ -1596,6 +1624,7 @@ public class LimitlessTask {
                     break;
             }
         }
+
         gamePublicFunction.openMapWorldOrCurrent("current");
         for (int i = 0; i < 4; i++) {
             result = publicFunction.localFindPic(303, 21, 471, 154, "list.png");

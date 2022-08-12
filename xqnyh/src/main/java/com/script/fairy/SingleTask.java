@@ -30,23 +30,9 @@ public class SingleTask extends TaskContent {
 
     public int nn_err = 0;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public void content_2() throws Exception {
 
-        if (overtime(8, 0)) {
+        if (overtime(15, 0)) {
             task_err++;
             if (task_err > 1) {
                 setTaskEnd();
@@ -57,7 +43,7 @@ public class SingleTask extends TaskContent {
         result = mFairy.findPic("taskbar.png");
         mFairy.onTap(0.85f, result, "切换到任务栏", Sleep);
 
-        mFairy.taskSlid(err, new int[]{2, 4, 6}, 3, 88, 400, 88, 216, 1500, 1000);
+        mFairy.taskSlid(err, new int[]{2, 4, 6,8,10,12}, 5, 88, 350, 88, 216, 1500, 1000);
 
     }
 
@@ -698,9 +684,16 @@ public class SingleTask extends TaskContent {
             public void content_3() throws Exception {
                 super.content_3();
 
+
+                result = mFairy.findPic(62,635,1232,704,new String[]{"Activeinterface.png","act1.png"});
+                if (result.sim > 0.7f) {
+                    setTaskName(0);
+                    return;
+                }
+
                 if (overtime(10, 0)) return;
 
-                long dazeTime = mFairy.mMatTime(1144, 30, 55, 19, 0.9f);
+                long dazeTime = mFairy.mMatTime(1144, 30, 55, 19, 0.98f);
 
                 result = mFairy.findPic(813, 97, 1275, 709, new String[]{"Rightmaster.png", "Rightmaster1.png"});
                 mFairy.onTap(0.8f, result, "右侧师门", 2000);
@@ -748,6 +741,7 @@ public class SingleTask extends TaskContent {
 
                 result = mFairy.findPic("purchase.png");
                 if (result.sim > 0.8f) {
+                    err=0;
                     result1 = mFairy.findPic(112, 65, 840, 690, "npcdemand.png");
                     if (result1.sim > 0.8f) {
                         mFairy.onTap(0.8f, result, "npc商店的购买需求", Sleep);
@@ -770,14 +764,15 @@ public class SingleTask extends TaskContent {
                 }
 
                 // 7+6+2+2+5+4+4+6+6+6
-                result = mFairy.findPic(new String[]{"purchase1.png", "purchas  e2.png"});
+                result = mFairy.findPic(new String[]{"purchase1.png", "purchase2.png"});
                 if (result.sim > 0.8f) {
+                    err=0;
                     if (AtFairyConfig.getOption("gmfq").equals("1")) {
                         gameUtil.giveUpTask(new String[]{"Giveupteacher.png", "Giveupteacher1.png", "shimen1.png"});
                         setTaskName(0);
                         return;
                     } else {
-                        mFairy.onTap(0.8f, result, "玩家商店的购买", Sleep);
+                        mFairy.onTap(0.8f, result, "玩家商店的购买", 3000);
                         result1 = mFairy.findPic(452, 495, 830, 573, "Coverup.png");
                         if (result1.sim > 0.8f) {
                             LtLog.e(mFairy.getLineInfo("背包满,跳过任务"));
@@ -797,9 +792,10 @@ public class SingleTask extends TaskContent {
                     }
                 }
 
-                result = mFairy.findPic("wjsdsure.png");
-                mFairy.onTap(0.8f, result, "玩家商店的确认", Sleep);
-                if (result.sim > 0.8f) {
+                result = mFairy.findPic(629,359,896,475,new String[]{"wjsdsure.png","userOk.png"});
+                mFairy.onTap(0.875f, result, "玩家商店的确认", Sleep);
+                if (result.sim > 0.75f) {
+                    err=0;
                     result1 = mFairy.findPic("bgym.png");
                     if (result1.sim > 0.7f) {
                         LtLog.e(mFairy.getLineInfo("背包满,跳过任务"));
@@ -812,6 +808,7 @@ public class SingleTask extends TaskContent {
 
                 result = mFairy.findPic("Handin.png");
                 if (result.sim > 0.8f) {
+                    err=0;
                     LtLog.e(mFairy.getLineInfo("上交"));
                     Thread.sleep(5000);
 
@@ -849,12 +846,13 @@ public class SingleTask extends TaskContent {
                         if (s > 9) {
                             mFairy.ranSwipe(193, 570, 394, 450, 500, 1000);
                             mFairy.onTap(0.7f, result, result.x + 20, result.y + 20, result.x + 21, result.y + 21, "左侧师门", 2500);
+
                         }
                         smcount = 0;
                     }
-                }/* else {
+                }else {
                     err = 0;
-                }*/
+                }
             }
         }.taskContent(mFairy, "师门任务中");
     }//师门
@@ -1096,6 +1094,7 @@ public class SingleTask extends TaskContent {
                             "Leftmaster3.png"});
                     mFairy.onTap(0.7f, result, result.x + 20, result.y + 20, result.x + 21, result.y + 21, "左侧师门课业", 2500);
                     if (result.sim > 0.7f) {
+
                         smcount = 0;
                     }
                 } else {
@@ -1289,51 +1288,53 @@ public class SingleTask extends TaskContent {
             }
 
             public void content_1() throws Exception {
-                if (overtime(5, 2)) return;
+                if (overtime(12, 2)) return;
                 result = mFairy.findPic("package.png");
                 mFairy.onTap(0.8f, result, "包裹", 5000);
 
                 result = mFairy.findPic("recovery.png");
                 if (result.sim > 0.8f) {
                     LtLog.e(mFairy.getLineInfo("包裹界面"));
-                    mFairy.taskSlid(err, new int[]{0, 2, 3, 4}, 0, 922, 593, 922, 172, 500, 2000);
 
+                    Thread.sleep(3000);
+
+                    mFairy.taskSlid(err, new int[]{0, 2, 4, 6,8,10}, 0, 922, 420, 922, 180, 1500, 2000);
 
                     result = mFairy.findPic(630, 123, 1126, 618, "digMap.png");
                     mFairy.onTap(0.8f, result, "未开封的藏宝图", 2000);
-                    if (result.sim > 0.8f) {
+                    if (result.sim > 0.72f) {
                         err = 0;
                     }
 
 
                     if (AtFairyConfig.getOption("cbtpt").equals("1")) {
                         result = mFairy.findPic(630, 123, 1126, 618, "digMap1.png");
-                        if (result.sim > 0.8f) {
-                            LtLog.e(mFairy.getLineInfo(0.8f, result, "开封的普通藏宝图"));
+                        if (result.sim > 0.72f) {
+                            LtLog.e(mFairy.getLineInfo(0.72f, result, "开封的普通藏宝图"));
                             setTaskName(3);
                             return;
                         }
                     }
                     if (AtFairyConfig.getOption("cbtzj").equals("1")) {
                         result = mFairy.findPic(630, 123, 1126, 618, "digMap2.png");
-                        if (result.sim > 0.8f) {
-                            LtLog.e(mFairy.getLineInfo(0.8f, result, "开封的中级藏宝图"));
+                        if (result.sim > 0.72f) {
+                            LtLog.e(mFairy.getLineInfo(0.72f, result, "开封的中级藏宝图"));
                             setTaskName(3);
                             return;
                         }
                     }
                     if (AtFairyConfig.getOption("cbtgj").equals("1")) {
                         result = mFairy.findPic(630, 123, 1126, 618, "digMap3.png");
-                        if (result.sim > 0.8f) {
-                            LtLog.e(mFairy.getLineInfo(0.8f, result, "开封的高级藏宝图"));
+                        if (result.sim > 0.72f) {
+                            LtLog.e(mFairy.getLineInfo(0.72f, result, "开封的高级藏宝图"));
                             setTaskName(3);
                             return;
                         }
                     }
                     if (AtFairyConfig.getOption("cbthj").equals("1")) {
                         result = mFairy.findPic(630, 123, 1126, 618, "digMap4.png");
-                        if (result.sim > 0.8f) {
-                            LtLog.e(mFairy.getLineInfo(0.8f, result, "开封的黄金藏宝图"));
+                        if (result.sim > 0.72f) {
+                            LtLog.e(mFairy.getLineInfo(0.72f, result, "开封的黄金藏宝图"));
                             setTaskName(3);
                             return;
                         }
@@ -1367,7 +1368,7 @@ public class SingleTask extends TaskContent {
             }
 
             public void content_3() throws Exception {
-                if (overtime(6, 0)) return;
+                if (overtime(12, 0)) return;
                 result = mFairy.findPic("package.png");
                 mFairy.onTap(0.8f, result, "包裹", 5000);
 
@@ -1394,26 +1395,29 @@ public class SingleTask extends TaskContent {
                 result = mFairy.findPic("recovery.png");
                 if (result.sim > 0.8f) {
                     LtLog.e(mFairy.getLineInfo("包裹界面"));
-                    mFairy.taskSlid(err, new int[]{0, 2, 3, 4}, 0, 922, 593, 922, 172, 1500, 2000);
+
+                    Thread.sleep(3000);
+
+                    mFairy.taskSlid(err, new int[]{0, 2, 4, 6,8,10}, 0, 922, 420, 922, 180, 1500, 2000);
 
                     if (AtFairyConfig.getOption("cbtpt").equals("1")) {
                         result = mFairy.findPic(630, 123, 1126, 618, "digMap1.png");
-                        LtLog.e(mFairy.getLineInfo(0.85f, result, "开封的普通藏宝图"));
-                        if (result.sim > 0.8f) {
+                        LtLog.e(mFairy.getLineInfo(0.72f, result, "开封的普通藏宝图"));
+                        if (result.sim > 0.72f) {
                             wbcount1 = 0;
                             err = 0;
-                            mFairy.onTap(0.8f, result, "点开宝图", 2000);
+                            mFairy.onTap(0.72f, result, "点开宝图", 2000);
                             return;
                         }
                     }
 
                     if (AtFairyConfig.getOption("cbtzj").equals("1")) {
                         result = mFairy.findPic(630, 123, 1126, 618, "digMap2.png");
-                        LtLog.e(mFairy.getLineInfo(0.85f, result, "开封的中级藏宝图"));
-                        if (result.sim > 0.8f) {
+                        LtLog.e(mFairy.getLineInfo(0.72f, result, "开封的中级藏宝图"));
+                        if (result.sim > 0.72f) {
                             wbcount1 = 0;
                             err = 0;
-                            mFairy.onTap(0.8f, result, "点开宝图", 2000);
+                            mFairy.onTap(0.72f, result, "点开宝图", 2000);
                             return;
                         }
                     }
@@ -1421,11 +1425,11 @@ public class SingleTask extends TaskContent {
 
                     if (AtFairyConfig.getOption("cbtgj").equals("1")) {
                         result = mFairy.findPic(630, 123, 1126, 618, "digMap3.png");
-                        LtLog.e(mFairy.getLineInfo(0.85f, result, "开封的高级藏宝图"));
-                        if (result.sim > 0.8f) {
+                        LtLog.e(mFairy.getLineInfo(0.72f, result, "开封的高级藏宝图"));
+                        if (result.sim > 0.72f) {
                             wbcount1 = 0;
                             err = 0;
-                            mFairy.onTap(0.8f, result, "点开宝图", 2000);
+                            mFairy.onTap(0.72f, result, "点开宝图", 2000);
                             return;
                         }
                     }
@@ -1433,11 +1437,11 @@ public class SingleTask extends TaskContent {
 
                     if (AtFairyConfig.getOption("cbthj").equals("1")) {
                         result = mFairy.findPic(630, 123, 1126, 618, "digMap4.png");
-                        LtLog.e(mFairy.getLineInfo(0.85f, result, "开封的黄金藏宝图"));
-                        if (result.sim > 0.8f) {
+                        LtLog.e(mFairy.getLineInfo(0.72f, result, "开封的黄金藏宝图"));
+                        if (result.sim > 0.72f) {
                             wbcount1 = 0;
                             err = 0;
-                            mFairy.onTap(0.8f, result, "点开宝图", 2000);
+                            mFairy.onTap(0.72f, result, "点开宝图", 2000);
                             return;
                         }
                     }
@@ -1495,10 +1499,12 @@ public class SingleTask extends TaskContent {
                     if (bool) {
                         err = 0;
                         wbcount++;
-                        if (wbcount > 30) {
+                        if (wbcount > 100) {
                             LtLog.e(mFairy.getLineInfo("可能挖宝图卡住了移动一下"));
                             mFairy.ranSwipe(202, 574, 206, 498, 200, 1000);
+                            setTaskName(0);
                             wbcount = 0;
+                            return;
                         }
                     } else {
                         wbcount = 0;
@@ -1518,7 +1524,7 @@ public class SingleTask extends TaskContent {
                     result = mFairy.findPic("mapCoverup.png");
                     mFairy.onTap(0.8f, result, 790, 423, 791, 424, "宝图包满", Sleep);
 
-                    result = mFairy.findPic("chushou.png");
+                    result = mFairy.findPic(881,572,1046,666,"chushou.png");
                     if (result.sim > 0.8f) {
                         for (int i = 0; i < 20; i++) {
                             mFairy.onTap(0.8f, result, "出售", Sleep);
@@ -2801,6 +2807,15 @@ public class SingleTask extends TaskContent {
                 if (overtime(15, 0)) return;
                 super.content_3();
 
+                result = mFairy.findPic(62,635,1232,704,new String[]{"Activeinterface.png","act1.png"});
+                if (result.sim > 0.7f) {
+                    setTaskName(1);
+                    return;
+                }
+
+
+
+
                 long dazeTime = mFairy.mMatTime(1171, 28, 54, 22, 0.82f);
 
                 result = mFairy.findPic(959, 45, 1063, 598, "zhan2.png");
@@ -2812,10 +2827,16 @@ public class SingleTask extends TaskContent {
                     }
                 } else {
                     LtLog.e(mFairy.getLineInfo("发呆时间=" + dazeTime));
-                    result = mFairy.findPic(894, 8, 1273, 710, new String[]{"Rightbattle.png", "Rightlswar.png"});
-                    mFairy.onTap(0.8f, result, "右侧战龙", Sleep);
-                    if (result.sim > 0.8f) {
-                        mFairy.initMatTime();
+
+                    result = mFairy.findPic(950,50,1245,564,"zhanlong.png");
+                    if(result.sim>0.8f){
+                        mFairy.onTap(0.8f,result,"进入战龙帮会",1000);
+                    }else {
+                        result = mFairy.findPic(894, 8, 1273, 710, new String[]{"Rightbattle.png", "Rightlswar.png"});
+                        mFairy.onTap(0.8f, result, "右侧战龙", Sleep);
+                        if (result.sim > 0.8f) {
+                            mFairy.initMatTime();
+                        }
                     }
                 }
 

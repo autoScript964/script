@@ -9,8 +9,6 @@ import com.example.scriptsdkproxy.LocalFairyService;
 import com.script.opencvapi.AtFairyService;
 import com.script.opencvapi.LtLog;
 
-import io.sentry.Sentry;
-
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         LtLog.e("onCreate >>>>");
 
         super.onCreate(savedInstanceState);
-        Sentry.captureMessage("testing SDK setup");
+
 
         setContentView(R.layout.activity_main);
         AtFairyService.startService(this, LocalFairyService.class);

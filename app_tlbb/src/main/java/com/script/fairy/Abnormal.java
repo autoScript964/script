@@ -53,6 +53,12 @@ public class Abnormal {
 
     public void erro() throws Exception {
 
+        findResult = mFairy.findPic(1080,0,1277,33,"hszd.png");
+        if(findResult.sim>0.8f){
+            gamePublicFunction.automaticCombat(1);//开启战斗
+        }
+
+
         findResult =mFairy.findPic(384,252,752,428,"err6.png");
         mFairy.onTap(0.8f,findResult,484,459,527,481,"err6",1000);
 
@@ -61,6 +67,9 @@ public class Abnormal {
 
         findResult =mFairy.findPic("hdclose7.png");
         mFairy.onTap(0.8f,findResult,1222,74,1241,95,"hdclose7",1000);
+
+        findResult =mFairy.findPic("hdclose15.png");
+        mFairy.onTap(0.8f,findResult,"hdclose15",1000);
 
         findResult =mFairy.findPic("hdclose12.png");
         mFairy.onTap(0.8f,findResult,1109,76,1118,91,"hdclose12",1000);
@@ -77,9 +86,17 @@ public class Abnormal {
         findResult =mFairy.findPic(1174,27,1271,106,"hdclose8.png");
         mFairy.onTap(0.8f,findResult,"hdclose8",1000);
 
+        findResult = mFairy.findPic(399,240,647,400,"tishi1.png");
+        mFairy.onTap(0.8f,findResult,872,221,890,233,"",1000);
+
+        findResult =mFairy.findPic("huai.png");
+        mFairy.onTap(0.8f,findResult,"huai",1000);
 
         findResult =mFairy.findPic(434,612,764,697,"hdclose13.png");
         mFairy.onTap(0.8f,findResult,1074,67,1093,85,"hdclose13",1000);
+
+        findResult =mFairy.findPic("hdclose14.png");
+        mFairy.onTap(0.8f,findResult,"hdclose14",1000);
 
         findResult =mFairy.findPic(504,125,711,265,"bx.png");
         mFairy.onTap(0.8f,findResult,683,321,712,349,"",1000);
@@ -162,7 +179,7 @@ public class Abnormal {
             }
             result1 = publicFunction.localFindPic(617, 13, 702, 71, "team.png");
             if (result1.sim >= 0.8) {
-                maxtime1 = 230;
+                maxtime1 = 500;
                 LtLog.i(publicFunction.getLineInfo() + "******Abnormal--activitiesWindow>" + result1 + "maxtime1=" + maxtime1);
                 //如果在组队窗口，330S后再关闭
             }
@@ -406,12 +423,12 @@ public class Abnormal {
         }
 
 
-        result = publicFunction.localFindPic(1000, 614, 1269, 698, "login1.png");
-        if (result.sim >= 0.8) {
+        findResult = mFairy.findPic(1000, 614, 1269, 698, new String[]{"playGame.png","playGame2.png"});
+        if (findResult.sim >= 0.8f) {
             time5x = System.currentTimeMillis() / 1000 - time5;
             LtLog.i(publicFunction.getLineInfo() + "选角色界面 进入游戏:" + time5);
             if (time5x >= 60) {
-                publicFunction.rndTapWH(result.x, result.y, 116, 27);
+                mFairy.onTap(0.8f,findResult,"进入游戏",1000);
                 Thread.sleep(500);
             }
         } else {
