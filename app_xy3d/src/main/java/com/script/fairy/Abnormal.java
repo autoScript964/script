@@ -44,27 +44,30 @@ public class Abnormal {
         mFairy.onTap(0.85f, result, "err启动", 1000);
 
         result = mFairy.findPic(new String[]{"shengddian.png","sd.png","sd1.png","sd2.png","sd3.png"});
-        mFairy.onTap(0.8f, result, "省电", 500);
+        mFairy.onTap(0.8f, result, "省电", 1000);
 
         result = mFairy.findPic("err2.png");
         mFairy.onTap(0.85f, result, "err2", 1000);
 
         result = mFairy.findPic("liao.png");
-        mFairy.onTap(0.85f, result, "聊天", 500);
+        mFairy.onTap(0.85f, result, "聊天", 1000);
 
         result= mFairy.findPic("leftzoom.png");
-        mFairy.onTap(0.8f,result,"左侧缩放栏",500);
+        mFairy.onTap(0.8f,result,"左侧缩放栏",1000);
 
         result= mFairy.findPic("jieshou.png");
-        mFairy.onTap(0.8f,result,"接受",500);
+        mFairy.onTap(0.8f,result,"接受",1000);
 
         result= mFairy.findPic("jinru.png");
         mFairy.onTap(0.8f,result,"进入游戏",500);
 
         result= mFairy.findPic("jinru1.png");
-        mFairy.onTap(0.8f,result,"进入角色",500);
+        mFairy.onTap(0.8f,result,"进入角色",1000);
+
+        result= mFairy.findPic("jixugj.png");
+        mFairy.onTap(0.8f,result,"继续挂机",1000);
 
         result= mFairy.findPic("create.png");
-        mFairy.onTap(0.8f,result,"创建角色",500);
+        mFairy.onTap(0.8f,result,"创建角色",1000);
     }
 }

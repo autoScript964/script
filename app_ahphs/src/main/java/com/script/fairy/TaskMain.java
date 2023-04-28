@@ -28,7 +28,7 @@ public class TaskMain {
         gamePublicFuntion = new GamePublicFuntion(ypFairy);
         mFairy = ypFairy;
         mFairy.setGameName("暗黑破坏神");
-        mFairy.setGameVersion(1);
+        mFairy.setGameVersion(4);
         init();
     }
 
@@ -58,7 +58,15 @@ public class TaskMain {
 
         switch (taskId) {
             case 2755:
+                singleTask.setUp();
                 singleTask.guaji();
+                break;
+            case 2757:
+                while (mFairy.condit()){
+
+                    Thread.sleep(5000);
+
+                }
                 break;
 
         }

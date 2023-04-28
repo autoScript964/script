@@ -27,7 +27,7 @@ public class TaskMain extends TaskContent {
         teamTask = new TeamTask(ypFairy);
         mFairy = ypFairy;
         mFairy.setGameName("魔力宝贝");
-        mFairy.setGameVersion(139);
+        mFairy.setGameVersion(140);
         init();
     }
 

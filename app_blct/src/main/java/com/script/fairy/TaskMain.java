@@ -29,14 +29,12 @@ public class TaskMain extends TaskContent {
         limitlessTask = new LimitlessTask(ypFairy);
         mFairy = ypFairy;
         mFairy.setGameName("部落冲突");
-        mFairy.setGameVersion(159);
+        mFairy.setGameVersion(170);
         init();
     }
 
-    private int week;
-    private int hour;
-    private int minute;
     public void main() throws Exception {
+
         ScProxy.config().Level().capturing(4);
 
         if (!AtFairyConfig.getOption("task_id").equals("")) {
@@ -47,7 +45,6 @@ public class TaskMain extends TaskContent {
 
         switch (taskId) {
             case 2446:
-
                 singleTask.wxBattle();
                 break;
             case 2448:

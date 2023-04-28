@@ -736,7 +736,7 @@ public class SingleTask {
                 if (result.sim > 0.8f) {
                     err = 0;
 
-                    List<FindResult> ss = mFairy.findPic(196, 417, 1093, 654, 0.85f, "yj2.png");
+                    List<FindResult> ss = mFairy.findPic(246, 417, 1093, 654, 0.85f, "yj2.png");
                     for (int i = 0; i < ss.size(); i++) {
                         long color = mFairy.getColorNum(ss.get(i).x - 100, ss.get(i).y - 10, ss.get(i).x, ss.get(i).y + 15, "240,240,240", 0.92f);
                         if (color > 100) {
@@ -745,7 +745,7 @@ public class SingleTask {
                         }
                     }
 
-                    List<FindResult> hy = mFairy.findPic(196, 417, 1093, 654, 0.85f, "yj3.png");
+                    List<FindResult> hy = mFairy.findPic(246, 417, 1093, 654, 0.85f, "yj3.png");
                     for (int i = 0; i < hy.size(); i++) {
                         long color = mFairy.getColorNum(hy.get(i).x - 100, hy.get(i).y - 10, hy.get(i).x, hy.get(i).y + 15, "240,240,240", 0.92f);
                         if (color > 100) {
@@ -933,7 +933,6 @@ public class SingleTask {
                     Thread.sleep(100);
                     mFairy.ranSwipe(824, 437, 481, 145, 200, 1000);
 
-
                     result = mFairy.findPic(100, 329, 617, 611, new String[]{"chuan.png", "chuan2.png"});
                     mFairy.onTap(0.7f, result, "船", 3000);
                 }
@@ -992,7 +991,6 @@ public class SingleTask {
                             mFairy.onTap(0.8f, result, 643, 562, 675, 584, "确定升级", 500);
                             return;
                         }
-
 
                         result = mFairy.findPic("yg2.png");
                         if (result.sim > 0.8f) {
@@ -2352,11 +2350,7 @@ public class SingleTask {
 
                     /*
                         bz8  龙骑士
-                        bz16 大雪怪
-                        bz21 英雄猎手
 
-                        bz26 超级弓箭手
-                        bz27 超级巨人
 
 
                      */
@@ -2459,9 +2453,11 @@ public class SingleTask {
 
                 for (int i = 0; i < 30; i++) {
                     //
-                    long color = mFairy.getColorNum(20 + (40 * i), 595, 50 + (40 * i), 610, "81,152,216", 0.9f);
-                    long color1 = mFairy.getColorNum(20 + (40 * i), 595, 50 + (40 * i), 610, "207,56,61", 0.9f);
-                    if (color > 10 || color1>10) {
+                    long color = mFairy.getColorNum(20 + (40 * i), 595, 40 + (40 * i), 610, "81,152,216", 0.9f);
+                    long color1 = mFairy.getColorNum(20 + (40 * i), 595, 40 + (40 * i), 610, "207,56,61", 0.9f);
+                    LtLog.e(mFairy.getLineInfo("color:"+color));
+                    LtLog.e(mFairy.getLineInfo("color1:"+color1));
+                    if (color > 60 || color1>60) {
                         mFairy.onTap(20 + (40 * i), 595, 50 + (40 * i), 610, "【发现其他部队】", 500);
                         i--;
                         for (int j = 0; j < lw.size(); j++) {
@@ -2469,6 +2465,10 @@ public class SingleTask {
                         }
                     }
                 }
+
+
+
+
             }
 
             List<int[]> pos(int a, int b, int c, int d) throws Exception {

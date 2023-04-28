@@ -1,1 +1,12 @@
-/build
+*.iml
+.gradle
+.externalNativeBuild
+local.properties
+.DS_Store
+build
+gradle
+captures
+.idea
+gradle*
+answer
+key.jks

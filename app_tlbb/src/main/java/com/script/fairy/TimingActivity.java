@@ -386,7 +386,7 @@ public class TimingActivity {
                 gamePublicFunction.automaticCombat(1);//开启自动战斗
                 time = System.currentTimeMillis() / 1000;
             } else {
-                result = publicFunction.localFindPic(822, 24, 954, 72, "activity.png");
+                result = publicFunction.localFindPic(653,1,1104,96, "activity.png");
                 if (result.sim > 0.8) {
                     //没有活动按钮 不识别坐标
                     LtLog.i(publicFunction.getLineInfo() + "---------activity.png>" + result);
@@ -439,7 +439,7 @@ public class TimingActivity {
             } else if (timex >= 15) {
                 //如果不在组队界面
                 LtLog.i(publicFunction.getLineInfo() + "-------list.get(0).equals(indiana.png)>" + list.get(0).equals("indiana.png"));
-                result = publicFunction.localFindPic(822, 24, 954, 72, "activity.png");
+                result = publicFunction.localFindPic(653,1,1104,96, "activity.png");
                 LtLog.i(publicFunction.getLineInfo() + "-------activity>" + result);
                 if (list.get(0).equals("indiana.png") && result.sim >= 0.8) {
                     for (int i = 0; i < 3; i++) {
@@ -635,7 +635,7 @@ public class TimingActivity {
 //                    time = System.currentTimeMillis() / 1000;
 //                }
 
-                result = publicFunction.localFindPic(822, 24, 954, 72, "activity.png");
+                result = publicFunction.localFindPic(653,1,1104,96, "activity.png");
                 if (result.sim >= 0.8) {
                     boolean matSim = false;
                     mat1 = mFairy.getScreenMat(1121, 27, 66, 22, 1, 0, 0, 1);
@@ -1107,7 +1107,7 @@ public class TimingActivity {
                 gamePublicFunction.closeWindow();
                 return;
             }
-            result = publicFunction.localFindPic(822, 24, 954, 72, "activity.png");
+            result = publicFunction.localFindPic(653,1,1104,96, "activity.png");
             if (result.sim > 0.8) {
                 //没有活动按钮 不识别坐标
                 LtLog.i(publicFunction.getLineInfo() + "---------activity.size()>" + result);
@@ -1167,7 +1167,7 @@ public class TimingActivity {
                 publicFunction.rndTap(739, 460, 796, 488);//点击确认
                 Thread.sleep(500);
             }
-            result = publicFunction.localFindPic(822, 24, 954, 72, "activity.png");
+            result = publicFunction.localFindPic(653,1,1104,96, "activity.png");
             if (result.sim >= 0.8) {
                 this.tongPractice = this.tongPractice + 1;
                 LtLog.i(publicFunction.getLineInfo() + "------------activity=" + result);

@@ -68,6 +68,19 @@ public class Abnormal {
         findResult =mFairy.findPic("hdclose7.png");
         mFairy.onTap(0.8f,findResult,1222,74,1241,95,"hdclose7",1000);
 
+        findResult =mFairy.findPic("hdclose19.png");
+        mFairy.onTap(0.8f,findResult,1142,129,1159,142,"hdclose19",1000);
+
+
+        findResult =mFairy.findPic("hdclose18.png");
+        mFairy.onTap(0.8f,findResult,"hdclose18",1000);
+
+        findResult =mFairy.findPic("hdclose17.png");
+        mFairy.onTap(0.8f,findResult,"hdclose17",1000);
+
+        findResult =mFairy.findPic("hdclose16.png");
+        mFairy.onTap(0.8f,findResult,"hdclose16",1000);
+
         findResult =mFairy.findPic("hdclose15.png");
         mFairy.onTap(0.8f,findResult,"hdclose15",1000);
 

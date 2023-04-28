@@ -232,7 +232,6 @@ public class SingleTask {
             void create() throws Exception {
                 super.create();
 
-
                 skill_list = new ArrayList<>();
 
                 for (int i = 1; i <= 4; i++) {
@@ -295,8 +294,10 @@ public class SingleTask {
                         for (int j = 0; j < 10; j++) {
                             Thread.sleep(150);
 
-                            result = mFairy.findPic(691, 22, 831, 73, "boss.png");
-                            if (result.sim > 0.8f) {
+                            long color = mFairy.getColorNum(539,43,568,54,"142,32,10",0.95f );
+
+                            //result = mFairy.findPic(691, 22, 831, 73, new String[]{"boss.png","boss1.png"});
+                            if (color>50) {
                                 err = 0;
                                 for (int i = 0; i < skill_list.size(); i++) {
 

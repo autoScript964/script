@@ -32,7 +32,7 @@ public class TaskMain {
         gamePublicFuntion = new GamePublicFuntion(atFairy);
         this.atFairy=atFairy;
         atFairy.setGameName("完美世界");
-        atFairy.setGameVersion(195);
+        atFairy.setGameVersion(196);
         AtFairyConfig.initConfig();
         Task.task_err=0;
 

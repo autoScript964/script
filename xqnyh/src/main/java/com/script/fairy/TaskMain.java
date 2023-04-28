@@ -36,7 +36,7 @@ public class TaskMain {
     public TaskMain(AtFairyImpl ypFairy) throws Exception {
         mFairy = ypFairy;
         mFairy.setGameName("新倩女幽魂");
-        mFairy.setGameVersion(586);
+        mFairy.setGameVersion(619);
         init();
         gameUtil = new GameUtil(mFairy);
         teamTask = new TeamTask(mFairy);
@@ -89,6 +89,16 @@ public class TaskMain {
 
     public void main() throws Exception {
 
+      /*  while (mFairy.condit()){
+
+            mFairy.inputText("123");
+
+            LtLog.e("11111111111111");
+            Thread.sleep(3000);
+        }*/
+
+      //  mFairy.setIme();
+
         if (!AtFairyConfig.getOption("task_id").equals("")) {
             task_id = Integer.parseInt(AtFairyConfig.getOption("task_id"));
         }
@@ -111,7 +121,7 @@ public class TaskMain {
                 singleTask.diaoyu();
                 break;
             case 2701:
-                gameUtil.coordinate("镇郊荒野", 17, 22);
+                singleTask.zongmen();
                 break;
             case 2454:
                 int shop = 0;
@@ -167,6 +177,7 @@ public class TaskMain {
                     if (AtFairyConfig.getOption("qd").equals("1")) {
                         otherGame.welfare();
                     }
+
                     //师门
                     if (AtFairyConfig.getOption("4601").equals("1")) {
                         singleTask.master();
@@ -219,6 +230,7 @@ public class TaskMain {
                     if (AtFairyConfig.getOption("4609").equals("1")) {
                         gameUtil.clearbag();
                     }
+
                     //带队一条龙
                     if (AtFairyConfig.getOption("dd").equals("1")) {
                         teamTask.aDragon();
@@ -362,6 +374,7 @@ public class TaskMain {
         }
 
         LtLog.e(mFairy.getLineInfo("勾选任务已经全部完成,End!" + AtFairyConfig.getTaskID()));
+        //mFairy.restoreIme();
         mFairy.finish(AtFairyConfig.getTaskID(), TASK_STATE_FINISH);
         Thread.sleep(2000);
     }

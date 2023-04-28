@@ -109,7 +109,6 @@ public class LimitlessTask {
                 LtLog.i(publicFunction.getLineInfo() + "---------location=" + location + ",,,currTime=" + currTime + ",mFairy.taskList.indexOf(\"mythical.png\")=" + TaskMain.taskList.indexOf("mythical.png") + ",mythicalOROnHook=" + mythicalOROnHook);
             }
 
-
             //mythical.png 神兽护宝 没有神兽护宝
             Thread.sleep(2000);
 

@@ -47,6 +47,9 @@ public class Abnormal {
 
 
     public void erro() throws Exception {
+
+        Thread.sleep(500);
+        
         timex = System.currentTimeMillis() / 1000;
 
         if (timex - time > 60) {
@@ -122,6 +125,10 @@ public class Abnormal {
 
         findResult = mFairy.findPic("hdclose.png");
        mFairy.onTap(0.8f,findResult,"hdclose",1000);
+
+        findResult = mFairy.findPic("hdclose1.png");
+        mFairy.onTap(0.8f,findResult,940,270,950,289,"hdclose1",1000);
+
 
         findResult = mFairy.findPic("sd.png");
         mFairy.onTap(0.8f,findResult,1217,22,1239,36,"商店界面",1000);

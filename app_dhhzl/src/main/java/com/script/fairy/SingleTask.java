@@ -601,7 +601,7 @@ public class SingleTask {
                         }*/
 
                         result = mFairy.findPic(46, 72, 209, 715, map);
-                        LtLog.e(mFairy.getLineInfo("左侧地图名称："+result.sim));
+                        LtLog.e(mFairy.getLineInfo("左侧地图名称："+result.sim+","+map));
                         if (result.sim > 0.7f) {
                             mFairy.onTap(0.7f, result, "找到目标港口", 2000);
 

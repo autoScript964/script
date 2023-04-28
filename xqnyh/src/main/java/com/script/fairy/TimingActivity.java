@@ -19,6 +19,7 @@ public class TimingActivity extends TaskContent {
     FindResult result1;
     GameUtil gameUtil;
     boolean scn = true;
+    boolean sy = true;
 
     public TimingActivity(AtFairyImpl ypFairy) throws Exception {
         mFairy = ypFairy;
@@ -55,7 +56,10 @@ public class TimingActivity extends TaskContent {
         if (!AtFairyConfig.getOption("bhtime").equals("")) {
             bhtime = strSplit(AtFairyConfig.getOption("bhtime"));
         }
+
+
     }
+
 
     public void inOperation() throws Exception {
         result = mFairy.findPic("Over drawing.png");
@@ -72,10 +76,12 @@ public class TimingActivity extends TaskContent {
             setTaskEnd();
             return;
         }
+
         gameUtil.zh();
         gameUtil.gdFBTeam();
 
     }
+
 
     public void rank() throws Exception {
 
@@ -99,6 +105,7 @@ public class TimingActivity extends TaskContent {
 
     int scn_0 = 0, scn_15 = 0, scn_30 = 0, kj = 0, ssj = 0;
     int ls8 = 0, ls9 = 0;
+    boolean sy_lock=true;
     boolean bhdd = true, bhdzz = true;
     ControlSplit bhweek = null, bhtime = null;
 
@@ -127,7 +134,7 @@ public class TimingActivity extends TaskContent {
         }
 
         //采薇
-        if (AtFairyConfig.getOption("cw").equals("1") && (w == 2 || w == 4 || w == 6) && cwlist.size() != 0) {
+        if (AtFairyConfig.getOption("cw").equals("1") && (w == 2 || w == 4 /*|| w == 6*/) && cwlist.size() != 0) {
             if (cwlist.contains(h)) {
                 if (m >= 27) {
                     mined();
@@ -154,6 +161,25 @@ public class TimingActivity extends TaskContent {
                 }
             }
         }
+
+
+
+        if(m<10){
+            sy_lock=true;
+        }
+
+        //蜃妖
+        if (AtFairyConfig.getOption("9091").equals("1") && (w==3 || w==6) &&
+                ( h==9 || h==10 || h==12 || h==14 || h==16 || h==18 || h==21 || h==22) &&
+                (m>27) && sy && sy_lock) {
+
+            fysy();
+            sy_lock=false;
+            return 1;
+        }
+
+
+
 
         //守财奴
         if (AtFairyConfig.getOption("scn").equals("1") && h >= 13 && scn) {//scn 判断是否继续守财
@@ -191,6 +217,7 @@ public class TimingActivity extends TaskContent {
                 return 1;
             }
         }
+
 
         //高昌
         if (AtFairyConfig.getOption("gc").equals("1") && (w == 1 || w == 3 || w == 4) && h == 21 && m >= 31 && m <= 45) {
@@ -243,7 +270,7 @@ public class TimingActivity extends TaskContent {
         return 0;
     }
 
-    public int  timingActivity1() throws Exception {
+    public int timingActivity1() throws Exception {
         int h = mFairy.dateHour();
         int m = mFairy.dateMinute();
         int w = mFairy.week();
@@ -567,6 +594,331 @@ public class TimingActivity extends TaskContent {
             }
         }.taskContent(mFairy, "守财奴带队");
     }
+
+    //封印蜃妖
+    public void fysy() throws Exception {
+        new TimingActivity(mFairy) {
+
+            String str = "蒲家村";
+            int syjie = 1;
+            boolean battle = false;
+
+            public void create() throws Exception {
+
+                if (!AtFairyConfig.getOption("syjie").equals("")) {
+                    syjie = Integer.parseInt(AtFairyConfig.getOption("syjie"));
+
+                    switch ((int) syjie / 3) {
+                        case 0:
+                            str = "蒲家村";
+                            break;
+                        case 1:
+                            str = "镇郊荒野";
+                            break;
+                        case 2:
+                            str = "兰若寺";
+                            break;
+                        case 3:
+                            str = "黑风洞";
+                            break;
+                        case 4:
+                            str = "忘川";
+                            break;
+                    }
+                }
+
+                LtLog.e("选项勾选不正确！");
+            }
+
+            public void content_0() throws Exception {
+                gameUtil.close(1);
+
+                Thread.sleep(1000);
+
+                result = mFairy.findPic(830, 76, 1125, 270, "sy.png");
+                if (result.sim > 0.8f) {
+                    LtLog.e(mFairy.getLineInfo("活动时间内还有蜃妖，去组人"));
+                } else {
+                    LtLog.e(mFairy.getLineInfo("指定时间内没有蜃妖了结束"));
+                    setTaskEnd();
+                    return;
+                }
+
+                gameUtil.callToFollow();
+                gameUtil.goCity(str);
+                setTaskName(1);
+            }
+
+            public void content_1() throws Exception {
+                if (overtime(10, 0)) return;
+
+                result = mFairy.findPic(927, 177, 1276, 708, "Convenientteam.png");
+                mFairy.onTap(0.8f, result, "右侧便捷组队", Sleep);
+
+                result = mFairy.findPic(new String[]{"Openteam.png", "Openteam1.png"});
+                mFairy.onTap(0.9f, result, "打开队伍栏", Sleep);
+
+                result = mFairy.findPic(new String[]{"Contingenthurdles.png", "Contingenthurdles1.png"});
+                mFairy.onTap(0.9f, result, "切换到队伍栏", Sleep);
+
+
+                result = mFairy.findPic("Convenientinterface.png");
+                mFairy.onTap(0.8f, result, 885, 624, 905, 638, "便捷组队界面,是一个人开始创建队伍匹配", 2000);
+
+                result = mFairy.findPic("teaminterface.png");
+                mFairy.onTap(0.8f, result, 1163, 167, 1164, 168, "队伍界面已经有队伍了开始切换目标", Sleep);
+                if (result.sim > 0.8f) {
+                    setTaskName(2);
+                }
+            }
+
+            public void content_2() throws Exception {
+                if (overtime(10, 0)) return;
+
+                result = mFairy.findPic(252, 75, 705, 120, "sy1.png");
+                if (result.sim > 0.8f) {
+                    LtLog.e(mFairy.getLineInfo("目标为蜃妖进行下一步"));
+                    result = mFairy.findPic("zdpp.png");
+                    mFairy.onTap(0.8f, result, "自动匹配", Sleep);
+                    gameUtil.close(1);
+                    setTaskName(3);
+                    return;
+                } else {
+                    result = mFairy.findPic("Cancelingmatch.png");
+                    mFairy.onTap(0.8f, result, "需要切换目标,取消匹配", Sleep);
+
+                    result = mFairy.findPic("zd1.png");
+                    if (result.sim > 0.8f) {
+                        LtLog.e(mFairy.getLineInfo("调整目标界面"));
+
+                        result = mFairy.findPic(334, 132, 639, 545, "sy2.png");
+                        if (result.sim > 0.8f) {
+                            mFairy.onTap(0.8f, result, "选择蜃妖", 3000);
+
+                            mFairy.ranSwipe(507, 479, 507, 200, 500, 1000);
+
+                            switch (syjie) {
+                                case 1:
+                                case 2:
+                                case 3:
+                                    mFairy.onTap(486, 163, 512, 172, "", 1000);
+                                    break;
+                                case 4:
+                                case 5:
+                                case 6:
+                                    mFairy.onTap(487, 212, 522, 223, "", 1000);
+                                    break;
+                                case 7:
+                                case 8:
+                                    mFairy.onTap(472, 277, 510, 292, "", 1000);
+                                    break;
+                                case 9:
+                                case 10:
+                                    mFairy.onTap(486, 340, 519, 355, "", 1000);
+                                    break;
+                                case 11:
+                                case 12:
+                                    mFairy.onTap(487, 416, 510, 424, "", 1000);
+                                    break;
+                                case 13:
+                                case 14:
+                                    mFairy.onTap(488, 484, 525, 500, "", 1000);
+                                    break;
+                            }
+
+
+                            mFairy.ranSwipe(714, 314, 715, 451, 200, 10);
+                            mFairy.ranSwipe(714, 314, 715, 451, 200, 10);
+                            mFairy.ranSwipe(714, 314, 715, 451, 200, 10);
+                            mFairy.ranSwipe(714, 314, 715, 451, 200, 10);
+                            mFairy.onTap(0.8f, result, 786, 561, 787, 562, "确定", 2000);
+                            result = mFairy.findPic("zdpp.png");
+                            mFairy.onTap(0.8f, result, "自动匹配", Sleep);
+                            gameUtil.close(1);
+                            setTaskName(3);
+                            return;
+                        } else {
+                            mFairy.taskSlid(err, new int[]{4, 6, 8}, 3, 452, 490, 471, 182, 200, 1000);
+                            mFairy.sleep(2000);
+                        }
+                    } else {
+                        result = mFairy.findPic("teaminterface.png");
+                        mFairy.onTap(0.8f, result, 1163, 167, 1164, 168, "目标不对，切换目标", Sleep);
+                        mFairy.onTap(0.8f, result, 165, 116, 166, 117, "目标不对，切换目标", 2000);
+                    }
+                }
+            }
+
+            public void content_3() throws Exception {
+                int m = mFairy.dateMinute();
+                if (m < 10) {
+                    setTaskEnd();
+                    return;
+                }
+
+
+                result = mFairy.findPic(830, 76, 1125, 270, "sy.png");
+                if (result.sim < 0.8f) {
+                    LtLog.e(mFairy.getLineInfo("还没组到人就没蜃妖了"));
+                    setTaskEnd();
+                    return;
+                }
+
+
+                result = mFairy.findPic("teaminterface.png");
+                mFairy.onTap(0.8f, result, 1178, 52, 1191, 66, "关闭组队界面", Sleep);
+
+                result = mFairy.findPic("Contingenthurdles.png");
+                mFairy.onTap(0.9f, result, "切换到队伍栏", Sleep);
+
+                result = mFairy.findPic("Contingenthurdles1.png");
+                mFairy.onTap(0.9f, result, "切换到队伍栏", Sleep);
+                gameUtil.apply();
+                int mannum = 0;
+                result = mFairy.findPic(196, 197, 242, 253, "Numberpeople.png");
+                if (result.sim > 0.8f) {
+                    mannum++;
+                    LtLog.e(mFairy.getLineInfo(mannum + "个人了"));
+                }
+
+                result = mFairy.findPic(195, 257, 242, 315, "Numberpeople.png");
+                if (result.sim > 0.8f) {
+                    mannum++;
+                    LtLog.e(mFairy.getLineInfo(mannum + "个人了"));
+                }
+
+                result = mFairy.findPic(194, 315, 241, 374, "Numberpeople.png");
+                if (result.sim > 0.8f) {
+                    mannum++;
+                    LtLog.e(mFairy.getLineInfo(mannum + "个人了"));
+                }
+                result = mFairy.findPic(194, 376, 243, 432, "Numberpeople.png");
+                if (result.sim > 0.8f) {
+                    mannum++;
+                    LtLog.e(mFairy.getLineInfo(mannum + "个人了"));
+                }
+                if (mannum > 1) {
+                    gameUtil.callToFollow();
+                    LtLog.e(mFairy.getLineInfo("队员齐了开始任务"));
+                    setTaskName(4);
+                    return;
+                }
+                if (timekeep(1, 120000, "2分钟招募一下")) {
+                    LtLog.e(mFairy.getLineInfo("--------2分钟招募一下"));
+                    gameUtil.recruit();
+                }
+                Thread.sleep(3000);
+            }
+
+            public void content_4() throws Exception {
+
+                result = mFairy.findPic("Hangup1.png");
+                mFairy.onTap(0.7f, result, 1236, 335, 1237, 336, "关闭挂机", Sleep);
+
+                int m = mFairy.dateMinute();
+
+
+                result = mFairy.findPic(830, 76, 1125, 270, "sy.png");
+                if (result.sim < 0.8f) {
+                    mFairy.onTap(0.8f, result, "蜃妖刷新出来了", 2000);
+
+                    result = mFairy.findPic("Fulloftimes.png");
+                    if (result.sim > 0.8f) {
+                        TimingActivity.this.sy = false;
+                        LtLog.e(mFairy.getLineInfo("蜃妖次数满了"));
+                        setTaskEnd();
+                        return;
+                    }
+                } else {
+                    err++;
+                    if (err > 10) {
+                        setTaskEnd();
+                        return;
+                    }
+                }
+
+
+                result = mFairy.findPic(94, 14, 316, 104, "sy3.png");
+                if (result.sim > 0.8f) {
+                    LtLog.e(mFairy.getLineInfo("蜃妖选择界面"));
+
+                    int scopeX = (syjie % 3 == 0 ? 3 : syjie % 3) - 1;
+                    int scopeY = ((int) syjie / 3);
+
+
+                    result = mFairy.findPic(348 + (243 * scopeX), 112 + (87 * scopeY), 592 + (243 * scopeX), 201 + (87 * scopeY), "sy4.png");
+                    if (result.sim > 0.92f) {
+                        LtLog.e(mFairy.getLineInfo("该蜃妖没有了"));
+                        setTaskEnd();
+                        return;
+                    }
+
+
+                    result = mFairy.findPic(348 + (243 * scopeX), 112 + (87 * scopeY), 592 + (243 * scopeX), 201 + (87 * scopeY), "Getrich.png");
+                    mFairy.onTap(0.8f, result, "前往", 5000);
+
+                    setTaskName(5);
+                }
+            }
+
+            public void content_5() throws Exception {
+
+                long dazeTime = mFairy.mMatTime(1144, 30, 55, 19, 0.9f);
+                if (dazeTime > 8) {
+                    LtLog.e(mFairy.getLineInfo("发呆时间过久"));
+                    setTaskName(4);
+                    return;
+                }
+
+
+                result = mFairy.findPic(927, 177, 1276, 708, "sy6.png");
+                mFairy.onTap(0.8f, result, "挑战", 5000);
+                if (result.sim > 0.8f) {
+
+                    result = mFairy.findPic(927, 177, 1276, 708, "sy6.png");
+                    mFairy.onTap(0.8f, result, "挑战", 5000);
+
+
+                    battle=true;
+                    Thread.sleep(5000);
+
+                    setTaskName(6);
+                    return;
+                }
+
+                Thread.sleep(1000);
+            }
+
+            public void content_6() throws Exception {
+                if (overtime(10, 4)) {
+                    gameUtil.callToFollow();
+                    return;
+                }
+
+                Thread.sleep(500);
+
+
+                result = mFairy.findPic("sy7.png");
+                if(result.sim>0.8f){
+                    err=0;
+                    if(battle){
+                        mFairy.onTap(1188,78,1211,97,"点击地图",3000);
+                    }else{
+                        result = mFairy.findPic("Hangup.png");
+                        mFairy.onTap(0.7f, result, 1236, 335, 1237, 336, "开启挂机", Sleep);
+                    }
+                }
+
+
+                result = mFairy.findPic(14,9,602,175,"sy8.png");
+                if(result.sim>0.8f){
+                    mFairy.onTap(637,344,638,345,"点击中心点",5000);
+                    battle=false;
+                }
+            }
+        }.taskContent(mFairy, "封印蜃妖");
+    }
+
 
     //采薇带队
     public void mined() throws Exception {
@@ -1191,6 +1543,7 @@ public class TimingActivity extends TaskContent {
 
 
     boolean guan = false;
+
     //关宁
     public void guanNing() throws Exception {
         new TimingActivity(mFairy) {
@@ -1244,7 +1597,9 @@ public class TimingActivity extends TaskContent {
                     setTaskEnd();
                     return;
                 } else if (ret == 1) {
-                    Thread.sleep(2000);
+                    Thread.sleep(5000);
+
+                    //gameUtil.close(0);
                     setTaskName(3);
                 }
             }
@@ -1256,48 +1611,53 @@ public class TimingActivity extends TaskContent {
                 gnnum = 0;
 
 
-                result = mFairy.findPic(921, 211, 1061, 278, "signup.png");
-                mFairy.onTap(0.8f, result, "报名", 3000);
+                result = mFairy.findPic(921, 211, 1061, 278, new String[]{"signup.png", "signup1.png"});
+                LtLog.e(mFairy.getLineInfo("报名sim:" + result.sim));
+                mFairy.onTap(0.8f, result, "报名", 2000);
                 if (result.sim > 0.8f) {
-                    result = mFairy.findPic(921, 211, 1061, 278, "signup.png");
+                    result = mFairy.findPic(921, 211, 1061, 278, new String[]{"signup.png", "signup1.png"});
                     if (result.sim < 0.8f) {
                         LtLog.e(mFairy.getLineInfo("gnnum++"));
                         gnnum++;
                     }
                 }
 
-                result = mFairy.findPic(921, 286, 1061, 340, "signup.png");
-                mFairy.onTap(0.8f, result, "报名", 3000);
+                result = mFairy.findPic(921, 286, 1061, 340, new String[]{"signup.png", "signup1.png"});
+                LtLog.e(mFairy.getLineInfo("报名sim:" + result.sim));
+                mFairy.onTap(0.8f, result, "报名", 2000);
                 if (result.sim > 0.8f) {
-                    result = mFairy.findPic(921, 286, 1061, 340, "signup.png");
+                    result = mFairy.findPic(921, 286, 1061, 340, new String[]{"signup.png", "signup1.png"});
                     if (result.sim < 0.8f) {
                         LtLog.e(mFairy.getLineInfo("gnnum++"));
                         gnnum++;
                     }
                 }
 
-                result = mFairy.findPic(922, 349, 1063, 406, "signup.png");
-                mFairy.onTap(0.8f, result, "报名", 3000);
+                result = mFairy.findPic(922, 349, 1063, 406, new String[]{"signup.png", "signup1.png"});
+                LtLog.e(mFairy.getLineInfo("报名sim:" + result.sim));
+                mFairy.onTap(0.8f, result, "报名", 2000);
                 if (result.sim > 0.8f) {
-                    result = mFairy.findPic(922, 349, 1063, 406, "signup.png");
+                    result = mFairy.findPic(922, 349, 1063, 406, new String[]{"signup.png", "signup1.png"});
                     if (result.sim < 0.8f) {
                         LtLog.e(mFairy.getLineInfo("gnnum++"));
                         gnnum++;
                     }
                 }
-                result = mFairy.findPic(919, 413, 1062, 473, "signup.png");
-                mFairy.onTap(0.8f, result, "报名", 3000);
+                result = mFairy.findPic(919, 413, 1062, 473, new String[]{"signup.png", "signup1.png"});
+                LtLog.e(mFairy.getLineInfo("报名sim:" + result.sim));
+                mFairy.onTap(0.8f, result, "报名", 2000);
                 if (result.sim > 0.8f) {
-                    result = mFairy.findPic(919, 413, 1062, 473, "signup.png");
+                    result = mFairy.findPic(919, 413, 1062, 473, new String[]{"signup.png", "signup1.png"});
                     if (result.sim < 0.8f) {
                         LtLog.e(mFairy.getLineInfo("gnnum++"));
                         gnnum++;
                     }
                 }
-                result = mFairy.findPic(918, 482, 1065, 540, "signup.png");
-                mFairy.onTap(0.8f, result, "报名", 3000);
+                result = mFairy.findPic(918, 482, 1065, 540, new String[]{"signup.png", "signup1.png"});
+                LtLog.e(mFairy.getLineInfo("报名sim:" + result.sim));
+                mFairy.onTap(0.8f, result, "报名", 2000);
                 if (result.sim > 0.8f) {
-                    result = mFairy.findPic(918, 482, 1065, 540, "signup.png");
+                    result = mFairy.findPic(918, 482, 1065, 540, new String[]{"signup.png", "signup1.png"});
                     if (result.sim < 0.8f) {
                         LtLog.e(mFairy.getLineInfo("gnnum++"));
                         gnnum++;
@@ -1319,7 +1679,7 @@ public class TimingActivity extends TaskContent {
 
                 result = mFairy.findPic("guanningwithin.png");
                 if (result.sim > 0.8f) {
-                    guan=true;
+                    guan = true;
                     LtLog.e(mFairy.getLineInfo("关宁内"));
                     mFairy.onTap(0.8f, result, 1225, 462, 1239, 473, "技能1", Sleep);
                     mFairy.onTap(0.8f, result, 1108, 459, 1132, 477, "技能2", Sleep);
@@ -1343,14 +1703,14 @@ public class TimingActivity extends TaskContent {
 
 
                 result = mFairy.findPic(408, 264, 749, 372, "guanning2.png");
-                mFairy.onTap(0.8f,result,751, 423, 805, 439, "即将开战", 1000);
+                mFairy.onTap(0.8f, result, 751, 423, 805, 439, "即将开战", 1000);
 
 
                 result = mFairy.findPic("guanningstop.png");
                 if (result.sim > 0.8f) {
                     LtLog.e(mFairy.getLineInfo("关宁结束了"));
 
-                    for (int i = 0; i < 10; i++) {
+                    for (int i = 0; i < 5; i++) {
 
                         Thread.sleep(500);
 
@@ -1379,7 +1739,7 @@ public class TimingActivity extends TaskContent {
                         }
                     }
 
-                    if( guan) {
+                    if (guan) {
                         gnnum = gnnum - 1;
                         LtLog.e(mFairy.getLineInfo("还剩【" + gnnum + "】场"));
                         //gameUtil.close(0);
@@ -1399,7 +1759,7 @@ public class TimingActivity extends TaskContent {
                     }
 
 
-                    guan=false;
+                    guan = false;
 
                 }
 
@@ -1538,7 +1898,7 @@ public class TimingActivity extends TaskContent {
             public void content_3() throws Exception {
                 int m = mFairy.dateMinute();
                 int h = mFairy.dateHour();
-                if (m >= 10 && m < 55 && h != 19) {
+                if (m >= 25 && m < 55 && h != 19) {
                     setTaskEnd();
                     return;
                 }
@@ -1603,7 +1963,6 @@ public class TimingActivity extends TaskContent {
                 result = mFairy.findPic("Hangup1.png");
                 mFairy.onTap(0.7f, result, 1236, 335, 1237, 336, "关闭挂机", Sleep);
 
-
                 result = mFairy.findPic(745, 68, 1265, 333, new String[]{"Replica.png", "fuben.png"});
                 if (result.sim > 0.72f) {
                     setTaskName(6);
@@ -1627,7 +1986,7 @@ public class TimingActivity extends TaskContent {
                         fbBool = false;
                         // gameUtil.close(0);
                         setTaskName(6);
-                    } else if (result.sim < 0.7f && m > 0 && m < 55 && h != 19) {
+                    } else if (result.sim < 0.7f && m > 3 && m < 55 && h != 19) {
                         berr++;
                         if (berr > 2) {
                             LtLog.e(mFairy.getLineInfo("没有大盗了结束任务"));

@@ -1,2 +1,2 @@
 configurations.maybeCreate("default")
-artifacts.add("default", file('opencvapi-release.aar'))
+artifacts.add("default", file('opencvapi-release1.aar'))

@@ -8,8 +8,8 @@ android {
         applicationId "com.hj.dwa"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 138
-        versionName "1.38"
+        versionCode 139
+        versionName "139"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -52,6 +52,12 @@ dependencies {
     api 'com.yanzhenjie.recyclerview:x:1.3.2'
     implementation 'com.wang.avi:library:2.1.3'
     implementation "androidx.core:core-ktx:1.1.0"
+
+
+    implementation "com.umeng.umsdk:common:9.4.2"
+    implementation "com.umeng.umsdk:asms:1.4.0"
+    implementation "com.umeng.umsdk:apm:1.4.1"
+
 
 
 }

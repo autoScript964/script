@@ -27,7 +27,7 @@ public class TaskMain {
         limitlessTask = new LimitlessTask(ypFairy);
         mFairy = ypFairy;
         mFairy.setGameName("红警OL(new)");
-        mFairy.setGameVersion(138);
+        mFairy.setGameVersion(139);
         init();
     }
 

@@ -8,6 +8,7 @@ import com.example.scriptsdkproxy.LocalFairyService;
 import com.script.opencvapi.LtLog;
 import com.script.opencvapi.AtFairyService;
 import com.auto.scriptsdk.ui.ATSdk;
+import com.umeng.commonsdk.UMConfigure;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -16,6 +17,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         LtLog.e("onCreate >>>>");
         super.onCreate(savedInstanceState);
+
+        //设置LOG开关，默认为false
+        UMConfigure.setLogEnabled(true);
+
+        //友盟预初始化
+
+        UMConfigure.preInit(this,"639ff3d888ccdf4b7ea8811b","Umeng");
+        UMConfigure.init(this,"639ff3d888ccdf4b7ea8811b","Umeng",UMConfigure.DEVICE_TYPE_PHONE,"");
+
 
         setContentView(R.layout.activity_main);
 

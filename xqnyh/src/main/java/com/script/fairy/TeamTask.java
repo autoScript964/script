@@ -89,6 +89,7 @@ public class TeamTask extends TaskContent {
 
             public void content_3() throws Exception {
                 if (overtime(10, 0)) return;
+
                 result = mFairy.findPic(927, 177, 1276, 708, "Convenientteam.png");
                 mFairy.onTap(0.8f, result, "右侧便捷组队", Sleep);
 
@@ -137,10 +138,14 @@ public class TeamTask extends TaskContent {
                             mFairy.onTap(0.8f, result, 379, 559, 394, 568, "带新人", Sleep);
                         }
                         if (result.sim > 0.8f) {
-                            mFairy.ranSwipe(714, 314, 715, 451, 200, 10);
-                            mFairy.ranSwipe(714, 314, 715, 451, 200, 10);
-                            mFairy.ranSwipe(714, 314, 715, 451, 200, 10);
-                            mFairy.ranSwipe(714, 314, 715, 451, 200, 10);
+                            mFairy.ranSwipe(730, 314, 730, 451, 100, 100);
+                            mFairy.ranSwipe(730, 314, 730, 451, 100, 100);
+                            mFairy.ranSwipe(730, 314, 730, 451, 100, 100);
+
+                            mFairy.ranSwipe(856, 451, 856,315,100, 100);
+                            mFairy.ranSwipe(856, 451, 856,315,100, 100);
+                            mFairy.ranSwipe(856, 451, 856,315,100, 100);
+
                             mFairy.onTap(0.8f, result, 786, 561, 787, 562, "确定", 2000);
                             result = mFairy.findPic("zdpp.png");
                             mFairy.onTap(0.8f, result, "自动匹配", Sleep);
@@ -165,7 +170,9 @@ public class TeamTask extends TaskContent {
 
                 result = mFairy.findPic("Contingenthurdles1.png");
                 mFairy.onTap(0.9f, result, "切换到队伍栏", Sleep);
+
                 gameUtil.apply();
+
                 int mannum = 0;
                 result = mFairy.findPic(196, 197, 242, 253, "Numberpeople.png");
                 if (result.sim > 0.8f) {

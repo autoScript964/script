@@ -232,7 +232,7 @@ public class SingleTask {
 
 
 
-            findResult = mFairy.findPic(822, 24, 954, 72, "activity.png");
+            findResult = mFairy.findPic(653,1,1104,96, "activity.png");
             if (findResult.sim > 0.8f) {
                 //没有活动按钮 不识别坐标
                 LtLog.i(publicFunction.getLineInfo() + "在主场景,识别坐标");
@@ -455,12 +455,18 @@ public class SingleTask {
 
         gamePublicFunction.switchTaskOrTeam("task");
 
+
+        mFairy.ranSwipe(130,286,130,395,500,500);
+        mFairy.ranSwipe(130,286,130,395,500,1000);
+
         for (int i = 0; i < 10; i++) {
-            result = publicFunction.localFindPicHLS(822, 24, 954, 72, "activity.png");
+            result = publicFunction.localFindPicHLS(653,1,1104,96, "activity.png");
             if (result.sim < 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "-----------------------PublicFunction---openActivity--activity>" + result);
                 return 1;
             }
+
+
             result = publicFunction.localOptimalFindPic(range[0], range[1], range[2], range[3], 140, 255.0, 0, currentTask);
             LtLog.i(publicFunction.getLineInfo() + "------SingleTask--currentTask>" + currentTask + ",result=" + result);
             if (result.sim >= 0.70) {
@@ -490,6 +496,11 @@ public class SingleTask {
                 }
                 range = null;
                 return 1;
+            }else{
+                if(i==5){
+                    mFairy.ranSwipe(130,395,130,286,500,1000);
+                }
+
             }
             Thread.sleep(100);
         }
@@ -510,7 +521,7 @@ public class SingleTask {
     private void post() throws Exception {
         LtLog.i(publicFunction.getLineInfo() + "领邮件");
         for (int i = 0; i < 5; i++) {
-            result = publicFunction.localFindPic(822, 24, 954, 72, "activity.png");
+            result = publicFunction.localFindPic(653,1,1104,96, "activity.png");
             if (result.sim > 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "点邮件");
                 publicFunction.rndTap(367, 655, 401, 685); //点邮件
@@ -740,7 +751,7 @@ public class SingleTask {
                     publicFunction.rndTap(485, 460, 533, 485);
                     Thread.sleep(300);
                 }
-                result = publicFunction.localFindPic(822, 24, 954, 72, "activity.png");
+                result = publicFunction.localFindPic(653,1,1104,96, "activity.png");
                 if (result.sim > 0.8) {
                     LtLog.i(publicFunction.getLineInfo() + "-------activity>" + result);
                     return 1;
@@ -1137,10 +1148,30 @@ public class SingleTask {
                 result = publicFunction.localOptimalFindPic(495, 26, 568, 71, 200, 255, 0, "according.png");
                 result2 = publicFunction.localFindPic(452, 11, 681, 83, "acupoint1.png" + "|" + "help1.png");
                 if (result.sim >= 0.8 || result2.sim > 0.8) {
+                    LtLog.i(publicFunction.getLineInfo() + "自动点穴没通过");
+
+
+
+                    findResult = mFairy.findPic("dianxue6.png");
+                    if (findResult.sim > 0.9f) {
+                        LtLog.i(publicFunction.getLineInfo() + "【dianxue6】");
+                        mFairy.touchDown(485,160);
+                        mFairy.touchMove(557,239, 300);
+                        mFairy.touchMove(645,210, 300);
+                        mFairy.touchMove(586,301, 300);
+                        mFairy.touchMove(707,343, 300);
+                        mFairy.touchMove(763,418, 300);
+                        mFairy.touchMove(658,442, 300);
+                        mFairy.touchMove(745,565, 300);
+                        mFairy.touchUp();
+                        return;
+                    }
+
+
 
 
                     findResult = mFairy.findPic("dianxue5.png");
-                    if (findResult.sim > 0.8f) {
+                    if (findResult.sim > 0.9f) {
                         LtLog.i(publicFunction.getLineInfo() + "【dianxue5】");
                         mFairy.touchDown(639,134);
                         mFairy.touchMove(602,267, 300);
@@ -1155,7 +1186,7 @@ public class SingleTask {
 
 
                     findResult = mFairy.findPic("dianxue4.png");
-                    if (findResult.sim > 0.8f) {
+                    if (findResult.sim > 0.9f) {
                         LtLog.i(publicFunction.getLineInfo() + "【dianxue4】");
                         mFairy.touchDown(616,78);
                         mFairy.touchMove(756,172, 300);
@@ -1173,7 +1204,7 @@ public class SingleTask {
 
 
                     findResult = mFairy.findPic("dianxue3.png");
-                    if (findResult.sim > 0.8f) {
+                    if (findResult.sim > 0.9f) {
                         LtLog.i(publicFunction.getLineInfo() + "【dianxue3】");
                         mFairy.touchDown(641, 134);
                         mFairy.touchMove(603, 269, 300);
@@ -1190,7 +1221,7 @@ public class SingleTask {
 
 
                     findResult = mFairy.findPic("dianxue2.png");
-                    if (findResult.sim > 0.8f) {
+                    if (findResult.sim > 0.9f) {
                         LtLog.i(publicFunction.getLineInfo() + "【dianxue2】");
                         mFairy.touchDown(482, 157);
                         mFairy.touchMove(559, 243, 300);
@@ -1205,7 +1236,7 @@ public class SingleTask {
                     }
 
                     findResult = mFairy.findPic("dianxue1.png");
-                    if (findResult.sim > 0.8f) {
+                    if (findResult.sim > 0.9f) {
                         LtLog.i(publicFunction.getLineInfo() + "【dianxue1】");
                         mFairy.touchDown(670, 166);
                         mFairy.touchMove(600, 209, 300);
@@ -1236,7 +1267,7 @@ public class SingleTask {
 
 
             for (int i = 0; i < 60; i++) {
-                result = publicFunction.localFindPic(822, 24, 954, 72, "activity.png");
+                result = publicFunction.localFindPic(653,1,1104,96, "activity.png");
                 LtLog.i(publicFunction.getLineInfo() + "---------------------SingleTask---activity=" + result);
                 if (result.sim > 0.8) {
                     break;
@@ -1320,7 +1351,9 @@ public class SingleTask {
         if (result.sim >= 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "世界");
             publicFunction.rndTapWH(result.x, result.y, 45, 21);
+
             Thread.sleep(2000);
+
             for (int i = 0; i < 4; i++) {
                 result = publicFunction.localFindPic(214, 39, 273, 613, "world1.png");
                 if (result.sim >= 0.8) {
@@ -1341,20 +1374,22 @@ public class SingleTask {
         }
 
 
-        result = publicFunction.localFindPic(587, 20, 739, 63, "space2.png");
+        result = publicFunction.localFindPic(587, 20, 739, 63, "space2.png|space4.png");
         if (result.sim >= 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "个人空间界面");
+
             publicFunction.rndTap(475, 87, 515, 103);//点留言
             Thread.sleep(1000);
             publicFunction.rndTap(912, 647, 965, 664);//点踩一踩
             Thread.sleep(2000);
-            result = publicFunction.localFindPic(587, 20, 739, 63, "space2.png");
+            result = publicFunction.localFindPic(587, 20, 739, 63, "space2.png|space4.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "关闭");
                 publicFunction.rndTap(1159, 32, 1180, 53);//点关闭
                 Thread.sleep(1000);
             }
         }
+
         result = publicFunction.localFindPic(5, 237, 116, 474, "everdayFurniture.png");
         if (result.sim >= 0.7) {
             LtLog.i(publicFunction.getLineInfo() + "每日 - 家具 - 放弃");
@@ -1368,7 +1403,7 @@ public class SingleTask {
         if (result.sim >= 0.8) {
             //在家园中，切换到活动
             LtLog.i(publicFunction.getLineInfo() + "在家园中,切换到活动");
-            result = publicFunction.localFindPic(822, 24, 954, 72, "activity.png");
+            result = publicFunction.localFindPic(653,1,1104,96, "activity.png");
             if (result.sim < 0.8) {
                 publicFunction.rndTap(1069, 18, 1088, 34);
                 Thread.sleep(1000);
@@ -1837,7 +1872,7 @@ public class SingleTask {
         }
         List<String> list = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            result = publicFunction.localFindPic(822, 24, 954, 72, "activity.png");
+            result = publicFunction.localFindPic(653,1,1104,96, "activity.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "-------activity>" + result);
                 publicFunction.rndTap(836, 35, 863, 63);//打开福利

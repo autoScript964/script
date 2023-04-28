@@ -226,11 +226,14 @@ public class Abnormal extends TaskContent {
         result = mFairy.findPic("jujuest.png");
         mFairy.onTap(0.8f, result, "err拒绝收听", Sleep);
 
-        FindResult result1 = mFairy.findPic("use1.png");
-        if(result1.sim>0.8f) {
-            result = mFairy.findPic("bb.png");
-            if(result.sim<0.8f) {
-                mFairy.onTap(0.8f, result1, "err使用经验道具", Sleep);
+        if(!AtFairyConfig.getOption("zongmen").equals("1")) {
+
+            FindResult result1 = mFairy.findPic("use1.png");
+            if (result1.sim > 0.8f) {
+                result = mFairy.findPic("bb.png");
+                if (result.sim < 0.8f) {
+                    mFairy.onTap(0.8f, result1, "err使用经验道具", Sleep);
+                }
             }
         }
 

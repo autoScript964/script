@@ -20,6 +20,7 @@ public class GamePublicFunction {
     private List<String> mapName;
     private FindResult findResult;
     private List<int[]> XY;
+
     public GamePublicFunction(AtFairyImpl ypFairy) {
         mFairy = ypFairy;
         publicFunction = new PublicFunction(mFairy);
@@ -29,7 +30,7 @@ public class GamePublicFunction {
 
 
 
-    public void goLA()throws Exception{
+    public void goLA() throws Exception {
 
         LtLog.i(publicFunction.getLineInfo() + "回主城临安");
 
@@ -41,30 +42,28 @@ public class GamePublicFunction {
             return;
         }
 
-       openMapWorldOrCurrent("world");
+        openMapWorldOrCurrent("world");
 
-
-        findResult = mFairy.findPic(461,95,527,683,"penglai.png");
-        if(findResult.sim>0.8f){
-            LtLog.e(publicFunction.getLineInfo()+"在宗师地图,开始切换到普通地图.");
+        findResult = mFairy.findPic(461, 95, 527, 683, "penglai.png");
+        if (findResult.sim > 0.8f) {
+            LtLog.e(publicFunction.getLineInfo() + "在宗师地图,开始切换到普通地图.");
             publicFunction.RanSwipe(372, 85, 950, 606, 2, 500);
             publicFunction.RanSwipe(372, 85, 950, 606, 2, 500);
-            mFairy.onTap(224,321,237,335,"",2000);
+            mFairy.onTap(224, 321, 237, 335, "", 2000);
         }
-
 
         findResult = mFairy.findPic(0, 95, 130, 283, "map.png");
         if (findResult.sim < 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "------->map=" + result);
 
-           openMapWorldOrCurrent("world");
+            openMapWorldOrCurrent("world");
 
-            findResult = mFairy.findPic(461,95,527,683,"penglai.png");
-            if(findResult.sim>0.8f){
-                LtLog.e(publicFunction.getLineInfo()+"在宗师地图,开始切换到普通地图.");
+            findResult = mFairy.findPic(461, 95, 527, 683, "penglai.png");
+            if (findResult.sim > 0.8f) {
+                LtLog.e(publicFunction.getLineInfo() + "在宗师地图,开始切换到普通地图.");
                 publicFunction.RanSwipe(372, 85, 950, 606, 2, 500);
                 publicFunction.RanSwipe(372, 85, 950, 606, 2, 500);
-                mFairy.onTap(224,321,237,335,"",2000);
+                mFairy.onTap(224, 321, 237, 335, "", 2000);
             }
 
             findResult = mFairy.findPic(0, 95, 130, 283, "map.png");
@@ -83,7 +82,7 @@ public class GamePublicFunction {
             result = publicFunction.localFindPic(0, 95, 130, 283, "map.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "------->map=" + result);
-                publicFunction.rndTap(985,254,1002,266);
+                publicFunction.rndTap(985, 254, 1002, 266);
                 Thread.sleep(2000);
                 closeWindow();
             }
@@ -107,7 +106,7 @@ public class GamePublicFunction {
 //            return;
 //        }
 
-        LtLog.i(publicFunction.getLineInfo() + "【开始切换地图 ： "+(str.equals("world")?"世界地图":"当前地图")+"】");
+        LtLog.i(publicFunction.getLineInfo() + "【开始切换地图 ： " + (str.equals("world") ? "世界地图" : "当前地图") + "】");
 
 
         result = publicFunction.localFindPic(528, 427, 661, 659, "login.png");
@@ -143,7 +142,7 @@ public class GamePublicFunction {
                 }
 
 //                result = publicFunction.localFindPic(827, 542, 954, 669, "smallMap.png");
-                result = publicFunction.localFindPic(342, 57, 933, 649, "smallMap.png"+"|"+"smallMap1.png");
+                result = publicFunction.localFindPic(342, 57, 933, 649, "smallMap.png" + "|" + "smallMap1.png");
                 if (result.sim >= 0.8) {
                     LtLog.i(publicFunction.getLineInfo() + "【打开世界地图】");
                     publicFunction.rndTap(372, 87, 398, 116);
@@ -156,7 +155,7 @@ public class GamePublicFunction {
                 publicFunction.rndTap(1194, 63, 1241, 104);
                 Thread.sleep(1000);
 //                result = publicFunction.localFindPic(827, 542, 954, 669, "smallMap.png");
-                result = publicFunction.localFindPic(342, 57, 933, 649, "smallMap.png"+"|"+"smallMap1.png");
+                result = publicFunction.localFindPic(342, 57, 933, 649, "smallMap.png" + "|" + "smallMap1.png");
                 if (result.sim >= 0.8) {
                     LtLog.i(publicFunction.getLineInfo() + "【当前地图界面 end!】" + result);
                     break;
@@ -173,14 +172,14 @@ public class GamePublicFunction {
             Thread.sleep(500);
         }
 
-        LtLog.i(publicFunction.getLineInfo() + "【开始切换地图 ： "+(str.equals("world")?"世界地图":"当前地图")+" - 结束】");
+        LtLog.i(publicFunction.getLineInfo() + "【开始切换地图 ： " + (str.equals("world") ? "世界地图" : "当前地图") + " - 结束】");
     }
 
     public void closeWindow() throws Exception {
         LtLog.i(publicFunction.getLineInfo() + "【关叉】");
 
         for (int i = 0; i < 5; i++) {
-            result = publicFunction.localFindPic(770, 2, 1278, 454, "fork.png"+"|"+"fork1.png" +"|" + "fork2.png" + "|" + "fork3.png");
+            result = publicFunction.localFindPic(770, 2, 1278, 454, "fork.png" + "|" + "fork1.png" + "|" + "fork2.png" + "|" + "fork3.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "------------------------closeWindow---->fork=" + result);
                 publicFunction.rndTapWH(result.x, result.y, 10, 10);
@@ -193,7 +192,7 @@ public class GamePublicFunction {
 
     public AtFairy2.OpencvResult close() throws Exception {
         for (int i = 0; i < 6; i++) {
-            result = publicFunction.localFindPic(770, 2, 1278, 454, "fork.png|fork1.png" +"|" + "fork2.png" + "|" + "fork3.png");
+            result = publicFunction.localFindPic(770, 2, 1278, 454, "fork.png|fork1.png" + "|" + "fork2.png" + "|" + "fork3.png");
             if (result.sim >= 0.8) {
                 return result;
             }
@@ -201,6 +200,7 @@ public class GamePublicFunction {
         }
         return result;
     }
+
     //automatic自动 ,,manual手动
     public void manualOrAutomatic(String str) throws Exception {
 
@@ -230,7 +230,7 @@ public class GamePublicFunction {
 
     public void taskOrTeam(String str) throws Exception {
 
-        LtLog.i(publicFunction.getLineInfo() + "【开始切换到："+(str.equals("task")?"任务栏":"队伍栏")+"】");
+        LtLog.i(publicFunction.getLineInfo() + "【开始切换到：" + (str.equals("task") ? "任务栏" : "队伍栏") + "】");
 
         result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png");
         if (result.sim < 0.8) {
@@ -290,11 +290,12 @@ public class GamePublicFunction {
 
         taskOrTeam("team");
 
-        result = publicFunction.localFindPic(0, 156, 116, 274, "flag.png");
+        result = publicFunction.localFindPic(0, 156, 116, 274, "flag.png" + "|" + "flag2.png");
         if (result.sim >= 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "------->flag=" + result);
             return;
         }
+
         for (int i = 0; i < 10; i++) {
             result = publicFunction.localFindPic(36, 174, 188, 297, "createTeam.png");
             if (result.sim >= 0.8) {
@@ -375,7 +376,7 @@ public class GamePublicFunction {
         //点击确认
         boolean state = false;
         for (int i = 0; i < 10; i++) {
-            result = publicFunction.localFindPic(557, 388, 899, 660, "determine.png"+"|"+"determine1.png");
+            result = publicFunction.localFindPic(557, 388, 899, 660, "determine.png" + "|" + "determine1.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "【确定】" + result);
                 publicFunction.rndTapWH(result.x, result.y, 28, 25);
@@ -400,7 +401,7 @@ public class GamePublicFunction {
         //点击确认
         boolean state = false;
         for (int i = 0; i < 10; i++) {
-            result = publicFunction.localFindPic(x_1, y_1, x_2, y_2, "determine.png"+"|"+"determine1.png");
+            result = publicFunction.localFindPic(x_1, y_1, x_2, y_2, "determine.png" + "|" + "determine1.png");
             if (result.sim >= 0.75) {
                 LtLog.i(publicFunction.getLineInfo() + "确定" + result);
                 publicFunction.rndTapWH(result.x, result.y, 28, 25);
@@ -412,10 +413,11 @@ public class GamePublicFunction {
         }
         return state;
     }
-    //以下地图没有安全区3个字作为识别，所以用小地图上方的地图名作为识别，然后点击固定的安全区位置。
-    private void initGoSecurity(){
 
-        mapName=new ArrayList<>();
+    //以下地图没有安全区3个字作为识别，所以用小地图上方的地图名作为识别，然后点击固定的安全区位置。
+    private void initGoSecurity() {
+
+        mapName = new ArrayList<>();
         mapName.add("CHTC.png");//1
         mapName.add("LMKZ.png");///2
         mapName.add("WSXL.png");//3
@@ -434,26 +436,29 @@ public class GamePublicFunction {
         mapName.add("YY.png");//16
         mapName.add("CZ.png");//17
         mapName.add("LZ.png");//18
-
-        XY=new ArrayList<>();
+        mapName.add("JKZ.png");//19
+        mapName.add("CZZS.png");//20
+        XY = new ArrayList<>();
         XY.add(new int[]{649, 364});//1
         XY.add(new int[]{644, 397});//2
-        XY.add(new int[]{617,366});//3
-        XY.add(new int[]{643,338});//4
-        XY.add(new int[]{565,260});//5
-        XY.add(new int[]{644,335});//6
-        XY.add(new int[]{626,340});//7
-        XY.add(new int[]{652,353});//8
-        XY.add(new int[]{631,358});//9
-        XY.add(new int[]{653,334});//10
-        XY.add(new int[]{667,343});//11
-        XY.add(new int[]{659,355});//12
-        XY.add(new int[]{637,420});//13
-        XY.add(new int[]{634,365});//14
-        XY.add(new int[]{640,331});//15
-        XY.add(new int[]{644,349});//16
-        XY.add(new int[]{639,378});//17
-        XY.add(new int[]{584,366});//18
+        XY.add(new int[]{617, 366});//3
+        XY.add(new int[]{643, 338});//4
+        XY.add(new int[]{565, 260});//5
+        XY.add(new int[]{644, 335});//6
+        XY.add(new int[]{626, 340});//7
+        XY.add(new int[]{652, 353});//8
+        XY.add(new int[]{631, 358});//9
+        XY.add(new int[]{653, 334});//10
+        XY.add(new int[]{667, 343});//11
+        XY.add(new int[]{659, 355});//12
+        XY.add(new int[]{637, 420});//13
+        XY.add(new int[]{634, 365});//14
+        XY.add(new int[]{640, 331});//15
+        XY.add(new int[]{644, 349});//16
+        XY.add(new int[]{639, 378});//17
+        XY.add(new int[]{584, 366});//18
+        XY.add(new int[]{632, 397});//19
+        XY.add(new int[]{636, 364});//20
     }
 
     //回安全区
@@ -474,7 +479,7 @@ public class GamePublicFunction {
 
             openMapWorldOrCurrent("current");  //打开世界地图 world , 打开当前地图 current
 
-            result = publicFunction.localFindPic(342, 57, 933, 649, "smallMap.png"+"|"+"smallMap1.png");
+            result = publicFunction.localFindPic(342, 57, 933, 649, "smallMap.png" + "|" + "smallMap1.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "【当前地图界面】");
             } else {
@@ -491,7 +496,7 @@ public class GamePublicFunction {
                     LtLog.i(publicFunction.getLineInfo() + "【点击安全区】");
                     mFairy.tap(result.x + 25, result.y + 10);
                     Thread.sleep(500);
-                    bool=true;
+                    bool = true;
                 }
 
                 result = publicFunction.localFindPic(475, 216, 796, 531, "safetyZone.png");
@@ -499,18 +504,18 @@ public class GamePublicFunction {
                     LtLog.i(publicFunction.getLineInfo() + "【点击安全区】");
                     mFairy.tap(result.x + 5, result.y + 5);
                     Thread.sleep(500);
-                    bool=true;
+                    bool = true;
                 } else {
                     //没有安全区标识
                     for (int j = 0; j < mapName.size(); j++) {
 
                         result = publicFunction.localFindPic(518, 29, 706, 149, mapName.get(j));
                         LtLog.i(publicFunction.getLineInfo() + "------->" + mapName.get(j) + "=" + result);
-                        if (result.sim >= 0.85) {
+                        if (result.sim >= 0.9) {
                             LtLog.i(publicFunction.getLineInfo() + "【没有识别出安全区 - 点击已设置好的各场景坐标】");
                             mFairy.tap(XY.get(j)[0], XY.get(j)[1]);
                             Thread.sleep(500);
-                            bool=true;
+                            bool = true;
                             break;
                         }
                     }
@@ -518,7 +523,7 @@ public class GamePublicFunction {
                 Thread.sleep(500);
             }
 
-            if(bool){
+            if (bool) {
                 break;
             }
 
@@ -541,12 +546,13 @@ public class GamePublicFunction {
 
     /**
      * 回到主城
+     *
      * @throws Exception
      */
     public void goMainCity() throws Exception {
         LtLog.i(publicFunction.getLineInfo() + "【回主城 (临安或者襄阳) - 结束】");
 
-        result = publicFunction.localFindPic(1138, 0, 1280, 80, "mainCity1.png"+"|"+"mainCity.png");
+        result = publicFunction.localFindPic(1138, 0, 1280, 80, "mainCity1.png" + "|" + "mainCity.png");
         if (result.sim >= 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "------->mainCity1=" + result);
             return;
@@ -555,12 +561,12 @@ public class GamePublicFunction {
         openMapWorldOrCurrent("world");
 
 
-        findResult = mFairy.findPic(461,95,527,683,"penglai.png");
-        if(findResult.sim>0.8f){
-            LtLog.e(publicFunction.getLineInfo()+"在宗师地图,开始切换到普通地图.");
+        findResult = mFairy.findPic(461, 95, 527, 683, "penglai.png");
+        if (findResult.sim > 0.8f) {
+            LtLog.e(publicFunction.getLineInfo() + "在宗师地图,开始切换到普通地图.");
             publicFunction.RanSwipe(372, 85, 950, 606, 2, 500);
             publicFunction.RanSwipe(372, 85, 950, 606, 2, 500);
-            mFairy.onTap(224,321,237,335,"",2000);
+            mFairy.onTap(224, 321, 237, 335, "", 2000);
         }
 
 
@@ -570,12 +576,12 @@ public class GamePublicFunction {
 
             openMapWorldOrCurrent("world");
 
-            findResult = mFairy.findPic(461,95,527,683,"penglai.png");
-            if(findResult.sim>0.8f){
-                LtLog.e(publicFunction.getLineInfo()+"在宗师地图,开始切换到普通地图.");
+            findResult = mFairy.findPic(461, 95, 527, 683, "penglai.png");
+            if (findResult.sim > 0.8f) {
+                LtLog.e(publicFunction.getLineInfo() + "在宗师地图,开始切换到普通地图.");
                 publicFunction.RanSwipe(372, 85, 950, 606, 2, 500);
                 publicFunction.RanSwipe(372, 85, 950, 606, 2, 500);
-                mFairy.onTap(224,321,237,335,"",2000);
+                mFairy.onTap(224, 321, 237, 335, "", 2000);
             }
 
             findResult = mFairy.findPic(0, 95, 130, 283, "map.png");
@@ -594,11 +600,11 @@ public class GamePublicFunction {
             result = publicFunction.localFindPic(0, 95, 130, 283, "map.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "------->map=" + result);
-                publicFunction.rndTap(713,160,724,169);
+                publicFunction.rndTap(713, 160, 724, 169);
                 Thread.sleep(2000);
                 closeWindow();
             }
-            result = publicFunction.localFindPic(1138, 0, 1280, 80, "mainCity1.png"+"|"+"mainCity.png");
+            result = publicFunction.localFindPic(1138, 0, 1280, 80, "mainCity1.png" + "|" + "mainCity.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "------->mainCity1=" + result);
                 return;
@@ -620,23 +626,23 @@ public class GamePublicFunction {
             return;
         }
 
-        int err =0;
+        int err = 0;
 
         for (int i = 0; i < 30; i++) {
             result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png");
-            LtLog.i(publicFunction.getLineInfo()+"要打开活动,相似度为："+result.sim);
+            LtLog.i(publicFunction.getLineInfo() + "要打开活动,相似度为：" + result.sim);
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "【活动】");
                 publicFunction.rndTapWH(result.x, result.y, 26, 17);
                 Thread.sleep(2000);
-            }else{
-                findResult = mFairy.findPic(520,17,1134,88,"jiayuan.png");
-                mFairy.onTap(0.8f,findResult,1106,34,1120,43,"在家园,切换活动",3000);
+            } else {
+                findResult = mFairy.findPic(520, 17, 1134, 88, "jiayuan.png");
+                mFairy.onTap(0.8f, findResult, 1106, 34, 1120, 43, "在家园,切换活动", 3000);
             }
 
             result = publicFunction.localFindPic(0, 28, 113, 179, "activity1.png");
             if (result.sim >= 0.8) {
-                err=0;
+                err = 0;
                 LtLog.i(publicFunction.getLineInfo() + "【活动界面】");
                 result = publicFunction.localFindPic(1212, 358, 1272, 417, "redDot.png");
                 if (result.sim >= 0.8) {
@@ -654,7 +660,7 @@ public class GamePublicFunction {
                 if (result.sim >= 0.8) {
                     return;
                 }
-            }else{
+            } else {
 
                 /*err++;
                 if(err>5) {
@@ -705,7 +711,7 @@ public class GamePublicFunction {
 
     public void switchSkillOrTong(String str) throws Exception {
 
-        LtLog.i(publicFunction.getLineInfo() + "【切换右侧栏为："+(str.equals("tong")?"家族":"技能")+"】");
+        LtLog.i(publicFunction.getLineInfo() + "【切换右侧栏为：" + (str.equals("tong") ? "家族" : "技能") + "】");
         //切换家族 或者技能
         for (int i = 0; i < 5; i++) {
             result = publicFunction.localFindPic(900, 618, 1018, 720, "tong.png" + "|" + "tong2.png");
@@ -717,7 +723,7 @@ public class GamePublicFunction {
                 publicFunction.rndTap(1225, 298, 1245, 320);
                 Thread.sleep(500);
             }
-            result = publicFunction.localFindPic(887, 539, 1013, 665, "jump.png"+"|"+"jump1.png");
+            result = publicFunction.localFindPic(887, 539, 1013, 665, "jump.png" + "|" + "jump1.png");
             if (result.sim >= 0.8) {
                 if (str.equals("skill")) {
                     return;
@@ -729,11 +735,11 @@ public class GamePublicFunction {
 
             Thread.sleep(500);
         }
-        LtLog.i(publicFunction.getLineInfo() + "【切换右侧栏为："+(str.equals("tong")?"家族":"技能")+" - 结束】");
+        LtLog.i(publicFunction.getLineInfo() + "【切换右侧栏为：" + (str.equals("tong") ? "家族" : "技能") + " - 结束】");
     }
 
     public AtFairy2.OpencvResult leave() {
-        return publicFunction.localFindPic(814, 1, 1279, 309, "leave.png"+"|"+"leave-1.png"+"|"+"leave-3.png"+"|"+"leave-5.png"+"|"+"leave-6.png");
+        return publicFunction.localFindPic(814, 1, 1279, 309, "leave.png" + "|" + "leave-1.png" + "|" + "leave-3.png" + "|" + "leave-5.png" + "|" + "leave-6.png");
     }
 
     public void setSkill() throws Exception {
@@ -771,7 +777,7 @@ public class GamePublicFunction {
             }
         }
 
-        result = publicFunction.localFindPic(582,561,654,628, "tick.png");
+        result = publicFunction.localFindPic(582, 561, 654, 628, "tick.png");
         if (result.sim >= 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "skill" + result);
             publicFunction.rndTapWH(result.x, result.y, 5, 5);
@@ -793,7 +799,7 @@ public class GamePublicFunction {
             Thread.sleep(2000);
         }
         for (int i = 0; i < 10; i++) {
-            result = publicFunction.localFindPic(1204,202,1265,253, "redDot.png");
+            result = publicFunction.localFindPic(1204, 202, 1265, 253, "redDot.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "------->redDot=" + result);
                 publicFunction.rndTapWH(result.x, result.y, 5, 5);
@@ -890,7 +896,7 @@ public class GamePublicFunction {
     public void assist() throws Exception {
 
         findResult = mFairy.findPic("suo.png");
-        mFairy.onTap(0.9f,findResult,"suo",1000);
+        mFairy.onTap(0.9f, findResult, "suo", 1000);
 
         result = publicFunction.localFindPic(459, 550, 608, 710, "assist.png");
         if (result.sim >= 0.8) {
@@ -939,17 +945,17 @@ public class GamePublicFunction {
             return list;
         }
 
-       while (mFairy.condit()) {
+        while (mFairy.condit()) {
 
-           //瓦舍小游戏
-           if(list.get(0).equals("wsxyx")){
-               closeWindow();
-               return list;
-           }
+            //瓦舍小游戏
+            if (list.get(0).equals("wsxyx")) {
+                closeWindow();
+                return list;
+            }
 
 
             AtFairy2.OpencvResult result1 = publicFunction.localFindPic(226, 87, 722, 414, list.get(0) + ".png");
-            LtLog.i(publicFunction.getLineInfo() + "【活动 sim: " + list.get(0)+" 】");
+            LtLog.i(publicFunction.getLineInfo() + "【活动 sim: " + list.get(0) + " 】");
             if (result1.sim >= 0.8) {
 
                 LtLog.i(publicFunction.getLineInfo() + "【找到活动】");
@@ -965,7 +971,7 @@ public class GamePublicFunction {
                 if (result.sim >= 0.8) {
                     LtLog.i(publicFunction.getLineInfo() + "【已完成,移除当前任务】");
                     list.remove(0);
-                    LtLog.i(publicFunction.getLineInfo() + "【任务list: " + list +"】");
+                    LtLog.i(publicFunction.getLineInfo() + "【任务list: " + list + "】");
                     if (list.size() == 0) {
                         return list;
                     }
@@ -976,8 +982,7 @@ public class GamePublicFunction {
 
 
             findResult = mFairy.findPic("sz.png");
-            mFairy.onTap(0.8f,findResult,497,441,531,457,"取消 - 活动界面弹框",1000);
-
+            mFairy.onTap(0.8f, findResult, 497, 441, 531, 457, "取消 - 活动界面弹框", 1000);
 
 
             if (second >= 4) {
@@ -1005,7 +1010,7 @@ public class GamePublicFunction {
             if (timex >= 120) {
                 LtLog.i(publicFunction.getLineInfo() + "【查找超时】");
                 list.remove(0);
-                time=System.currentTimeMillis() / 1000;
+                time = System.currentTimeMillis() / 1000;
                 if (list.size() == 0) {
                     return list;
                 }
@@ -1031,7 +1036,7 @@ public class GamePublicFunction {
         LtLog.i(mFairy.getLineInfo("【开始召回队员】"));
 
         result = publicFunction.localFindPic(0, 156, 116, 274, "flag.png" + "|" + "flag2.png");
-        if (result.sim >= 0.8) {
+        if (result.sim >= 0.7) {
             LtLog.i(publicFunction.getLineInfo() + "flag");
             publicFunction.rndTapWH(result.x, result.y, 21, 18);
             Thread.sleep(1500);
@@ -1076,6 +1081,7 @@ public class GamePublicFunction {
             Thread.sleep(200);
         }
     }
+
     //判断是否在定时下线的时间段
     public boolean determineResetTime() {
         boolean start = false;
@@ -1088,11 +1094,11 @@ public class GamePublicFunction {
     }
 
     public void gameSleep() throws Exception {
-        int mTime=publicFunction.getMinuteNumber();
-        int mTime1=0;
-       while (mFairy.condit()){
-            mTime1=publicFunction.getMinuteNumber()-mTime;
-            if(mTime1>=15){
+        int mTime = publicFunction.getMinuteNumber();
+        int mTime1 = 0;
+        while (mFairy.condit()) {
+            mTime1 = publicFunction.getMinuteNumber() - mTime;
+            if (mTime1 >= 15) {
                 break;
             }
             LtLog.i(publicFunction.getLineInfo() + "------->time=" + mTime1);

@@ -25,7 +25,7 @@ public class TaskMain {
         gamePublicFuntion = new GamePublicFuntion(ypFairy);
         mFairy = ypFairy;
         mFairy.setGameName("碧蓝航线");
-        mFairy.setGameVersion(62);
+        mFairy.setGameVersion(63);
         init();
     }
 

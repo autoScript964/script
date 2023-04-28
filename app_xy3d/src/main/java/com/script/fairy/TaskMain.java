@@ -29,7 +29,7 @@ public class TaskMain {
         limitlessTask = new LimitlessTask(ypFairy);
         mFairy = ypFairy;
         mFairy.setGameName("梦幻西游三维版");
-        mFairy.setGameVersion(143);
+        mFairy.setGameVersion(155);
         init();
         BANG = true;
     }
@@ -39,7 +39,11 @@ public class TaskMain {
     private int minute;
 
     public void main() throws Exception {
+
+        //mFairy.setIme();
+
         ScProxy.config().Level().capturing(2);
+
         switch (taskId) {
             case 1997:
                 singleTask.setUp();
@@ -59,7 +63,6 @@ public class TaskMain {
                 if (AtFairyConfig.getOption("chubei").equals("1")) {
                     singleTask.chubei();
                 }
-
                 teamTask.gen();
                 break;
             case 1959:
@@ -71,7 +74,7 @@ public class TaskMain {
             case 1949:
                 singleTask.setUp();
 
-                //singleTask.li_rank();
+                singleTask.li_rank();
 
                 if (!AtFairyConfig.getOption("skill").equals("") && !AtFairyConfig.getOption("skill").equals("0")) {
                     singleTask.skill();
@@ -81,8 +84,24 @@ public class TaskMain {
                     singleTask.chubei();
                 }
 
+                if (AtFairyConfig.getOption("hjxx").equals("1")) {
+                    singleTask.hjxx();
+                }
+
                 if (AtFairyConfig.getOption("sm").equals("1")) {
                     singleTask.sm();
+                }
+
+                if (AtFairyConfig.getOption("9043").equals("1")) {
+                    singleTask.mdsy();
+                }
+
+                if (AtFairyConfig.getOption("lczb").equals("1")) {
+                    singleTask.lczb();
+                }
+
+                if (AtFairyConfig.getOption("xysl").equals("1")) {
+                    singleTask.xysl();
                 }
 
                 if (AtFairyConfig.getOption("bt").equals("1")) {
@@ -150,6 +169,8 @@ public class TaskMain {
                 break;
             case 1951:
                 singleTask.setUp();
+
+                singleTask.li_rank();
 
                 if (!AtFairyConfig.getOption("skill").equals("") && !AtFairyConfig.getOption("skill").equals("0")) {
                     singleTask.skill();
@@ -242,6 +263,7 @@ public class TaskMain {
         }
 
         LtLog.e(mFairy.getLineInfo("勾选任务已经全部完成,End!" + AtFairyConfig.getTaskID()));
+        //mFairy.restoreIme();
         mFairy.finish(AtFairyConfig.getTaskID(), TASK_STATE_FINISH);
     }
 

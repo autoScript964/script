@@ -32,19 +32,23 @@ public class LimitlessTask {
     //带队挂野
     public void  Hanging()throws Exception{
         int bj = 0;
-        int ret,ret1;
-        int  numcolor,numcolor1;
-        int js_1=0,js_2=0,js_3=0,js_4=0,js_5=0,js_6=0,js_7=0;
+        int ret;
+        int js_1=0,js_2=0,js_3=0;
         int ditu=0,gysb=0,kf=0;
          String string="";
-        int h, m, w;
+
         ditu=Integer.parseInt(AtFairyConfig.getOption("ditu"));
+
         if (AtFairyConfig.getOption("ls").equals("1")){
             gysb=1;
         }
+
+
         if (AtFairyConfig.getOption("kf").equals("1") ){
             kf=1;
         }
+
+
         if (ditu==1){
             string="514.png";
         }else if (ditu==2){
@@ -74,6 +78,8 @@ public class LimitlessTask {
         }else if (ditu==14){
             string="130139.png";
         }
+
+
         while (mFairy.condit()) {
             Thread.sleep(1500);
             LtLog.e(commonFunction.getLineInfo("带队挂野中bj="+bj));
@@ -81,16 +87,17 @@ public class LimitlessTask {
                 js_1=0;
                 js_2=0;
                 js_3=0;
-                js_4=0;
-                js_5=0;
-                js_6=0;
+
                 gamePublicFunction.init();
                 if (kf==1){
                    teamTask.kf();
                 }else {
                     gamePublicFunction.Hyf();
                 }
+
                 bj = 1;
+
+
             }
             if (bj==1){
                 gamePublicFunction.SetJudgeTask("team");
@@ -99,17 +106,19 @@ public class LimitlessTask {
                 LtLog.e(commonFunction.getLineInfo(result, 0.8f, "创建队伍"));
                 commonFunction.Compare(0.8f, result, commonFunction.getImg());
 
+
+
                 result = mFairy.findPic2(182,59,370,137,commonFunction.setImg("Blkdw.png"));
                 LtLog.e(commonFunction.getLineInfo(result, 0.8f, "离开队伍"));
                 if (result.sim>0.8f){
 
                     mFairy.onTap(1132,120,1152,171,"",2000);
 
-                    result = mFairy.findPic2(174, 556, 280, 653, commonFunction.setImg("1people.png"));
+                   /* result = mFairy.findPic2(174, 556, 280, 653, commonFunction.setImg("1people.png"));
                     if (result.sim < 0.8f) {
-                        LtLog.e(commonFunction.getLineInfo("4个人"));
+                        LtLog.e(commonFunction.getLineInfo("满人了！！！"));
                         bj = 2;
-                    }
+                    }*/
 
                     findResult = mFairy.findPic(1075,49,1222,480,"pi.png");
                     mFairy.onTap(0.8f,findResult,"匹配",2000);
@@ -122,15 +131,18 @@ public class LimitlessTask {
                     }
 
                     findResult = mFairy.findPic(929,541,1115,676,"pi1.png");
-                    mFairy.onTap(0.8f,findResult,"发布",2000);
-
-                    mFairy.onTap(1132,120,1152,171,"",2000);
+                    if(findResult.sim>0.8f) {
+                        mFairy.onTap(0.8f, findResult, "发布", 2000);
+                        bj=2;
+                    }
 
                 }
             }
             if (bj==2){
-                     gamePublicFunction.mission2("Hanging.png");
+
+                    gamePublicFunction.mission2("Hanging.png");
                     Thread.sleep(2000);
+
                     if (gysb==1){
                         result = mFairy.findPic2(855,568,1058,667,commonFunction.setImg("gysb.png"));
                         LtLog.e(commonFunction.getLineInfo(result, 0.8f, "领取双倍"));
@@ -145,15 +157,17 @@ public class LimitlessTask {
                 LtLog.e("打怪双倍界面:"+result);
                 if (result.sim > 0.8) {
 
-                    result = mFairy.findPic2(246, 403, 1070, 460,commonFunction.setImg(string));
-                    LtLog.e(commonFunction.getLineInfo(result, 0.86f, "地图"));
-                    commonFunction.RndCompare(0.86f, result.x + 20, result.y - 200, result, commonFunction.getImg());
 
+                    result = mFairy.findPic2(177,418,1080,486,commonFunction.setImg(string));
                     if (result.sim>0.86f){
 
-                        Thread.sleep(2000);
+                        LtLog.e(commonFunction.getLineInfo(result, 0.86f, "地图"));
+                        commonFunction.RndCompare(0.86f, result.x + 20, result.y - 200, result, commonFunction.getImg());
 
-                        result = mFairy.findPic2(246, 403, 1070, 460,commonFunction.setImg(string));
+
+                        Thread.sleep(3500);
+
+                        result = mFairy.findPic2(177,418,1080,486,commonFunction.setImg(string));
                         LtLog.e(commonFunction.getLineInfo(result, 0.86f, "地图"));
                         commonFunction.RndCompare(0.86f, result.x + 20, result.y - 200, result, commonFunction.getImg());
 
@@ -206,6 +220,10 @@ public class LimitlessTask {
                         bj=0;
                     }
                 }
+
+
+
+
                 ret=timingActivity.timeLimitActivity();
                 if (ret==1){
                     bj=0;

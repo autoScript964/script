@@ -205,13 +205,13 @@ public class GamePublicFuntion {
                     }
                     break;
             }
-            mFairy.onTap(201,435,227,442, "", 500);
+            mFairy.onTap(343,578,350,581, "", 500);
 
             if (bool) {
                 continue;
             }
 
-            mFairy.onTap(201,435,227,442, "", 500);
+            mFairy.onTap(343,578,350,581, "", 500);
             return;
         }
     }//
@@ -343,6 +343,7 @@ public class GamePublicFuntion {
         }
     }//任务初始化
 
+    int shin = 0;
     public boolean shi() throws Exception {
         result = mFairy.findPic(915, 4, 1155, 429, new String[]{"shi.png", "shi1.png"});
         if (result.sim > 0.8f) {
@@ -396,10 +397,10 @@ public class GamePublicFuntion {
                 return false;
             }
 
-            result = mFairy.findPic("yb2.png");
+            result = mFairy.findPic(new String[]{"yb2.png","home1.png"});
             if (result.sim > 0.8f) {
                 err = 0;
-                result = mFairy.findPic(311,293,1128,592, "yb3.png");
+                result = mFairy.findPic(311,293,1128,592, new String[]{"yb3.png","home2.png"});
                 mFairy.onTap(0.8f, result, "点击长安城", 3000);
             }
         }

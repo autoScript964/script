@@ -28,7 +28,7 @@ public class TaskMain {
         limitlessTask = new LimitlessTask(ypFairy);
         mFairy = ypFairy;
         mFairy.setGameName("新笑傲江湖");
-        mFairy.setGameVersion(95);
+        mFairy.setGameVersion(137);
         init();
         BANG = true;
     }

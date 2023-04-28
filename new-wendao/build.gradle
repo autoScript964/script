@@ -54,4 +54,11 @@ dependencies {
     implementation "androidx.core:core-ktx:1.1.0"
 
 
+
+    implementation "com.umeng.umsdk:common:9.4.2"
+    implementation "com.umeng.umsdk:asms:1.4.0"
+    implementation "com.umeng.umsdk:apm:1.4.1"
+
+
+
 }

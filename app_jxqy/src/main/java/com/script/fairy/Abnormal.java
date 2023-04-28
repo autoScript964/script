@@ -53,6 +53,11 @@ public class Abnormal {
 
         while (mFairy.condit()) {
 
+            findResult  = mFairy.findPic(1012,165,1255,638,"zhidao.png");
+            mFairy.onTap(0.8f,findResult,"知道了",1000);
+
+
+
            if ((TaskMain.mTask.equals("redPackageAndDssist") && TaskMain.taskMap.get("redPack") == 0) || TaskMain.mTask.equals("dance")) {
                 LtLog.i(publicFunction.getLineInfo() + "关闭抢红包");
             }else{
@@ -62,6 +67,7 @@ public class Abnormal {
                     publicFunction.rndTapWH(result.x, result.y, 21, 25);
                     Thread.sleep(500);
                 }
+
                 result = publicFunction.localFindPic(523, 141, 789, 338, "redPackage1.png"+"|"+"redPackage2.png");
                 if (result.sim >= 0.8){
                     LtLog.i(publicFunction.getLineInfo() + "红包界面");
@@ -69,6 +75,7 @@ public class Abnormal {
                     Thread.sleep(2000);
                 }
                 Thread.sleep(100);
+
             }
 
             findResult  = mFairy.findPic("ok2.png");

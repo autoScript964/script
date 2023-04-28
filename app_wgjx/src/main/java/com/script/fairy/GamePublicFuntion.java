@@ -189,7 +189,7 @@ public class GamePublicFuntion {
                     err = 0;
                 }
 
-                result = mFairy.findPic(647, 636, 902, 714, new String[]{"yanzheng2.png", "yanzheng5.png"});
+                result = mFairy.findPic(647, 500, 902, 714, new String[]{"yanzheng2.png", "yanzheng5.png","yanzheng7.png"});
                 if (result.sim > 0.8f) {
                     break;
                 } else {
@@ -227,7 +227,7 @@ public class GamePublicFuntion {
                         Thread.sleep(500);
                     }
 
-                    mFairy.onTap(767, 670, 802, 690, "确定", 3000);
+                    mFairy.onTap(747,587,784,603, "确定", 3000);
 
                     result = mFairy.findPic("yanzheng2.png");
                     mFairy.onTap(0.8f, result, 485, 667, 518, 692, "没有验证出来,刷新", 5000);

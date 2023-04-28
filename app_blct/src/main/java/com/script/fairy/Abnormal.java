@@ -17,8 +17,12 @@ public class Abnormal {
     }
 
     public void erro() throws Exception {
+/*
+        result = mFairy.findPic(251,37,595,224,"test2.png");
+        mFairy.onTap(0.7f, result, "test21", 1000);*/
+
         result = mFairy.findPic("shi.png");
-        mFairy.onTap(0.85f, result, "err是", 1000);
+        mFairy.onTap(0.7f, result, "err是", 1000);
 
         result = mFairy.findPic("fan.png");
         mFairy.onTap(0.75f, result, "err返回游戏", 1000);

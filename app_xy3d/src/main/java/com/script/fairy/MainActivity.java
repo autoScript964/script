@@ -19,6 +19,16 @@ public class MainActivity extends AppCompatActivity {
         LtLog.e("onCreate >>>>");
 
         super.onCreate(savedInstanceState);
+
+       /* //设置LOG开关，默认为false
+        UMConfigure.setLogEnabled(true);
+*/
+      /*  //友盟预初始化
+
+        UMConfigure.preInit(this,"63a00a5a88ccdf4b7ea88ee1","Umeng");
+        UMConfigure.init(this,"63a00a5a88ccdf4b7ea88ee1","Umeng",UMConfigure.DEVICE_TYPE_PHONE,"");*/
+
+
         setContentView(R.layout.activity_main);
 
         AtFairyService.startService(this, LocalFairyService.class);

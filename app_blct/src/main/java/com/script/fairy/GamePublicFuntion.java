@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GamePublicFuntion {
+
     public AtFairyImpl mFairy;
     public FindResult result;
     public long time = System.currentTimeMillis();
@@ -31,6 +32,7 @@ public class GamePublicFuntion {
             narrow();
 
             Thread.sleep(100);
+
             mFairy.ranSwipe(316,201, 800, 550, 100, 1000);
 
             FindResult rejs = mFairy.findPic(214, 603, 389, 714, "jiasu.png");
@@ -38,6 +40,7 @@ public class GamePublicFuntion {
                 LtLog.e(mFairy.getLineInfo("分辨率正确"));
                 break;
             }
+
         }
     }//重置
 

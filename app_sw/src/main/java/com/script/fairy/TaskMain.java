@@ -28,7 +28,7 @@ public class TaskMain {
     public TaskMain(AtFairyImpl ypFairy) {
         mFairy = ypFairy;
         mFairy.setGameName("神武");
-        mFairy.setGameVersion(345);
+        mFairy.setGameVersion(363);
         mFairy = ypFairy;
         commonFunction = new CommonFunction(mFairy);
         gamePublicFunction = new GamePublicFunction(mFairy);

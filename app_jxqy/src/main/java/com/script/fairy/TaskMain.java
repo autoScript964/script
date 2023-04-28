@@ -49,8 +49,10 @@ public class TaskMain {
     protected final static String SUBMISSION = "submission";
 
     protected FunctionClass functionClass;
+
     public TaskMain(AtFairyImpl ypFairy) {
         mFairy = ypFairy;
+
         mTask = "";
         xyList = new ArrayList();
         optimeList = new ArrayList();
@@ -59,7 +61,7 @@ public class TaskMain {
 
         taskMap = new HashMap<String, Integer>();
         mFairy.setGameName("新剑侠情缘");
-        mFairy.setGameVersion(604);
+        mFairy.setGameVersion(631);
         publicFunction = new PublicFunction(mFairy);
 //      publicFunction=mFairy.publicFunction;
         limitlessTask = new LimitlessTask(mFairy);
@@ -69,7 +71,6 @@ public class TaskMain {
         gamePublicFunction = new GamePublicFunction(mFairy);
         redPackage = new RedPackage(mFairy);
         functionClass = new FunctionClass(mFairy, mFairy.getContext());
-
     }
 
     private int week;
@@ -77,16 +78,7 @@ public class TaskMain {
     private int minute;
     public void main() throws Exception {
 
-       /* FindResult findResult = new FindResult();
-        for (int i = 0; i < 20; i++) {
-            FindResult fin = mFairy.findPic(328, 80, 1179, 652,"hongdian.png");
-            if (fin.sim > findResult.sim) {
-                findResult = fin;
-            }
-        }
-        LtLog.i("sim:" + findResult.sim + "  " + findResult.x + "," + findResult.y + ",50,50");
-        Thread.sleep(555555);
-*/
+        taskStartTime(AtFairyConfig.getOption("start_time"));
 
         LtLog.e(mFairy.getLineInfo("start:"+AtFairyConfig.getOption("task_id")));
 
@@ -95,6 +87,7 @@ public class TaskMain {
         }else if(AtFairyConfig.getOption("task_id").equals("2715")){
             mTask = "juan";
             taskMap = new HashMap<>();
+
             taskMap.put("five",0);
             taskMap.put("ten",0);
 
@@ -196,6 +189,44 @@ public class TaskMain {
 
     }
 
+    public void taskStartTime(String string) throws Exception {
+        if (string.equals("")) {
+            return;
+        }
+
+        String[] arrstr = string.split("\\|\\|");
+
+        if (arrstr.length < 2) {
+            return;
+
+        } else {
+
+            if (!arrstr[0].equals("1")) {
+                return;
+            }
+
+            String[] arrstr1 = arrstr[1].split(":");
+            int h = Integer.parseInt(arrstr1[0]);
+            int m = Integer.parseInt(arrstr1[1]);
+
+            long time = System.currentTimeMillis();
+            while (mFairy.condit()){
+
+                if(System.currentTimeMillis() - time >30000) {
+                    LtLog.e(mFairy.getLineInfo("等待任务开启 >>>"));
+                    time = System.currentTimeMillis();
+                }
+
+                int hour = mFairy.dateHour();
+                int minute =mFairy.dateMinute();
+
+                if(hour==h && minute==m){
+                    return;
+                }
+            }
+        }
+    }
+
     private void printThrowsError(InterruptedException error) {
         StringWriter sw = new StringWriter();
         error.printStackTrace(new PrintWriter(sw, true));
@@ -242,7 +273,7 @@ public class TaskMain {
                 taskMap.put("OnHookMap", 999);
             } else {
                 //添加地图 需要修改的函数 goSecurity; selectMap2 ,initMapNameList,screenXY
-                for (int i = 1; i <= 41; i++) {
+                for (int i = 1; i <= 43; i++) {
                     if (AtFairyConfig.getOption("map" + Integer.toString(i)).equals("1")) {
                         taskMap.put("OnHookMap", i);
                         break;
@@ -594,7 +625,7 @@ public class TaskMain {
                     break;
                 }
             }
-            for (int i = 1; i <= 7; i++) {
+            for (int i = 1; i <= 8; i++) {
                 if (judgeSelected("teamCopy" + Integer.toString(i))) {
                     taskMap.put("teamCopy", i);
                     break;

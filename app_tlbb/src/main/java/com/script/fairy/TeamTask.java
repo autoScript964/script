@@ -56,7 +56,7 @@ public class TeamTask {
                 time = System.currentTimeMillis() - time / 1000;
             }
 
-            result = publicFunction.localFindPic(822, 24, 954, 72, "activity.png");
+            result = publicFunction.localFindPic(653,1,1104,96, "activity.png");
             if (result.sim > 0.8) {
                 //没有活动按钮 不识别坐标
                 LtLog.i(publicFunction.getLineInfo() + "在主场景");
@@ -110,7 +110,7 @@ public class TeamTask {
                 /**
                  * 在执行反贼入侵任务
                  */
-                result = publicFunction.localFindPic(822, 24, 954, 72, "activity.png");
+                result = publicFunction.localFindPic(653,1,1104,96, "activity.png");
                 if (TaskMain.taskList.get(0).equals("rebel.png") && result.sim >= 0.8) {
 
                     LtLog.i(publicFunction.getLineInfo()+"【在执行反贼入侵任务】");
@@ -172,7 +172,7 @@ public class TeamTask {
 
             } else if (mTime_i >= 15 && mTime_i < 30) {
                 //如果不在组队界面
-                result = publicFunction.localFindPic(822, 24, 954, 72, "activity.png");
+                result = publicFunction.localFindPic(653,1,1104,96, "activity.png");
                 if (TaskMain.taskList.get(0).equals("rebel.png") && result.sim >= 0.8 && gamePublicFunction.outDungeons() == 0) {
 
                     LtLog.i(publicFunction.getLineInfo()+"【在执行反贼入侵任务】");

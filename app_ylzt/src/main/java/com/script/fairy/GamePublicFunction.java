@@ -232,7 +232,7 @@ public class GamePublicFunction {
             }
         }
         LtLog.i(publicFunction.getLineInfo() + "-------mType>" + mType);
-        Thread.sleep(1000);
+        Thread.sleep(3000);
         while (mFairy.condit()) {
             result = publicFunction.localFindPic(365, 138, 498, 582, list1.get(0) + ".png");
             LtLog.i(publicFunction.getLineInfo() + "-------lookupTask--list1.get(0)>" + list1.get(0) + "=" + result);
@@ -291,7 +291,7 @@ public class GamePublicFunction {
                 LtLog.i(publicFunction.getLineInfo() + "---------从下往上滑动=" + result);
                 publicFunction.RanSwipe(389, 213, 965, 400, 2, 1000);
             }
-            Thread.sleep(1000);
+            Thread.sleep(2000);
             second = second + 1;
             if (second >= 12) {
                 second = 0;

@@ -16,8 +16,6 @@ import com.script.opencvapi.utils.AtControl;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
-
 public class ScriptSdkProxy {
 
     private static class F {
@@ -43,6 +41,9 @@ public class ScriptSdkProxy {
         assert fairyImpl != null;
         assert fairyImpl.getContext() != null;
         this.fairyImpl = fairyImpl;
+
+        //fairyImpl.setIme();
+
         ATSdk.getInstance().init(fairyImpl.getContext());
         ATSdk.getInstance().setTaskChangeListener(this::switchTask);
         ATSdk.getInstance().setAPPEixtListener(this::onSdkExitListener);
@@ -51,7 +52,6 @@ public class ScriptSdkProxy {
         fairyImpl.setCompatFairyProxy(this::finish);
         fairyImpl.addOnFiaryEvent(this::onEvent);
         LtLog.e("ScriptSdkProxy init end ---");
-
     }
 
     private void onSdkExitListener() {
@@ -84,6 +84,8 @@ public class ScriptSdkProxy {
     }
 
     private void finish(String s, int i) {
+       //fairyImpl.restoreIme();
+
         LtLog.e("ypf-99", "proxy#finish（1）:: " + s);
         ATSdk.getInstance().onTaskComplete(s);
         LtLog.e("ypf-99", "proxy#finish（2）:: " + s);

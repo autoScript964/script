@@ -70,7 +70,7 @@ public class TaskMain {
         functionClass = new FunctionClass(ypFairy, mContext);
 
         mFairy.setGameName("御龙在天");
-        mFairy.setGameVersion(163);
+        mFairy.setGameVersion(168);
 
     }
 
@@ -137,8 +137,8 @@ public class TaskMain {
 
         LtLog.i(publicFunction.getLineInfo() + "------taskState=" + taskState);
         UpState(taskState);
-
-        mFairy.finish(FAIRY_TYPE_TASK, taskID, TASK_STATE_FINISH);
+        LtLog.e(mFairy.getLineInfo("勾选任务已经全部完成,End!" + AtFairyConfig.getTaskID()));
+        mFairy.finish(AtFairyConfig.getTaskID(), TASK_STATE_FINISH);
 
         return;
 
@@ -298,7 +298,7 @@ public class TaskMain {
 
             LtLog.i(publicFunction.getLineInfo() + "------sun= " + sun + ",currentTime=" + currentTime);
             if (sun.equals("星期一") || sun.equals("星期三") || sun.equals("星期五")) {
-                if (currentTime > 840 && currentTime < 1260) {
+                if (currentTime > 480 && currentTime < 1380) {
                     addTaskList("hero_battlefield");
                 }
             }
@@ -310,26 +310,31 @@ public class TaskMain {
             }
             addTaskList("loong");
         }
+
         if (taskID.equals("1553")) {
             mTask = "treasureMap";
         }
+
         if (taskID.equals("113")) {
             mTask = "outdoorsOnHook";
 
             LtLog.i(publicFunction.getLineInfo() + "------optime1 .....", AtFairyConfig.getOption("optime1"));
             LtLog.i(publicFunction.getLineInfo() + "------3259 .....", AtFairyConfig.getOption("3259"));
+
             for (int i = 1; i <= 2; i++) {
                 if (AtFairyConfig.getOption("radio" + i).equals("1")) {
                     map = i;
                     break;
                 }
             }
+
             for (int i = 1; i <= 5; i++) {
                 if (AtFairyConfig.getOption("npc" + i).equals("1")) {
                     npc = i;
                     break;
                 }
             }
+
             for (int i = 1; i <= 4; i++) {
                 if (AtFairyConfig.getOption("TCZ" + i).equals("1")) {
                     TCZ = i;
@@ -337,6 +342,7 @@ public class TaskMain {
                     break;
                 }
             }
+
             LtLog.i(publicFunction.getLineInfo() + "------TCZ   " + TCZ);
             for (int i = 1; i <= 26; i++) {
                 if (AtFairyConfig.getOption("map" + i).equals("1")) {

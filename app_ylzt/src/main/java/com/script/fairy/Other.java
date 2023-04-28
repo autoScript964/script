@@ -48,6 +48,7 @@ public class Other {
             sellTask();
             TaskMain.taskList.remove("sell");
         }
+
         //清理道具
         if (TaskMain.taskList.indexOf("clear") > -1) {
 

@@ -44,7 +44,6 @@ public class TimingActivity {
     private final int dance_RIGHT = 3;
     private FunctionClass functionClass;
     private Map<Integer, int[]> queenMap = new HashMap<>();//女帝房间位置
-    //    private final String[] dance_png = new String[]{"up_Arrow.png", "down_Arrow.png", "left_Arrow.png", "right_Arrow.png"};
     private final List<Mat> dance_png = new ArrayList<>();
     private Random rand = new Random();
 
@@ -660,39 +659,40 @@ public class TimingActivity {
             JZKHCG();
         }
 
-        // 科举
-        result = publicFunction.localFindPic(362, 139, 438, 222, "exam.png");
-        if (result.sim >= 0.8) {
-            LtLog.i(publicFunction.getLineInfo() + "------->exam=" + result);
-            publicFunction.rndTapWH(result.x, result.y, 20, 20);
+
+        if(AtFairyConfig.getOption("kj").equals("1")) {
+            // 科举
+            result = publicFunction.localFindPic(246, 137, 384, 244, "exam.png");
+            if (result.sim >= 0.75) {
+                LtLog.i(publicFunction.getLineInfo() + "------->exam=" + result);
+                publicFunction.rndTapWH(result.x, result.y, 20, 20);
+                Thread.sleep(1000);
+            }
+        }
+
+        findResult = mFairy.findPic(904, 346, 1114, 498, "exam1.png");
+        if (findResult.sim >= 0.8f) {
+            LtLog.i(mFairy.getLineInfo("答题界面"));
+            int rnd = rand.nextInt(4);
+            switch (rnd) {
+                case 0:
+                    mFairy.onTap(293, 484, 386, 514,"A",1000);
+                    break;
+                case 1:
+                    mFairy.onTap(660, 488, 736, 508,"B",1000);
+                    break;
+                case 2:
+                    mFairy.onTap(289, 582, 396, 607,"C",1000);
+                    break;
+                case 3:
+                    mFairy.onTap(639, 581, 768, 606,"D",1000);
+                    break;
+            }
+
             Thread.sleep(1000);
         }
 
-        result = publicFunction.localFindPic(55, 127, 152, 219, "exam1.png");
-        if (result.sim >= 0.8) {
-            LtLog.i(publicFunction.getLineInfo() + "------->exam1=" + result);
-            result = publicFunction.localFindPic(166, 461, 244, 541, "exam2.png");
-            if (result.sim >= 0.8) {
-                LtLog.i(publicFunction.getLineInfo() + "------->exam2=" + result);
-                //随机点个答案
-                int rnd = rand.nextInt(4);
-                switch (rnd) {
-                    case 0:
-                        publicFunction.rndTap(293, 484, 386, 514);
-                        break;
-                    case 1:
-                        publicFunction.rndTap(660, 488, 736, 508);
-                        break;
-                    case 2:
-                        publicFunction.rndTap(289, 582, 396, 607);
-                        break;
-                    case 3:
-                        publicFunction.rndTap(639, 581, 768, 606);
-                        break;
-                }
-            }
-            Thread.sleep(1000);
-        }
+
         result = publicFunction.localFindPic(393, 323, 651, 408, "exam_over.png");
         if (result.sim >= 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "------->exam_over=" + result);
@@ -1001,7 +1001,7 @@ public class TimingActivity {
             LtLog.i(publicFunction.getLineInfo() + "山河战境活动中");
 
             int currentlyTIME = publicFunction.getMinuteNumber();
-            if (currentlyTIME >= 1292) {
+            if (currentlyTIME >= 1291) {
                 break;
             }
 
@@ -1060,34 +1060,34 @@ public class TimingActivity {
             if (findResult.sim > 0.8f) {
                 switch (AtFairyConfig.getOption("shmap")) {
                     case "1":
-                        mFairy.onTap(998, 67, 1011, 85, "东辽", 2000);
+                        mFairy.onTap(325,178,342,198, "临潢府", 2000);
                         break;
                     case "2":
-                        mFairy.onTap(930, 310, 952, 325, "东夷", 2000);
+                        mFairy.onTap(589,214,616,227, "顺州", 2000);
                         break;
                     case "3":
-                        mFairy.onTap(952, 547, 976, 575, "闽越", 2000);
+                        mFairy.onTap(920,189,946,208, "上京", 2000);
                         break;
                     case "4":
-                        mFairy.onTap(790, 156, 811, 175, "冀州", 2000);
+                        mFairy.onTap(264,328,288,350, "西京", 2000);
                         break;
                     case "5":
-                        mFairy.onTap(744, 321, 762, 342, "京畿", 2000);
+                        mFairy.onTap(400,422,430,445, "涿州", 2000);
                         break;
                     case "6":
-                        mFairy.onTap(727, 535, 752, 568, "荆州", 2000);
+                        mFairy.onTap(583,359,609,374, "中都", 2000);
                         break;
                     case "7":
-                        mFairy.onTap(540, 268, 569, 298, "雍州", 2000);
+                        mFairy.onTap(865,385,892,399, "河北东", 2000);
                         break;
                     case "8":
-                        mFairy.onTap(452, 436, 483, 452, "西川", 2000);
+                        mFairy.onTap(267,555,289,573, "河北西", 2000);
                         break;
                     case "9":
-                        mFairy.onTap(510, 625, 533, 642, "南越", 2000);
+                        mFairy.onTap(929,558,951,572, "大名府", 2000);
                         break;
                     case "10":
-                        mFairy.onTap(341, 195, 363, 220, "西夏", 2000);
+                        mFairy.onTap(688,425,709,445, "蓟州", 2000);
                         break;
                 }
             }
@@ -1222,7 +1222,6 @@ public class TimingActivity {
 
     }//智取花石纲
 
-
     public void hgkm() throws Exception {
 
         gamePublicFunction.closeWindow();
@@ -1334,8 +1333,8 @@ public class TimingActivity {
             }
 
 
-            findResult = mFairy.findPic(182,73,350,170, "hgkm5.png");
-            mFairy.onTap(0.8f,findResult,1215,41,1228,56,"排名界面",1000);
+            findResult = mFairy.findPic(182, 73, 350, 170, "hgkm5.png");
+            mFairy.onTap(0.8f, findResult, 1215, 41, 1228, 56, "排名界面", 1000);
 
 
             findResult = mFairy.findPic(170, 21, 625, 301, "shzj4.png");
@@ -1350,14 +1349,14 @@ public class TimingActivity {
                     findResult = mFairy.findPic(507, 250, 760, 454, "hgkm4.png");
                     if (findResult.sim > 0.8f) {
                         mFairy.onTap(0.8f, findResult, "马车", 3000);
-                        bool=true;
+                        bool = true;
                         break;
                     }
                     Thread.sleep(300);
                 }
 
-                if(bool==false){
-                    mFairy.onTap(621,302,632,311,"点击默认位置",1000);
+                if (bool == false) {
+                    mFairy.onTap(621, 302, 632, 311, "点击默认位置", 1000);
                 }
 
                 gamePublicFunction.closeWindow();
@@ -1368,6 +1367,291 @@ public class TimingActivity {
         }
 
     }//灰谷矿脉
+
+    public void qqyz() throws Exception {
+
+        gamePublicFunction.closeWindow();
+
+        GoSecurityXiakeIsland();//如果在侠客岛,需要先回到安全区,,初始设计脚本时没有考虑到侠客岛这个奇葩,所以这个地方还要调用一次。
+
+        gamePublicFunction.closeWindow();
+
+        gamePublicFunction.exitTeam();
+
+        gamePublicFunction.goSecurity();//回安全区
+
+        LtLog.i(publicFunction.getLineInfo() + "------->等待40S=" + ",要开始执行的任务：山河战境");
+        //如果是在侠客岛挂机 ,就不等了。
+        for (int i = 0; i < 19 && TaskMain.taskMap.get("OnHookMap") != 999; i++) {
+            Thread.sleep(2000);//等待40S
+        }
+
+        gamePublicFunction.openActivity();
+
+        LtLog.i(publicFunction.getLineInfo() + "打开活动窗口");
+
+        long time = System.currentTimeMillis() / 1000, timex = 0;
+        long time1 = System.currentTimeMillis() / 1000, time1x = 0;
+
+
+        boolean fb = false;
+        while (mFairy.condit()) {
+
+            LtLog.i(publicFunction.getLineInfo() + "青丘疑阵活动中");
+
+            int currentlyTIME = publicFunction.getMinuteNumber();
+            if (currentlyTIME >= 1223) {
+                break;
+            }
+
+            result = publicFunction.localFindPic(0, 28, 113, 179, "activity1.png");
+            if (result.sim >= 0.8) {
+                LtLog.i(publicFunction.getLineInfo() + "【活动场景】");
+
+                for (int i = 0; i < 2; i++) {
+                    publicFunction.RanSwipe(916, 153, 1038, 489, 0, 500);
+                }
+
+                Thread.sleep(2000);
+
+                result = publicFunction.localFindPic(894, 126, 1076, 317, "qqyz.png");
+                if (result.sim >= 0.8) {
+                    LtLog.i(publicFunction.getLineInfo() + "发现活动");
+                    publicFunction.rndTap(result.x + 19, result.y + 33, result.x + 89, result.y + 59);
+                    Thread.sleep(3000);
+                } else {
+                    publicFunction.RanSwipe(916, 153, 1038, 489, 0, 500);
+                    Thread.sleep(500);
+                }
+
+                time1x = System.currentTimeMillis() / 1000 - time1;
+                if (time1x >= 60) {
+                    gamePublicFunction.closeWindow();
+                    LtLog.i(publicFunction.getLineInfo() + "---------------------outTime  not task----return---------------------->");
+                    return;
+                }
+
+            } else {
+                time1 = System.currentTimeMillis() / 1000;
+            }
+
+            timex = System.currentTimeMillis() / 1000 - time;
+            if (timex >= 90) {
+                LtLog.i(publicFunction.getLineInfo() + "超时 close");
+                LtLog.i(publicFunction.getLineInfo() + "超时 close");
+                LtLog.i(publicFunction.getLineInfo() + "超时 close");
+
+                gamePublicFunction.closeWindow();
+
+                if(fb){
+                    result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png");
+                    if (result.sim >= 0.8) {
+                        LtLog.e(mFairy.getLineInfo("活动完成"));
+                        return;
+                    }
+                }
+
+                gamePublicFunction.closeWindow();
+                gamePublicFunction.openActivity();
+                time = System.currentTimeMillis() / 1000;
+            }
+
+            result = publicFunction.localFindPic(335, 200, 870, 514, "goSecurity.png");
+            if (result.sim >= 0.8) {
+                LtLog.i(publicFunction.getLineInfo() + "------->goSecurity=" + result);
+                publicFunction.rndTap(734, 434, 805, 464);//点击同意
+                Thread.sleep(1000);
+            }
+
+
+            findResult = mFairy.findPic(969,595,1181,693, "qqyz1.png");
+            mFairy.onTap(0.8f, findResult, "参加活动", 1000);
+
+
+            findResult = mFairy.findPic(950, 211, 1257, 417, "hgkm2.png");
+            if (findResult.sim > 0.75) {
+                time = System.currentTimeMillis() / 1000;
+                LtLog.i(mFairy.getLineInfo("匹配队伍中"));
+
+            }
+
+
+            findResult = mFairy.findPic(483, 5, 792, 95, "hgkm3.png");
+            if (findResult.sim > 0.8f) {
+                time = System.currentTimeMillis() / 1000;
+                LtLog.i(mFairy.getLineInfo("副本中"));
+                fb=true;
+
+                gamePublicFunction.manualOrAutomatic("automatic");
+            }
+            Thread.sleep(2000);
+        }
+
+    }//青丘疑阵
+
+    public void lmx() throws Exception {
+
+        gamePublicFunction.closeWindow();
+
+        GoSecurityXiakeIsland();//如果在侠客岛,需要先回到安全区,,初始设计脚本时没有考虑到侠客岛这个奇葩,所以这个地方还要调用一次。
+
+        gamePublicFunction.closeWindow();
+
+        gamePublicFunction.exitTeam();
+
+        gamePublicFunction.goSecurity();//回安全区
+
+        LtLog.i(publicFunction.getLineInfo() + "------->等待40S=" + ",要开始执行的任务：粮秣行");
+        //如果是在侠客岛挂机 ,就不等了。
+        for (int i = 0; i < 19 && TaskMain.taskMap.get("OnHookMap") != 999; i++) {
+            Thread.sleep(2000);//等待40S
+        }
+
+        gamePublicFunction.openActivity();
+
+        LtLog.i(publicFunction.getLineInfo() + "打开活动窗口");
+
+        long time = System.currentTimeMillis() / 1000, timex = 0;
+
+
+
+
+
+        long time1 = System.currentTimeMillis() / 1000, time1x = 0;
+
+
+        boolean fb = false;
+
+
+        //粮秣行变量
+        boolean song  = true;
+
+        while (mFairy.condit()) {
+
+            LtLog.i(publicFunction.getLineInfo() + "粮秣行活动中");
+
+            /*int currentlyTIME = publicFunction.getMinuteNumber();
+            if (currentlyTIME >= 1223) {
+                break;
+            }*/
+
+            result = publicFunction.localFindPic(0, 28, 113, 179, "activity1.png");
+            if (result.sim >= 0.8) {
+                LtLog.i(publicFunction.getLineInfo() + "【活动场景】");
+
+                for (int i = 0; i < 2; i++) {
+                    publicFunction.RanSwipe(916, 153, 1038, 489, 0, 500);
+                }
+
+                Thread.sleep(2000);
+
+                result = publicFunction.localFindPic(894, 126, 1076, 317, "lmx.png");
+                if (result.sim >= 0.8) {
+                    LtLog.i(publicFunction.getLineInfo() + "发现活动");
+                    publicFunction.rndTap(result.x + 19, result.y + 33, result.x + 89, result.y + 59);
+                    Thread.sleep(3000);
+                } else {
+                    publicFunction.RanSwipe(916, 153, 1038, 489, 0, 500);
+                    Thread.sleep(500);
+                }
+
+                time1x = System.currentTimeMillis() / 1000 - time1;
+                if (time1x >= 60) {
+                    gamePublicFunction.closeWindow();
+                    LtLog.i(publicFunction.getLineInfo() + "---------------------outTime  not task----return---------------------->");
+                    return;
+                }
+
+            } else {
+                time1 = System.currentTimeMillis() / 1000;
+            }
+
+            timex = System.currentTimeMillis() / 1000 - time;
+            if (timex >= 90) {
+                LtLog.i(publicFunction.getLineInfo() + "超时 close");
+                LtLog.i(publicFunction.getLineInfo() + "超时 close");
+                LtLog.i(publicFunction.getLineInfo() + "超时 close");
+
+                gamePublicFunction.closeWindow();
+
+                if(fb){
+                    result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png");
+                    if (result.sim >= 0.8) {
+                        LtLog.e(mFairy.getLineInfo("活动完成"));
+                        return;
+                    }
+                }
+
+                gamePublicFunction.closeWindow();
+                gamePublicFunction.openActivity();
+                time = System.currentTimeMillis() / 1000;
+            }
+
+
+            result = publicFunction.localFindPic(335, 200, 870, 514, "goSecurity.png");
+            if (result.sim >= 0.8) {
+                LtLog.i(publicFunction.getLineInfo() + "------->goSecurity=" + result);
+                publicFunction.rndTap(734, 434, 805, 464);//点击同意
+                Thread.sleep(1000);
+            }
+
+
+            findResult = mFairy.findPic(1000,635,1203,720, "lmx1.png");
+            mFairy.onTap(0.8f, findResult, "粮秣行参加", 1000);
+
+
+            findResult = mFairy.findPic(918,52,1089,199, "fb.png");
+            if (findResult.sim > 0.75f) {
+
+                time = System.currentTimeMillis() / 1000;
+                LtLog.i(mFairy.getLineInfo("副本中"));
+                fb=true;
+
+                if(song){
+                    //开始拉货
+                    mFairy.onTap(607,69,661,85,"开始位置",3000);
+                }else{
+                    mFairy.onTap(860,72,898,80,"结束位置",3000);
+                }
+
+                findResult = mFairy.findPic(943,190,1078,300, "lmx2.png");
+                mFairy.onTap(0.8f, findResult, "人头", 2000);
+
+            }
+
+
+            findResult = mFairy.findPic(325,67,445,243, "lmx3.png");
+            if (findResult.sim > 0.75f) {
+
+                if(song){
+                    //开始拉货
+                    mFairy.onTap(441,378,490,397,"领取",3000);
+                    song=false;
+                }else{
+                    mFairy.onTap(426,467,476,482,"交付",3000);
+
+
+                    for (int i = 0; i < 10; i++) {
+
+                        findResult = mFairy.findPic(918,52,1089,199, "fb.png");
+                        if(findResult.sim>0.8f) {
+                            mFairy.onTap(0.8f, findResult, "离开", 2000);
+                            mFairy.onTap(0.8f, findResult, 747, 442, 778, 457, "离开", 1000);
+                            break;
+                        }
+                    }
+
+                    return;
+                }
+            }
+
+            findResult = mFairy.findPic(1182,177,1272,288, "lmx4.png");
+            mFairy.onTap(0.8f, findResult, "上车", 8000);
+
+            Thread.sleep(2000);
+        }
+    }//粮秣行
+
 
 
     //心魔幻境

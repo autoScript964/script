@@ -1,17 +1,10 @@
 package com.script.fairy;
 
 
-import android.content.Intent;
-
+import com.script.framework.AtFairyImpl;
+import com.script.opencvapi.AtFairyConfig;
 import com.script.opencvapi.FindResult;
 import com.script.opencvapi.LtLog;
-import com.script.opencvapi.AtFairyConfig;
-import com.script.framework.AtFairyImpl;
-
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Administrator on 2018/8/30 0030.
@@ -34,7 +27,7 @@ public class LimitlessTask {
         teamTask = new TeamTask(ypFairy);
     }
 
-    private int go1,go2,go3,go4=0,go5=0;
+    private int go1,go2,go3,go4=0,go5=0,go6=0;
     private boolean ls = true;
 
     public void guaji() throws Exception {
@@ -143,8 +136,8 @@ public class LimitlessTask {
             void content_01() throws Exception {
                 timeCount(10, 0);
 
-                result = mFairy.findPic(236, 6, 783, 100, "guaji.png");
-                mFairy.onTap(0.8f, result, "挂机", 500);
+                result = mFairy.findPic(236, 6, 783, 100, new String[]{"guaji.png","guaji6.png"});
+                mFairy.onTap(0.72f, result, "挂机", 1000);
 
                 result = mFairy.findPic("guaji1.png");
                 if (result.sim > 0.8f) {
@@ -247,6 +240,28 @@ public class LimitlessTask {
                             teamTask.hdxb();
                             gamePublicFuntion.home();
                             go5=1;
+                            bool=true;
+                            continue;
+                        }
+                    }
+
+
+                    if (AtFairyConfig.getOption("9053").equals("1") && go6 == 0) {
+                        if (week == 3 && hour==21) {
+                            gamePublicFuntion.stopBattle();
+
+
+                            switch (AtFairyConfig.getOption("zhlly")){
+                                case "1":
+                                    singleTask.zhlly();
+                                    break;
+                                case "2":
+                                    teamTask.lmy();
+                                    break;
+                            }
+
+                            gamePublicFuntion.home();
+                            go6=1;
                             bool=true;
                             continue;
                         }

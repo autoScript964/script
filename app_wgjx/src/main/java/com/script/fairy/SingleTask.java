@@ -3499,9 +3499,7 @@ public class SingleTask {
                                     mFairy.touchUp(1);
 
                                     for (int i = 0; i < high_grade - 1; i++) {
-                                        LtLog.e(mFairy.getLineInfo("+"));
-                                        mFairy.tap(result.x, result.y);
-                                        Thread.sleep(50);
+                                        mFairy.onTap(result.x, result.y,result.x+1,result.y+1,"+",200);
                                     }
                                     Thread.sleep(200);
                                 }

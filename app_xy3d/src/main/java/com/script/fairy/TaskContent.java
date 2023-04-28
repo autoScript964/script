@@ -288,10 +288,10 @@ public abstract class TaskContent {
     class Slide {
         private int[] slideRangeIndex = new int[4];
         private int[] slideRangeIndex_init = new int[4];
-        private int moveTime = 200;
-        private long endTime = 200;
+        private int moveTime = 1000;
+        private long endTime = 1500;
         private int moveInitTime = 200;
-        private long endInitTime = 20;
+        private long endInitTime = 500;
 
         public Slide(int x, int y, int x1, int y1) {
             slideRangeIndex[0] = x;
@@ -314,7 +314,7 @@ public abstract class TaskContent {
                     LtLog.e(mFairy.getLineInfo("slideRange init滑动>>>"));
                     LtLog.e(mFairy.getLineInfo(slideRangeIndex_init[0] + "," + slideRangeIndex_init[1] + "," +
                             slideRangeIndex_init[2] + "," + slideRangeIndex_init[3] + ""));
-                    for (int i = 0; i < 4; i++) {
+                    for (int i = 0; i < 6; i++) {
                         mFairy.ranSwipe(slideRangeIndex_init[0], slideRangeIndex_init[1], slideRangeIndex_init[2], slideRangeIndex_init[3], init, moveInitTime, endInitTime);
                     }
                     Thread.sleep(endTime);

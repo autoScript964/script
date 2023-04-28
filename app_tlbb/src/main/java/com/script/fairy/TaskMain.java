@@ -94,7 +94,7 @@ public class TaskMain {
         publicFunction = new PublicFunction(ypFairy);
         functionClass = new FunctionClass(ypFairy, mContext);
         mFairy.setGameName("天龙手游");
-        mFairy.setGameVersion(452);
+        mFairy.setGameVersion(463);
         singleTask = new SingleTask(mFairy);
         limitlessTask = new LimitlessTask(mFairy);
         timingActivity = new TimingActivity(mFairy);
@@ -112,6 +112,9 @@ public class TaskMain {
 
             Thread.sleep(50000);
         }*/
+
+/*
+        mFairy.setIme();*/
 
         setTaskList();
 
@@ -842,8 +845,10 @@ public class TaskMain {
                     break;
                 }
 
-                AtFairy2.OpencvResult result1 = publicFunction.localFindPic(1000, 603, 1253, 703, "playGame.png");
-                if (result1.sim >= 0.8) {
+
+                FindResult findResult = mFairy.findPic(1000, 614, 1269, 698, new String[]{"playGame.png","playGame2.png"});
+
+                if (findResult.sim >= 0.8) {
                     LtLog.i(publicFunction.getLineInfo() + "【选择角色界面】");
 
                     result = publicFunction.localFindPic(15, 110 + ((num - 1) * 119), 190, 210 + ((num - 1) * 119), "createRole.png");
@@ -855,7 +860,7 @@ public class TaskMain {
                         publicFunction.rndTap(121, 163 + ((num - 1) * 119), 140, 170 + ((num - 1) * 119));
                         Thread.sleep(1000);
                     }
-                    publicFunction.rndTapWH(result1.x, result1.y, 116, 27);
+                    publicFunction.rndTapWH(findResult.x, findResult.y, 116, 27);
 
                     Thread.sleep(5000);
                 }

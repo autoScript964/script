@@ -25,7 +25,7 @@ public class TaskMain {
         limitlessTask = new LimitlessTask(ypFairy);
         mFairy = ypFairy;
         mFairy.setGameName("梦幻诛仙");
-        mFairy.setGameVersion(134);
+        mFairy.setGameVersion(135);
         init();
     }
 

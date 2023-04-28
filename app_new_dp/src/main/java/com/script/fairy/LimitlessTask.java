@@ -6,6 +6,7 @@ import com.script.opencvapi.AtFairyConfig;
 import com.script.framework.AtFairyImpl;
 
 import java.util.HashMap;
+import java.util.Random;
 
 
 /**
@@ -32,6 +33,8 @@ public class LimitlessTask {//无限任务
     private int ranksNum = 1;
     private String taskName = "";
     private boolean jzHan = false;
+
+    private String[] taskNameArray = {};
 
     abstract class limitlessTask extends TaskContent {
 
@@ -144,7 +147,7 @@ public class LimitlessTask {//无限任务
         }
     }
 
-    private int map = 1;
+    private int map = 0;
     private TaskContent.Slide mapSlide;
     private TaskContent.Slide slideActivity;
     private TaskContent.Time timeRanks;
@@ -207,7 +210,9 @@ public class LimitlessTask {//无限任务
         }
     }//领双
 
+
     public void hangUp() throws Exception {
+
         new limitlessTask(mFairy) {
 
             @Override
@@ -227,16 +232,24 @@ public class LimitlessTask {//无限任务
                 timeLing.setTime(System.currentTimeMillis() - 1800000);
 
                 inOperation();
+
+
             }
 
-            @Override
+
+            void init() throws Exception {
+                super.init();
+                if (map == 0) {
+                    setTaskName(3);
+                }
+            }
+
             void content_01() throws Exception {
                 super.content_01();
                 m = 0;
                 gamePublicFuntion.selectionTask("team.png", "chxx.png");
             }
 
-            @Override
             void content_02() throws Exception {
                 timeCount(10, 0);
 
@@ -332,6 +345,7 @@ public class LimitlessTask {//无限任务
                         case 39:
                         case 40:
                         case 41:
+                        case 55:
                             if (gamePublicFuntion.map(14) == false) {
                                 return;
                             }
@@ -355,21 +369,43 @@ public class LimitlessTask {//无限任务
                                 return;
                             }
                             break;
+                        case 53:
+                        case 54:
+                            if (gamePublicFuntion.map(17) == false) {
+                                return;
+                            }
+                            break;
 
                     }
 
                     if (selectedMap()) {
-                        result = mFairy.findPic(945, 102, 1178, 623, "map" + map + ".png");
-                        if (result.sim > 0.85f) {
-                            mFairy.onTap(0.85f, result, "点击怪物", 1500);
-                            mFairy.onTap(1139, 60, 1159, 79, "", 1000);
-                            setTaskName(3);
-                            m = 0;
-                            return;
+
+                        //雷池随机打怪
+                        if (map == 55) {
+                            int i = new Random().nextInt(4);
+                            i = i + 38;
+
+                            result = mFairy.findPic(945, 102, 1178, 623, "map" + i + ".png");
+                            if (result.sim > 0.85f) {
+                                mFairy.onTap(0.85f, result, "点击怪物", 1500);
+                                mFairy.onTap(1139, 60, 1159, 79, "", 1000);
+                                setTaskName(3);
+                                m = 0;
+                                return;
+                            }
                         } else {
-                            m++;
-                            mapSlide.slideRange(m, new int[]{2, 3, 4, 5}, 2, 0);
+                            result = mFairy.findPic(945, 102, 1178, 623, "map" + map + ".png");
+                            if (result.sim > 0.85f) {
+                                mFairy.onTap(0.85f, result, "点击怪物", 1500);
+                                mFairy.onTap(1139, 60, 1159, 79, "", 1000);
+                                setTaskName(3);
+                                m = 0;
+                                return;
+                            }
                         }
+
+                        m++;
+                        mapSlide.slideRange(m, new int[]{2, 3, 4, 5}, 2, 0);
                     }
                 }
             }
@@ -391,12 +427,17 @@ public class LimitlessTask {//无限任务
 
             void content_03() throws Exception {
                 timeCount(80, 0);
-                gamePublicFuntion.battle(0);
-                if (lingBools) {
-                    if (timeLing.timeJudge(1800000)) {
-                        lingshuang();
-                        gamePublicFuntion.close();
+                if (map != 0) {
+                    gamePublicFuntion.battle(0);
+                    if (lingBools) {
+                        if (timeLing.timeJudge(1800000)) {
+                            lingshuang();
+                            gamePublicFuntion.close();
+                        }
                     }
+
+                } else {
+                    err = 0;
                 }
 
                 if (mFairy.dateHour() == 23) {
@@ -441,7 +482,7 @@ public class LimitlessTask {//无限任务
 
     private int go1 = 0, go2 = 0, go3 = 0, go4 = 0, go5 = 0, go6 = 0, go7 = 0, go8 = 0, go9 = 0,
             go10 = 0, go11 = 0, go12 = 0, go13 = 0, go14 = 0, go15 = 0, go16 = 0, go17 = 0, go18 = 0,
-            go19 = 0, go20 = 0, go21 = 0, go22 = 0, go23 = 0,go24=0;
+            go19 = 0, go20 = 0, go21 = 0, go22 = 0, go23 = 0, go24 = 0;
 
     public void initLimitedTime() {
         go1 = 0;
@@ -577,7 +618,6 @@ public class LimitlessTask {//无限任务
                 }
             }
 
-
             if (AtFairyConfig.getOption("myqq").equals("1") && go6 == 0) {//魔猿抢亲
                 week = mFairy.week();
                 hour = mFairy.dateHour();
@@ -591,6 +631,7 @@ public class LimitlessTask {//无限任务
                     go = true;
                     continue;
                 }
+
             }
 
             if (AtFairyConfig.getOption("zjly").equals("1") && go7 == 0) {//家族炼药
@@ -659,7 +700,7 @@ public class LimitlessTask {//无限任务
                 hour = mFairy.dateHour();
                 minute = mFairy.dateMinute();
                 if (week == 5 &&
-                        hour == 20 && minute >=30 ) {
+                        hour == 20 && minute >= 30) {
                     gamePublicFuntion.battleEnd();
                     gamePublicFuntion.initGo();
                     jhyh();
@@ -957,7 +998,15 @@ public class LimitlessTask {//无限任务
                 result = mFairy.findPic(270, 548, 1145, 649, "huoyue.png");
                 mFairy.onTap(0.92f, result, result.x + 25, result.y + 25, result.x + 35, result.y + 35, "领取活跃", 1000);
 
-                FindResult result1 = mFairy.findPic(117, 172, 842, 547, taskName);
+
+                FindResult result1;
+                if (taskName.equals("wy1.png")) {
+                    result1 = mFairy.findPic(117, 172, 842, 547, new String[]{"wy1.png", "wy4.png"});
+                } else {
+
+                    result1 = mFairy.findPic(117, 172, 842, 547, taskName);
+                }
+
                 if (result1.sim > 0.88f) {
 
                     result = mFairy.findPic(result1.x + 133, result1.y + 22,
@@ -1285,9 +1334,11 @@ public class LimitlessTask {//无限任务
                 }
 
             }
+
             void content_01() throws Exception {
                 setTaskName(2);
             }
+
             @Override
             void content_03() throws Exception {
                 timeCount(15, 0);
@@ -1410,6 +1461,7 @@ public class LimitlessTask {//无限任务
             void content_01() throws Exception {
                 setTaskName(2);
             }
+
             @Override
             void content_03() throws Exception {
                 timeCount(15, 0);
@@ -1527,7 +1579,7 @@ public class LimitlessTask {//无限任务
                 timeCount(15, 0);
                 Thread.sleep(1000);
 
-                result = mFairy.findPic(new String[]{"wy2.png","ljwy.png"});
+                result = mFairy.findPic(new String[]{"wy2.png", "ljwy.png"});
                 if (result.sim > 0.85f) {
                     err = 0;
                     result = mFairy.findPic("dsyj2.png");
@@ -1557,6 +1609,10 @@ public class LimitlessTask {//无限任务
                 } else {
                     result = mFairy.findPic(1199, 98, 1279, 334, "leave.png");
                     if (result.sim > 0.85f) {
+
+                        result = mFairy.findPic(52, 165, 289, 191, "qiu.png");
+                        mFairy.onTap(0.8f, result, 142, 211, 168, 227, "", 1000);
+
                         gamePublicFuntion.whileContent();
                         gamePublicFuntion.battle(0);
                         err = 0;

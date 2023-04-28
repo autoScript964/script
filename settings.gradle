@@ -15,13 +15,11 @@ include ":opencvapi-debug", ':openCVLibrary341', ':scriptSdk', "scriptSdkProxy",
         "app_sw",
         "app_tlbb",
         "app_wgjx",
-        "app_xbxxz",
         "app_xxajh",
         "app_xy3d",
         "new-wendao",
-        "app_dldl",
-        'app_hdjy',
-        "app_jyry",
-        "app_rxcqmds",
-        "app_ahphs"
+        //"app_rxcqmds",
+        "app_ahphs",
+        "collect",
+        "app_tlbb2"
 

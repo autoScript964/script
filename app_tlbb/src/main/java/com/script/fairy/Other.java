@@ -31,13 +31,22 @@ public class Other {
         LtLog.i(publicFunction.getLineInfo() + "开始执行采集任务");
         while (mFairy.condit()) {
 
+            Thread.sleep(200);
+
             gamePublicFunction.follow(0);//取消跟随
 
             for (int i = 0; i < 100; i++) {
                 findResult = mFairy.findPic(487,453,650,518,new String[]{"sheng.png","sheng1.png"});
+
+                FindResult findResult1 = mFairy.findPic(682,445,898,523,new String[]{"yu.png"});
+
                 if (findResult.sim >= 0.7f) {
                     LtLog.i(publicFunction.getLineInfo() + "采集中");
                     Thread.sleep(3000);
+                }else if (findResult1.sim>0.7f){
+                    LtLog.i(publicFunction.getLineInfo() + "采集中");
+                    Thread.sleep(3000);
+
                 }else{
                     break;
                 }

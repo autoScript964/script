@@ -920,7 +920,7 @@ public class SingleTask {
 
     //英雄试炼
     public void HeroFa() throws Exception {
-        int ditu = 0, gw = 1;
+        int gw = 1;
         w:
         while (mFairy.condit()) {
             Thread.sleep(1500);
@@ -1918,8 +1918,8 @@ public class SingleTask {
     public void Partner() throws Exception {
         int bj = 0;
         int ret;
-        int numcolor, numcolor1;
-        int js_1 = 0, js_2 = 0, js_3 = 0, js_4 = 0, js_5 = 0, js_6 = 0, js_7 = 0;
+        int js_1 = 0, js_2 = 0;
+        int countEnd = 0;
         int hb150 = 0;
         if (AtFairyConfig.getOption("150tf").equals("1")) {
             hb150 = 1;
@@ -1930,14 +1930,12 @@ public class SingleTask {
             if (bj == 0) {
                 js_1 = 0;
                 js_2 = 0;
-                js_3 = 0;
-                js_4 = 0;
-                js_5 = 0;
-                js_6 = 0;
                 bj = 1;
+                countEnd=0;
             }
             if (bj == 1) {
-                ret = gamePublicFunction.mission1("hbrw.png", "wchbrw.png");
+                //ret = gamePublicFunction.mission1("hbrw.png", "wchbrw.png");
+                ret = gamePublicFunction.mission( "lilian.png");
                 if (ret == 0) {
                     break;
                 } else if (ret == 1) {
@@ -1945,10 +1943,40 @@ public class SingleTask {
                 }
             }
             if (bj == 2) {
+
+                result = mFairy.findPic("ll1.png");
+                if(result.sim>0.8f){
+
+                    LtLog.e(mFairy.getLineInfo("个人历练界面"));
+
+
+                    result = mFairy.findPic(260,150,1021,590,"hb1.png");
+                    LtLog.e("伙伴sim："+result.sim);
+                    if(result.sim>0.93f){
+                        // 745,272,1023,364
+
+                        result = mFairy.findPic(result.x+150,result.y,result.x+300,result.y+100,"qw.png");
+                        mFairy.onTap(0.8f,result,"前往",1000);
+
+                    }else{
+                        countEnd++;
+                        if(countEnd>2) {
+
+                            LtLog.e(mFairy.getLineInfo("伙伴任务,end!"));
+                            return;
+                        }
+                    }
+
+                }else{
+                    countEnd=0;
+                }
+
+
                 result = mFairy.findPic2(1022, 189, 1096, 504, commonFunction.setImg("rwhb.png"));
+                if (result.sim > 0.8f) {
                 LtLog.e(commonFunction.getLineInfo(result, 0.8f, "任务栏伙伴"));
                 commonFunction.Compare(0.8f, result, commonFunction.getImg());
-                if (result.sim > 0.8f) {
+
                     js_1 = 0;
                 } else {
                     js_1++;
@@ -1971,17 +1999,32 @@ public class SingleTask {
                     result1 = mFairy.findPic2(288, 253, 1003, 703, commonFunction.setImg("llq.png"));
                     LtLog.e(commonFunction.getLineInfo(result1, 0.8f, "50天赋任务"));
                     if (result.sim > 0.8f && hb150 == 1) {
+
+
                         commonFunction.Compare(0.8f, result, commonFunction.getImg());
+
+
                     } else if (result.sim < 0.8f && hb150 == 1) {
+
+
                         commonFunction.RndCompare(929, 670, "刷新一下");
+
+
                         js_2++;
                     } else if (result.sim > 0.8f && result1.sim > 0.8f) {
+
                         commonFunction.Compare(0.8f, result, commonFunction.getImg());
+
                     } else if (result.sim < 0.8f && result1.sim > 0.8f) {
+
                         commonFunction.Compare(0.8f, result1, commonFunction.getImg());
+
                     } else if (result.sim > 0.8f && result1.sim > 0.8f) {
+
                         commonFunction.Compare(0.8f, result, commonFunction.getImg());
+
                     } else if (result.sim < 0.8f && result1.sim < 0.8f) {
+
                         commonFunction.RndCompare(929, 670, "刷新一下");
                         js_2++;
                     }
@@ -2507,8 +2550,6 @@ public class SingleTask {
     public void taskChain() throws Exception {
         int bj = 0, bj_1;
         int cs_1 = 0;
-        int ret;
-        int numcolor, numcolor1;
         int js_1 = 0, js_2 = 0, js_3 = 0, js_4 = 0, js_5 = 0, js_6 = 0, js_7 = 0;
         int ditu = 0;
         String string = "";
@@ -2558,11 +2599,14 @@ public class SingleTask {
                 bj = 0;
                 LtLog.e(commonFunction.getLineInfo("标记长时间未发生变化"));
             }
+
             Thread.sleep(1500);
 
             result = mFairy.findPic(780, 310, 964, 676, "yl.png");
             mFairy.onTap(0.8f, result, "游厉", 1000);
 
+            result = mFairy.findPic(780, 310, 964, 676, "yl1.png");
+            mFairy.onTap(0.8f, result, "游厉1", 1000);
 
             LtLog.e(commonFunction.getLineInfo("任务链中bj=" + bj));
             if (bj == 0) {
@@ -2585,12 +2629,16 @@ public class SingleTask {
                 } else {
                     gamePublicFunction.BackCity(278, 385, "临仙镇");
                     Thread.sleep(2000);
-                    result = mFairy.findPic2(107, 22, 187, 54, commonFunction.setImg("lxz.png"));
-                    LtLog.e(commonFunction.getLineInfo(result, 0.8f, "临仙"));
-                    commonFunction.RndCompare(0.8f, result.x, result.y + 10, result, commonFunction.getImg());
-                    commonFunction.RndCompare(0.8f, 455, 206, result, commonFunction.getImg());
-                    commonFunction.RndCompare(0.8f, 1151, 24, result, commonFunction.getImg());
-                    bj = 5;
+
+
+                    result = mFairy.findPic("lin.png");
+                    if(result.sim>0.8f){
+                        mFairy.onTap(0.8f,result,"当前地图",2500);
+                        commonFunction.RndCompare(0.8f, 455, 206, result, commonFunction.getImg());
+                        commonFunction.RndCompare(0.8f, 1151, 24, result, commonFunction.getImg());
+                        bj = 5;
+                    }
+
                 }
             }
             if (bj == 2) {
@@ -2611,7 +2659,7 @@ public class SingleTask {
                         }
                     }
 
-                    result = mFairy.findPic2(246, 403, 1070, 460, commonFunction.setImg(string));
+                    result = mFairy.findPic2(177,418,1080,486, commonFunction.setImg(string));
                     LtLog.e(commonFunction.getLineInfo(result, 0.86f, "地图"));
                     commonFunction.RndCompare(0.86f, result.x + 20, result.y - 200, result, commonFunction.getImg());
                     if (result.sim > 0.86f) {
@@ -2656,7 +2704,6 @@ public class SingleTask {
                         gamePublicFunction.init();
                         bj = 5;
                     }
-                    bj = 5;
                     js_6 = 0;
                 } else {
                     js_6++;
@@ -2800,6 +2847,7 @@ public class SingleTask {
                 LtLog.e(commonFunction.getLineInfo(result, 0.8f, "右侧逛摊"));
                 if (result.sim > 0.8f && js_3 == 0) {
                     bj = 2;
+                    continue;
                 } else if (result.sim > 0.8f && js_3 == 1) {
                     result = mFairy.findPic2(245, 121, 482, 578, commonFunction.setImg("gtneed.png"));
                     LtLog.e(commonFunction.getLineInfo(result, 0.1f, "需求"));
@@ -2869,6 +2917,14 @@ public class SingleTask {
                 LtLog.e(commonFunction.getLineInfo("标记长时间未发生变化"));
             }
             Thread.sleep(1500);
+
+            result = mFairy.findPic(780, 310, 964, 676, "yl.png");
+            mFairy.onTap(0.8f, result, "游厉", 1000);
+
+            result = mFairy.findPic(780, 310, 964, 676, "yl1.png");
+            mFairy.onTap(0.8f, result, "游厉1", 1000);
+
+
             LtLog.e(commonFunction.getLineInfo("土豪任务链中bj=" + bj));
             if (bj == 0) {
                 js_1 = 0;
@@ -2881,6 +2937,11 @@ public class SingleTask {
                 gamePublicFunction.SetJudgeTask("task");
                 bj = 1;
             }
+
+
+
+
+
             if (bj == 1) {
                 result = mFairy.findPic2(1017, 186, 1104, 510, commonFunction.setImg("yin_rwl.png"));
                 LtLog.e(commonFunction.getLineInfo(result, 0.7f, "任务链"));
@@ -3227,6 +3288,7 @@ public class SingleTask {
             }
         }
     }
+
 }
 
 

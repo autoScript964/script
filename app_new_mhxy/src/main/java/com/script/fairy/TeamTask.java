@@ -75,7 +75,7 @@ public class TeamTask {
                     }
 
                     result = mFairy.findPic(act.x + 180, act.y - 20, act.x + 300, act.y + 70, "can.png");
-                    if (result.sim > 0.8f) {
+                    if (result.sim > 0.75f) {
                         mFairy.onTap(1128, 37, 1151, 55, "任务未完成 >>>", 500);
                         setTaskName(2);
                         oneSecond = 0;
@@ -157,9 +157,9 @@ public class TeamTask {
         }
 
         void content_03() throws Exception {
-            if (timeCount(7, 3)) {
-                gamePublicFuntion.taskInit(1);
-                if (frequencyMap("actcount", 1)) {
+            if (timeCount(12, 3)) {
+                gamePublicFuntion.taskInit(0);
+                if (frequencyMap("actcount", 2)) {
                     setTaskEnd();
                     return;
                 }
@@ -190,8 +190,8 @@ public class TeamTask {
                     }
 
                     result = mFairy.findPic(act.x + 180, act.y - 20, act.x + 300, act.y + 70, "can.png");
-                    if (result.sim > 0.8f) {
-                        mFairy.onTap(0.8f, result, "参加", 500);
+                    if (result.sim > 0.75f) {
+                        mFairy.onTap(0.75f, result, "参加", 500);
                         setTaskName(4);
                         oneSecond = 0;
                         frequencyInit("actcount");
@@ -204,7 +204,7 @@ public class TeamTask {
                         return;
                     }
                 }
-                activitySlide.slideRange(new int[]{3, 4, 5}, 2, 0);
+                activitySlide.slideRange(new int[]{3, 5, 7,8,10}, 2, 0);
             }
         }
 
@@ -333,9 +333,10 @@ public class TeamTask {
                     }
                 }
 
-                for (int i = 0; i < 6; i++) {
-                    mFairy.ranSwipe(803, 172, 816, 336, 2, 100, (long) 500);
+                for (int i = 0; i < 10; i++) {
+                    mFairy.ranSwipe(810,311,808,177,500,500);
                 }
+                Thread.sleep(2000);
                 mFairy.onTap(746, 648, 820, 670, "确定", 500);
             }
         }
@@ -427,11 +428,11 @@ public class TeamTask {
                 }
             }
 
-            result = mFairy.findPic("yb2.png");
+            result = mFairy.findPic(new String[]{"yb2.png","home1.png"});
             if (result.sim > 0.8f) {
                 err = 0;
-                result = mFairy.findPic(494, 340, 1112, 529, "yb3.png");
-                mFairy.onTap(0.8f, result, "点击长安城", 1500);
+                result = mFairy.findPic(311,293,1128,592, new String[]{"yb3.png","home2.png"});
+                mFairy.onTap(0.8f, result, "点击长安城", 3000);
             }
 
 
@@ -536,12 +537,13 @@ public class TeamTask {
                     mFairy.initMatTime();
                     mFairy.onTap(0.85f, result, "抓鬼任务", 1000);
                 } else {
-                    if (gamePublicFuntion.shi()) {
-                        mFairy.initMatTime();
-                    } else {
-                        result = mFairy.findPic("jia7.png");
-                        mFairy.onTap(0.8f, result, "聊天框", 1000);
-                    }
+
+                        if (gamePublicFuntion.shi()) {
+                            mFairy.initMatTime();
+                        } else {
+                            result = mFairy.findPic("jia7.png");
+                            mFairy.onTap(0.8f, result, "聊天框", 1000);
+                        }
                 }
 
                 if (gamePublicFuntion.battle()) {
@@ -553,7 +555,7 @@ public class TeamTask {
                 if(gamePublicFuntion.fail()){
                     failcount++;
                     LtLog.e(mFairy.getLineInfo("战斗失败！！！"));
-                    if(failcount>3){
+                    if(failcount>1){
                         LtLog.e(mFairy.getLineInfo("战斗失败次数过多"));
                         setTaskEnd();
                         return;
@@ -566,10 +568,10 @@ public class TeamTask {
 
                 if (gamePublicFuntion.mainScene()) {
                     if (gamePublicFuntion.judgeStop(3)) {
-                        result = mFairy.findPic(1017, 151, 1179, 540, "ddzg4.png");
+                        result = mFairy.findPic(1029,177,1148,510, new String[]{"ddzg4.png","lg.png"});
                         if (result.sim > 0.7f) {
                             err = 0;
-                            mFairy.onTap(0.7f, result, "捉鬼", 500);
+                            mFairy.onTap(0.7f, result, "捉鬼", 1500);
                             if (mapCount(0.75f, 462, 232, 591, 520, "jia4.png")) {
                                 gamePublicFuntion.home();
                                 setTaskName(2);
@@ -577,7 +579,7 @@ public class TeamTask {
                             return;
                         }
 
-                        taskSlide.slideRange(new int[]{4, 5, 6}, 2, 0);
+                        taskSlide.slideRange(new int[]{3, 5, 6}, 2, 0);
                     } else {
                         err = 0;
                     }
@@ -628,10 +630,12 @@ public class TeamTask {
                     return false;
                 }
 
+                //846,224  946,240,1061,300
                 if (AtFairyConfig.getOption("zg").equals("2")) {
                     FindResult result = mFairy.findPic(act.x + 100, act.y + 16, act.x + 215, act.y + 76,
-                            new String[]{"ddzg6.png", "ddzg7.png"});
-                    if (result.sim > 0.85f) {
+                            new String[]{"ddzg6.png", "ddzg7.png","ddzg8.png"});
+                    LtLog.e(mFairy.getLineInfo("捉鬼活跃判断:"+result.sim));
+                    if (result.sim > 0.8f) {
 
                         return true;
                     }
@@ -1137,7 +1141,7 @@ public class TeamTask {
             }
 
             void content_01() throws Exception {
-                fb(1, "wzs3.png", false);
+                fb(2, "wzs3.png", false);
             }
 
             void content_02() throws Exception {
@@ -1184,6 +1188,271 @@ public class TeamTask {
             }
         };
     }//万丈山-侠士
+
+    public void jcx() throws Exception {
+        new TeamContent(mFairy, "金蝉心-普通") {
+
+            void create() throws Exception {
+                super.create();
+                rankName = "jcx1.png";
+            }
+
+            void init() throws Exception {
+                result = mFairy.findPic("fb2.png");
+                if (result.sim < 0.8f) {
+                    gamePublicFuntion.taskInit(0);
+                }
+                setTaskName(1);
+                oneSecond = 0;
+            }
+
+            void content_01() throws Exception {
+                fb(1, "jcx3.png", false);
+            }
+
+            void content_02() throws Exception {
+                super.content_02();
+                rank("fb.png", "jcx2.png");
+            }
+
+            void content_03() throws Exception {
+                fb(1, "jcx3.png", true);
+            }
+
+            void content_04() throws Exception {
+                timeCount(10, 0);
+
+                result = mFairy.findPic(248, 1, 668, 93, "fb3.png");
+                if (result.sim > 0.85f) {
+                    err = 0;
+
+                    if (gamePublicFuntion.mainScene()) {
+
+                        result = mFairy.findPic(1013, 127, 1223, 514, "fb4.png");
+                        if (result.sim > 0.8f) {
+                            mFairy.onTap(0.8f, result, "跳过剧情", 1000);
+                            return;
+                        }
+
+                        if (gamePublicFuntion.judgeStop(3)) {
+                            mFairy.onTap(1098, 193, 1147, 217, "副本任务", 1000);
+                            mFairy.initMatTime();
+                            return;
+                        }
+                    }
+                }
+
+                if (gamePublicFuntion.fail()) {
+                    if (frequencyMap("failcount", 2)) {
+                        gamePublicFuntion.home();
+                        setTaskEnd();
+                        return;
+                    }
+                }
+
+                gamePublicFuntion.shi();
+            }
+        };
+    }//金蝉心-普通
+
+    public void jcxs() throws Exception {
+        new TeamContent(mFairy, "金蝉心-侠士") {
+
+            void create() throws Exception {
+                super.create();
+                rankName = "jcxs1.png";
+            }
+
+            void init() throws Exception {
+                result = mFairy.findPic("fb2.png");
+                if (result.sim < 0.8f) {
+                    gamePublicFuntion.taskInit(0);
+                }
+                setTaskName(1);
+                oneSecond = 0;
+            }
+
+            void content_01() throws Exception {
+                fb(2, "jcx3.png", false);
+            }
+
+            void content_02() throws Exception {
+                super.content_02();
+                rank("fb.png", "jcxs2.png");
+            }
+
+            void content_03() throws Exception {
+                fb(2, "jcx3.png", true);
+            }
+
+            void content_04() throws Exception {
+                timeCount(10, 0);
+
+                result = mFairy.findPic(248, 1, 668, 93, "fb3.png");
+                if (result.sim > 0.85f) {
+                    err = 0;
+
+                    if (gamePublicFuntion.mainScene()) {
+
+                        result = mFairy.findPic(1013, 127, 1223, 514, "fb4.png");
+                        if (result.sim > 0.8f) {
+                            mFairy.onTap(0.8f, result, "跳过剧情", 1000);
+                            return;
+                        }
+
+                        if (gamePublicFuntion.judgeStop(3)) {
+                            mFairy.onTap(1098, 193, 1147, 217, "副本任务", 1000);
+                            mFairy.initMatTime();
+                            return;
+                        }
+                    }
+                }
+
+                if (gamePublicFuntion.fail()) {
+                    if (frequencyMap("failcount", 2)) {
+                        gamePublicFuntion.home();
+                        setTaskEnd();
+                        return;
+                    }
+                }
+
+                gamePublicFuntion.shi();
+            }
+        };
+    }//金蝉心-侠士
+
+
+    public void txx() throws Exception {
+        new TeamContent(mFairy, "踏西行-普通") {
+
+            void create() throws Exception {
+                super.create();
+                rankName = "txx1.png";
+            }
+
+            void init() throws Exception {
+                result = mFairy.findPic("fb2.png");
+                if (result.sim < 0.8f) {
+                    gamePublicFuntion.taskInit(0);
+                }
+                setTaskName(1);
+                oneSecond = 0;
+            }
+
+            void content_01() throws Exception {
+                fb(1, "txx3.png", false);
+            }
+
+            void content_02() throws Exception {
+                super.content_02();
+                rank("fb.png", "txx2.png");
+            }
+
+            void content_03() throws Exception {
+                fb(1, "txx3.png", true);
+            }
+
+            void content_04() throws Exception {
+                timeCount(10, 0);
+
+                result = mFairy.findPic(248, 1, 668, 93, "fb3.png");
+                if (result.sim > 0.85f) {
+                    err = 0;
+
+                    if (gamePublicFuntion.mainScene()) {
+
+                        result = mFairy.findPic(1013, 127, 1223, 514, "fb4.png");
+                        if (result.sim > 0.8f) {
+                            mFairy.onTap(0.8f, result, "跳过剧情", 1000);
+                            return;
+                        }
+
+                        if (gamePublicFuntion.judgeStop(3)) {
+                            mFairy.onTap(1098, 193, 1147, 217, "副本任务", 1000);
+                            mFairy.initMatTime();
+                            return;
+                        }
+                    }
+                }
+
+                if (gamePublicFuntion.fail()) {
+                    if (frequencyMap("failcount", 2)) {
+                        gamePublicFuntion.home();
+                        setTaskEnd();
+                        return;
+                    }
+                }
+
+                gamePublicFuntion.shi();
+            }
+        };
+    }//踏西行-普通
+
+    public void txxs() throws Exception {
+        new TeamContent(mFairy, "踏西行-侠士") {
+
+            void create() throws Exception {
+                super.create();
+                rankName = "txxs1.png";
+            }
+
+            void init() throws Exception {
+                result = mFairy.findPic("fb2.png");
+                if (result.sim < 0.8f) {
+                    gamePublicFuntion.taskInit(0);
+                }
+                setTaskName(1);
+                oneSecond = 0;
+            }
+
+            void content_01() throws Exception {
+                fb(2, "txx3.png", false);
+            }
+
+            void content_02() throws Exception {
+                super.content_02();
+                rank("fb.png", "txxs2.png");
+            }
+
+            void content_03() throws Exception {
+                fb(2, "txx3.png", true);
+            }
+
+            void content_04() throws Exception {
+                timeCount(10, 0);
+
+                result = mFairy.findPic(248, 1, 668, 93, "fb3.png");
+                if (result.sim > 0.85f) {
+                    err = 0;
+
+                    if (gamePublicFuntion.mainScene()) {
+
+                        result = mFairy.findPic(1013, 127, 1223, 514, "fb4.png");
+                        if (result.sim > 0.8f) {
+                            mFairy.onTap(0.8f, result, "跳过剧情", 1000);
+                            return;
+                        }
+
+                        if (gamePublicFuntion.judgeStop(3)) {
+                            mFairy.onTap(1098, 193, 1147, 217, "副本任务", 1000);
+                            mFairy.initMatTime();
+                            return;
+                        }
+                    }
+                }
+
+                if (gamePublicFuntion.fail()) {
+                    if (frequencyMap("failcount", 2)) {
+                        gamePublicFuntion.home();
+                        setTaskEnd();
+                        return;
+                    }
+                }
+
+                gamePublicFuntion.shi();
+            }
+        };
+    }//踏西行-侠士
 
     public void lsj() throws Exception {
         new TeamContent(mFairy, "流沙净-普通") {
@@ -1860,4 +2129,97 @@ public class TeamTask {
             }//取消
         };
     }//海底寻宝
+
+    public void lmy() throws Exception {
+        new TeamContent(mFairy, "召唤灵梦园") {
+
+            void init() throws Exception {
+                gamePublicFuntion.taskInit(0);
+                setTaskName(1);
+                oneSecond = 0;
+            }
+
+            void create() throws Exception {
+                super.create();
+                activityName = "lmy.png";
+                activityType = 1;
+                rankName = "lmy1.png";
+                tm.put("seeRank", System.currentTimeMillis());
+            }
+
+            void content_02() throws Exception {
+                super.content_02();
+                rank("dshd.png", "lmy2.png");
+            }
+
+            void content_04() throws Exception {
+                if (timeCount(10, 4)) {
+                    result = mFairy.findPic(228, 5, 747, 99, "activity.png");
+                    if (result.sim > 0.8f) {
+                        setTaskName(0);
+                        return;
+                    } else {
+                        gamePublicFuntion.close();
+                    }
+                }
+
+
+                result = mFairy.findPic(770,552,1003,650,"lmy3.png");
+                mFairy.onTap(0.8f,result,"组队参加",2000);
+
+
+                result = mFairy.findPic(915,324,1247,546, new String[]{"lmy6.png"});
+                if (result.sim > 0.85f) {
+                    mFairy.initMatTime();
+                    mFairy.onTap(0.85f, result, "进入战斗", 1000);
+                } else {
+
+                    if (frequencyMap("shi", 1)) {
+                        if (gamePublicFuntion.shi()) {
+                            mFairy.initMatTime();
+                        }
+                    }
+                }
+
+                if (gamePublicFuntion.fail()) {
+                    if (frequencyMap("fail_count", 3)) {
+                        setTaskEnd();
+                        return;
+                    }
+                }
+
+                if (gamePublicFuntion.mainScene()) {
+                    if (gamePublicFuntion.judgeStop(3)) {
+                        result = mFairy.findPic(1021,156,1201,506, "lmy5.png");
+                        if (result.sim > 0.75f) {
+                            err = 0;
+                            mFairy.onTap(0.75f, result, "任务", 1000);
+                            return;
+                        }
+                    } else {
+                        err = 0;
+                    }
+                } else {
+                    mFairy.initMatTime();
+                }
+            }
+
+            void quxiao() throws Exception {
+                FindResult qx = gamePublicFuntion.qx();
+                if (qx.sim > 0.8f) {
+
+                    result = mFairy.findPic(401,185,892,390,"lmy4.png");
+                    if(result.sim>0.8f){
+                        mFairy.onTap(724,425,766,440,"确定参加",5000);
+                        return;
+                    }
+
+
+                    if (frequencyMap("qxCount", 0)) {
+                        mFairy.onTap(0.8f, qx, "取消", 1000);
+                    }
+                }
+            }//取消
+        };
+    }//召唤灵梦园
 }

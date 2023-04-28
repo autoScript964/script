@@ -56,11 +56,13 @@ public class SingleTask {
         gamePublicFunction.openActivity(gamePublicFunction.openActivity_dailt);
         while (mFairy.condit()) {
             sleepTime = matTime.mMatTime(1119, 54, 71, 15, 0.8);
-            LtLog.i(publicFunction.getLineInfo() + "------sleepTime->" + sleepTime);
+            LtLog.i(publicFunction.getLineInfo() + "------sleepTime->" + sleepTime+"    当前任务："+TaskMain.taskList.get(0));
             if (sleepTime >= 30) {
                 gamePublicFunction.openActivity(gamePublicFunction.openActivity_dailt);
                 matTime.resetTime();
             }
+
+
             result = publicFunction.localFindPic(121, 0, 249, 115, "dailt.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "------dailt->" + result);
@@ -493,6 +495,8 @@ public class SingleTask {
 
     //皇榜
     private void huangbangTask() throws Exception {
+
+
         AtFairy2.OpencvResult result;
         result = publicFunction.localFindPic(827, 475, 984, 603, "accept1.png");
         if (result.sim >= 0.8) {
@@ -524,8 +528,6 @@ public class SingleTask {
                 Thread.sleep(200);
             }
         }
-
-
         result = publicFunction.localFindPic(4, 252, 114, 434, "huangbang_over.png");
         if (result.sim >= 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "------huangbang_over->" + result);
@@ -846,8 +848,8 @@ public class SingleTask {
             Thread.sleep(500);
         }
 
-
     }
+
 
     private void initialSet() throws Exception {
         LtLog.i(publicFunction.getLineInfo() + "------initialSet->");

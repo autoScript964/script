@@ -35,6 +35,10 @@ public class GamePublicFunction {
             findResult = mFairy.findPic(968,46,1053,117,"close4.png");
             mFairy.onTap(0.8f,findResult,"关闭",1000);
 
+
+            findResult = mFairy.findPic(963,31,1262,126,"close5.png");
+            mFairy.onTap(0.8f,findResult,"关闭",1000);
+
             findResult = mFairy.findPic(753,421,994,560,new String[]{"quxiao.png","quxiao1.png"});
             mFairy.onTap(0.7f,findResult,"取消",1000);
 
@@ -289,12 +293,17 @@ public class GamePublicFunction {
             }
             if (bj == 2) {
                 result = mFairy.findPic2(217, 4, 628, 85,commonFunction.setImg("Nricheng1.png"));
-                LtLog.e(commonFunction.getLineInfo(result, 0.8f, "日常"));
-                commonFunction.Compare(0.8f, result, commonFunction.getImg());
-
+                if (result.sim>0.8f) {
+                    LtLog.e(commonFunction.getLineInfo(result, 0.8f, "日常"));
+                    commonFunction.Compare(0.8f, result, commonFunction.getImg());
+                    Thread.sleep(2000);
+                }
                 result = mFairy.findPic2(550, 50, 734, 108,commonFunction.setImg("cghd.png"));
-                LtLog.e(commonFunction.getLineInfo(result, 0.8f, "常规活动"));
                 if (result.sim>0.8f){
+
+                    LtLog.e(mFairy.getLineInfo("活动界面"));
+
+
                     result = mFairy.findPic2(211,92,1086,692,commonFunction.setImg(str));
                     LtLog.e(commonFunction.getLineInfo(result, 0.7f, "找到任务"+str));
                     if (result.sim>0.96f){
@@ -328,6 +337,7 @@ public class GamePublicFunction {
                                 }
                             }
                         }
+
                         if (AtFairyConfig.getOption("yl").equals("1")  && str.equals("cghdfb.png") ){
                             result1 = mFairy.findPic2(result.x +30, result.y+56, result.x + 108, result.y + 127,commonFunction.setImg("zghy1.png"));
                             LtLog.e(commonFunction.getLineInfo(result1, 0.1f, "带队副本活跃"));
@@ -341,6 +351,10 @@ public class GamePublicFunction {
                                 }
                             }
                         }
+
+
+
+
 
                         commonFunction.Compare(0.96f, result, commonFunction.getImg());
                         return 1;
@@ -376,9 +390,10 @@ public class GamePublicFunction {
             }
             if (bj == 1) {
                 result = mFairy.findPic2(217, 4, 628, 85,commonFunction.setImg("Nricheng1.png"));
-                LtLog.e(commonFunction.getLineInfo(result, 0.8f, "日常"));
-                commonFunction.Compare(0.8f, result, commonFunction.getImg());
-                commonFunction.delays(0.8f,result,3000);
+                    LtLog.e(commonFunction.getLineInfo(result, 0.8f, "日常"));
+                    commonFunction.Compare(0.8f, result, commonFunction.getImg());
+                    commonFunction.delays(0.8f, result, 3000);
+
                 result = mFairy.findPic2(222, 95, 1060, 413,commonFunction.setImg("cgldl.png"));
                 LtLog.e(commonFunction.getLineInfo(result, 0.8f, "炼丹炉"));
                 if (result.sim>0.8f){
@@ -400,16 +415,27 @@ public class GamePublicFunction {
                         commonFunction.RndCompare(0.8f, 1123, 44, result, commonFunction.getImg());
                     }
                 }
+
+
                 bj=2;
             }
-            if (bj == 2) {
-                result = mFairy.findPic2(217, 4, 628, 85,commonFunction.setImg("Nricheng1.png"));
-                LtLog.e(commonFunction.getLineInfo(result, 0.8f, "日常"));
-                commonFunction.Compare(0.8f, result, commonFunction.getImg());
 
+
+            if (bj == 2) {
+
+
+                result = mFairy.findPic2(217, 4, 628, 85,commonFunction.setImg("Nricheng1.png"));
+                if (result.sim>0.8f) {
+                    LtLog.e(commonFunction.getLineInfo(result, 0.8f, "日常"));
+                    commonFunction.Compare(0.8f, result, commonFunction.getImg());
+                    Thread.sleep(2000);
+                }
                 result = mFairy.findPic2(550, 50, 734, 108,commonFunction.setImg("cghd.png"));
-                LtLog.e(commonFunction.getLineInfo(result, 0.8f, "常规活动"));
+
                 if (result.sim>0.8f){
+
+                    LtLog.e(mFairy.getLineInfo("活动界面"));
+
                     result = mFairy.findPic2(227, 437, 1048, 592,commonFunction.setImg(str));
                     LtLog.e(commonFunction.getLineInfo(result, 0.8f, "找到任务"+str));
                     if (result.sim>0.8f){
@@ -449,7 +475,6 @@ public class GamePublicFunction {
     //开始任务
     public int mission2(String str) throws Exception {
         int bj = 0, js_2 = 0,js_3=0;
-        int cs_1 = 0;
         while (mFairy.condit()) {
             Thread.sleep(1500);
             LtLog.e(commonFunction.getLineInfo("接取任务中bj="+bj));
@@ -457,20 +482,27 @@ public class GamePublicFunction {
                 init();
                 SetJudgeTask("task");
                 js_2=0;
-                bj = 1;
+                bj = 2;
             }
-            if (bj == 1) {
+            /*if (bj == 1) {
                 result = mFairy.findPic2(217, 4, 628, 85,commonFunction.setImg("Nricheng1.png"));
                 LtLog.e(commonFunction.getLineInfo(result, 0.8f, "日常"));
                 commonFunction.Compare(0.8f, result, commonFunction.getImg());
                 commonFunction.delays(0.8f,result,3000);
-                result = mFairy.findPic2(222, 95, 1060, 413,commonFunction.setImg("cgldl.png"));
 
+
+
+
+                result = mFairy.findPic(343,593,528,688,"activity.png");
                 if (result.sim>0.8f){
                     LtLog.e(commonFunction.getLineInfo("日程界面"));
 
 
-                    result = mFairy.findPic2(result.x, result.y - 70, result.x + 100, result.y,commonFunction.setImg("ldlhd.png"));
+
+
+
+
+                    *//*result = mFairy.findPic2(result.x, result.y - 70, result.x + 100, result.y,commonFunction.setImg("ldlhd.png"));
                     LtLog.e(commonFunction.getLineInfo(result, 0.8f, "炼丹炉红点"));
                     if (result.sim > 0.8f) {
                         commonFunction.RndCompare(result.x - 30, result.y + 30, "炼丹炉");
@@ -487,26 +519,27 @@ public class GamePublicFunction {
                         result = mFairy.findPic2(197, 590, 351, 648,commonFunction.setImg("yjlz.png"));
                         LtLog.e(commonFunction.getLineInfo(result, 0.8f, "关闭炼丹"));
                         commonFunction.RndCompare(0.8f, 1123, 44, result, commonFunction.getImg());
-                    }
+                    }*//*
                 }
                 bj=2;
-            }
+            }*/
+
+
+
             if (bj == 2) {
                 result = mFairy.findPic2(217, 4, 628, 85,commonFunction.setImg("Nricheng1.png"));
-                LtLog.e(commonFunction.getLineInfo(result, 0.8f, "日常"));
-                commonFunction.Compare(0.8f, result, commonFunction.getImg());
-
+                if (result.sim>0.8f) {
+                    LtLog.e(commonFunction.getLineInfo(result, 0.8f, "日常"));
+                    commonFunction.Compare(0.8f, result, commonFunction.getImg());
+                    Thread.sleep(2000);
+                }
                 result = mFairy.findPic2(550, 50, 734, 108,commonFunction.setImg("cghd.png"));
                 LtLog.e(commonFunction.getLineInfo(result, 0.8f, "常规活动"));
                 if (result.sim>0.8f){
 
                     if(str.equals("Hanging.png")){
-                        result = mFairy.findPic(211,92,1086,692,new String[]{str,"hhh.png"});
-                        LtLog.e(commonFunction.getLineInfo(result, 0.1f, "找到任务"+str));
-                        if (result.sim>0.7f){
-                            commonFunction.Compare(0.7f, result, commonFunction.getImg());
-                            return 1;
-                        }
+                        mFairy.onTap(944,419,962,428,"打怪双倍",2500);
+                        return 1;
                     }else {
                         result = mFairy.findPic(211, 92, 1086, 692, str);
                         LtLog.e(commonFunction.getLineInfo(result, 0.1f, "找到任务" + str));
@@ -516,6 +549,12 @@ public class GamePublicFunction {
                         }
                     }
                 }
+
+
+
+
+
+
                 js_2++;
                 LtLog.e(commonFunction.getLineInfo("js_2=" + js_2));
                 if (js_2 >= 5 ) {
@@ -526,6 +565,10 @@ public class GamePublicFunction {
                         return 0;
                     }
                 }
+
+
+
+
             }
         }
         return 0;
@@ -536,7 +579,9 @@ public class GamePublicFunction {
         init();
         for (int i=0;i<150;i++){
             Thread.sleep(100);
+
             LtLog.e(mFairy.getLineInfo("退队中"));
+
             SetJudgeTask("team");
             result = mFairy.findPic2(201, 68, 352, 127,commonFunction.setImg("Bcreateteam.png"));
             LtLog.e(commonFunction.getLineInfo(result, 0.8f, "创建队伍"));
@@ -590,32 +635,23 @@ public class GamePublicFunction {
 
     //回城
     public void BackCity(int x,int y,String str) throws Exception {
-        int js_1=0,js_2=0;
         init();
         LtLog.e(mFairy.getLineInfo("回城中"));
         result = mFairy.findPic2(217, 4, 628, 85,commonFunction.setImg("Nricheng1.png"));
-        LtLog.e(commonFunction.getLineInfo(result, 0.8f, "日常"));
+        LtLog.e(commonFunction.getLineInfo(result, 0.8f, "点击地图"));
         commonFunction.RndCompare(0.8f, 46, 44,result, commonFunction.getImg());
+        Thread.sleep(1500);
         commonFunction.RndCompare(0.8f, x, y,result, str);
     }
 
     //判断队伍并回原服
     public void Hyf() throws Exception {
-        int bj = 0,bj_1;
-        int cs_1=0;
-        int ret;
-        int  numcolor,numcolor1;
-        int js_1=0,js_2=0,js_3=0,js_4=0,js_5=0,js_6=0,js_7=0;
+        int bj = 0;
         for (int i1=0;i1<7;i1++){
             Thread.sleep(1500);
             LtLog.e(commonFunction.getLineInfo("判断队伍并回原服中bj=" + bj));
             if (bj == 0) {
-                js_1 = 0;
-                js_2 = 0;
-                js_3 = 0;
-                js_4 = 0;
-                js_5 = 0;
-                js_6 = 0;
+
                 init();
                 result = mFairy.findPic2(commonFunction.setImg("yuanfu.png"));
                 LtLog.e(commonFunction.getLineInfo(result, 0.8f, "在跨服了回原服"));

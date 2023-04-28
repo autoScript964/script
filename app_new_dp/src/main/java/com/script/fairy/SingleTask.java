@@ -17,6 +17,7 @@ public class SingleTask {
 
     public void ThreadTask() throws Exception {
         gamePublicFuntion.init();
+
         while (mFairy.condit()) {
             for (int i = 0; i < 1; i++) {
 
@@ -480,6 +481,7 @@ public class SingleTask {
                         return;
 
                     }else{
+                        mFairy.touchUp();
                         mFairy.ranSwipe(670,390,670,250,500,1500);
                     }
 
@@ -495,7 +497,7 @@ public class SingleTask {
                 }
 
 
-            timeCount(20,0);
+            timeCount(12,0);
 
             }
 
@@ -507,6 +509,75 @@ public class SingleTask {
 
     }//设置
 
+
+    public void hwzj() throws Exception {
+        new singleTask(mFairy) {
+
+            @Override
+            void inOperation() throws Exception {
+                super.inOperation();
+
+                result = mFairy.findPic(300, 404, 509, 579, "resurrection.png");
+                if (result.sim > 0.8f) {
+                    mFairy.onTap(0.8f, result, "安全复活", 1000);
+                    taskNum = 20;
+                }
+                gamePublicFuntion.qx();
+                gamePublicFuntion.chat();
+            }
+
+            @Override
+            void content_01() throws Exception {
+                timeCount(10, 0);
+
+                result = mFairy.findPic("activity.png");
+                mFairy.onTap(0.8f, result, "活动", 2000);
+
+                result = mFairy.findPic("hw.png");
+                mFairy.onTap(0.8f, result, "化外", 2000);
+
+            }
+
+
+            @Override
+            void content_02() throws Exception {
+                timeCount(10, 0);
+                Thread.sleep(1000);
+
+                gamePublicFuntion.whileContent();
+
+                result = mFairy.findPic(47, 133, 124, 417, "xyxx1.png");
+                if (result.sim > 0.82f) {
+                    err = 0;
+                }
+
+                result = mFairy.findPic(271, 64, 459, 217, "gj2.png");
+                if (result.sim > 0.85f) {
+                    taskNum = 0;
+                }
+
+                result = mFairy.findPic(new String[]{"zx1.png", "cy3.png", "fdz2.png", "yj.png"});
+                if (result.sim > 0.85f) {
+                    taskNum = 0;
+                }
+
+                result = mFairy.findPic(829, 637, 926, 712, "main.png");
+                if (result.sim > 0.8f) {
+                    taskNum++;
+                    slideTask.slideRange(new int[]{6, 8}, 2, 0);
+                    if (taskNum > 18) {
+                        result = mFairy.findPic(47, 133, 124, 417, "xyxx1.png");
+                        if (result.sim > 0.82f) {
+                            mFairy.onTap(0.82f, result, "左侧学院修行", 1000);
+                            err = 0;
+                            return;
+                        }
+                    }
+                }
+            }
+        };
+
+    }//化外之境
 
     public void xyxx() throws Exception {
         new singleTask(mFairy) {

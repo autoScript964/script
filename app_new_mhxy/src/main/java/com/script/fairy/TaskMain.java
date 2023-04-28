@@ -22,14 +22,16 @@ public class TaskMain {
     private int hour = 0;
     private int minute = 0;
     FindResult result;
+
     public TaskMain(AtFairyImpl ypFairy) throws Exception {
+
         singleTask = new SingleTask(ypFairy);
         teamTask = new TeamTask(ypFairy);
         limitlessTask = new LimitlessTask(ypFairy);
         gamePublicFuntion = new GamePublicFuntion(ypFairy);
         mFairy = ypFairy;
         mFairy.setGameName("梦幻西游");
-        mFairy.setGameVersion(345);
+        mFairy.setGameVersion(393);
         init();
         GamePublicFuntion.ACTLING = 1;
     }
@@ -42,8 +44,14 @@ public class TaskMain {
 
         taskStartTime(AtFairyConfig.getOption("start_time"));
 
-
         switch (taskId) {
+
+            case 2803:
+                if(!AtFairyConfig.getOption("hl").equals("")){
+                    singleTask.hl(Integer.parseInt(AtFairyConfig.getOption("hl")));
+                }
+                break;
+
             case 1905:
                 singleTask.nn();
                 break;
@@ -70,6 +78,8 @@ public class TaskMain {
                         gamePublicFuntion.home();
                     }
                 }
+
+
 
                 if (AtFairyConfig.getOption("mpcg").equals("1")) {
                     week = mFairy.week();
@@ -192,6 +202,7 @@ public class TaskMain {
                         if (AtFairyConfig.getOption("6097").equals("1")) {
                             yjrc_singleTask();
                         }
+
                         if (AtFairyConfig.getOption("6101").equals("1")) {
                             yjrc_teamTask();
                         }
@@ -237,6 +248,7 @@ public class TaskMain {
         if (AtFairyConfig.getOption("sm").equals("1")) {
             singleTask.sm();
         }
+
         if (AtFairyConfig.getOption("bt").equals("1")) {
             singleTask.bt();
         }
@@ -287,12 +299,12 @@ public class TaskMain {
         }
 
         if(taskId==1907){
-            if(AtFairyConfig.getOption("7868").equals("1") && !AtFairyConfig.getOption("cmap").equals("")){
-                singleTask.ck(Integer.parseInt(AtFairyConfig.getOption("cmap")));
+            if(AtFairyConfig.getOption("7868").equals("1") && !AtFairyConfig.getOption("cmap").equals("") && !AtFairyConfig.getOption("gongf").equals("")){
+                singleTask.ck(Integer.parseInt(AtFairyConfig.getOption("cmap")),Integer.parseInt(AtFairyConfig.getOption("gongf")));
             }
         }else{
-            if (!AtFairyConfig.getOption("cmap").equals("") && !AtFairyConfig.getOption("cmap").equals("0")) {
-                singleTask.ck(Integer.parseInt(AtFairyConfig.getOption("cmap")));
+            if (!AtFairyConfig.getOption("cmap").equals("") && !AtFairyConfig.getOption("cmap").equals("0")&& !AtFairyConfig.getOption("gongf").equals("")) {
+                singleTask.ck(Integer.parseInt(AtFairyConfig.getOption("cmap")),Integer.parseInt(AtFairyConfig.getOption("gongf")));
             }
         }
 
@@ -318,8 +330,14 @@ public class TaskMain {
             singleTask.cjmy();
         }
 
+        if (AtFairyConfig.getOption("7596").equals("1")) {
+            singleTask.cjmy();
+        }
 
 
+        if (AtFairyConfig.getOption("jy").equals("1")) {
+            singleTask.jia();
+        }
 
 
     }//单人任务
@@ -350,7 +368,12 @@ public class TaskMain {
         if (AtFairyConfig.getOption("wzss").equals("1")) {
             teamTask.wzss();
         }
-
+        if (AtFairyConfig.getOption("jcxs").equals("1")) {
+            teamTask.jcxs();
+        }
+        if (AtFairyConfig.getOption("txxs").equals("1")) {
+            teamTask.txxs();
+        }
 
         /**
          * 普通*/
@@ -372,7 +395,12 @@ public class TaskMain {
         if (AtFairyConfig.getOption("wzs").equals("1")) {
             teamTask.wzs();
         }
-
+        if (AtFairyConfig.getOption("jcx").equals("1")) {
+            teamTask.jcx();
+        }
+        if (AtFairyConfig.getOption("txx").equals("1")) {
+            teamTask.txx();
+        }
 
         if (TaskContent.getNumberAssembly(AtFairyConfig.getOption("ls")) != -1) {
             singleTask.ls();
@@ -463,8 +491,10 @@ public class TaskMain {
 
                 result = mFairy.findPic(479, 12, 789, 82, "set2.png");
                 if (result.sim > 0.8f) {
+
                     err = 0;
-                    result = mFairy.findPic(215,573,1019,675,"set3.png");
+
+                    result = mFairy.findPic(215,573,1019,675,new String[]{"set3.png","qhzh.png"});
                     mFairy.onTap(0.8f, result, "切换账号", 1500);
 
                     result = mFairy.findPic("set4.png");

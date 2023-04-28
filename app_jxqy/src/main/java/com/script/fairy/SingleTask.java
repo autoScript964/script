@@ -37,11 +37,11 @@ public class SingleTask {
     }
 
     public int mSingleTask() throws Exception {
+
         AtFairy2.OpencvResult result;
         long timex = 0;
 
         LtLog.i(publicFunction.getLineInfo() + "-------commerceNotTeam > " + TaskMain.taskMap.get("commerceNotTeam"));
-
 
         if (TaskMain.taskMap.get("commerceNotTeam") == 0) {
             //  commerceNotTeam     1 不退  0 退队
@@ -52,6 +52,9 @@ public class SingleTask {
 
         findResult = mFairy.findPic(991,29,1122,97,"jiayuan1.png");
         mFairy.onTap(0.8f,findResult,1007,222,1024,234,"离开家园",5000);
+
+        findResult = mFairy.findPic("li3.png");
+        mFairy.onTap(0.8f,findResult,"离开",1000);
 
         taskList = setTaskList();
 
@@ -454,7 +457,6 @@ public class SingleTask {
         int second = 0;
         while (mFairy.condit()) {
 
-
             sleepTime = matTime.mMatTime(1177, 137, 68, 19, 0.9f);
             if (Math.abs(random.nextInt()) % 100 >= 70) {
                 LtLog.i(publicFunction.getLineInfo() + "------->sleepTime=" + sleepTime);
@@ -484,13 +486,24 @@ public class SingleTask {
                         publicFunction.rndTapWH(result.x, result.y, 44, 21);
                         Thread.sleep(10000);
                     }
+
+
                     if (second >= 4) {
+                        LtLog.i(publicFunction.getLineInfo() + "---------从上往下滑动=" + result);
+                        publicFunction.RanSwipe(98,300,118,417, 0, 500);
+                    } else {
+                        LtLog.i(publicFunction.getLineInfo() + "---------从下往上滑动=" + result);
+                        publicFunction.RanSwipe(98,300,118,417, 2, 500);
+                    }
+
+
+                    /*if (second >= 4) {
                         LtLog.i(publicFunction.getLineInfo() + "---------从上往下滑动=" + result);
                         publicFunction.RanSwipe(233, 108, 719, 393, 0, 500);
                     } else {
                         LtLog.i(publicFunction.getLineInfo() + "---------从下往上滑动=" + result);
                         publicFunction.RanSwipe(233, 108, 719, 393, 2, 500);
-                    }
+                    }*/
                     second = second + 1;
                     if (second > 8) {
                         second = 0;
@@ -645,7 +658,7 @@ public class SingleTask {
                 //245,171  287,205,304,229    235,243,356,300
 
                 result2 = publicFunction.localFindPic(result1.x + 30, result1.y + 24, result1.x + 59, result1.y + 58, "patronsNumber.png");
-                LtLog.i(publicFunction.getLineInfo() + "------->patronsNumber=" + result);
+                LtLog.i(publicFunction.getLineInfo() + "------->patronsNumber=" + result2);
 
                 result = publicFunction.localFindPic(result1.x - 10, result1.y + 72, result1.x + 111, result1.y + 129, "attend1.png");
                 if (result.sim >= 0.8 && result2.sim >= 0.8) {
@@ -718,30 +731,34 @@ public class SingleTask {
 
     //重新上架
     private void stall() throws Exception {
-        LtLog.i(publicFunction.getLineInfo() + "---------stall=");
+        LtLog.i(publicFunction.getLineInfo() + "---------重新上架");
         AtFairy2.OpencvResult result;
         int index = 0;
-        LtLog.i(publicFunction.getLineInfo() + "-------stall>");
+
+
         for (int i = 0; i < 15; i++) {
-            result = publicFunction.localFindPic(682, 0, 801, 104, "stall.png" + "|" + "stall4.png");
+
+
+            result = publicFunction.localFindPic(682, 0, 801, 104, "stall.png" + "|" + "stall4.png" +"|"+ "stall5.png");
             LtLog.i(publicFunction.getLineInfo() + "-------stall>" + result);
             if (result.sim >= 0.8) {
-                LtLog.i(publicFunction.getLineInfo() + "-------stall>" + result);
                 publicFunction.rndTapWH(result.x, result.y, 19, 20);
                 Thread.sleep(500);
             }
+
             result = publicFunction.localFindPic(369, 244, 555, 331, "err7.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "-------err7>" + result);
                 publicFunction.rndTap(606, 435, 668, 461);//点确认
                 Thread.sleep(1000);
             }
+
             result = publicFunction.localFindPic(231, 57, 435, 179, "stall2.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "-------stall2>" + result);
 
                 result = publicFunction.localFindPic(85, 161, 201, 274, "overtime.png");
-                if (result.sim >= 0.8) {
+                if (result.sim >= 0.7) {
                     LtLog.i(publicFunction.getLineInfo() + "-------overtime>" + result);
                     publicFunction.rndTapWH(result.x + 100, result.y, 16, 13);
                     Thread.sleep(1500);
@@ -768,6 +785,8 @@ public class SingleTask {
             if (index >= 3) {
                 break;
             }
+
+
             Thread.sleep(100);
         }
 
@@ -826,6 +845,7 @@ public class SingleTask {
             result = publicFunction.localFindPic(140, 105, 300, 647, "Acer.png");
             if (result.sim >= 0.8) {
                 publicFunction.rndTapWH(result.x, result.y, 5, 5);
+                Thread.sleep(2000);
                 break;
             } else {
                 publicFunction.RanSwipe(168, 186, 237, 378, 2, 500);
@@ -833,27 +853,23 @@ public class SingleTask {
             }
         }
 
-       /* for (int v = 0; v < 3; v++) {
-            List<PublicFunction.Coordinate> XYList = new ArrayList<>();
-            for (int k = 0; k < 3; k++) {
-                PublicFunction.Coordinate coordinate;
-                List list = new ArrayList();
-                for (int i = 0; i <= 5; i++) {
-                    for (int j = 0; j <= 3; j++) {
-                        list.add((371 + (i * 133)) + "," + (168 + (j * 140)));
-                    }
-                }
-                coordinate = publicFunction.judgeListColorChange(list, 1000);
-                LtLog.i(publicFunction.getLineInfo() + "------------" + "--------------json....." + coordinate);
-                XYList.add(coordinate);
-            }
 
-            for (int i = 0; i < XYList.size(); i++) {
-                mFairy.tap(XYList.get(i).x + 20, XYList.get(i).y - 10);
-                Thread.sleep(500);
+        List<FindResult> resultList = mFairy.findPic(338,187,1185,671,0.75f,"qian.png");
+        if(resultList.size()==0){
+            mFairy.onTap(404,309,413,323,"第一次签到",1000);
+        }else{
+            findResult = resultList.get(resultList.size()-1);
+            if(findResult.x>1041){
+                mFairy.onTap(findResult.x-685,findResult.y-165,findResult.x-680,findResult.y-170,"签到",1000);
+            }else{
+                mFairy.onTap(findResult.x+115,findResult.y,findResult.x+120,findResult.y+1,"签到",1000);
             }
-        }*/
+        }
 
+
+        /**
+         * 签到功能
+         *
         FindResult findResult = new FindResult();
         for (int i = 0; i < 20; i++) {
             FindResult fin = mFairy.findPic(328, 80, 1179, 652, "hongdian.png");
@@ -865,7 +881,7 @@ public class SingleTask {
         mFairy.onTap(findResult.x - 50, findResult.y - 30, findResult.x - 40, findResult.y - 29, "签到", 1000);
         mFairy.onTap(findResult.x - 50, findResult.y, findResult.x - 40, findResult.y + 1, "签到", 1000);
         mFairy.onTap(findResult.x - 50, findResult.y + 29, findResult.x - 40, findResult.y + 30, "签到", 1000);
-
+*/
         LtLog.i(publicFunction.getLineInfo() + "【摇钱树】");
         //摇钱树
         for (int i = 0; i < 4; i++) {
@@ -1010,9 +1026,19 @@ public class SingleTask {
                     if (i == 0) {
                         index = index + 1;
                     }
-                    LtLog.i(publicFunction.getLineInfo() + "---------meditation1.png=" + result);
+
                     publicFunction.rndTapWH(result.x, result.y, 60, 26);
+
+
+                    for (int i1 = 0; i1 < 5; i1++) {
+                        Thread.sleep(200);
+                        findResult = mFairy.findPic(489,25,549,389,"bei.png");
+                        if(findResult.sim>0.8f){
+                            return;
+                        }
+                    }
                     Thread.sleep(4000);
+
                 }
             }
 
@@ -1669,6 +1695,12 @@ public class SingleTask {
                 Thread.sleep(2000);
             }
 
+            findResult = mFairy.findPic(399,325,581,611,"dazuo1.png");
+            if(findResult.sim>0.8f){
+                mFairy.ranSwipe(655,583,608,68,500,2000);
+                Thread.sleep(2000);
+            }
+
             findResult = mFairy.findPic(332,197,765,586,"zhanlong1.png");
             mFairy.onTap(0.8f,findResult,"战龙任务",2000);
         }
@@ -1966,7 +1998,45 @@ public class SingleTask {
 
         AtFairy2.OpencvResult result, result1;
 
-        result = publicFunction.localFindPic(109, 500, 1174, 583, "challenge.png");//678,527   727,565,759,593
+
+        findResult = mFairy.findPic(94,452,1156,592,"tiaozhan.png");
+        if(findResult.sim>0.75f){
+            LtLog.i(publicFunction.getLineInfo() + "挑战");
+
+            for (int i = 0; i < 5; i++) {
+                result1 = publicFunction.localFindPic(88, 504, 1152, 596, "receive2.png");
+                if (result1.sim > 0.75) {
+                    LtLog.i(publicFunction.getLineInfo() + "领取奖励");
+                    publicFunction.rndTapWH(result1.x, result1.y, 5, 5);
+                    Thread.sleep(1000);
+                }
+            }
+
+            if (findResult.x > 250) {
+                mFairy.tap(findResult.x - 271, findResult.y);//挑战x坐标大于250 点击 领取奖励 固定位置
+                Thread.sleep(1000);
+                publicFunction.rndTapWH(findResult.x, findResult.y, 28, 26);
+                Thread.sleep(3000);
+            } else {
+                publicFunction.rndTapWH(findResult.x, findResult.y, 28, 26);
+                Thread.sleep(3000);
+            }
+
+            result1 = publicFunction.localFindPic(findResult.x + 49, findResult.y + 30, findResult.x + 81, findResult.y + 66, "0-2.png");
+            LtLog.i(publicFunction.getLineInfo() + "次数sim:" + result1.sim);
+            if (result1.sim >= 0.75) {
+                LtLog.i(publicFunction.getLineInfo() + "没次数了");
+                gamePublicFunction.closeWindow();
+                taskList.remove(0);
+                Thread.sleep(1000);
+                gamePublicFunction.openActivity();
+                return;
+            }
+
+        }
+
+
+       /* result = publicFunction.localFindPic(109, 500, 1174, 583, "challenge.png");//678,527   727,565,759,593
         if (result.sim >= 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "挑战");
 
@@ -1999,7 +2069,7 @@ public class SingleTask {
                 gamePublicFunction.openActivity();
                 return;
             }
-        }
+        }*/
 
         result = publicFunction.localFindPic(873, 106, 932, 161, "ten.png" + "|" + "shi.png");
         LtLog.i(publicFunction.getLineInfo() + "十层sim：" + result.sim);
@@ -2374,9 +2444,28 @@ public class SingleTask {
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "--------------------  hutSign.png=" + result);
                 publicFunction.rndTapWH(result.x, result.y, 10, 10);
-                Thread.sleep(500);
+                Thread.sleep(1500);
             }
-            result = publicFunction.localFindPic(491, 270, 570, 504, "everyday2.png" + "|" + "everyday3.png" + "|" + "everyday4.png");
+
+
+            findResult = mFairy.findPic(937,361,1067,463,"xz1.png");
+            mFairy.onTap(0.8f,findResult,"每日抽奖",1000);
+
+            findResult = mFairy.findPic("xz2.png");
+            mFairy.onTap(0.8f,findResult,"抽奖",1000);
+
+
+            findResult = mFairy.findPic("xz4.png");
+            if(findResult.sim>0.8f) {
+                mFairy.onTap(1018,53,1031,64,"",1000);
+                break;
+            }
+            findResult = mFairy.findPic("xz3.png");
+            mFairy.onTap(0.8f,findResult,"确定",1000);
+
+
+
+            /*result = publicFunction.localFindPic(491, 270, 570, 504, "everyday2.png" + "|" + "everyday3.png" + "|" + "everyday4.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "--------------------  everyday3.png=" + result);
                 publicFunction.rndTap(551, 313, 557, 380);
@@ -2449,16 +2538,20 @@ public class SingleTask {
 //                    Thread.sleep(500);
 //                }
 //                break;
-//            }
+//            }*/
             Thread.sleep(1000);
         }
         for (int j = 0; j < 3; j++) {
-            result = publicFunction.localFindPic(1176, 15, 1249, 112, "out.png");
+           /* result = publicFunction.localFindPic(1176, 15, 1249, 112, "out.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "--------------------  out.png=" + result);
                 publicFunction.rndTapWH(result.x, result.y, 10, 10);
                 Thread.sleep(1000);
-            }
+            }*/
+
+            findResult = mFairy.findPic("xz5.png");
+            mFairy.onTap(0.8f,findResult,"关闭",1000);
+
             Thread.sleep(500);
         }
 

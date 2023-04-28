@@ -483,6 +483,41 @@ public class GamePublicFuntion {
                     mFairy.onTap(272, 646, 273, 650, "斗气大陆", 1500);
                     mFairy.onTap(1113,150,1129,164, "魂天界", 2000);
                     break;
+                case 17:
+
+
+                    result = mFairy.findPic("g28.png");
+                    if (result.sim > 0.92f) {
+                        return true;
+                    }
+
+                    result = mFairy.findPic("g21.png");
+                    if (result.sim > 0.92f) {
+                        result = mFairy.findPic(1008, 218, 1175, 651, "g27.png");
+                        if (result.sim > 0.85f) {
+                            mFairy.onTap(0.85f, result, "前往二层", 5000);
+                        } else {
+                            result = mFairy.findPic(960, 84, 1142, 536, "g16.png");
+                            mFairy.onTap(0.85f, result, "传送门", 1000);
+                        }
+                        continue;
+                    }
+
+                    result = mFairy.findPic("g20.png");
+                    if (result.sim > 0.92f) {
+                        result = mFairy.findPic(1008, 218, 1175, 651, "g15.png");
+                        if (result.sim > 0.85f) {
+                            mFairy.onTap(0.85f, result, "前往二层", 5000);
+                        } else {
+                            result = mFairy.findPic(960, 84, 1142, 536, "g16.png");
+                            mFairy.onTap(0.85f, result, "传送门", 1000);
+                        }
+                        continue;
+                    }
+                    mFairy.onTap(272, 646, 273, 650, "斗气大陆", 1500);
+                    mFairy.onTap(367, 336, 403, 350, "天焚炼气塔", 2000);
+
+                    break;
 
             }
         }

@@ -51,22 +51,28 @@ public class GamePublicFuntion {
         for (int i = 0; i < num; i++) {
 
             result = mFairy.findPic(787, 4, 1271, 363, "close1.png");
-            mFairy.onTap(0.9f, result, "close1", 1000);
+            mFairy.onTap(0.9f, result, "close1", 1500);
 
             result = mFairy.findPic(910, 2, 1275, 387, "close2.png");
-            mFairy.onTap(0.9f, result, "close2", 500);
+            mFairy.onTap(0.9f, result, "close2", 1500);
 
             result = mFairy.findPic("close3.png");
-            mFairy.onTap(0.9f, result, "close3", 500);
+            mFairy.onTap(0.9f, result, "close3", 1500);
 
             result = mFairy.findPic("close3.png");
-            mFairy.onTap(0.9f, result, "close3", 500);
+            mFairy.onTap(0.9f, result, "close3", 1500);
 
             result = mFairy.findPic(972, 2, 1272, 345, "close4.png");
-            mFairy.onTap(0.9f, result, "close4", 500);
+            mFairy.onTap(0.9f, result, "close4", 1500);
 
             result = mFairy.findPic("close6.png");
-            mFairy.onTap(0.9f, result, "close6", 500);
+            mFairy.onTap(0.9f, result, "close6", 1500);
+
+            result = mFairy.findPic(745,8,1270,270, "close7.png");
+            mFairy.onTap(0.9f, result, "close7", 1500);
+
+            result = mFairy.findPic( "close8.png");
+            mFairy.onTap(0.9f, result, "close8", 1500);
         }
     }//关闭
 
@@ -101,7 +107,7 @@ public class GamePublicFuntion {
         if (result.sim > 0.8f) {
             return 3;
         }
-        result = mFairy.findPic(1086, 283, 1201, 411, "rank17.png");
+        result = mFairy.findPic(950, 283, 1201, 411, "rank17.png");
         if (result.sim > 0.8f) {
             return 4;
         }
@@ -218,6 +224,18 @@ public class GamePublicFuntion {
             mFairy.onTap(0.93f, result, "自动战斗", 1000);
         }
 
+    }//自动战斗
+
+    public void autoNew() throws Exception {
+        if (fhs() == false) {
+            result = mFairy.findPic("auto.png");
+            if(result.sim>0.7f){
+                long l = mFairy.getColorNum(577,592,598,604,"255,183,63",0.9f);
+                if(l<50){
+                    mFairy.onTap(0.7f, result, "自动战斗", 1000);
+                }
+            }
+        }
     }//自动战斗
 
     public void auto1(int num) throws Exception {
@@ -358,14 +376,14 @@ public class GamePublicFuntion {
     }
 
     public void task() throws Exception {
-        result = mFairy.findPic(97, 72, 206, 142, "rank.png");
+        result = mFairy.findPic(97, 72, 206, 142, new String[]{"rank.png","rank29.png"});
         mFairy.onTap(0.92f, result, 56, 106, 85, 116, "任务", 500);
 
     }//任务
 
     public void rank() throws Exception {
-        result = mFairy.findPic(35, 87, 106, 135, "task.png");
-        mFairy.onTap(0.92f, result, 136, 108, 170, 116, "队伍", 1000);
+        result = mFairy.findPic(35, 87, 106, 135, new String[]{"task.png","task2.png"});
+        mFairy.onTap(0.96f, result, 136, 108, 170, 116, "队伍", 3000);
 
     }//队伍
 
@@ -424,6 +442,9 @@ public class GamePublicFuntion {
         while (mFairy.condit()) {
             LtLog.e(mFairy.getLineInfo("init >>>"));
 
+
+
+
             result = mFairy.findPic(938, 182, 992, 241, new String[]{"fb.png", "fb1.png"});
             if (result.sim > 0.72f) {
                 mFairy.onTap(0.72f, result, "副本中 退出副本", 1500);
@@ -442,7 +463,7 @@ public class GamePublicFuntion {
 
                     result = mFairy.findPic("activity.png");
                     if (result.sim > 0.75f) {
-                        mFairy.onTap(0.75f, result, "活动", 1000);
+                        mFairy.onTap(0.75f, result, "活动", 2000);
                         activity_bool = false;
                     }
 
@@ -491,16 +512,16 @@ public class GamePublicFuntion {
     public void activity_type(int type) throws Exception {
         switch (type) {
             case 1:
-                mFairy.onTap(1225, 137, 1243, 188, "", 500);
+                mFairy.onTap(1177,160,1195,200, "", 500);
                 break;
             case 2:
-                mFairy.onTap(1218, 252, 1241, 301, "", 500);
+                mFairy.onTap(1178,276,1201,325, "", 500);
                 break;
             case 3:
-                mFairy.onTap(1224, 369, 1240, 415, "", 500);
+                mFairy.onTap(1195,416,1200,433, "", 500);
                 break;
             case 4:
-                mFairy.onTap(1221, 481, 1241, 530, "", 500);
+                mFairy.onTap(1180,509,1194,548, "", 500);
                 break;
         }
 

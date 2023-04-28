@@ -324,7 +324,7 @@ public class LimitlessTask extends TaskContent {
                 gameUtil.coordinate(inputStr, gmx, gmy);
                 result = mFairy.findPic(str);
                 LtLog.e(mFairy.getLineInfo("此地图的相似度为：" + result.sim));
-                if (result.sim < 0.8f) {
+                if (result.sim < 0.7f) {
                     LtLog.e(mFairy.getLineInfo("到达坐标检测地图发现不对从来"));
                     setTaskName(0);
                     return;
@@ -345,6 +345,8 @@ public class LimitlessTask extends TaskContent {
             boolean reopen = true, timingInit = true;
 
             public void content_5() throws Exception {
+
+                gameUtil.apply();
 
                 if (!str.equals("shequ.png") && timekeep(1, 30000, "野外挂机开启挂机")) {
                     if (AtFairyConfig.getOption("gbgj").equals("1")) {
@@ -432,7 +434,9 @@ public class LimitlessTask extends TaskContent {
                     return;
                 }
 
-                gameUtil.apply();
+
+
+
                 result = mFairy.findPic(445, 134, 827, 579, "DefaultResurrection.png");
                 if (result.sim > 0.8f) {
                     if (AtFairyConfig.getOption("ydfh").equals("1")) {
@@ -679,7 +683,11 @@ public class LimitlessTask extends TaskContent {
                 }
                 if (gsdz != null && gsdz.choice == 1 && timekeep(1, gsdz.timeMillis, "固定队跟队跟随队长")) {
                     gameUtil.callToFollowduizhang();
-                    Thread.sleep(60000);
+                    Thread.sleep(5000);
+
+                    if(AtFairyConfig.getOption("gqx").equals("1")) {
+                        gameUtil.cancelFollowing();
+                    }
 
                     if (AtFairyConfig.getOption("gbgj").equals("1")) {
                         result = mFairy.findPic("Hangup1.png");
@@ -689,7 +697,7 @@ public class LimitlessTask extends TaskContent {
                         mFairy.onTap(0.7f, result, 1236, 335, 1237, 336, "开启挂机", Sleep);
                     }
 
-                    //gameUtil.cancelFollowing();
+
                 }
                 if (syyp != null && syyp.choice == 1 && timekeep(0, syyp.timeMillis, "固定队跟队使用蓝药")) {
                     otherGame.eatLan();
@@ -820,6 +828,7 @@ public class LimitlessTask extends TaskContent {
             if (AtFairyConfig.getOption("qd").equals("1")) {
                 otherGame.welfare();
             }
+
             //师门
             if (AtFairyConfig.getOption("sm").equals("1")) {
                 singleTask.master();
@@ -863,6 +872,7 @@ public class LimitlessTask extends TaskContent {
             if (AtFairyConfig.getOption("jqnd").equals("1")) {
                 singleTask.plot();
             }
+
             if (AtFairyConfig.getOption("jqnd").equals("2")) {
                 singleTask.plot1();
             }
@@ -936,6 +946,7 @@ public class LimitlessTask extends TaskContent {
         if ((AtFairyConfig.getOption("mptz").equals("1") || AtFairyConfig.getOption("mptz1").equals("1"))) {
             singleTask.factions();
         }
+
         //货运
         if (AtFairyConfig.getOption("hyrw").equals("1")) {
             singleTask.freight();

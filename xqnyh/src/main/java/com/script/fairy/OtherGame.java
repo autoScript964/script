@@ -204,7 +204,7 @@ public class OtherGame extends TaskContent {
                 mFairy.onTap(0.8f, result, "打开关宁积分界面", 3000);
 
 
-                result = mFairy.findPic("gnjfcbt.png");
+                result = mFairy.findPic(107,53,841,613,"gnjfcbt.png");
                 mFairy.onTap(0.8f, result, "关宁积分藏宝图", Sleep);
                 mFairy.onTap(0.8f, result, 1106, 460, 1119, 473, "关宁积分藏宝图", 100);
                 mFairy.onTap(0.8f, result, 1106, 460, 1119, 473, "关宁积分藏宝图", 100);
@@ -715,12 +715,27 @@ public class OtherGame extends TaskContent {
         new OtherGame(mFairy) {
             public void content_0() throws Exception {
                 //gameUtil.close(0);
+                gameUtil.goCity("家园");
+
+
                 setTaskName(1);
             }
 
             int gmx, gmy, num = 1, zw;
 
             public void content_1() throws Exception {
+
+                result = mFairy.findPic(1018,161,1264,305,"jiayuan2.png");
+                if(result.sim>0.8f){
+                    result = mFairy.findPic(952,98,1167,191,"jiayuan1.png");
+                    if(result.sim<0.8f){
+                        setTaskName(0);
+                        return;
+                    }
+                }
+
+
+
                 LtLog.e(mFairy.getLineInfo("获取坐标菜地坐标中"));
                 if (num == 1) {
                     if (AtFairyConfig.getOption("xystr1").equals("") || AtFairyConfig.getOption("zw1").equals("")) {
@@ -798,12 +813,26 @@ public class OtherGame extends TaskContent {
 
             public void content_2() throws Exception {
                 num++;
+
+                mFairy.onTap(1231,201,1245,211,"界面异常点击",1000);
+
                 gameUtil.coordinate1(gmx, gmy);
                 setTaskName(3);
             }
 
             public void content_3() throws Exception {
-                if (overtime(20, 1)) return;
+                if (overtime(20, 1)){
+                    num--;
+                    gameUtil.close(0);
+                    return;
+                }
+
+                result = mFairy.findPic(760,27,1130,187,"jun.png");
+                if (result.sim > 0.8f) {
+                    setTaskName(0);
+                    return;
+                }
+
 
                 result = mFairy.findPic("package.png");
                 if (result.sim > 0.8f) {
@@ -951,7 +980,6 @@ public class OtherGame extends TaskContent {
                     result = mFairy.findPic(1071, 147, 1127, 550, "havefood.png");
                     if (result.sim > 0.9f) {
                         mFairy.onTap(1175, 53, 1190, 68, "", 500);
-                        gameUtil.goCity("家园");
                         newhomefood();
                         if (AtFairyConfig.getOption("jzc").equals("1")) {
                             homebag();
@@ -1731,12 +1759,16 @@ public class OtherGame extends TaskContent {
             }
 
             public void content_0() throws Exception {
+
+                result = mFairy.findPic(521,11,626,702,"chat.png");
+                mFairy.onTap(0.8f,result,1159,56,1180,72,"",1000);
+
                 gameUtil.close(0);
                 setTaskName(1);
             }
 
             public void content_1() throws Exception {
-                if (overtime(15, 0)) return;
+                if (overtime(8, 0)) return;
                 result = mFairy.findPic("package.png");
                 mFairy.onTap(0.8f, result, 684, 689, 685, 690, "打开聊天框", Sleep);
 

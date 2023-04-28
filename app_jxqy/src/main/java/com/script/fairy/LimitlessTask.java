@@ -87,6 +87,9 @@ public class LimitlessTask {
         map_name_list.add("MAP_YY_ZS.png");//38炎州-宗师
         map_name_list.add("MAP_CZ_ZS.png");//39长洲-宗师
         map_name_list.add("MAP_LZ_ZS.png");//40流洲-宗师
+        map_name_list.add("MAP_JKZ_ZS.png");//41聚窟州-宗师
+
+        map_name_list.add("MAP_CZZS_ZS.png");//42沧州-宗师
 
         //右上角的地图名称 图
         current_map_name_list.add("CURRENT_MAP_YDS.png");//0雁荡山,
@@ -130,13 +133,15 @@ public class LimitlessTask {
         current_map_name_list.add("CURRENT_MAP_YY_ZS.png");//38炎州-宗师
         current_map_name_list.add("CURRENT_MAP_CZ_ZS.png");//39长洲-宗师
         current_map_name_list.add("CURRENT_MAP_LZ_ZS.png");//40流洲-宗师
-
+        current_map_name_list.add("CURRENT_MAP_JKZ_ZS.png");//41聚窟州-宗师
+        current_map_name_list.add("CURRENT_MAP_CZZS_ZS.png");//42沧州-宗师
 
         current_map_name_list.add("mainCity1.png");//襄阳
         current_map_name_list.add("mainCity.png");//临安
     }
 
     public int outdoorsOnHook() throws Exception {
+
         if (TaskMain.taskMap.get("OnHookMap") == 999) {
             LtLog.i(publicFunction.getLineInfo() + "【勾选的侠客岛挂机】");
             //侠客岛挂机的无限任务
@@ -164,6 +169,7 @@ public class LimitlessTask {
         boolean discriminate = true;
 
         int[] xy = {Integer.parseInt(TaskMain.xystr.split(",")[0]), Integer.parseInt(TaskMain.xystr.split(",")[1])};
+
         while (mFairy.condit()) {
 
             timex = System.currentTimeMillis() / 1000 - time;
@@ -173,9 +179,7 @@ public class LimitlessTask {
             } else if (timex % 60 >= 0 && timex % 60 <= 3) {
                 LtLog.i(publicFunction.getLineInfo() + "无限挂机中：" + "定位时间：" + time1x + ",当前时间为：" + publicFunction.getMinuteNumber() + "星期：" + publicFunction.getCurrSun() + ",Data:" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
                 LtLog.i(publicFunction.getLineInfo() + "--------->>" + ",TaskMain.taskMap=" + TaskMain.taskMap);
-
                 LtLog.i(publicFunction.getLineInfo() + "---------time1x=" + time1x + ",location=" + location);
-
             }
 
             mAimingActivity();//定时活动
@@ -209,11 +213,12 @@ public class LimitlessTask {
                     continue;
                 }
 
-                /*result = publicFunction.localFindPic(1140, 1, 1279, 44, "bandit1.png");
+                result = publicFunction.localFindPic(1140, 1, 1279, 44, "wsmk1.png");
                 if (result.sim >= 0.8) {
-                    LtLog.i(publicFunction.getLineInfo() + "【在山贼秘窟】");
+                    //在山贼秘窟
+                    LtLog.i(publicFunction.getLineInfo() + "【五色秘窟】");
                     continue;
-                }*/
+                }
 
                 if (!judgeMap(TaskMain.taskMap.get("OnHookMap"))) {
 
@@ -584,6 +589,7 @@ public class LimitlessTask {
             }
         }
 
+
         if (currentlyTIME >= 1189 && currentlyTIME <= 1193 && currentSun.equals("星期三")) {
             //南海钩沉 19:50 - 19 ：53 星期三
             if (TaskMain.taskMap.get("nhgc") == 1) {
@@ -618,8 +624,6 @@ public class LimitlessTask {
             }
         }
 
-
-
         if (currentSun.equals("星期二") || currentSun.equals("星期四") || currentSun.equals("星期六")) {
             //心魔幻境
             if (currentlyTIME >= TaskMain.taskMap.get("XMHJminTime") && currentlyTIME <= TaskMain.taskMap.get("XMHJmaxTime")) {
@@ -633,7 +637,7 @@ public class LimitlessTask {
             }
         }
 
-        if (currentSun.equals("星期三") || currentSun.equals("星期一")) {
+        if (currentSun.equals("星期三")/* || currentSun.equals("星期一")*/) {
             //遗迹寻宝
             if (currentlyTIME >= 1189 && currentlyTIME <= 1195) {
                 if (TaskMain.taskMap.get("ruins") > 0) {
@@ -645,7 +649,6 @@ public class LimitlessTask {
                 }
             }
         }
-
 
         //山河战境
         if (currentSun.equals("星期二") || currentSun.equals("星期六")) {
@@ -675,7 +678,36 @@ public class LimitlessTask {
             }
         }
 
+        //青丘疑阵
+        if (currentSun.equals("星期一")) {
+            if(currentlyTIME >= 1189 && currentlyTIME <= 1200){
 
+                if(AtFairyConfig.getOption("qqyz").equals("1")){
+
+                    LtLog.i(publicFunction.getLineInfo() + "开始青丘疑阵");
+                    LtLog.i(publicFunction.getLineInfo() + "开始青丘疑阵");
+                    LtLog.i(publicFunction.getLineInfo() + "开始青丘疑阵");
+                    timingActivity.qqyz();
+                    return 1;
+                }
+            }
+        }
+
+
+        //粮秣行
+        if (currentSun.equals("星期三")) {
+            if(currentlyTIME >= 1200 && currentlyTIME <= 1230){
+
+                if(AtFairyConfig.getOption("lmx").equals("1")){
+
+                    LtLog.i(publicFunction.getLineInfo() + "开始粮秣行");
+                    LtLog.i(publicFunction.getLineInfo() + "开始粮秣行");
+                    LtLog.i(publicFunction.getLineInfo() + "开始粮秣行");
+                    timingActivity.lmx();
+                    return 1;
+                }
+            }
+        }
 
         if (currentlyTIME >= TaskMain.taskMap.get("SJZCminTime") && currentlyTIME <= TaskMain.taskMap.get("SJZCmaxTime")) {
             //宋金战场
@@ -1288,6 +1320,12 @@ public class LimitlessTask {
         }else if(map == 41){
             x=x_1 *4.9228+y_1 *-4.8024+634.4325;
             y=x_1 *-4.8252+y_1 *-4.8366+745.6211;
+        }else if(map == 42){
+            x=x_1 *-4.9167+y_1 *-4.8838+1141.2197;
+            y=x_1 *-4.7083+y_1 *4.846+346.6326;
+        }else if(map == 43){
+            x=x_1 *4.1373+y_1 *-4.0172+634.7382;
+            y=x_1 *-4.1052+y_1 *-4.0494+727.6223;
         }
 
 
@@ -1387,9 +1425,10 @@ public class LimitlessTask {
             if (result.sim >= 0.8) {
                 //如果在皇陵中
                 LtLog.i(publicFunction.getLineInfo() + "【在皇陵中】");
-                Thread.sleep(5000);
+                Thread.sleep(3000);
                 position = getCurrentPosition();
                 LtLog.i(publicFunction.getLineInfo() + "---------->position=" + position + ",layer=" + TaskMain.taskMap.get("layer") + ",xystr=" + TaskMain.xyList + ",sleepTime=" + sleepTime + ",interval:" + interval);
+
                 if (position != TaskMain.taskMap.get("layer") && position > 0) {
                     goTarget(position, TaskMain.taskMap.get("layer"));
                     Thread.sleep(2000);
@@ -1400,6 +1439,8 @@ public class LimitlessTask {
                     gamePublicFunction.openActivity();
                 }
             }
+
+
             result = publicFunction.localFindPic(0, 28, 113, 179, "activity1.png");
             if (result.sim >= 0.8) {
                 //如果在活动选择窗口
@@ -1427,7 +1468,6 @@ public class LimitlessTask {
                 time = System.currentTimeMillis() / 1000;
             }
 
-
             result = publicFunction.localFindPic(509, 406, 770, 500, "goHome.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "回城疗伤");
@@ -1440,13 +1480,18 @@ public class LimitlessTask {
              */
 
             sleepTime = matTime.mMatTime(1025, 623, 52, 48, 0.9f);
-            LtLog.i(publicFunction.getLineInfo() + "---------->position=" + position + ",layer=" + TaskMain.taskMap.get("layer") + ",sleepTime=" + sleepTime + ",上一次定位的时间:" + interval, ",换位间隔计时=" + transpositionx);
+
             transpositionx = System.currentTimeMillis() / 1000 - transposition;
+
+            LtLog.i(publicFunction.getLineInfo() + "---------->position=" + position + ",layer=" + TaskMain.taskMap.get("layer") + ",sleepTime=" + sleepTime + ",上一次定位的时间:" + interval, ",换位间隔计时=" + transpositionx);
+
+
             if (transpositionx >= interval && TaskMain.opcountList.size() > 0) {
                 // transpositionx ,换位间隔计时
                 //  transpositionx>interval  即当前时间 减 上一次定位的时间   大于 用户设置的间隔，  设置sleepTime=interval+1  ，则满足重新跑位置的条件
                 sleepTime = interval + 1;
             }
+
             if (sleepTime > interval || result.sim >= 0.8) {
                 //sleepTime>30 坐标未变化，重新定位。被打死了 重新定位
                 LtLog.i(publicFunction.getLineInfo() + "开始重新定位");
@@ -1458,7 +1503,7 @@ public class LimitlessTask {
                     if (result.sim >= 0.8) {
                         LtLog.i(publicFunction.getLineInfo() + "------------------------closeWindow---->fork=" + result + ",  time =" + System.currentTimeMillis());
                         publicFunction.rndTapWH(result.x, result.y, 35, 35);
-                        Thread.sleep(1500);
+                        Thread.sleep(1000);
                     }
                     gamePublicFunction.manualOrAutomatic("automatic");
                     Thread.sleep(100);

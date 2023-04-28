@@ -28,7 +28,7 @@ public class TaskMain {
         gamePublicFuntion = new GamePublicFuntion(ypFairy);
         mFairy = ypFairy;
         mFairy.setGameName("复古传奇");
-        mFairy.setGameVersion(22);
+        mFairy.setGameVersion(23);
         init();
     }
 

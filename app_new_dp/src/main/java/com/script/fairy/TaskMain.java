@@ -28,7 +28,7 @@ public class TaskMain {
         limitlessTask = new LimitlessTask(ypFairy);
         mFairy = ypFairy;
         mFairy.setGameName("new斗破苍穹");
-        mFairy.setGameVersion(292);
+        mFairy.setGameVersion(299);
         init();
     }
 
