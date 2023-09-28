@@ -90,6 +90,7 @@ public class LimitlessTask {
         map_name_list.add("MAP_JKZ_ZS.png");//41聚窟州-宗师
 
         map_name_list.add("MAP_CZZS_ZS.png");//42沧州-宗师
+        map_name_list.add("MAP_BZS.png");//43不周山
 
         //右上角的地图名称 图
         current_map_name_list.add("CURRENT_MAP_YDS.png");//0雁荡山,
@@ -135,7 +136,7 @@ public class LimitlessTask {
         current_map_name_list.add("CURRENT_MAP_LZ_ZS.png");//40流洲-宗师
         current_map_name_list.add("CURRENT_MAP_JKZ_ZS.png");//41聚窟州-宗师
         current_map_name_list.add("CURRENT_MAP_CZZS_ZS.png");//42沧州-宗师
-
+        current_map_name_list.add("CURRENT_MAP_BZS.png");//43不周山
         current_map_name_list.add("mainCity1.png");//襄阳
         current_map_name_list.add("mainCity.png");//临安
     }
@@ -149,6 +150,7 @@ public class LimitlessTask {
             if (result.sim < 0.8) {
                 gamePublicFunction.goMainCity();//在家园或者在家族是不能进入侠客岛的,所以先回到主城.
             }
+
             XiakeIsland();//侠客岛挂机
         }
 
@@ -663,7 +665,9 @@ public class LimitlessTask {
             }
         }
 
-        //灰谷矿脉
+      /*
+
+      //灰谷矿脉
         if (currentSun.equals("星期一")) {
             if((currentlyTIME >= 989 && currentlyTIME <= 995) ||  (currentlyTIME >= 1229 && currentlyTIME <= 1235)){
 
@@ -676,7 +680,7 @@ public class LimitlessTask {
                     return 1;
                 }
             }
-        }
+        }*/
 
         //青丘疑阵
         if (currentSun.equals("星期一")) {
@@ -694,8 +698,9 @@ public class LimitlessTask {
         }
 
 
+
         //粮秣行
-        if (currentSun.equals("星期三")) {
+        if (currentSun.equals("星期日")) {
             if(currentlyTIME >= 1200 && currentlyTIME <= 1230){
 
                 if(AtFairyConfig.getOption("lmx").equals("1")){
@@ -725,7 +730,6 @@ public class LimitlessTask {
 
         if (currentSun.equals("星期一") || currentSun.equals("星期三") || currentSun.equals("星期五") || currentSun.equals("星期日")) {
             //华山论剑
-            LtLog.i(publicFunction.getLineInfo() + "---------currentSun=" + currentSun);
             if (currentlyTIME >= 1289 && currentlyTIME <= 1310 && TaskMain.taskMap.get("huashan") == 1) {
                 LtLog.i(publicFunction.getLineInfo() + "开始执行华山论剑");
                 LtLog.i(publicFunction.getLineInfo() + "开始执行华山论剑");
@@ -740,7 +744,7 @@ public class LimitlessTask {
         //通天塔 21.00  23.00都有
         //家族保卫战-每隔2周 周五，
         // 领土战 每周2   21:05
-        if ((currentSun.equals("星期三") || currentSun.equals("星期日")) && currentlyTIME >= 1378 && currentlyTIME <= 1400) {
+        if ((currentSun.equals("星期三") && currentlyTIME >= 1378 && currentlyTIME <= 1400)|| (currentSun.equals("星期日")&& currentlyTIME >= 1348 && currentlyTIME <= 1370)  )  {
             //11点通天塔
             if (TaskMain.taskMap.get("Ninehour") == 1) {
 
@@ -1004,32 +1008,76 @@ public class LimitlessTask {
 
         LtLog.i(publicFunction.getLineInfo() + "【开始切换地图页："+map+"】");
 
+
         for (int i = 0; i < 4; i++) {
             publicFunction.RanSwipe(372, 85, 950, 606, 2, 300);
             Thread.sleep(100);
         }
         for (int i = 0; i < 5; i++) {
-            result = publicFunction.localFindPic(195, 275, 321, 528, "map2Features.png");//
+
             AtFairy2.OpencvResult result1 = publicFunction.localFindPic(1010, 195, 1097, 291, "mainCity3.png");//识别临安
-            LtLog.i(publicFunction.getLineInfo() + "宗师地图：" + result + ", 普通地图：" + result1 + ",map=" + map);
-            if (map <= 33 && result1.sim > 0.8) {
+
+            result = publicFunction.localFindPic(195, 275, 321, 528, "map2Features.png");//
+
+            findResult = mFairy.findPic(1026,438,1192,662,"MAP_BZS.png");
+
+            LtLog.i(publicFunction.getLineInfo() + "宗师地图：" + result + ", 普通地图：" + result1 +",泰斗地图："+findResult+ ",map=" + map);
+
+            if(result1.sim > 0.8){
+                LtLog.e(mFairy.getLineInfo("当前在普通地图"));
+                if(map<=33){
+                    return;
+                }else if(map>33 && map<=43){
+                    mFairy.tap(result1.x + 91, result1.y); //切换到宗师地图
+                }else if(map>43){
+                    mFairy.tap(229,350); //切换到泰斗地图
+                }
+                Thread.sleep(2000);
                 return;
             }
-            if (map > 33 && result.sim > 0.8) {
+
+            if(result.sim>0.8){
+                LtLog.e(mFairy.getLineInfo("当前在宗师地图"));
+                if(map<=33){
+                    mFairy.tap(231,324); //切换到普通地图
+                }else if(map>33 && map<=43){
+                    return;
+                }else if(map>43){
+                    mFairy.tap(231,324); //切换到普通地图
+                    Thread.sleep(2000);
+
+                    for (int j = 0; j < 4; j++) {
+                        publicFunction.RanSwipe(372, 85, 950, 606, 2, 300);
+                        Thread.sleep(100);
+                    }
+                    mFairy.tap(229,350); //切换到泰斗地图
+                }
+                Thread.sleep(2000);
                 return;
             }
 
-            if (map <= 33 && result.sim > 0.8) {
-                mFairy.tap(result.x, result.y - 31); //切换到地图1
-                Thread.sleep(1000);
-            }
+            if(findResult.sim>0.8f){
+                LtLog.e(mFairy.getLineInfo("当前在泰斗地图"));
+                if(map<=33){
+                    mFairy.tap(1073,265); //切换到普通地图
+                }else if(map>33 && map<=43){
 
-            if (map > 33 && result1.sim > 0.8) {
-                mFairy.tap(result1.x + 91, result1.y); //切换到地图2
-                Thread.sleep(1000);
-            }
+                    mFairy.tap(1073,265); //切换到普通地图
+                    Thread.sleep(2000);
 
-            Thread.sleep(1000);
+                    for (int j = 0; j < 4; j++) {
+                        publicFunction.RanSwipe(372, 85, 950, 606, 2, 300);
+                        Thread.sleep(100);
+                    }
+
+                    mFairy.tap(result1.x + 91, result1.y); //切换到宗师地图
+
+                }else if(map>43){
+                    return;
+                }
+                Thread.sleep(2000);
+                return;
+            }
         }
     }
 
@@ -1059,6 +1107,7 @@ public class LimitlessTask {
         }
 
         Thread.sleep(1000);
+
         if (map_xy == null) {
             for (int i = 0; i < 30; i++) {
                 result = publicFunction.localFindPic(127, 40, 1175, 667, map_name_list.get(map - 1));
@@ -1097,7 +1146,7 @@ public class LimitlessTask {
     public Boolean judgeMap(int targetMap) {
 
 
-        LtLog.i(publicFunction.getLineInfo()+"【判断当前角色所在地图是否与用户设置的目标地图一致】");
+        //LtLog.i(publicFunction.getLineInfo()+"【判断当前角色所在地图是否与用户设置的目标地图一致】");
 
         AtFairy2.OpencvResult result;
 //        LtLog.i(publicFunction.getLineInfo() + "------->targetMap=" + targetMap);
@@ -1106,27 +1155,12 @@ public class LimitlessTask {
             LtLog.i(publicFunction.getLineInfo() + "------->activity=" + result);
             return false;
         }
-       /* FunctionClass.ResultValue resultVal;
-
-        Mat mat1 =functionClass.getScreenMat(1143, 0, 137, 34);
-
-        Mat mat2 =functionClass.getAssetImageFileMat(current_map_name_list.get(targetMap - 1));
-
-        resultVal =functionClass.comparisonMat(mat1, mat2,functionClass.RGB);
-        if (resultVal.sim > 0.7) {
-            LtLog.i(publicFunction.getLineInfo() + "目标地图正确");
-            return true;
-        }
-*/
-
 
 
         result = publicFunction.localFindPic(1127,2,1280,58, current_map_name_list.get(targetMap - 1));
-
         LtLog.e("地图标号"+targetMap+"    result:"+result.sim);
-
         if(result.sim>0.8){
-            LtLog.i(publicFunction.getLineInfo() + "目标地图正确");
+
             return true;
         }
 
@@ -1326,6 +1360,9 @@ public class LimitlessTask {
         }else if(map == 43){
             x=x_1 *4.1373+y_1 *-4.0172+634.7382;
             y=x_1 *-4.1052+y_1 *-4.0494+727.6223;
+        }else if(map == 44){
+            x=x_1 *4.2762+y_1 *-4.2667+638.4381;
+            y=x_1 *-4.2133+y_1 *-4.2733+709.2133;
         }
 
 
@@ -1479,7 +1516,8 @@ public class LimitlessTask {
              * 切换位置
              */
 
-            sleepTime = matTime.mMatTime(1025, 623, 52, 48, 0.9f);
+
+            sleepTime = matTime.mMatTime(1182,137,63,14, 0.95f);
 
             transpositionx = System.currentTimeMillis() / 1000 - transposition;
 

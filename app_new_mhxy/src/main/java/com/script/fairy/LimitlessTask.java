@@ -30,6 +30,10 @@ public class LimitlessTask {
     private int go1,go2,go3,go4=0,go5=0,go6=0;
     private boolean ls = true;
 
+
+
+
+
     public void guaji() throws Exception {
         new TaskContent(mFairy, "挂机") {
 
@@ -97,39 +101,10 @@ public class LimitlessTask {
                     }
                 } else {
                     LtLog.e(mFairy.getLineInfo("等级挂机"));
-                    long num;
-                    for (int i = 1; i <= 4; i++) {
-                        if (i == 1) {
-                            num = mFairy.getColorNum(172, 121, 203, 150, 0.99f, 0, "253,216,113");
-                            if (num > 100) {
-                                mFairy.onTap(172, 121, 203, 150, "", 500);
-                                break;
-                            }
-                        }
-                        if (i == 2) {
-                            num = mFairy.getColorNum(421, 125, 450, 149, 0.99f, 0, "253,216,113");
-                            if (num > 100) {
-                                mFairy.onTap(421, 125, 450, 149, "", 500);
-                                break;
-                            }
-                        }
 
-                        if (i == 3) {
-                            num = mFairy.getColorNum(659, 112, 691, 145, 0.99f, 0, "253,216,113");
-                            if (num > 100) {
-                                mFairy.onTap(659, 112, 691, 145, "", 500);
-                                break;
-                            }
-                        }
+                    result = mFairy.findPic(128,61,1149,218, "tui.png");
+                    mFairy.onTap(0.72f, result, "推荐", 1000);
 
-                        if (i == 4) {
-                            num = mFairy.getColorNum(912, 112, 944, 137, 0.99f, 0, "253,216,113");
-                            if (num > 100) {
-                                mFairy.onTap(912, 112, 944, 137, "", 500);
-                                break;
-                            }
-                        }
-                    }
                 }
             }//挂机选择
 

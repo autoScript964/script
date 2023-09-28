@@ -527,6 +527,7 @@ public class SingleTask {
                 } else {
                     activitySlide.slideRange(new int[]{3, 5, 7, 9, 10, 12, 14, 16, 18}, 2, 0);
                 }
+                Thread.sleep(1000);
             }
         }
     }
@@ -956,7 +957,6 @@ public class SingleTask {
     }//宝图***
 
 
-
     public void use_bt() throws Exception {
         new Single_Content(mFairy, "使用宝图") {
             void init() throws Exception {
@@ -1026,7 +1026,6 @@ public class SingleTask {
             }
         };
     }//使用宝图***
-
 
 
     public void sssw() throws Exception {
@@ -1105,8 +1104,6 @@ public class SingleTask {
         };
     }//三市庶务***
 
-
-
     public void yb() throws Exception {
         new Single_Content(mFairy, "运镖任务(单人)") {
 
@@ -1179,8 +1176,6 @@ public class SingleTask {
         };
     }//运镖任务(单人)***
 
-
-
     public void bpzc() throws Exception {
         new Single_Content(mFairy, "帮派周常") {
 
@@ -1231,7 +1226,6 @@ public class SingleTask {
             }
         };
     }//帮派周常***
-
 
     private int xlyy = -1;
     private boolean user_choice = true;
@@ -2428,7 +2422,7 @@ public class SingleTask {
                     mFairy.onTap(0.8f, result, "道具不足", 1500);
                     return;
                 } else {
-                    result = mFairy.findPic(873, 432, 938, 482, new String[]{"cy.png", "cy2.png","cy6.png","cy7.png","cy8.png"});
+                    result = mFairy.findPic(873, 432, 938, 482, new String[]{"cy.png", "cy2.png","cy6.png","cy7.png","cy8.png","cy9.png"});
                     if (result.sim > 0.7f) {
                         err = 0;
                         mFairy.initMatTime();

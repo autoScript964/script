@@ -11,6 +11,7 @@ import org.json.JSONObject;
 import static com.script.opencvapi.AtFairy2.TASK_STATE_FINISH;
 
 public class TaskMain {
+
     AtFairyImpl mFairy;
     SingleTask singleTask;
     TeamTask teamTask;
@@ -28,7 +29,7 @@ public class TaskMain {
         limitlessTask = new LimitlessTask(ypFairy);
         mFairy = ypFairy;
         mFairy.setGameName("new斗破苍穹");
-        mFairy.setGameVersion(299);
+        mFairy.setGameVersion(322);
         init();
     }
 
@@ -133,6 +134,9 @@ public class TaskMain {
                         break;
                     case "2":
                         teamTask.mjkn();
+                        break;
+                    case "3":
+                        teamTask.mjem();
                         break;
                 }
 

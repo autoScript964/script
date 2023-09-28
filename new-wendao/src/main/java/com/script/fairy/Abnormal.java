@@ -94,6 +94,8 @@ public class Abnormal  {
         result = mFairy.findPic(533, 72, 764, 185, "laojun.png");
         if (result.sim > 0.8f) {
             LtLog.e(mFairy.getLineInfo(0.8f,result,"老君查岗了"));
+
+
 /*
             Mat mat3 = mFairy.getScreenMat(0, 0, 1280, 720, 1, 0, 0, 1);
             //将图片存入路径
@@ -111,9 +113,11 @@ public class Abnormal  {
                     break;
                 }
             }
+
             util.Laojun();
             Thread.sleep(1000);
             mFairy.condit();
+
         }
 
         result = mFairy.findPic("Agree.png");

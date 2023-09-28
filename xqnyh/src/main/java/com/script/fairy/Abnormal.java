@@ -49,6 +49,8 @@ public class Abnormal extends TaskContent {
         result = mFairy.findPic(621,5,1271,210,"hdclose7.png");
         mFairy.onTap(0.8f, result, "err hdclose7", 2000);
 
+
+
         result = mFairy.findPic("jiayuan.png");
         mFairy.onTap(0.8f, result, "err 退出装修", 2000);
 
@@ -199,14 +201,14 @@ public class Abnormal extends TaskContent {
         result = mFairy.findPic(405, 272, 867, 384, "sqdz.png");
         if (result.sim > 0.8f && AtFairyConfig.getOption("jjsq").equals("1")) {
             mFairy.onTap(0.8f, result, 468, 420, 500, 441, "err拒绝队长申请", Sleep);
-        } else if (result.sim > 0.8f && AtFairyConfig.getOption("jjsq").equals("1")) {
+        } else if (result.sim > 0.8f) {
             mFairy.onTap(0.8f, result, 747, 420, 789, 438, "err同意队长申请", Sleep);
         }
 
         result = mFairy.findPic("Rightrefusal.png");
         if (result.sim > 0.8f && AtFairyConfig.getOption("jjsq").equals("1")) {
             mFairy.onTap(0.8f, result, "err左侧拒绝", Sleep);
-        } else if (result.sim > 0.8f && AtFairyConfig.getOption("jjsq").equals("")) {
+        } else if (result.sim > 0.8f) {
             mFairy.onTap(0.8f, result, 1164, 323, 1195, 340, "err左侧同意", Sleep);
         }
 

@@ -7,8 +7,8 @@ android {
         applicationId "com.newWenDao.ijdw"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 100
-        versionName "100"
+        versionCode 101
+        versionName "101"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -17,12 +17,16 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
     productFlavors {
+
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
 }
 
 dependencies {

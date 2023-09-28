@@ -74,6 +74,7 @@ public class GamePublicFuntion {
 
     public void battle(int type) throws Exception {
         for (int i = 0; i < 2; i++) {
+
             switch (type) {
                 case 0:
                     result = mFairy.findPic("findWay.png");

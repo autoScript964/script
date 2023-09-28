@@ -6,8 +6,8 @@ android {
         applicationId "com.mhzx.oko"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 135
-        versionName "135"
+        versionCode 137
+        versionName "137"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -17,6 +17,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8

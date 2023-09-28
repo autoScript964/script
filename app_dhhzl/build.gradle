@@ -7,8 +7,8 @@ android {
         applicationId "com.dhhzl.way"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 319
-        versionName "319"
+        versionCode 327
+        versionName "327"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -38,7 +38,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
     testImplementation 'junit:junit:4.12'
-    implementation 'com.lzy.net:okhttputils:+'
+    implementation 'com.lzy.net:okhttputils:1.8.1'
 
     implementation 'com.rmtheis:tess-two:9.0.0'
 

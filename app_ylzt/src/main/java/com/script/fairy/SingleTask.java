@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import com.example.publicfunctionlibrary.FunctionClass;
 import com.script.framework.AtFairyImpl;
 import com.script.opencvapi.AtFairy2;
+import com.script.opencvapi.AtFairyConfig;
 import com.script.opencvapi.FindResult;
 import com.script.opencvapi.LtLog;
 
@@ -963,7 +964,10 @@ public class SingleTask {
             result = publicFunction.localFindPic(649, 523, 835, 643, "hero_up.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "------hero_up->" + result);
-                TaskMain.taskList.remove(0);
+
+                if(!AtFairyConfig.getOption("hero_battlefield_wx").equals("1")) {
+                    TaskMain.taskList.remove(0);
+                }
             }
             publicFunction.rndTapWH(x, y, 29, 29);
             Thread.sleep(500);

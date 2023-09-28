@@ -7,12 +7,13 @@ android {
         applicationId "com.blct.mry"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 170
-        versionName "170"
+        versionCode 172
+        versionName "172"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -33,7 +34,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
     testImplementation 'junit:junit:4.12'
-    implementation 'com.lzy.net:okhttputils:+'
+    implementation 'com.lzy.net:okhttputils:1.8.1'
     implementation project(':openCVLibrary341')
     implementation 'com.rmtheis:tess-two:9.0.0'
     implementation project(':opencvapi-debug')

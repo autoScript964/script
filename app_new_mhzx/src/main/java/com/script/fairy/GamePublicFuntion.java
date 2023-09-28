@@ -379,10 +379,10 @@ public class GamePublicFuntion {
                 } else {
                     count++;
                 }
-                if (count == 3 || count == 6) {
+                if (count == 3 || count == 5 || count == 7 || count == 9 || count == 11 || count == 13) {
                     mFairy.ranSwipe(709,200,748,450, 2, 1000,(long)2000); //上滑
                     LtLog.e("任务没有找到上滑");
-                } else if (count > 12) {
+                } else if (count > 15) {
                     bj = 0;
                     count1++;
                     if (count1 > 1) {

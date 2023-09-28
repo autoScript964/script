@@ -58,18 +58,21 @@ public class Abnormal {
 
 
 
+
+
+
            if ((TaskMain.mTask.equals("redPackageAndDssist") && TaskMain.taskMap.get("redPack") == 0) || TaskMain.mTask.equals("dance")) {
                 LtLog.i(publicFunction.getLineInfo() + "关闭抢红包");
             }else{
-                result = publicFunction.localFindPicHLS(714, 355, 835, 480, "redPackage.png");
+                result = publicFunction.localFindPic(714, 355, 835, 480, "redPackage.png");
                 if (result.sim >= 0.8) {
                     LtLog.i(publicFunction.getLineInfo() + "打开红包");
                     publicFunction.rndTapWH(result.x, result.y, 21, 25);
-                    Thread.sleep(500);
+                    Thread.sleep(1000);
                 }
 
                 result = publicFunction.localFindPic(523, 141, 789, 338, "redPackage1.png"+"|"+"redPackage2.png");
-                if (result.sim >= 0.8){
+                if (result.sim >= 0.7){
                     LtLog.i(publicFunction.getLineInfo() + "红包界面");
                     publicFunction.rndTap(369, 44, 385, 51);
                     Thread.sleep(2000);
@@ -447,6 +450,9 @@ public class Abnormal {
             findResult = mFairy.findPic("hdclose1.png");
             mFairy.onTap(0.8f,findResult,1215,49,1231,59,"活动弹框",1000);
 
+            findResult = mFairy.findPic(560,638,631,677,"hdclose3.png");
+            mFairy.onTap(0.8f,findResult,904,64,931,74,"hdclose3",1000);
+
             findResult = mFairy.findPic(401,845,615,1000,"tongyi.png");
             mFairy.onTap(0.8f,findResult,"同意",1000);
 
@@ -493,7 +499,6 @@ public class Abnormal {
             if(findResult!=null) {
                 mFairy.onTap(0.8f, findResult, 485, 440, 522, 462, "取消协助交货", 1000);
             }
-
 
             Thread.sleep(100);
         }
@@ -678,8 +683,20 @@ public class Abnormal {
                 Thread.sleep(5000);
             }
         }
+
+
+
+
+        findResult = mFairy.findPic(231,896,508,1194,"ty2.png");
+        mFairy.onTap(0.7f,findResult,"同意",1000);
+
+
         result = publicFunction.localFindPic(712, 462, 849, 666, "QQ.png" + "|" + "QQ1.png");
         if (result.sim >= 0.8) {
+
+            findResult = mFairy.findPic(111,568,178,620,"ty1.png");
+            mFairy.onTap(0.85f,findResult,"同意",1000);
+
             LtLog.i(publicFunction.getLineInfo() + "*******************--------------QQ=" + result);
             publicFunction.rndTapWH(result.x, result.y, 37, 43);
             Thread.sleep(500);
@@ -692,6 +709,8 @@ public class Abnormal {
             publicFunction.rndTapWH(608, 556, 63, 27);//点击确认
             Thread.sleep(500);
         }
+
+
         result = publicFunction.localFindPic(286, 124, 981, 241, "agreement1.png");
         if (result.sim >= 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "*******************--------------agreement1=" + result);
@@ -699,6 +718,7 @@ public class Abnormal {
             publicFunction.rndTap(412, 441, 471, 469);//点击同意
             Thread.sleep(500);
         }
+
         result = publicFunction.localFindPic(134, 1027, 602, 1194, "empower.png");
         if (result.sim >= 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "*******************--------------empower=" + result);

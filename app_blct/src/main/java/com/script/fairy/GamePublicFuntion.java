@@ -57,7 +57,7 @@ public class GamePublicFuntion {
         mFairy.touchMove(2, 1028, 369, 100, 100);
         mFairy.touchUp(1);
         mFairy.touchUp(2);
-
+        mFairy.touchUp();
 }//调整画面
 
     public boolean ysj_home() throws Exception {
@@ -109,18 +109,24 @@ public class GamePublicFuntion {
 
             if (ysj_home()) {
 
+                LtLog.e(mFairy.getLineInfo("在夜世界"));
                 if (ye) {
                     return;
                 }
 
                 narrow();
-                Thread.sleep(100);
-                mFairy.ranSwipe(748, 200, 279, 460, 200, 1000);
+
+                Thread.sleep(1000);
+
+                for (int i = 0; i < 2; i++) {
+                    mFairy.ranSwipe(919,300, 327,398, 200, 1000);
+                }
+
                 //mFairy.ranSwipe(748, 200, 279, 460, 200, 10);
                 Thread.sleep(100);
 
                 result = mFairy.findPic(591, 81, 1122, 343, new String[]{"chuan1.png", "chuan3.png"});
-                mFairy.onTap(0.7f, result, "船", 500);
+                mFairy.onTap(0.7f, result, "船", 2000);
             }
 
             if (home()) {

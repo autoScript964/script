@@ -920,6 +920,7 @@ public class TimingActivity {
             publicFunction.rndTapWH(result.x, result.y, 28, 26);
             Thread.sleep(500);
         }
+
         return state;
     }
 
@@ -1513,10 +1514,6 @@ public class TimingActivity {
 
         long time = System.currentTimeMillis() / 1000, timex = 0;
 
-
-
-
-
         long time1 = System.currentTimeMillis() / 1000, time1x = 0;
 
 
@@ -1596,8 +1593,8 @@ public class TimingActivity {
             }
 
 
-            findResult = mFairy.findPic(1000,635,1203,720, "lmx1.png");
-            mFairy.onTap(0.8f, findResult, "粮秣行参加", 1000);
+            findResult = mFairy.findPic(646,614,1158,715, "lmx1.png");
+            mFairy.onTap(0.72f, findResult, "粮秣行参加", 1000);
 
 
             findResult = mFairy.findPic(918,52,1089,199, "fb.png");
@@ -1651,7 +1648,6 @@ public class TimingActivity {
             Thread.sleep(2000);
         }
     }//粮秣行
-
 
 
     //心魔幻境
@@ -2181,7 +2177,7 @@ public class TimingActivity {
             case 12:
                 //李广
                 if (actName.equals("tenMJ1")) { //幻境-李广
-                    MJname = "dreamlandLG.png|dreamlandLG1.png";
+                    MJname = "dreamlandLG.png"+"|"+"dreamlandLG1.png";
                     MJXY = new int[][]{{482, 361}, {629, 182}, {775, 340}};
                     return;
                 }
@@ -2189,41 +2185,7 @@ public class TimingActivity {
                 MJname = "MJLG.png" + "|" + "MJLG1.png";
                 MJXY = new int[][]{{480, 357}, {638, 189}, {776, 356}};
                 break;
-         /*   case 13:
-                //幻境-李广
-                MJname = "dreamlandLG.png|dreamlandLG1.png";
 
-                MJXY = new int[][]{{482, 361}, {629, 182}, {775, 340}};
-                break;
-            case 14:
-                //幻境-赵云
-                MJname = "dreamlandZY.png|dreamlandZY1.png";
-
-                MJXY = new int[][]{{495, 314}, {642, 233}, {774, 363}};
-                break;
-            case 15:
-                //幻境-李元霸
-                MJname = "dreamlandLYB.png|dreamlandLYB1.png";
-
-                MJXY = new int[][]{{505, 342}, {625, 272}, {808, 376}};
-                break;
-            case 16:
-                //幻境-荆轲
-                MJname = "dreamlandJK.png|dreamlandJK1.png";
-
-                MJXY = new int[][]{{484, 362}, {658, 204}, {780, 348}};
-                break;
-            case 17:
-                //幻境-虞姬
-                MJname = "dreamlandYJ.png|dreamlandYJ1.png";
-                MJXY = new int[][]{{494, 318}, {614, 250}, {741, 369}};
-
-                break;
-            case 18:
-                //幻境-岳飞
-                MJname = "dreamlandYF.png|dreamlandYF1.png";
-                MJXY = new int[][]{{502, 341}, {644, 265}, {771, 366}};
-                break;*/
         }
     }
 

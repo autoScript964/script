@@ -29,7 +29,6 @@ public class TaskMain {
     public static final String KEY_examination = "examination";
 
     public static List<String> KEY_LIST;
-
     public Map<String, String> args;
 
     static {
@@ -37,6 +36,7 @@ public class TaskMain {
         KEY_LIST.add(KEY_EVERYDAY);
         KEY_LIST.add(KEY_examination);
     }
+
 
     private SingleTask singleTask;
     protected Abnormal abnormal;
@@ -67,6 +67,11 @@ public class TaskMain {
     protected boolean mtaskState = true;
     protected List<Integer> roleList = new ArrayList();
 
+
+
+
+
+
     protected FunctionClass functionClass;
 
     private TimingActivity timingActivity;
@@ -75,6 +80,7 @@ public class TaskMain {
     private List<String> roleTaskList = new ArrayList<>();
 
     public TaskMain(AtFairyImpl ypFairy) {
+
         mFairy = ypFairy;
         map = 0;
         first = true;
@@ -94,7 +100,7 @@ public class TaskMain {
         publicFunction = new PublicFunction(ypFairy);
         functionClass = new FunctionClass(ypFairy, mContext);
         mFairy.setGameName("天龙手游");
-        mFairy.setGameVersion(463);
+        mFairy.setGameVersion(472);
         singleTask = new SingleTask(mFairy);
         limitlessTask = new LimitlessTask(mFairy);
         timingActivity = new TimingActivity(mFairy);

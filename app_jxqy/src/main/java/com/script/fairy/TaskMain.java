@@ -49,7 +49,6 @@ public class TaskMain {
     protected final static String SUBMISSION = "submission";
 
     protected FunctionClass functionClass;
-
     public TaskMain(AtFairyImpl ypFairy) {
         mFairy = ypFairy;
 
@@ -61,7 +60,7 @@ public class TaskMain {
 
         taskMap = new HashMap<String, Integer>();
         mFairy.setGameName("新剑侠情缘");
-        mFairy.setGameVersion(631);
+        mFairy.setGameVersion(654);
         publicFunction = new PublicFunction(mFairy);
 //      publicFunction=mFairy.publicFunction;
         limitlessTask = new LimitlessTask(mFairy);
@@ -72,6 +71,10 @@ public class TaskMain {
         redPackage = new RedPackage(mFairy);
         functionClass = new FunctionClass(mFairy, mFairy.getContext());
     }
+
+
+
+
 
     private int week;
     private int hour;
@@ -85,8 +88,15 @@ public class TaskMain {
         if(AtFairyConfig.getOption("task_id").equals("2751")){
             mTask = "sgame";
         }else if(AtFairyConfig.getOption("task_id").equals("2715")){
+
+
+
+
+
             mTask = "juan";
             taskMap = new HashMap<>();
+
+
 
             taskMap.put("five",0);
             taskMap.put("ten",0);
@@ -102,6 +112,8 @@ public class TaskMain {
         }else {
             setTaskList();
         }
+
+
 
         gamePublicFunction.closeWindow();
 
@@ -120,13 +132,20 @@ public class TaskMain {
 
                 break;
             case "sgame":
+
+
                 LtLog.i(publicFunction.getLineInfo() + "开始小游戏任务");
                 singleTask.sgame();
+
+
+
                 break;
             case "outdoorsOnHook":
+
                 LtLog.i(publicFunction.getLineInfo() + "开始野外挂机任务");
                 limitlessTask.map_xy = null;
                 limitlessTask.outdoorsOnHook();
+
                 break;
             case "teamTask":
                 LtLog.i(publicFunction.getLineInfo() + "开始组队任务");
@@ -137,6 +156,7 @@ public class TaskMain {
                     taskState = teamTask.followTeam();
                 }
                 break;
+
             case "SingleTask":
                 LtLog.i(publicFunction.getLineInfo() + "开始单人任务");
                 new TimingActivity(mFairy).GoSecurityXiakeIsland();//如果在侠客岛,需要先回到安全区,,初始设计脚本时没有考虑到侠客岛这个奇葩,所以这个地方还要调用一次。
@@ -148,10 +168,12 @@ public class TaskMain {
 //                mFairy.UpState(569);
                 taskState = singleTask.mainTask();
                 break;
+
             case "treasureMap":
                 LtLog.i(publicFunction.getLineInfo() + "开始挖宝任务");
                 taskState = singleTask.treasureMap();
                 break;
+
             case "experiment":
                 //阵法试炼
                 taskState = teamTask.experiment();
@@ -273,7 +295,7 @@ public class TaskMain {
                 taskMap.put("OnHookMap", 999);
             } else {
                 //添加地图 需要修改的函数 goSecurity; selectMap2 ,initMapNameList,screenXY
-                for (int i = 1; i <= 43; i++) {
+                for (int i = 1; i <= 44; i++) {
                     if (AtFairyConfig.getOption("map" + Integer.toString(i)).equals("1")) {
                         taskMap.put("OnHookMap", i);
                         break;

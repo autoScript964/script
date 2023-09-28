@@ -512,16 +512,16 @@ public class GamePublicFuntion {
     public void activity_type(int type) throws Exception {
         switch (type) {
             case 1:
-                mFairy.onTap(1177,160,1195,200, "", 500);
+                mFairy.onTap(1181,263,1194,287, "", 500);
                 break;
             case 2:
-                mFairy.onTap(1178,276,1201,325, "", 500);
+                mFairy.onTap(1186,376,1200,401, "", 500);
                 break;
             case 3:
-                mFairy.onTap(1195,416,1200,433, "", 500);
+                mFairy.onTap(1180,476,1200,510, "", 500);
                 break;
             case 4:
-                mFairy.onTap(1180,509,1194,548, "", 500);
+                mFairy.onTap(1183,587,1193,596, "", 500);
                 break;
         }
 

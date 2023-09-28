@@ -29,7 +29,7 @@ public class TaskMain {
         limitlessTask = new LimitlessTask(ypFairy);
         mFairy = ypFairy;
         mFairy.setGameName("梦幻西游三维版");
-        mFairy.setGameVersion(155);
+        mFairy.setGameVersion(159);
         init();
         BANG = true;
     }

@@ -24,11 +24,26 @@ public class Abnormal  {
         /**
          * 临时
          *
-         *
          */
+
+        result = mFairy.findPic("hdclose51.png");
+        mFairy.onTap(0.8f,result,1043,84,1060,112,"err hdclose51",1000);
+
+        result = mFairy.findPic(366,246,940,401,"sm16.png");
+        mFairy.onTap(0.8f,result,608,572,646,587,"err sm完成弹框",1000);
+
+
+        result = mFairy.findPic(834,397,938,469,"xscl.png");
+        mFairy.onTap(0.8f,result,"err 限时活动下方弹框",1000);
+
+        result = mFairy.findPic(567,555,692,593,"cha.png");
+        mFairy.onTap(0.8f,result,990,183,1014,199,"err 立即查看",1000);
 
         result = mFairy.findPic("hdclose50.png");
         mFairy.onTap(0.8f,result,"err hdclose50",1000);
+
+        result = mFairy.findPic("shizhuang.png");
+        mFairy.onTap(0.8f,result,1101,86,1122,109,"err 时装关闭",1000);
 
         result = mFairy.findPic(529,570,667,665,"hdclose49.png");
         mFairy.onTap(0.8f,result,948,109,964,120,"err hdclose49",1000);

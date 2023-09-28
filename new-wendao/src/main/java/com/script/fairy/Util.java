@@ -26,9 +26,12 @@ public class Util {
 
 //好爱网址 http://feng.suanst.com/
 
+        LtLog.e(mFairy.getLineInfo("好爱答题"));
+
         String answerhui = answer.haoai(214,200,853,397,"5001");;
 
         LtLog.i(mFairy.getLineInfo("") + "答案是" + answerhui);
+
         if (answerhui.equals("1")) {
             LtLog.i(mFairy.getLineInfo("") + "答案是A");
             mFairy.onTap(327,523,367,548, "A", 1000);
@@ -210,11 +213,18 @@ public class Util {
         }
         for (int i = 0; i < 5; i++) {
             mFairy.condit();
-            result = mFairy.findPic("combat.png");
-            mFairy.onTap(0.8f, result, 22,87,29,97,"战斗打开扩展栏", 1000);
 
-            result = mFairy.findPic(2,61,320,328,"zdduiwu.png");
-            mFairy.onTap(0.8f, result, 22,87,29,97,"战斗队伍", 1000);
+            result = mFairy.findPic("combat.png");
+            if(result.sim>0.8f) {
+                Thread.sleep(3000);
+                //mFairy.onTap(0.8f, result, 22, 87, 29, 97, "战斗打开扩展栏", 1000);
+                i=0;
+                continue;
+            }
+
+           /* result = mFairy.findPic(2,61,320,328,"zdduiwu.png");
+
+            mFairy.onTap(0.8f, result, 22,87,29,97,"战斗队伍", 1000);*/
 
             result = mFairy.findPic(974, 91, 1280, 233, "right_team.png");
             mFairy.onTap(0.9f, result, "右侧组队亮", 1000);
@@ -232,6 +242,7 @@ public class Util {
                     return;
                 }
             }
+
             if (string.equals("队长")) {
                 result = mFairy.findPic(178, 604, 365, 673, "ancjdw.png");
                 mFairy.onTap(0.8f, result, "创建队伍", 2000);

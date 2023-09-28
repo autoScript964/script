@@ -243,6 +243,7 @@ public class GamePublicFuntion {
             if (result.sim > 0.8f) {
                 err = 0;
 
+                LtLog.e(mFairy.getLineInfo("队伍界面"));
                 result = mFairy.findPic("rank4.png");
                 if (result.sim > 0.8f) {
                     mFairy.onTap(1100, 37, 1113, 48, "", 300);
@@ -269,7 +270,7 @@ public class GamePublicFuntion {
                         break;
                     default:
                         result = mFairy.findPic("rank6.png");
-                        mFairy.onTap(0.8f, result, "退出队伍", 500);
+                        mFairy.onTap(0.8f, result, "退出队伍", 3000);
                         break;
                 }
             } else {

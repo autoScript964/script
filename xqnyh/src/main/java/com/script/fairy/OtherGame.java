@@ -44,41 +44,47 @@ public class OtherGame extends TaskContent {
             }
 
             public void content_1() throws Exception {
-                if (overtime(10, 0)) return;
+                if (overtime(10, 99)) return;
 
                 result = mFairy.findPic(639, 6, 1126, 176, "fl.png");
-                mFairy.onTap(0.8f, result, "福利", Sleep);
+                mFairy.onTap(0.8f, result, "福利", 3000);
 
-                result = mFairy.findPic("Welfareinterface.png");
+
+                result = mFairy.findPic(308,70,978,193,"qian.png");
                 if (result.sim > 0.8f) {
-                    LtLog.e(mFairy.getLineInfo("福利界面"));
-                    Thread.sleep(2000);
-                    mFairy.condit();
-                    result = mFairy.findPic("Signright.png");
+
+                    for (int i = 0; i < 3; i++) {
+                        Thread.sleep(500);
+                        result = mFairy.findPic(133, 398, 910, 648, new String[]{"fl1.png", "fl2.png"});
+                        mFairy.onTap(0.8f, result, "月卡返利领取", 1000);
+                    }
+
+
+                    result = mFairy.findPic(913,463,1077,659,"qian1.png");
                     mFairy.onTap(0.8f, result, "签到", 3000);
                     if (result.sim > 0.8f) {
+
                         for (int i = 164; i < 975; i = i + 162) {
+
                             for (int j = 151; j < 585; j = j + 100) {
+
                                 mFairy.onTap(0.8f, result, i, j, i + 1, j + 1, "签到", 10);
+
                                 mFairy.onTap(0.8f, result, 1084, 191, 1085, 192, "签到11", 10);
-                           /*     mFairy.tap(i,j);
-                                mFairy.tap(1084,191);
-                                Thread.sleep(200);*/
-                            }
-                        }
-                        /*for (int i=0;i<10;i++){
-                            mFairy.condit();
-                            result = mFairy.findPic(50,75,997,609,"Signeveryday.png");
-                            if (result.x>40){
-                                mFairy.onTap(0.8f, result, "签到", 100);
 
                             }
-                        }*/
+                        }
+
                     }
+
+
                     gameUtil.close(0);
                     setTaskEnd();
                     return;
+
                 }
+
+
             }
         }.taskContent(mFairy, "福利签到");
         fuli = true;
@@ -255,6 +261,8 @@ public class OtherGame extends TaskContent {
                 if(resultchat.sim>0.8f){
                     mFairy.inputText(string);
                     mFairy.condit();
+
+                    Thread.sleep(2000);
 
                     mFairy.onTap(0.8f, resultchat, "确定文本", 3000);
 
@@ -1726,19 +1734,21 @@ public class OtherGame extends TaskContent {
                     if (result.sim > 0.8f) {
                         for (int i = 0; i < numpr; i++) {
                             mFairy.tap(866, 353);
+                            Thread.sleep(10);
                             //  mFairy.onTap(0.8f, result, "加号", 1);
                         }
                         mFairy.onTap(757, 456, 781, 468, "烹饪", Sleep);
+                        setTaskName(2);
                     }
-                    setTaskName(2);
                 }
             }
 
             public void content_2() throws Exception {
-                if (overtime(6, 99)) return;
-                result = mFairy.findPic("Inprocess.png");
+                overtime(6, 99);
+
+                result = mFairy.findPic("pr1.png");
                 if (result.sim > 0.8f) {
-                    LtLog.e(mFairy.getLineInfo("正在采集中"));
+                    LtLog.e(mFairy.getLineInfo("正在烹饪中"));
                     err = 0;
                 }
                 Thread.sleep(2000);

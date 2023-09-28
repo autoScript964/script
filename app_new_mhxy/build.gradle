@@ -8,8 +8,8 @@ android {
         applicationId "com.mhxy.wyj"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 393
-        versionName "393"
+        versionCode 415
+        versionName "415"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -28,7 +28,7 @@ android {
     dependencies {
         implementation fileTree(include: ['*.jar'], dir: 'libs')
         testImplementation 'junit:junit:4.12'
-        implementation 'com.lzy.net:okhttputils:+'
+        implementation 'com.lzy.net:okhttputils:1.8.1'
         implementation project(':openCVLibrary341')
         implementation 'com.rmtheis:tess-two:9.0.0'
 

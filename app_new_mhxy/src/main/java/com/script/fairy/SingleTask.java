@@ -227,7 +227,7 @@ public class SingleTask {
                     result = mFairy.findPic(633, 41, 1033, 383, "close7.png");
                     mFairy.onTap(0.8f, result, "guanbi", 500);
 
-                    result = mFairy.findPic("shcs3.png");
+                    result = mFairy.findPic(929,593,1166,705,"shcs3.png");
                     if (result.sim > 0.8f) {
 
                         result = mFairy.findPic(161, 246, 287, 375, "shcs6.png");
@@ -386,7 +386,7 @@ public class SingleTask {
                     }
                 }
 
-                result = mFairy.findPic(430,488,876,588,new String[]{"sm1.png","sm14.png","wanc2.png"});
+                result = mFairy.findPic(401,485,1122,609,new String[]{"sm1.png","sm14.png","wanc2.png","menpais.png"});
                 if (result.sim > 0.8f) {
                     result = mFairy.findPic("sm2.png");
                     mFairy.onTap(0.9f, result, "自动选择", 500);
@@ -429,7 +429,7 @@ public class SingleTask {
 
                 if (gamePublicFuntion.mainScene()) {
                     if (gamePublicFuntion.judgeStop(2)) {
-                        result = mFairy.findPic(1032, 169, 1102, 519, new String[]{"nn14.png", "sm4.png"});
+                        result = mFairy.findPic(1031, 176, 1200, 461, new String[]{"nn14.png", "sm4.png"});
                         if (result.sim > 0.7f) {
                             err = 0;
                             mFairy.onTap(0.7f, result, "师门", 1000);
@@ -576,7 +576,7 @@ public class SingleTask {
 
                 if (gamePublicFuntion.mainScene()) {
                     if (gamePublicFuntion.judgeStop(2)) {
-                        result = mFairy.findPic(1031, 176, 1103, 461, new String[]{"bt1.png"});
+                        result = mFairy.findPic(1031, 176, 1200, 461, new String[]{"bt1.png"});
                         if (result.sim > 0.7f) {
                             err = 0;
                             mFairy.initMatTime();
@@ -645,7 +645,6 @@ public class SingleTask {
                 if (result.sim > 0.8f) {
                     err=0;
 
-
                     mFairy.onTap(880,340,924,360,"大扫除",1000);
                     mFairy.onTap(720,451,767,464,"开始",1500);
 
@@ -681,11 +680,9 @@ public class SingleTask {
         };
     }//家园任务
 
-
     boolean mj = false;
     boolean mj_bool = false;
     int mj_user_count = 99;
-
     public void mj() throws Exception {
         new SingleContent(mFairy, "秘境降妖") {
 
@@ -703,9 +700,11 @@ public class SingleTask {
                 }
             }//取消
 
+
             void create() throws Exception {
                 super.create();
                 activityName = "mj.png";
+
                 activityType = 1;
                 mj = false;
                 mj_bool = false;
@@ -893,7 +892,7 @@ public class SingleTask {
 
                 if (gamePublicFuntion.mainScene()) {
                     if (gamePublicFuntion.judgeStop(2)) {
-                        result = mFairy.findPic(1032, 169, 1102, 519, new String[]{"bp2.png", "bp3.png", "bp4.png"});
+                        result = mFairy.findPic(1031, 176, 1200, 461, new String[]{"bp2.png", "bp3.png", "bp4.png"});
                         if (result.sim > 0.7f) {
                             err = 0;
                             mFairy.onTap(0.7f, result, "帮派", 1000);
@@ -934,13 +933,21 @@ public class SingleTask {
             }//取消
 
             void content_02() throws Exception {
-                timeCount(10, 0);
+                timeCount(20, 0);
+
+                Thread.sleep(500);
 
                 result = mFairy.findPic(958,137,1172,523,"zhlly1.png");
                 mFairy.onTap(0.85f, result, "参加活动", 1500);
 
                 result = mFairy.findPic(469,525,621,653,"zhlly2.png");
-                mFairy.onTap(0.85f, result, "参加", 1500);
+                if(result.sim>0.8f) {
+                    err=0;
+                    mFairy.onTap(0.85f, result, "参加", 1500);
+                }
+
+                result = mFairy.findPic(541,547,666,694,"cly.png");
+                mFairy.onTap(0.85f, result, "确定", 1500);
 
 
                 result = mFairy.findPic(438,2,789,95, "zhlly4.png");
@@ -1092,35 +1099,43 @@ public class SingleTask {
                 if (result.sim > 0.8f) {
                     err = 0;
                     long num;
-                    for (int i = 1; i <= 4; i++) {
-                        if (i == 1) {
-                            num = mFairy.getColorNum(172, 121, 203, 150, 0.99f, 0, "253,216,113");
-                            if (num > 100) {
-                                mFairy.onTap(172, 121, 203, 150, "", 500);
-                                break;
-                            }
-                        }
-                        if (i == 2) {
-                            num = mFairy.getColorNum(421, 125, 450, 149, 0.99f, 0, "253,216,113");
-                            if (num > 100) {
-                                mFairy.onTap(421, 125, 450, 149, "", 500);
-                                break;
-                            }
-                        }
 
-                        if (i == 3) {
-                            num = mFairy.getColorNum(659, 112, 691, 145, 0.99f, 0, "253,216,113");
-                            if (num > 100) {
-                                mFairy.onTap(659, 112, 691, 145, "", 500);
-                                break;
-                            }
-                        }
+                    result = mFairy.findPic(142,99,1146,208,"guaji7.png");
+                    if (result.sim > 0.8f) {
+                        mFairy.onTap(result.x+95,result.y+180,result.x+100,result.y+200,"",500);
+                    }else {
 
-                        if (i == 4) {
-                            num = mFairy.getColorNum(912, 112, 944, 137, 0.99f, 0, "253,216,113");
-                            if (num > 100) {
-                                mFairy.onTap(912, 112, 944, 137, "", 500);
-                                break;
+
+                        for (int i = 1; i <= 4; i++) {
+                            if (i == 1) {
+                                num = mFairy.getColorNum(172, 121, 203, 150, 0.99f, 0, "253,216,113");
+                                if (num > 100) {
+                                    mFairy.onTap(172, 121, 203, 150, "", 500);
+                                    break;
+                                }
+                            }
+                            if (i == 2) {
+                                num = mFairy.getColorNum(421, 125, 450, 149, 0.99f, 0, "253,216,113");
+                                if (num > 100) {
+                                    mFairy.onTap(421, 125, 450, 149, "", 500);
+                                    break;
+                                }
+                            }
+
+                            if (i == 3) {
+                                num = mFairy.getColorNum(659, 112, 691, 145, 0.99f, 0, "253,216,113");
+                                if (num > 100) {
+                                    mFairy.onTap(659, 112, 691, 145, "", 500);
+                                    break;
+                                }
+                            }
+
+                            if (i == 4) {
+                                num = mFairy.getColorNum(912, 112, 944, 137, 0.99f, 0, "253,216,113");
+                                if (num > 100) {
+                                    mFairy.onTap(912, 112, 944, 137, "", 500);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -1152,7 +1167,7 @@ public class SingleTask {
                 if (gamePublicFuntion.mainScene()) {
                     if (gamePublicFuntion.judgeStop(4)) {
 
-                        FindResult r = mFairy.findPic(1032,178,1120,521, new String[]{"jyl4.png"});
+                        FindResult r = mFairy.findPic(1031, 176, 1200, 461,new String[]{"jyl4.png"});
                         if (r.sim > 0.7f) {
                             err = 0;
 
@@ -2482,6 +2497,7 @@ public class SingleTask {
                     result = mFairy.findPic(836, 64, 1139, 204, "bpqd4.png");
                     if (result.sim > 0.8f) {
                         mFairy.onTap(0.8f, result, "签到", 1000);
+
                         mFairy.onTap(1093, 38, 1110, 56, "", 500);
                         setTaskEnd();
                         return;
@@ -2511,8 +2527,8 @@ public class SingleTask {
                 mFairy.onTap(0.8f, result, "加号", 1500);
 
                 result = mFairy.findPic(522, 548, 1258, 714, "bpqd2.png");
-                if (result.sim > 0.8f) {
-                    mFairy.onTap(0.8f, result, "帮派", 1000);
+                if (result.sim > 0.85f) {
+                    mFairy.onTap(0.85f, result, "帮派", 1000);
                     err = 0;
                 }
                 result = mFairy.findPic(1070, 58, 1209, 663, "bpqd3.png");

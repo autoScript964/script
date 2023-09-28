@@ -28,8 +28,6 @@ public class GamePublicFunction {
         initGoSecurity();
     }
 
-
-
     public void goLA() throws Exception {
 
         LtLog.i(publicFunction.getLineInfo() + "回主城临安");
@@ -91,9 +89,12 @@ public class GamePublicFunction {
                 LtLog.i(publicFunction.getLineInfo() + "临安");
                 return;
             }
+
             Thread.sleep(1000);
         }
+
         closeWindow();
+
         LtLog.i(publicFunction.getLineInfo() + "回主城 - 结束");
     }//
 
@@ -438,6 +439,7 @@ public class GamePublicFunction {
         mapName.add("LZ.png");//18
         mapName.add("JKZ.png");//19
         mapName.add("CZZS.png");//20
+        mapName.add("BZS.png");//21
         XY = new ArrayList<>();
         XY.add(new int[]{649, 364});//1
         XY.add(new int[]{644, 397});//2
@@ -459,6 +461,7 @@ public class GamePublicFunction {
         XY.add(new int[]{584, 366});//18
         XY.add(new int[]{632, 397});//19
         XY.add(new int[]{636, 364});//20
+        XY.add(new int[]{612,346});//21
     }
 
     //回安全区
@@ -471,7 +474,7 @@ public class GamePublicFunction {
 
             LtLog.i(publicFunction.getLineInfo() + "【开始回安全区】");
 
-            result = publicFunction.localFindPic(1138, 0, 1280, 80, "mainCity1.png" + "|" + "mainCity.png");
+            result = publicFunction.localFindPic(1138, 0, 1280, 80, "mainCity1.png" + "|" + "mainCity.png"+ "|" + "wyd.png"+ "|" + "home1.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "【在安全区】" + result);
                 return;
@@ -485,6 +488,7 @@ public class GamePublicFunction {
             } else {
                 continue;
             }
+
 
 
             boolean bool = false;
@@ -507,6 +511,7 @@ public class GamePublicFunction {
                     bool = true;
                 } else {
                     //没有安全区标识
+                    LtLog.e(mFairy.getLineInfo("mapName:"+mapName));
                     for (int j = 0; j < mapName.size(); j++) {
 
                         result = publicFunction.localFindPic(518, 29, 706, 149, mapName.get(j));
@@ -792,25 +797,30 @@ public class GamePublicFunction {
     public void companion() throws Exception {
         AtFairy2.OpencvResult result1;
         switchSkillOrTong("tong");
+
         result = publicFunction.localFindPic(1082, 616, 1206, 720, "companion.png");
         if (result.sim >= 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "------->companion=" + result);
             publicFunction.rndTapWH(result.x, result.y, 24, 26);
             Thread.sleep(2000);
         }
-        for (int i = 0; i < 10; i++) {
-            result = publicFunction.localFindPic(1204, 202, 1265, 253, "redDot.png");
-            if (result.sim >= 0.8) {
+        for (int i = 0; i < 20; i++) {
+
+            Thread.sleep(500);
+
+            result = publicFunction.localFindPic(1194,170,1269,251, "redDot.png");
+            if (result.sim >= 0.7) {
                 LtLog.i(publicFunction.getLineInfo() + "------->redDot=" + result);
                 publicFunction.rndTapWH(result.x, result.y, 5, 5);
-                Thread.sleep(500);
+                Thread.sleep(2500);
             }
+
             result = publicFunction.localFindPic(494, 490, 607, 553, "redDot.png");
             result1 = publicFunction.localFindPic(993, 483, 1088, 555, "redDot.png");
             LtLog.i(publicFunction.getLineInfo() + "------->redDot ---result1=" + result1 + ",result=" + result);
-            if (result1.sim >= 0.8 || result.sim >= 0.8) {
+            if (result1.sim >= 0.7 || result.sim >= 0.7) {
                 LtLog.i(publicFunction.getLineInfo() + "------->redDot ---result1=" + result1 + ",result=" + result);
-                if (result1.sim >= 0.8) {
+                if (result1.sim >= 0.7) {
                     mFairy.tap(result1.x, result1.y);
                 } else {
                     mFairy.tap(result.x, result.y);
@@ -819,6 +829,7 @@ public class GamePublicFunction {
             } else {
                 break;
             }
+
             for (int j = 0; j < 10; j++) {
                 result = publicFunction.localFindPic(547, 521, 673, 646, "complete.png");
                 if (result.sim >= 0.8) {
@@ -837,7 +848,7 @@ public class GamePublicFunction {
                 clickDetermine(1078, 643, 1268, 710);
                 LtLog.i(publicFunction.getLineInfo() + "------->clickDetermine=");
                 Thread.sleep(1000);
-                result = publicFunction.localFindPic(0, 30, 120, 173, "companion4.png");
+                result = publicFunction.localFindPic(6,43,97,289, "companion4.png");
                 if (result.sim >= 0.8) {
                     LtLog.i(publicFunction.getLineInfo() + "------->companion4=" + result);
                     break;
@@ -852,12 +863,15 @@ public class GamePublicFunction {
     public void chest() throws Exception {
         //家族宝箱
         switchSkillOrTong("tong");
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 20; i++) {
+
+            Thread.sleep(500);
+
             result = publicFunction.localFindPic(900, 618, 1018, 720, "tong.png" + "|" + "tong2.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "------->tong=" + result);
                 publicFunction.rndTapWH(result.x, result.y, 26, 25);
-                Thread.sleep(1000);
+                Thread.sleep(2000);
             }
             result = publicFunction.localFindPic(0, 31, 108, 165, "tong1.png");
             if (result.sim >= 0.8) {
@@ -865,6 +879,8 @@ public class GamePublicFunction {
                 publicFunction.rndTap(1204, 423, 1230, 466);
                 Thread.sleep(1000);
             }
+
+
             result = publicFunction.localFindPic(892, 387, 1029, 506, "gold.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "-------------------------gold--->=" + result);
@@ -873,7 +889,6 @@ public class GamePublicFunction {
             }
             result = publicFunction.localFindPic(0, 29, 112, 174, "gold1.png");
             if (result.sim >= 0.8) {
-
                 LtLog.i(publicFunction.getLineInfo() + "-------------------------gold1--->=" + result);
                 result = publicFunction.localFindPicHLS(797, 282, 939, 404, "04.png");
                 if (result.sim >= 0.8) {
@@ -895,6 +910,8 @@ public class GamePublicFunction {
 
     public void assist() throws Exception {
 
+        //857,638,900,700
+
         findResult = mFairy.findPic("suo.png");
         mFairy.onTap(0.9f, findResult, "suo", 1000);
 
@@ -902,24 +919,28 @@ public class GamePublicFunction {
         if (result.sim >= 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "-------------------------assist--->=" + result);
             publicFunction.rndTapWH(result.x + 10, result.y + 5, 10, 1);
-            Thread.sleep(500);
-        } else {
-            return;
+            Thread.sleep(1500);
         }
+
+
+        result = publicFunction.localFindPic(191,13,274,632, "assist1.png");
+        if (result.sim >= 0.8) {
+            LtLog.i(publicFunction.getLineInfo() + "-------------------------assist1--->=" + result);
+            publicFunction.rndTapWH(result.x + 10, result.y + 5, 10, 1);
+            Thread.sleep(1500);
+        }
+
+
 
         result = publicFunction.localFindPic(329, 134, 514, 206, "item.png");
         if (result.sim >= 0.8) {
-            LtLog.i(publicFunction.getLineInfo() + "-------------------------item--->=" + result);
+            LtLog.i(publicFunction.getLineInfo() + "商会协助界面" + result);
             for (int j = 0; j < 3; j++) {
-                for (int i = 0; i <= 2; i++) {
+                for (int i = 0; i <= 2; i++) {//874,189,1034,290
                     result = publicFunction.localFindPic(874, 189 + (i * 96), 1034, 290 + (i * 96), "up-1.png");
-                    LtLog.i(publicFunction.getLineInfo() + "-------------------------up--->=" + result);
                     if (result.sim >= 0.8) {
-
-                        LtLog.i(publicFunction.getLineInfo() + "-------------------------up--->=" + result);
                         int colorNum;
                         colorNum = publicFunction.getColorNumber(result.x - 325, result.y, result.x - 267, result.y + 32, "73,254,73", 0.9);
-
                         LtLog.i(publicFunction.getLineInfo() + "-------------------------colorNum--->=" + colorNum);
                         if (colorNum >= 100) {
                             mFairy.tap(result.x, result.y);
@@ -928,8 +949,9 @@ public class GamePublicFunction {
                     }
                 }
             }
+            closeWindow();
         }
-        closeWindow();
+
     }
 
     public List<String> lookupTask(List<String> list) throws Exception {
@@ -947,12 +969,11 @@ public class GamePublicFunction {
 
         while (mFairy.condit()) {
 
-            //瓦舍小游戏
+            //瓦舍小游戏wwww
             if (list.get(0).equals("wsxyx")) {
                 closeWindow();
                 return list;
             }
-
 
             AtFairy2.OpencvResult result1 = publicFunction.localFindPic(226, 87, 722, 414, list.get(0) + ".png");
             LtLog.i(publicFunction.getLineInfo() + "【活动 sim: " + list.get(0) + " 】");
@@ -967,6 +988,7 @@ public class GamePublicFunction {
                     Thread.sleep(3500);
                     return list;
                 }
+
                 result = publicFunction.localFindPic(result1.x - 10, result1.y + 72, result1.x + 111, result1.y + 129, "complete1.png");
                 if (result.sim >= 0.8) {
                     LtLog.i(publicFunction.getLineInfo() + "【已完成,移除当前任务】");
@@ -980,10 +1002,8 @@ public class GamePublicFunction {
                 }
             }
 
-
             findResult = mFairy.findPic("sz.png");
             mFairy.onTap(0.8f, findResult, 497, 441, 531, 457, "取消 - 活动界面弹框", 1000);
-
 
             if (second >= 4) {
                 LtLog.i(publicFunction.getLineInfo() + "---------从上往下滑动=" + result);
@@ -992,6 +1012,7 @@ public class GamePublicFunction {
                 LtLog.i(publicFunction.getLineInfo() + "---------从下往上滑动=" + result);
                 publicFunction.RanSwipe(233, 108, 719, 393, 2, 500);
             }
+
             second = second + 1;
             if (second > 8) {
                 second = 0;

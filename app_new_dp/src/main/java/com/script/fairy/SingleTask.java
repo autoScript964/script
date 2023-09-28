@@ -11,14 +11,18 @@ public class SingleTask {
     public AtFairyImpl mFairy;
 
     public SingleTask(AtFairyImpl ypFairy) throws Exception {
+
         mFairy = ypFairy;
+
         gamePublicFuntion = new GamePublicFuntion(ypFairy);
+
     }
 
     public void ThreadTask() throws Exception {
         gamePublicFuntion.init();
 
         while (mFairy.condit()) {
+
             for (int i = 0; i < 1; i++) {
 
                 result = mFairy.findPic(2, 5, 1268, 719, "novice22.png");
@@ -26,6 +30,7 @@ public class SingleTask {
                     mFairy.onTap(result.x, result.y - 40, result.x + 1, result.y - 39, "清除弹框!", 3000);
                     break;
                 }
+
                 result = mFairy.findPic(2, 5, 1268, 719, "novice23.png");
                 if (result.sim > 0.85f) {
                     mFairy.onTap(result.x + 80, result.y, result.x + 81, result.y + 1, "清除弹框!", 3000);
@@ -1342,7 +1347,7 @@ public class SingleTask {
             void content_01() throws Exception {
                 timeCount(10, 0);
 
-                result = mFairy.findPic("yh.png");
+                result = mFairy.findPic(949,416,1272,708,"yh.png");
                 if (result.sim > 0.85f) {
                     mFairy.onTap(0.85f, result, "异火", 1500);
                 } else {

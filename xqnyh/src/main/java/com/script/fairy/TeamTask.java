@@ -241,10 +241,10 @@ public class TeamTask extends TaskContent {
                 result = mFairy.findPic(445, 134, 827, 579, "DefaultResurrection.png");
                 mFairy.onTap(0.8f, result, "默认复活", Sleep);
 
-                result = mFairy.findPic(new String[]{"Giveuptask.png", "Giveuptask1.png"});
-                mFairy.onTap(0.8f, result, "任务失败放弃", Sleep);
-                mFairy.onTap(0.8f, result, 796, 424, 797, 425, "任务失败放弃", Sleep);
-                if (result.sim > 0.8f) {
+                result = mFairy.findPic(new String[]{"Giveuptask.png", "Giveuptask1.png", "fangqi.png"});
+                mFairy.onTap(0.75f, result, "任务失败放弃", Sleep);
+                mFairy.onTap(0.75f, result, 796, 424, 797, 425, "任务失败放弃", Sleep);
+                if (result.sim > 0.75f) {
                     setTaskName(3);
                     return;
                 }
@@ -255,13 +255,15 @@ public class TeamTask extends TaskContent {
                         gameUtil.collarDouble();
                         sb = false;
                     }
+
                     gameUtil.apply();
                     mFairy.initMatTime();
+
                     err = 0;
+
                     result = mFairy.findPic("Hangup.png");
                     mFairy.onTap(0.7f, result, 1236, 335, 1237, 336, "副本中开启挂机", Sleep);
                 }
-
                 result = mFairy.findPic(927, 177, 1276, 708, new String[]{"Getinto.png", "Pickupdragon.png"});
                 mFairy.onTap(0.8f, result, "右侧一条龙", Sleep);
 
@@ -287,8 +289,10 @@ public class TeamTask extends TaskContent {
                 if (dazeTime > 5) {
                     result = mFairy.findPic("taskbar.png");
                     mFairy.onTap(0.8f, result, "任务栏", Sleep);
+
                     result = mFairy.findPic(3, 184, 246, 447, new String[]{"Leftone.png", "Leftone1.png", "Leftone2.png", "Leftone3.png", "Leftone4.png"});
                     mFairy.onTap(0.7f, result, "左侧一条龙", Sleep);
+
                 }
 
                 result = mFairy.findPic("Endround.png");

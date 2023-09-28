@@ -59,6 +59,10 @@ public class Abnormal {
         }
 
 
+        findResult =mFairy.findPic(1063,44,1246,137,"hdclose24.png");
+        mFairy.onTap(0.8f,findResult,"hdclose24",1000);
+
+
         findResult =mFairy.findPic(384,252,752,428,"err6.png");
         mFairy.onTap(0.8f,findResult,484,459,527,481,"err6",1000);
 
@@ -67,6 +71,21 @@ public class Abnormal {
 
         findResult =mFairy.findPic("hdclose7.png");
         mFairy.onTap(0.8f,findResult,1222,74,1241,95,"hdclose7",1000);
+
+        findResult =mFairy.findPic("hdclose3.png");
+        mFairy.onTap(0.8f,findResult,"hdclose3",1000);
+
+        findResult =mFairy.findPic("hdclose22.png");
+        mFairy.onTap(0.8f,findResult,"hdclose22",1000);
+
+        findResult =mFairy.findPic(1006,5,1266,115,"hdclose23.png");
+        mFairy.onTap(0.8f,findResult,"hdclose23",1000);
+
+        findResult =mFairy.findPic("hdclose20.png");
+        mFairy.onTap(0.8f,findResult,"hdclose20",1000);
+
+        findResult =mFairy.findPic("hdclose21.png");
+        mFairy.onTap(0.8f,findResult,"hdclose21",1000);
 
         findResult =mFairy.findPic("hdclose19.png");
         mFairy.onTap(0.8f,findResult,1142,129,1159,142,"hdclose19",1000);
@@ -425,11 +444,7 @@ public class Abnormal {
             findResult = mFairy.findPic("gou.png");
             mFairy.onTap(0.8f,findResult,"打勾",1000);
 
-            findResult = mFairy.findPic("gou1.png");
-            mFairy.onTap(0.8f,findResult,"打勾",1000);
 
-            findResult = mFairy.findPic(153,651,316,712,"gou2.png");
-            mFairy.onTap(0.8f,findResult,"打勾",1000);
 
             publicFunction.rndTapWH(result.x, result.y, 116, 27);
             Thread.sleep(500);
@@ -723,14 +738,16 @@ public class Abnormal {
         findResult = mFairy.findPic("fanhui.png");
         mFairy.onTap(0.8f,findResult,"返回游戏",1000);
 
+
+        findResult = mFairy.findPic(704,447,803,668,"hl.png");
+        mFairy.onTap(0.8f,findResult,1013,478,1043,505,"欢迎回归",1000);
+
         findResult = mFairy.findPic("jiazhang.png");
         mFairy.onTap(0.8f,findResult,1014,66,1036,88,"家长模式",1000);
 
         findResult = mFairy.findPic(new String[]{"close1.png","hdclose1.png","hdclose2.png"});
         mFairy.onTap(0.8f,findResult,"活动弹框- 关闭",1000);
 
-        findResult = mFairy.findPic("hdclose3.png");
-        mFairy.onTap(0.8f,findResult,1140,80,1158,97,"幸运商店 - 关闭",1000);
 
         findResult = mFairy.findPic("hdclose4.png");
         mFairy.onTap(0.8f,findResult,"活动 - 关闭",1000);

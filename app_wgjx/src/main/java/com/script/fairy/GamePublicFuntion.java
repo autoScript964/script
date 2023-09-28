@@ -70,6 +70,7 @@ public class GamePublicFuntion {
                         mFairy.onTap(0.8f, result, 49, 642, 68, 662, "出城", 1000);
                     }
 
+
                     result = mFairy.findPic("home1.png");
                     if (result.sim > 0.8f) {
                         LtLog.e(mFairy.getLineInfo("地图界面"));
@@ -96,6 +97,11 @@ public class GamePublicFuntion {
                             result = mFairy.findPic(3, 89, 174, 284, "position.png");
                             mFairy.onTap(0.8f, result, "位置图标", 3000);
                         }
+
+
+
+
+
                         /*result= mFairy.findPic(124,138,227,232,"sou.png");
                         mFairy.onTap(0.85f,result,"",500);
 
@@ -104,6 +110,8 @@ public class GamePublicFuntion {
                         return;
                     }
                     break;
+
+
             }
 
             close(1);

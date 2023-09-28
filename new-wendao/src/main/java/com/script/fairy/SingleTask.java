@@ -1,14 +1,12 @@
 package com.script.fairy;
 
+import com.script.framework.AtFairyImpl;
+import com.script.opencvapi.AtFairyConfig;
 import com.script.opencvapi.FindResult;
 import com.script.opencvapi.LtLog;
-import com.script.opencvapi.AtFairyConfig;
-import com.script.framework.AtFairyImpl;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.script.opencvapi.AtFairy2.FAIRY_TYPE_TASK;
-import static com.script.opencvapi.AtFairy2.TASK_STATE_FINISH;
 
 /**
  * Created by Administrator on 2019/3/25 0025.
@@ -45,6 +43,7 @@ public class SingleTask {
         if (AtFairyConfig.getOption("bprw").equals("1")) {
             list.add("bprwtask.png");
         }
+
         //助人为乐
         if (AtFairyConfig.getOption("1106").equals("1")) {
             list.add("zrwltask.png");
@@ -54,6 +53,7 @@ public class SingleTask {
         if (AtFairyConfig.getOption("2432").equals("1")) {
             list.add("jjctask.png");
         }
+
         //帮派日常挑战
         if (AtFairyConfig.getOption("2434").equals("1")) {
             list.add("bprctzxx.png");
@@ -76,6 +76,7 @@ public class SingleTask {
                 LtLog.e(mFairy.getLineInfo("没有任务了结束"));
                 return;
             }
+
             if (bj == 0) {
                 result = mFairy.findPic(974, 91, 1280, 233, "right_task1.png");
                 mFairy.onTap(0.9f, result, "右侧任务暗", 2000);
@@ -89,6 +90,7 @@ public class SingleTask {
 
                     result = mFairy.findPic(766, 18, 1265, 702, "rock.png");
                     mFairy.onTap(0.8f, result, "石头", 1000);
+
                     //看起来不错  离开
                     mFairy.findPic(766, 18, 1265, 702, 0.8f, new String[]{"look.png", "tmbl.png", "msyk.png", "yuanyi.png", "goaway.png"});
 
@@ -103,6 +105,7 @@ public class SingleTask {
 
                     result = mFairy.findPic("donation1.png");
                     if (result.sim > 0.9f) {
+
                         for (int i = 0; i < 6; i++) {
                             result = mFairy.findPic("donation1.png");
                             mFairy.onTap(0.9f, result, "捐助", 4000);
@@ -110,6 +113,7 @@ public class SingleTask {
                             Thread.sleep(1500);
                             mFairy.condit();
                         }
+
                         for (int i = 0; i < 6; i++) {
                             result = mFairy.findPic("donation1.png");
                             if (result.sim > 0.9f) {

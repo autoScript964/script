@@ -69,6 +69,16 @@ public class GamePublicFuntion extends TaskContent {
         while (mFairy.condit()) {
             LtLog.e(mFairy.getLineInfo("GamePublicFuntion init >>>"));
 
+            result = mFairy.findPic(739,386,920,476,"set6.png");
+            if (result.sim > 0.8f) {
+                LtLog.e(mFairy.getLineInfo("【登录界面】"));
+
+                return;
+
+            }
+
+
+
             err++;
 
             if (err > 30) {

@@ -29,6 +29,7 @@ public class LimitlessTask {
         String strParent = "shuadao.png";
         String strSub = "";
         String rightstr = "";
+
         if (AtFairyConfig.getOption("sdxy").equals("1")) {
             if (AtFairyConfig.getOption("dj").equals("1")){
                 strTarget = "target_xy1j.png";
@@ -38,8 +39,10 @@ public class LimitlessTask {
                 strTarget = "target_xy2j.png";
                 strSub = "xiangyao2j.png";
                 rightstr="xytask2j.png";
+                //
             }
         }
+
         if (AtFairyConfig.getOption("sdfm").equals("1")) {
             if (AtFairyConfig.getOption("dj").equals("1")){
                 strTarget = "target_fm1j.png";
@@ -63,6 +66,7 @@ public class LimitlessTask {
                 rightstr="fxdxtask2j.png";
             }
         }
+
         if (AtFairyConfig.getOption("sdsb").equals("1")) {
             util.receiveDouble();
         } else {
@@ -71,6 +75,16 @@ public class LimitlessTask {
         int bj = 0;
         while (mFairy.condit()) {
             LtLog.e(mFairy.getLineInfo("刷道中bj=" + bj));
+
+            result = mFairy.findPic(533, 72, 764, 185, "laojun.png");
+            if (result.sim > 0.8f) {
+
+                Thread.sleep(5000);
+
+                continue;
+            }
+
+
             int ret = timingActivity.timingActivity();
             if (ret == 1) {
                 bj = 0;
@@ -160,7 +174,7 @@ public class LimitlessTask {
                     if (dazeTime >= 20) {
                         mFairy.initMatTime();
                         result = mFairy.findPic(1010, 165, 1278, 512, new String[]{"rwlxy.png", "rwlfm.png","rwfxdx.png"});
-                        mFairy.onTap(0.7f, result, "右侧任务栏降妖伏魔", 1000);
+                        mFairy.onTap(0.7f, result, "右侧任务栏降妖伏魔", 3000);
                         if (result.sim > 0.7f) {
                         } else {
                             bj = 2;

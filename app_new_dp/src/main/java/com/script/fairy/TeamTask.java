@@ -511,7 +511,7 @@ public class TeamTask {
                 TaskMain.TASKNAME = "秘境话本-普通";
                 taskName = "mjhb.png";
                 ranksName = "mjpt.png";
-                ranksNum = 4;
+                ranksNum = 3;
                 taskType = 1;
             }
             @Override
@@ -607,7 +607,7 @@ public class TeamTask {
                 TaskMain.TASKNAME = "秘境话本-困难";
                 taskName = "mjhb.png";
                 ranksName = "mjkn.png";
-                ranksNum = 5;
+                ranksNum = 3;
                 taskType = 1;
             }
 
@@ -691,6 +691,104 @@ public class TeamTask {
             }
         };
     }//秘境话本-困难
+
+    public void mjem() throws Exception {
+        new TeamTaskContent(mFairy) {
+            @Override
+            void create() throws Exception {
+                super.create();
+                TaskMain.TASKNAME = "秘境话本-噩梦";
+                taskName = "mjhb.png";
+                ranksName = "mjem.png";
+                ranksNum = 2;
+                taskType = 1;
+            }
+
+            @Override
+            void inOperation() throws Exception {
+                super.inOperation();
+                result = mFairy.findPic("mjhb1.png");
+                if (result.sim > 0.85f) {
+                    mFairy.onTap(0.85f, result, "确定进入", 1000);
+                } else {
+                    gamePublicFuntion.qx();
+                }
+                gamePublicFuntion.chat();
+
+
+                result = mFairy.findPic(new String[]{
+                        "zx1.png",  "cy3.png", "fdz2.png", "yj.png"});
+                mFairy.onTap(0.85f, result, "按钮", 6000);
+
+                if (timeRanks.timeJudge(60000)) {
+                    gamePublicFuntion.ranksSetUp(1);
+                }
+            }
+
+            @Override
+            void content_02() throws Exception {
+                super.content_02();
+                gamePublicFuntion.selectionTask("team.png", "emmjRanks.png");
+            }
+
+            @Override
+            void content_04() throws Exception {
+                timeCount(10, 0);
+                Thread.sleep(1000);
+
+                gamePublicFuntion.task();
+
+                result = mFairy.findPic("UImjhb.png");
+                if (result.sim > 0.85f) {
+                    mFairy.onTap(0.85f, result, 223,343,270,363, "噩梦", 1500);
+                    mFairy.onTap(1036, 633, 1091, 648, "前往", 1000);
+                }
+
+                result = mFairy.findPic("mjhbEnd.png");
+                if (result.sim > 0.85f) {
+                    mFairy.onTap(0.85f, result, "秘境话本完成!", 1000);
+                    setTaskName(0);
+                    return;
+                }
+
+                result = mFairy.findPic("ylsl3.png");
+                mFairy.onTap(0.85f, result, "开启副本", 1000);
+
+                result = mFairy.findPic("findWay.png");
+                if (result.sim > 0.8f) {
+                    twoJudgeCount = 0;
+                }
+
+                result = mFairy.findPic(1199, 98, 1279, 334, "leave.png");
+                if (result.sim > 0.85f) {
+                    gamePublicFuntion.battle(0);
+                    err = 0;
+                    if (gamePublicFuntion.boss()) {
+                        twoJudgeCount = 0;
+                    } else {
+                        if (twoJudgeCount(3)) {
+                            result = mFairy.findPic("task1.png");
+                            mFairy.onTap(0.85f, result, 55, 210, 126, 219, "副本点击任务", 3000);
+                        }
+                    }
+                    return;
+                }
+
+                result = mFairy.findPic(829, 637, 926, 712, "main.png");
+                if (result.sim > 0.8f) {
+
+                    if (gamePublicFuntion.mainRanksGetNum() >= 2) {
+                        oneJudgeCount = 0;
+                    } else {
+                        if (oneJudgeCount(8)) {
+                            setTaskName(0);
+                            return;
+                        }
+                    }
+                }
+            }
+        };
+    }//秘境话本-噩梦
 
     private int dqg = 0;
     public void dqg(int em) throws Exception {
@@ -980,7 +1078,7 @@ public class TeamTask {
                 TaskMain.TASKNAME = "药老试炼100次";
                 taskName = "ylsl.png";
                 ranksName = "ylsl0.png";
-                ranksNum = 3;
+                ranksNum = 2;
                 taskType = 1;
             }
 

@@ -24,7 +24,7 @@ public class TaskMain {
      public  TaskMain (AtFairyImpl ypFairy) throws Exception {
          mFairy = ypFairy;
          mFairy.setGameName("问道");
-         mFairy.setGameVersion(100);
+         mFairy.setGameVersion(101);
          mFairy.initmMap(30);
          mFairy.initMatTime();
          init();

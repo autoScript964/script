@@ -5,19 +5,23 @@ apply plugin: 'com.android.application'
             buildToolsVersion "29.0.2"
 
             defaultConfig {
+
                 applicationId "com.xy3d.dhw"
                 minSdkVersion 21
                 targetSdkVersion 29
-                versionCode 155
-                versionName "155"
+                versionCode 159
+                versionName "159"
                 testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
             }
 
             buildTypes {
+
                 release {
                     minifyEnabled false
                     proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
                 }
+
             }
 
             compileOptions {
@@ -32,7 +36,7 @@ apply plugin: 'com.android.application'
             implementation fileTree(include: ['*.jar'], dir: 'libs')
 
             testImplementation 'junit:junit:4.12'
-            implementation 'com.lzy.net:okhttputils:+'
+            implementation 'com.lzy.net:okhttputils:1.8.1'
             implementation project(':openCVLibrary341')
             implementation 'com.rmtheis:tess-two:9.0.0'
 

@@ -435,8 +435,6 @@ public class LimitlessTask extends TaskContent {
                 }
 
 
-
-
                 result = mFairy.findPic(445, 134, 827, 579, "DefaultResurrection.png");
                 if (result.sim > 0.8f) {
                     if (AtFairyConfig.getOption("ydfh").equals("1")) {
@@ -530,7 +528,6 @@ public class LimitlessTask extends TaskContent {
         }.taskContent(mFairy, "野外挂机中");
     }
 
-
     long time_color = System.currentTimeMillis();
 
     // 固定队跟队
@@ -595,6 +592,16 @@ public class LimitlessTask extends TaskContent {
             }
 
             boolean reopen = true, timingInit = true;
+
+            @Override
+            public void inOperation() throws Exception {
+                super.inOperation();
+
+                result = mFairy.findPic(1071,326,1260,429,"tongyi1.png");
+                mFairy.onTap(0.8f,result,"同意",1000);
+
+
+            }
 
             public void content_1() throws Exception {
 
@@ -664,20 +671,18 @@ public class LimitlessTask extends TaskContent {
                     }
                 }
 
-
                 /*   if (zhgs != null && zhgs.choice == 1 && timekeep(0, zhgs.timeMillis, "固定队跟队取消跟随")) {
                     gameUtil.cancelFollowing();
                 }*/
-
 
                 /*if (timekeep(0, 100000, "cancel")) {
                     gameUtil.cancelFollowing();
                 }*/
 
-
                 if (AtFairyConfig.getOption("4775").equals("1") && qb != null && timekeep(0, qb.timeMillis, "固定队跟队清包")) {
                     gameUtil.clearbag();
                 }
+
                 if (sydh != null && sydh.choice == 1 && timekeep(0, sydh.timeMillis, "固定队跟队定魂")) {
                     otherGame.dinghun();
                 }
@@ -696,9 +701,9 @@ public class LimitlessTask extends TaskContent {
                         result = mFairy.findPic("Hangup.png");
                         mFairy.onTap(0.7f, result, 1236, 335, 1237, 336, "开启挂机", Sleep);
                     }
-
-
                 }
+
+
                 if (syyp != null && syyp.choice == 1 && timekeep(0, syyp.timeMillis, "固定队跟队使用蓝药")) {
                     otherGame.eatLan();
                 }

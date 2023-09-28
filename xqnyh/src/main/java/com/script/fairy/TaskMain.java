@@ -5,8 +5,6 @@ import com.script.opencvapi.AtFairyConfig;
 import com.script.opencvapi.FindResult;
 import com.script.opencvapi.LtLog;
 
-
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -16,12 +14,18 @@ import java.util.List;
 import static com.script.opencvapi.AtFairy2.TASK_STATE_FINISH;
 
 /**
+ *
+ *
+ *
+ *
+ *
  * Created by Administrator on 2019/1/24 0024.
  *
  *
  */
 
 public class TaskMain {
+
     AtFairyImpl mFairy;
     GameUtil gameUtil;
     TeamTask teamTask;
@@ -36,7 +40,7 @@ public class TaskMain {
     public TaskMain(AtFairyImpl ypFairy) throws Exception {
         mFairy = ypFairy;
         mFairy.setGameName("新倩女幽魂");
-        mFairy.setGameVersion(619);
+        mFairy.setGameVersion(666);
         init();
         gameUtil = new GameUtil(mFairy);
         teamTask = new TeamTask(mFairy);
@@ -46,7 +50,14 @@ public class TaskMain {
         otherGame = new OtherGame(mFairy);
         mFairy.initMatTime();
         list.clear();
+
     }
+
+
+
+
+
+
 
     public void taskStartTime(String string) throws Exception {
 
@@ -55,8 +66,8 @@ public class TaskMain {
         }
 
         String[] arrstr = string.split("\\|\\|");
-
         if (arrstr.length < 2) {
+
             return;
 
         } else {
@@ -344,12 +355,18 @@ public class TaskMain {
                 if (AtFairyConfig.getOption("jues_2").equals("1")) {
                     list.add("2");
                 }
+
+
                 if (AtFairyConfig.getOption("jues_3").equals("1")) {
                     list.add("3");
                 }
+
+
                 if (AtFairyConfig.getOption("jues_4").equals("1")) {
                     list.add("4");
                 }
+
+
                 while (mFairy.condit()) {
                     singleTask.novice();
 

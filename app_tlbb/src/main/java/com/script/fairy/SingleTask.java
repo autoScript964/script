@@ -62,6 +62,8 @@ public class SingleTask {
 
             public void inOperation() throws Exception {
 
+
+
                 findResult = mFairy.findPic(500, 499, 784, 533, "qian.png");
                 if (findResult.sim > 0.72f) {
                     err = 0;
@@ -368,7 +370,7 @@ public class SingleTask {
             } else if (("heroExperience.png").equals(TaskMain.taskList.get(0))) {
                 //英雄试炼
                 if (TaskMain.optionJson.optString("challenge").equals("1") == true) {
-
+                    LtLog.e(mFairy.getLineInfo("挑战"));
 
                     switch (heroExperience(publicFunction)) {
                         case 1:
@@ -689,7 +691,15 @@ public class SingleTask {
                 if (result.sim >= 0.8) {
                     LtLog.i(publicFunction.getLineInfo() + "-------reward1>" + result);
                     publicFunction.rndTap(196 + ((TaskMain.rewardSet - 1) * 208), 598, 275 + ((TaskMain.rewardSet - 1) * 208), 618);
-                    Thread.sleep(500);
+                    Thread.sleep(1500);
+
+                    result = publicFunction.localFindPic(387, 298, 605, 390, "spend.png");
+                    if (result.sim >= 0.8) {
+                        LtLog.i(publicFunction.getLineInfo() + "-------spend>" + result);
+                        publicFunction.rndTap(754, 466, 785, 482);
+                        Thread.sleep(500);
+                    }
+
                 } else {
                     break;
                 }
@@ -1823,18 +1833,20 @@ public class SingleTask {
 //            Thread.sleep(500);
         }
 
-        result = publicFunction.localFindPic(746, 223, 908, 269, "completeExamination.png");
-        if (result.sim >= 0.8) {
+        findResult = mFairy.findPic(579,168,895,275, "completeExamination.png");
+        if (findResult.sim >= 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "------SingleTask-Examination-completeExamination>" + result);
-            for (int i = 0; i < 3; i++) {
-                publicFunction.rndTap(229, 346, 297, 381); //点领取
-                Thread.sleep(500);
-                publicFunction.rndTap(229, 346, 297, 381); //点领取
-                Thread.sleep(2000);
+            for (int i = 0; i < 5; i++) {
+                mFairy.onTap(229, 346, 297, 381,"",1000); //点领取
             }
 
+            Thread.sleep(2000);
 
             publicFunction.rndTap(1208, 65, 1227, 86);//点关闭窗口
+
+
+
+
             Thread.sleep(500);
         }
     }

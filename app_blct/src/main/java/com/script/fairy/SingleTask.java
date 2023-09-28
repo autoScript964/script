@@ -923,15 +923,22 @@ public class SingleTask {
             }
 
             void content_01() throws Exception {
-                timeCount(10, 99);
+                timeCount(20, 99);
 
                 if (gamePublicFuntion.ysj_home()) {
                     setTaskName(2);
                     return;
                 } else {
                     gamePublicFuntion.narrow();
-                    Thread.sleep(100);
-                    mFairy.ranSwipe(824, 437, 481, 145, 200, 1000);
+                    Thread.sleep(1000);
+
+
+                    LtLog.e(mFairy.getLineInfo("滑动找船"));
+
+                    for (int i = 0; i < 2; i++) {
+                        mFairy.ranSwipe(800, 437, 481, 145, 200, 1000);
+                    }
+
 
                     result = mFairy.findPic(100, 329, 617, 611, new String[]{"chuan.png", "chuan2.png"});
                     mFairy.onTap(0.7f, result, "船", 3000);
@@ -1093,10 +1100,13 @@ public class SingleTask {
                     return;
                 } else {
                     gamePublicFuntion.narrow();
-                    Thread.sleep(100);
-                    mFairy.ranSwipe(824, 437, 481, 145, 200, 10);
-                    //mFairy.ranSwipe(824, 437, 481, 145, 200, 10);
                     Thread.sleep(1000);
+                    LtLog.e(mFairy.getLineInfo("滑动找船"));
+
+                    for (int i = 0; i < 2; i++) {
+                        mFairy.ranSwipe(800, 437, 481, 145, 200, 1000);
+                    }
+
 
                     result = mFairy.findPic(100, 329, 617, 611, new String[]{"chuan.png", "chuan2.png"});
                     LtLog.e(mFairy.getLineInfo("船：" + result.sim));
@@ -1132,14 +1142,24 @@ public class SingleTask {
                     return;
                 }
 
+                result = mFairy.findPic("ysj14.png");
+                mFairy.onTap(0.8f, result, "确定", 1000);
+
                 result = mFairy.findPic("ysj3.png");
                 if (result.sim > 0.8f) {
                     err = 0;
+
+                    if(timeMap("pp",10000,false)){
+                        result = mFairy.findPic("ysj3.png");
+                        mFairy.onTap(0.8f,result,"取消",1000);
+                    }
+
                 }
                 result = mFairy.findPic("ysj5.png");
                 if (result.sim > 0.8f) {
                     err = 0;
                 }
+
                 result = mFairy.findPic("ysj7.png");
                 if (result.sim > 0.8f) {
                     err = 0;
@@ -1147,11 +1167,28 @@ public class SingleTask {
 
                 result = mFairy.findPic("ysj9.png");
                 if (result.sim > 0.8f) {
+
+                    long sum = mFairy.getColorNum(591,581,1199,630, "200,64,254", 0.9f);
+                    if(sum>20) {
+                        for (int i = 0; i < 10; i++) {//27,596,51,611
+                            long color = mFairy.getColorNum(650 + (40 * i), 596, 655 + (40 * i), 611, "200,64,254", 0.9f);
+                            if (color > 20) {
+                                mFairy.onTap(650 + (40 * i), 596, 655 + (40 * i), 611, "【发现其他部队】", 200);
+                                i--;
+                                mFairy.tap(301,263);
+                                mFairy.tap(380,326);
+                                mFairy.tap(513,417);
+                                mFairy.tap(212,184);
+                                mFairy.tap(630,503);
+                            }
+                        }
+                    }
+
                     err = 0;
                 }
 
-                result = mFairy.findPic("ysj4.png");
-                mFairy.onTap(0.8f, result, "战斗结束!", 3000);
+                result = mFairy.findPic(10, 541, 784, 708, new String[]{"hui.png", "hui1.png"});
+                mFairy.onTap(0.75f, result, "回营", 3000);
 
                 FindResult result1 = mFairy.findPic("ysj6.png");
                 if (result1.sim > 0.8f) {
@@ -1203,9 +1240,10 @@ public class SingleTask {
                         }
                     }
 
-                    for (int i = 0; i < 20; i++) {
-                        long color = mFairy.getColorNum(27 + (40 * i), 596, 51 + (40 * i), 611, "75,144,208", 0.9f);
-                        if (color > 20) {
+                    for (int i = 0; i < 20; i++) {//27,596,51,611
+                        long color = mFairy.getColorNum(27 + (40 * i), 596, 51 + (40 * i), 611, "58,118,255", 0.9f);
+                        long color1 = mFairy.getColorNum(27 + (40 * i), 596, 51 + (40 * i), 611, "200,69,255", 0.9f);
+                        if (color > 20 || color1 > 20) {
                             mFairy.onTap(27 + (40 * i), 596, 51 + (40 * i), 611, "【发现其他部队】", 200);
                             i--;
                             for (int j = 0; j < list.size(); j++) {
@@ -1214,13 +1252,15 @@ public class SingleTask {
                         }
                     }
 
-                    result = mFairy.findPic(108, 564, 1260, 710, new String[]{"yb.png", "yb1.png"});
+                    result = mFairy.findPic(108, 564, 1260, 710, new String[]{"yb.png", "yb1.png","yb2.png"});
                     if (result.sim > 0.88f) {
                         mFairy.onTap(0.88f, result, "点击机器人", 1000);
                         for (int j = 0; j < list.size(); j++) {
                             mFairy.tap(list.get(j)[0], list.get(j)[1]);
                         }
                     }
+
+
                 }
             }
         };

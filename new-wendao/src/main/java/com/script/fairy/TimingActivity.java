@@ -1,14 +1,9 @@
 package com.script.fairy;
 
+import com.script.framework.AtFairyImpl;
+import com.script.opencvapi.AtFairyConfig;
 import com.script.opencvapi.FindResult;
 import com.script.opencvapi.LtLog;
-import com.script.opencvapi.AtFairyConfig;
-import com.script.framework.AtFairyImpl;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Administrator on 2018/8/30 0030.
@@ -40,7 +35,8 @@ public class TimingActivity {
             bxwl();
             return 1;
         }
-        if (h == 20 && m == 10) {
+
+        /*if (h == 20 && m == 10) {
             if (AtFairyConfig.getOption("zdrw").equals("1")) {
                 util.backCity();
                 util.signIn();
@@ -51,7 +47,7 @@ public class TimingActivity {
                 util.teamRanks("回归");
             }
             return 1;
-        }
+        }*/
 
         if (m >30) {
             xshd_2 = 0;

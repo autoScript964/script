@@ -46,6 +46,7 @@ public class TaskMain {
 
     private AtFairy2.OpencvResult result;
     private AtFairyImpl mFairy;
+    private String sun;
 
     public TaskMain(AtFairyImpl ypFairy) {
         mFairy = ypFairy;
@@ -70,7 +71,7 @@ public class TaskMain {
         functionClass = new FunctionClass(ypFairy, mContext);
 
         mFairy.setGameName("御龙在天");
-        mFairy.setGameVersion(168);
+        mFairy.setGameVersion(170);
 
     }
 
@@ -297,17 +298,18 @@ public class TaskMain {
             long currentTime = publicFunction.getMinuteNumber();
 
             LtLog.i(publicFunction.getLineInfo() + "------sun= " + sun + ",currentTime=" + currentTime);
-            if (sun.equals("星期一") || sun.equals("星期三") || sun.equals("星期五")) {
+            //if (sun.equals("星期一") || sun.equals("星期三") || sun.equals("星期五")) {
                 if (currentTime > 480 && currentTime < 1380) {
                     addTaskList("hero_battlefield");
                 }
-            }
+            //}
 
-            if (sun.equals("星期二") || sun.equals("星期四") || sun.equals("星期六") || sun.equals("星期日")) {
+
+            //if (sun.equals("星期二") || sun.equals("星期四") || sun.equals("星期六") || sun.equals("星期日")) {
                 if (currentTime > 480 && currentTime < 1380) {
                     addTaskList("guandu");
                 }
-            }
+            //}
             addTaskList("loong");
         }
 
