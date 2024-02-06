@@ -100,7 +100,7 @@ public class TaskMain {
         publicFunction = new PublicFunction(ypFairy);
         functionClass = new FunctionClass(ypFairy, mContext);
         mFairy.setGameName("天龙手游");
-        mFairy.setGameVersion(472);
+        mFairy.setGameVersion(482);
         singleTask = new SingleTask(mFairy);
         limitlessTask = new LimitlessTask(mFairy);
         timingActivity = new TimingActivity(mFairy);
@@ -746,7 +746,7 @@ public class TaskMain {
                 FindResult findResult = mFairy.findPic(1000, 614, 1269, 698, new String[]{"playGame.png","playGame2.png"});
                 if (findResult.sim >= 0.8) {
                     LtLog.i(publicFunction.getLineInfo() + "【选择角色界面】");
-    //
+    //15, 110, 190, 210)
                     result = publicFunction.localFindPic(15, 110 + ((num - 1) * 119), 190, 210 + ((num - 1) * 119), "createRole.png");
                     if (result.sim >= 0.8) {
                         LtLog.i(publicFunction.getLineInfo() + "【角色未创建】");

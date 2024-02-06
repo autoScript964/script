@@ -40,7 +40,7 @@ public class TaskMain {
     public TaskMain(AtFairyImpl ypFairy) throws Exception {
         mFairy = ypFairy;
         mFairy.setGameName("新倩女幽魂");
-        mFairy.setGameVersion(666);
+        mFairy.setGameVersion(685);
         init();
         gameUtil = new GameUtil(mFairy);
         teamTask = new TeamTask(mFairy);
@@ -50,14 +50,7 @@ public class TaskMain {
         otherGame = new OtherGame(mFairy);
         mFairy.initMatTime();
         list.clear();
-
     }
-
-
-
-
-
-
 
     public void taskStartTime(String string) throws Exception {
 
@@ -234,8 +227,11 @@ public class TaskMain {
                     }
                     //跑商
                     if (AtFairyConfig.getOption("bhps").equals("1")) {
-                        singleTask.sports();
+                        if(mFairy.dateHour()>=11&& mFairy.dateHour()<22) {
+                            singleTask.sports();
+                        }
                     }
+
                     //重温剧情
                     singleTask.plot();
                     if (AtFairyConfig.getOption("4609").equals("1")) {
@@ -290,6 +286,7 @@ public class TaskMain {
                 if (AtFairyConfig.getOption("gd").equals("1")) {
                     teamTask.aDragon1();
                 }
+
                 if (AtFairyConfig.getOption("4833").equals("1")) {
                     gameUtil.clearbag();
                 }

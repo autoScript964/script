@@ -9,8 +9,8 @@ android {
         applicationId "com.xqnyh.haj"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 666
-        versionName "666"
+        versionCode 685
+        versionName "685"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -18,6 +18,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
         }
     }
 

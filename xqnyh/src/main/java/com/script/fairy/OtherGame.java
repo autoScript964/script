@@ -71,12 +71,9 @@ public class OtherGame extends TaskContent {
                                 mFairy.onTap(0.8f, result, i, j, i + 1, j + 1, "签到", 10);
 
                                 mFairy.onTap(0.8f, result, 1084, 191, 1085, 192, "签到11", 10);
-
                             }
                         }
-
                     }
-
 
                     gameUtil.close(0);
                     setTaskEnd();
@@ -92,7 +89,6 @@ public class OtherGame extends TaskContent {
     //分享空间
 
     int fen = 0;
-
     public void fxkj() throws Exception {
         new OtherGame(mFairy) {
 
@@ -101,6 +97,7 @@ public class OtherGame extends TaskContent {
                 gameUtil.close(0);
                 setTaskName(1);
             }
+
 
             public void content_1() throws Exception {
                 if (overtime(15, 2)) return;
@@ -143,6 +140,7 @@ public class OtherGame extends TaskContent {
             }
 
             public void content_3() throws Exception {
+
                 if (overtime(10, 99)) return;
                 Thread.sleep(1000);
 
@@ -189,7 +187,6 @@ public class OtherGame extends TaskContent {
     //关宁积分换宝图
     public void gnjfhbt() throws Exception {
         new OtherGame(mFairy) {
-
 
             public void content_0() throws Exception {
                 gameUtil.close(0);
@@ -876,6 +873,8 @@ public class OtherGame extends TaskContent {
                         }
                     }
                 }
+
+
                 result = mFairy.findPic("jia1.png");
                 if (result.sim > 0.8f) {
                     LtLog.e(mFairy.getLineInfo("种菜界面"));
@@ -1060,7 +1059,7 @@ public class OtherGame extends TaskContent {
             public void content_1() throws Exception {
                 if (overtime(8, 0)) return;
                 result = mFairy.findPic("package.png");
-                mFairy.onTap(0.8f, result, "包裹", 3000);
+                mFairy.onTap(0.8f, result, "包裹", 10000);
 
                 result = mFairy.findPic("recovery.png");
                 mFairy.onTap(0.8f, result, "回收", Sleep);
@@ -1239,6 +1238,7 @@ public class OtherGame extends TaskContent {
 
             public void content_1() throws Exception {
                 if (overtime(8, 0)) return;
+
                 result = mFairy.findPic("package.png");
                 mFairy.onTap(0.8f, result, 1239, 206, 1240, 207, "切换栏", Sleep);
 
@@ -1246,26 +1246,30 @@ public class OtherGame extends TaskContent {
                 mFairy.onTap(0.8f, result, "技能按钮", Sleep);
 
                 result = mFairy.findPic("Skillinterface.png");
-                mFairy.onTap(0.8f, result, 1164, 460, 1165, 461, "生活技能", 2000);
-                mFairy.onTap(0.8f, result, 1164, 460, 1165, 461, "生活技能", 2000);
+                mFairy.onTap(0.8f, result, 1164, 460, 1165, 461, "生活技能", 3000);
+                mFairy.onTap(0.8f, result, 1164, 460, 1165, 461, "生活技能", 7000);
                 if (result.sim > 0.8f) {
                     if (jncj <= 16) {
                         mFairy.onTap(0.8f, result, 187, 136, 188, 137, "采集", 2000);
                     } else {
                         mFairy.onTap(0.8f, result, 324, 138, 325, 139, "钓鱼", 2000);
                     }
+
                     if (jncj == 15 || jncj == 16) {
                         mFairy.ranSwipe(511, 594, 486, 165, 1000, (long) 1000, 2);
                         mFairy.ranSwipe(511, 594, 486, 165, 1000, (long) 1000, 2);
                     }
+
                     if (jncj == 1) {
                         mFairy.onTap(464, 181, 465, 182, "密蒙", Sleep);
                         mFairy.onTap(464, 181, 465, 182, "密蒙", Sleep);
                     }
+
                     if (jncj == 2) {
                         mFairy.onTap(555, 177, 556, 178, "贝母", Sleep);
                         mFairy.onTap(555, 177, 556, 178, "贝母", Sleep);
                     }
+
                     if (jncj == 3) {
                         mFairy.onTap(646, 180, 647, 181, "三七", Sleep);
                         mFairy.onTap(646, 180, 647, 181, "三七", Sleep);
@@ -1388,10 +1392,13 @@ public class OtherGame extends TaskContent {
                             setTaskName(3);
                             return;
                         }
+
                         Thread.sleep(2000);
                     }
+
                     result = mFairy.findPic("start.png");
                     mFairy.onTap(0.8f, result, "开始", Sleep);
+
                     if (result.sim > 0.8f) {
                         setTaskName(3);
                         return;
@@ -1400,6 +1407,7 @@ public class OtherGame extends TaskContent {
                         return;
                     }
                 }
+
                 Thread.sleep(2000);
             }
 
@@ -1772,6 +1780,10 @@ public class OtherGame extends TaskContent {
 
                 result = mFairy.findPic(521,11,626,702,"chat.png");
                 mFairy.onTap(0.8f,result,1159,56,1180,72,"",1000);
+
+                result = mFairy.findPic(340,96,730,395,"zb.png");
+                mFairy.onTap(0.8f,result,1143,578,1152,587,"装备详细关掉",1000);
+
 
                 gameUtil.close(0);
                 setTaskName(1);

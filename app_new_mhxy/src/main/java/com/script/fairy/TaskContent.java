@@ -201,6 +201,10 @@ public abstract class TaskContent {
     }
 
    boolean timeMap(String key, long sheep) {
+        if(sheep==-1){
+            return false;
+        }
+
         long s = System.currentTimeMillis();
         if (tm.containsKey(key)) {
             if (s - tm.get(key) >= sheep) {

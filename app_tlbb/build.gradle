@@ -8,8 +8,8 @@ android {
         applicationId "com.tlbb.rty.tlbb"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 472
-        versionName "472"
+        versionCode 482
+        versionName "482"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -26,7 +26,6 @@ android {
     }
 
     dependencies {
-
         implementation fileTree(include: ['*.jar'], dir: 'libs')
 
         testImplementation 'junit:junit:4.12'

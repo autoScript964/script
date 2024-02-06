@@ -7,13 +7,12 @@ android {
         applicationId "com.blct.mry"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 172
-        versionName "172"
+        versionCode 202
+        versionName "202"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
-
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'

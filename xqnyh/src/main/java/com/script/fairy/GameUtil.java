@@ -19,6 +19,7 @@ public class GameUtil extends TaskContent {
     public GameUtil(AtFairyImpl ypFairy) throws Exception {
         mFairy = ypFairy;
     }
+
     public void inOperation() throws Exception {
         result = mFairy.findPic("Over drawing.png");
         if (result.sim > 0.85f) {
@@ -128,7 +129,6 @@ public class GameUtil extends TaskContent {
 
 
 
-
                 result = mFairy.findPic(639, 6, 1126, 176, "activity.png");
                 mFairy.onTap(0.8f, result, "活动", 5000);
 
@@ -215,7 +215,7 @@ public class GameUtil extends TaskContent {
                 result1 = mFairy.findPic(99, 8, 1178, 586, str);
                 LtLog.e(mFairy.getLineInfo("活动的相似度：" + result1.sim));
                 if (result1.sim > 0.75f) {
-
+                    findtask=0;
 
 
                     if (AtFairyConfig.getOption("20c").equals("1") && str.equals("aDragon.png")) {
@@ -551,8 +551,6 @@ public class GameUtil extends TaskContent {
                 Thread.sleep(3000);
             }
         }.taskContent(mFairy, "传送城市中");
-
-
         if (str.equals("帮会") || str.equals("家园")) {
             GameUtil.this.cityCount = 1;
         }
@@ -982,7 +980,6 @@ public class GameUtil extends TaskContent {
         close(0);
     }//跟随队长
 
-
     int zmcount = 0;
 
     public void recruit() throws Exception {
@@ -1259,6 +1256,15 @@ public class GameUtil extends TaskContent {
     public void setUp() throws Exception {
         new GameUtil(mFairy) {
 
+            public void inOperation() throws Exception {
+                result = mFairy.findPic("Over drawing.png");
+                if (result.sim > 0.85f) {
+                    LtLog.e(mFairy.getLineInfo("过图中"));
+                    mFairy.initMatTime();
+                    err = 0;
+                }
+
+            }
 
             public void content_0() throws Exception {
                 close(0);
@@ -1466,7 +1472,9 @@ public class GameUtil extends TaskContent {
 
             public void content_0() throws Exception {
                 for (int i = 0; i < 2; i++) {
+
                     mFairy.condit();
+
                     result = mFairy.findPic(1096, 240, 1221, 343, new String[]{"fork5.png", "fork6.png"});
                     mFairy.onTap(0.8f, result, "物品叉", Sleep);
 

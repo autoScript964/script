@@ -24,7 +24,6 @@ public class Abnormal {
     public void erro() throws Exception {
 
         if ((System.currentTimeMillis() - time_1) > 20000) {
-
             result = mFairy.findPic("dsyj2.png");
             if (result.sim > 0.85f) {
                 mFairy.initMatTime();
@@ -43,6 +42,12 @@ public class Abnormal {
             time_1 = System.currentTimeMillis();
         }
 
+        result = mFairy.findPic("hb.png");
+        mFairy.onTap(0.85f, result, "err红包", 1000);
+
+        result = mFairy.findPic("hb2.png");
+        mFairy.onTap(0.85f, result, "err黄包", 1000);
+
         result = mFairy.findPic("new sure.png");
         mFairy.onTap(0.8f, result, "err新版qq隐私政策同意", 1000);
 
@@ -53,8 +58,6 @@ public class Abnormal {
         mFairy.onTap(0.8f, result, "err新版qq登陆", 1000);
 
 
-        result = mFairy.findPic("chatBox.png");
-        mFairy.onTap(0.9f, result, "err聊天框", 1000);
 
         result = mFairy.findPic("jia4.png");
         mFairy.onTap(0.9f, result, 1206,41,1234,66,"err 关闭 分享有礼", 1000);
@@ -138,9 +141,6 @@ public class Abnormal {
 
         result = mFairy.findPic("err5.png");
         mFairy.onTap(0.85f, result, 735, 478, 778, 497, "err关闭", 1000);
-
-        result = mFairy.findPic("hb.png");
-        mFairy.onTap(0.85f, result, "err红包", 1500);
 
         result = mFairy.findPic(497,414,883,652,"songchu.png");
         mFairy.onTap(0.85f, result, "err送出", 1000);

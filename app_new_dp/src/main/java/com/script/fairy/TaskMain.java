@@ -29,33 +29,37 @@ public class TaskMain {
         limitlessTask = new LimitlessTask(ypFairy);
         mFairy = ypFairy;
         mFairy.setGameName("new斗破苍穹");
-        mFairy.setGameVersion(322);
+        mFairy.setGameVersion(382);
         init();
     }
 
     private int week;
     private int hour;
     public void main() throws Exception {
+
         /* while (mFairy.condit()){
-        private int minute;
+
+            private int minute;
             result = mFairy.findPic("battleH.png");
             LtLog.e(""+result.sim);
         }*/
 
-
-        if(taskId!=1226){singleTask.setup();}
+        if(taskId!=1226 || taskId!=2855){singleTask.setup();}
 
         switch (taskId) {
-            case 1855:
+            case 2855:
                 while (mFairy.condit()) {
-                    long l = mFairy.getColorNum(86, 661, 237, 668, "170,187,255", 0.95f);
-                    LtLog.e("颜色数量为"+l);
+
+                    result = mFairy.findPic("battleH.png");
+                    LtLog.e("颜色数量为"+result.sim);
+                    Thread.sleep(3000);
                 }
                 break;
             case 1591:
                 if (AtFairyConfig.getOption("sz").equals("1")) {
                     singleTask.xz();
                 }
+
                 if (AtFairyConfig.getOption("xyxx").equals("1")) {
                     singleTask.xyxx();
                 }
@@ -124,9 +128,7 @@ public class TaskMain {
                     teamTask.dqg(1);
                 }
 
-                if (AtFairyConfig.getOption("ylsl").equals("1")) {
-                    teamTask.ylsl();
-                }
+
 
                 switch (AtFairyConfig.getOption("mjhb")) {
                     case "1":
@@ -140,13 +142,39 @@ public class TaskMain {
                         break;
                 }
 
+
+
+                //生死门
+
+                if (AtFairyConfig.getOption("9287").equals("1")) {
+                    teamTask.ssm();
+                }
+
+                //万兽岛
+                if(AtFairyConfig.getOption("9289").equals("1")){
+                    teamTask.wsd();
+                }
+
+
                 if (AtFairyConfig.getOption("tftz").equals("1")) {
                     teamTask.tftz();
                 }
 
+                if (AtFairyConfig.getOption("ylsl").equals("1")) {
+                    teamTask.ylsl();
+                }
+
+
+
+
                 if (AtFairyConfig.getOption("ybc").equals("1")) {
                     teamTask.ybc();
                 }
+
+                if (TaskContent.getNumberAssembly(AtFairyConfig.getOption("ybcCount"))!=-1) {
+                    teamTask.ybcCustom();
+                }
+
                 //singleTask.signIn();
                 break;
             case 1595:

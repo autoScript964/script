@@ -8,8 +8,8 @@ android {
         applicationId "com.dpcq.hji"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 322
-        versionName "322"
+        versionCode 382
+        versionName "382"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -26,6 +26,7 @@ android {
     }
 
     productFlavors {}
+
 }
 
 dependencies {

@@ -89,8 +89,13 @@ public class LimitlessTask {
         map_name_list.add("MAP_LZ_ZS.png");//40流洲-宗师
         map_name_list.add("MAP_JKZ_ZS.png");//41聚窟州-宗师
 
+
         map_name_list.add("MAP_CZZS_ZS.png");//42沧州-宗师
         map_name_list.add("MAP_BZS.png");//43不周山
+        map_name_list.add("MAP_RYS.png");//44日月山
+        map_name_list.add("MAP_YMS.png");//45玉门山
+
+
 
         //右上角的地图名称 图
         current_map_name_list.add("CURRENT_MAP_YDS.png");//0雁荡山,
@@ -137,6 +142,8 @@ public class LimitlessTask {
         current_map_name_list.add("CURRENT_MAP_JKZ_ZS.png");//41聚窟州-宗师
         current_map_name_list.add("CURRENT_MAP_CZZS_ZS.png");//42沧州-宗师
         current_map_name_list.add("CURRENT_MAP_BZS.png");//43不周山
+        current_map_name_list.add("CURRENT_MAP_RYS.png");//44日月山
+        current_map_name_list.add("CURRENT_MAP_YMS.png");//45玉门山
         current_map_name_list.add("mainCity1.png");//襄阳
         current_map_name_list.add("mainCity.png");//临安
     }
@@ -738,6 +745,7 @@ public class LimitlessTask {
                 return 1;
             }
         }
+
         //家族试炼 21.00 //家族秘境 familyMJ
         //攻城战 21.00
         //门派竞技 21.00
@@ -1110,8 +1118,8 @@ public class LimitlessTask {
 
         if (map_xy == null) {
             for (int i = 0; i < 30; i++) {
-                result = publicFunction.localFindPic(127, 40, 1175, 667, map_name_list.get(map - 1));
 
+                result = publicFunction.localFindPic(127, 40, 1175, 667, map_name_list.get(map - 1));
                 LtLog.i(publicFunction.getLineInfo() + "【地图list: " + map_name_list.get(map - 1)+" , sim:"+result.sim+"】");
                 //查找目标地图
                 if (result.sim > 0.8) {
@@ -1121,6 +1129,8 @@ public class LimitlessTask {
                     map_xy[1] = result.y + 30;
                     break;
                 }
+
+
                 result = publicFunction.localFindPic(0, 95, 130, 283, "map.png");
                 if (result.sim < 0.8) {
                     //不在世界地图，返回
@@ -1363,6 +1373,12 @@ public class LimitlessTask {
         }else if(map == 44){
             x=x_1 *4.2762+y_1 *-4.2667+638.4381;
             y=x_1 *-4.2133+y_1 *-4.2733+709.2133;
+        }else if(map == 45){
+            x=x_1 *3.9931+y_1 *-4.2207+650.1172;
+            y=x_1 *-3.9264+y_1 *-3.9793+662.7494;
+        }else if(map == 46){
+            x=x_1 *4.125+y_1 *-4.4052+650.819;
+            y=x_1 *-4.3125+y_1 *-4.3319+662.8836;
         }
 
 

@@ -440,6 +440,8 @@ public class GamePublicFunction {
         mapName.add("JKZ.png");//19
         mapName.add("CZZS.png");//20
         mapName.add("BZS.png");//21
+        mapName.add("RYS.png");//22
+        mapName.add("YMS.png");//23
         XY = new ArrayList<>();
         XY.add(new int[]{649, 364});//1
         XY.add(new int[]{644, 397});//2
@@ -462,6 +464,8 @@ public class GamePublicFunction {
         XY.add(new int[]{632, 397});//19
         XY.add(new int[]{636, 364});//20
         XY.add(new int[]{612,346});//21
+        XY.add(new int[]{618,368});//22
+        XY.add(new int[]{644,334});//23
     }
 
     //回安全区
@@ -980,6 +984,22 @@ public class GamePublicFunction {
             if (result1.sim >= 0.8) {
 
                 LtLog.i(publicFunction.getLineInfo() + "【找到活动】");
+
+                //田连阡陌
+                if("tlqm".equals(list.get(0))){
+                    result = publicFunction.localFindPic(result1.x +50, result1.y, result1.x + 88, result1.y + 48, "tlqm1.png");
+                    if (result.sim >= 0.8) {
+                        LtLog.i(publicFunction.getLineInfo() + "【田连阡陌已完成】");
+                        list.remove(0);
+                        LtLog.i(publicFunction.getLineInfo() + "【任务list: " + list + "】");
+                        if (list.size() == 0) {
+                            return list;
+                        }
+                        time = System.currentTimeMillis() / 1000;
+                        continue;
+                    }
+                }
+
 
                 result = publicFunction.localFindPic(result1.x - 10, result1.y + 72, result1.x + 111, result1.y + 129, "attend1.png");
                 if (result.sim >= 0.8) {

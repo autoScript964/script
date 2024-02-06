@@ -1,5 +1,6 @@
 package com.script.fairy;
 
+import com.script.opencvapi.AtFairyConfig;
 import com.script.opencvapi.FindResult;
 import com.script.opencvapi.LtLog;
 import com.script.framework.AtFairyImpl;
@@ -10,8 +11,95 @@ public class GamePublicFuntion {
     public long time = System.currentTimeMillis();
 
     public GamePublicFuntion(AtFairyImpl ypFairy) {
+        sbyh =0;
         mFairy = ypFairy;
     }
+
+    //入队申请
+    void rdsq() throws Exception {
+
+
+        if (AtFairyConfig.getOption("rd1").equals("1")) {
+
+            result = mFairy.findPic(114, 192, 216, 288, "gou.png");
+            if (result.sim > 0.8f) {
+                return;
+            } else {
+                mFairy.onTap(151, 237, 157, 242, "所有人", 1000);
+            }
+
+        }
+
+        if (AtFairyConfig.getOption("rd2").equals("1")) {
+            result = mFairy.findPic(287, 211, 351, 268, "gou.png");
+            if (result.sim < 0.8f) {
+                mFairy.onTap(314, 237, 326, 247, "队长好友", 1000);
+            }
+        } else {
+            result = mFairy.findPic(287, 211, 351, 268, "gou.png");
+            mFairy.onTap(0.8f, result, "关闭队长好友", 1000);
+        }
+
+        if (AtFairyConfig.getOption("rd3").equals("1")) {
+            result = mFairy.findPic(467, 208, 529, 272, "gou.png");
+            if (result.sim < 0.8f) {
+                mFairy.onTap(495, 240, 501, 245, "队员好友", 1000);
+            }
+        } else {
+            result = mFairy.findPic(467, 208, 529, 272, "gou.png");
+            mFairy.onTap(0.8f, result, "关闭队员好友", 1000);
+        }
+
+
+        if (AtFairyConfig.getOption("rd4").equals("1")) {
+            result = mFairy.findPic(644, 205, 720, 270, "gou.png");
+            if (result.sim < 0.8f) {
+                mFairy.onTap(676, 236, 684, 242, "队长家族", 1000);
+            }
+        } else {
+            result = mFairy.findPic(644, 205, 720, 270, "gou.png");
+            mFairy.onTap(0.8f, result, "关闭队长家族", 1000);
+        }
+
+
+        if (AtFairyConfig.getOption("rd5").equals("1")) {
+            result = mFairy.findPic(872, 203, 937, 271, "gou.png");
+            if (result.sim < 0.8f) {
+                mFairy.onTap(899, 236, 908, 243, "队员家族", 1000);
+            }
+        } else {
+            result = mFairy.findPic(872, 203, 937, 271, "gou.png");
+            mFairy.onTap(0.8f, result, "关闭队员家族", 1000);
+        }
+
+    }
+
+    //转让队长
+    void zrdz() throws Exception {
+
+
+        if (AtFairyConfig.getOption("zr1").equals("1")) {
+            result = mFairy.findPic(123,348,199,427, "gou.png");
+            if (result.sim <0.8f) {
+                mFairy.onTap(150,385,157,391, "转让所有人", 1000);
+            }
+
+        } else {
+            result = mFairy.findPic(123,348,199,427, "gou.png");
+            mFairy.onTap(0.8f, result,  "关闭转让所有人", 1000);
+        }
+
+        if (AtFairyConfig.getOption("zr2").equals("1")) {
+            result = mFairy.findPic(282,345,364,423, "gou.png");
+            if (result.sim < 0.8f) {
+                mFairy.onTap(315,382,323,393, "陌生人", 1000);
+            }
+        } else {
+            result = mFairy.findPic(282,345,364,423, "gou.png");
+            mFairy.onTap(0.8f, result, "关闭陌生人", 1000);
+        }
+    }
+
 
     public void skip() throws Exception {
         result = mFairy.findPic("skip.png");
@@ -44,6 +132,24 @@ public class GamePublicFuntion {
             return true;
         }
         return false;
+    }
+
+    public void goSecurity()throws Exception {
+        while (mFairy.condit()) {
+            result = mFairy.findPic("UImap.png");
+            if (result.sim > 0.85f) {
+                mFairy.onTap(1139, 635, 1152, 651, "回城", 5000);
+                init();
+                return;
+            } else {
+                init();
+                result = mFairy.findPic("package.png");
+                if (result.sim > 0.85f) {
+                    mFairy.onTap(1245, 31, 1257, 45, "点击地图", 3000);
+                }
+            }
+
+        }
     }
 
     public void initGo() throws Exception {
@@ -84,7 +190,8 @@ public class GamePublicFuntion {
 
                     if (i == 1) {
                         result = mFairy.findPic("auto.png");
-                        mFairy.onTap(0.95f, result, "自动战斗", 1000);
+                        mFairy.onTap(0.95f, result, "自动战斗", 3000);
+
                     }
                     break;
                 case 1:
@@ -99,12 +206,7 @@ public class GamePublicFuntion {
         init();
         for (int i = 0; i < 20; i++) {
             result = mFairy.findPic("battleH.png");
-            mFairy.onTap(0.95f, result, "关闭自动战斗", 1500);
-
-            result = mFairy.findPic("auto.png");
-            if (result.sim > 0.95f) {
-                break;
-            }
+            mFairy.onTap(0.94f, result, "关闭自动战斗", 1500);
         }
     }//结束战斗
 
@@ -135,9 +237,14 @@ public class GamePublicFuntion {
         int x = 40;
         int close = 1;
         int err = 0;
+
         while (mFairy.condit()) {
+
             result = mFairy.findPic("close4.png");
             mFairy.onTap(0.85f, result, 890, 227, 891, 228, "close4", 1000);
+
+            result = mFairy.findPic("chatBox.png");
+            mFairy.onTap(0.9f, result, "err聊天框", 1000);
 
             result = mFairy.findPic(668, 4, 1278, 479, new String[]{"close1.png", "close2.png", "close3.png", "close5.png", "close6.png", "close8.png"});
             if (result.sim > 0.88f) {
@@ -174,8 +281,8 @@ public class GamePublicFuntion {
 
     public boolean unableFindWay() throws Exception {
         for (int i = 0; i < 10; i++) {
-            result = mFairy.findPic(567, 246, 608, 326, "err.png");
-            if (result.sim > 0.8f) {
+            result = mFairy.findPic(567, 246, 608, 350, "err.png");
+            if (result.sim > 0.72f) {
                 return true;
             }
         }
@@ -200,12 +307,17 @@ public class GamePublicFuntion {
         }
     }//脱离卡死
 
+    static int sbyh = 0;
+
     public void init() throws Exception {
         while (mFairy.condit()) {
             LtLog.e("init");
             close();
             chat();
             qx();
+
+            result = mFairy.findPic("chatBox.png");
+            mFairy.onTap(0.9f, result, "err聊天框", 1000);
 
             result = mFairy.findPic("yhEnd.png");
             mFairy.onTap(0.9f, result, "暂且休息", 1000);
@@ -230,6 +342,9 @@ public class GamePublicFuntion {
 
             result = mFairy.findPic("gb.png");
             mFairy.onTap(0.9f, result, 1148, 588, 1150, 590, "点击空白处关闭", 1000);
+
+            result = mFairy.findPic(563, 602, 680, 693, "dian.png");
+            mFairy.onTap(0.8f, result, 954, 585, 972, 599, "点击空白处关闭", 1000);
 
             result = mFairy.findPic(518, 570, 769, 714, "myqqEnd.png");
             mFairy.onTap(0.85f, result, "魔猿抢亲init1", 1000);
@@ -266,10 +381,16 @@ public class GamePublicFuntion {
 
             result = mFairy.findPic(1199, 98, 1279, 334, "leave.png");
             if (result.sim > 0.85f) {
-                mFairy.onTap(0.85f, result, "离开", 3000);
-                mFairy.onTap(857, 510, 858, 511, "确定离开", 1000);
+                if(sbyh==1){
+                    LtLog.e(mFairy.getLineInfo("在副本中呢"));
+                    battle(1);
+                    result = mFairy.findPic("task1.png");
+                    mFairy.onTap(0.85f, result, 55, 210, 126, 219, "副本点击任务", 10000);
+                }else{
+                    mFairy.onTap(0.85f, result, "离开", 3000);
+                    mFairy.onTap(857, 510, 858, 511, "确定离开", 1000);
+                }
             }
-
 
             result = mFairy.findPic("battleH.png");
             mFairy.onTap(0.95f, result, "关闭自动战斗", 500);
@@ -289,6 +410,27 @@ public class GamePublicFuntion {
             }
         }
     }//初始化
+
+    public void goWTC()throws Exception{
+        while (mFairy.condit()) {
+
+            LtLog.e(mFairy.getLineInfo("goWTC"));
+
+            result = mFairy.findPic("UImap.png");
+            if (result.sim > 0.85f) {
+                if (map(1)) {
+                    mFairy.onTap(352, 387, 384, 419, "确定", 10000);
+                    init();
+                    return;
+                }
+            } else {
+                init();
+                battleEnd();
+                result = mFairy.findPic("package.png");
+                mFairy.onTap(0.8f,result,1245, 31, 1257, 45, "点击地图", 3000);
+            }
+        }
+    }
 
     public boolean map(int map) throws Exception {
         for (int i = 0; i < 3; i++) {
@@ -597,8 +739,8 @@ public class GamePublicFuntion {
     public int mainRanksGetNum() throws Exception {
         result = mFairy.findPic(new String[]{
                 "ranks.png", "ranks1.png"});
-
-        if (result.sim > 0.9f) {
+        LtLog.e("队伍图标sim"+result.sim);
+        if (result.sim > 0.7f) {
             if (mFairy.findPic(new String[]{"one.png", "one1.png"}).sim > 0.8f) {
                 LtLog.e("队伍人数为【 1 】人");
                 return 1;

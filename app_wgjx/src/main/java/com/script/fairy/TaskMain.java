@@ -1,5 +1,6 @@
 package com.script.fairy;
 
+import com.example.Answer;
 import com.script.content.ScProxy;
 import com.script.opencvapi.FindResult;
 import com.script.opencvapi.LtLog;
@@ -18,22 +19,19 @@ public class TaskMain extends TaskContent {
     JSONObject optionJson = null;
     GamePublicFuntion gamePublicFuntion;
     private int taskId = 0;
-
+    private Answer answer;
     private static boolean SET_SWITCH = true;
-
-
-
-
 
 
 
     public TaskMain(AtFairyImpl ypFairy) throws Exception {
         super(ypFairy);
+        answer = new Answer(ypFairy);
         singleTask = new SingleTask(ypFairy);
         gamePublicFuntion = new GamePublicFuntion(ypFairy);
         mFairy = ypFairy;
         mFairy.setGameName("万国觉醒");
-        mFairy.setGameVersion(173);
+        mFairy.setGameVersion(187);
         init();
     }
 
@@ -42,6 +40,14 @@ public class TaskMain extends TaskContent {
     private int minute;
 
     public void main() throws Exception {
+       /* Thread.sleep(5000);
+        while (mFairy.condit()){
+
+            String result_ha = answer.newHaoai(51,316, 631,804, "6005");
+            LtLog.e(mFairy.getLineInfo("答案："+result_ha));
+            Thread.sleep(99999999);
+        }*/
+
 
         ScProxy.config().Level().capturing(4);
 

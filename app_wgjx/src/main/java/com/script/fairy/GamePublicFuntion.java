@@ -88,7 +88,7 @@ public class GamePublicFuntion {
                     if (result.sim > 0.8f) {
                         LtLog.e(mFairy.getLineInfo("城市界面"));
 
-                        result = mFairy.findPic(669, 555, 1274, 712, "position.png");
+                      /*  result = mFairy.findPic(669, 555, 1274, 712, "position.png");
                         if (result.sim > 0.8f) {
                             mFairy.onTap(0.8f, result, "位置图标", 3000);
                         } else if ((result = mFairy.findPic(1131, 354, 1276, 713, "position.png")).sim > 0.8f) {
@@ -97,7 +97,7 @@ public class GamePublicFuntion {
                             result = mFairy.findPic(3, 89, 174, 284, "position.png");
                             mFairy.onTap(0.8f, result, "位置图标", 3000);
                         }
-
+*/
 
 
 
@@ -197,7 +197,7 @@ public class GamePublicFuntion {
                     err = 0;
                 }
 
-                result = mFairy.findPic(647, 500, 902, 714, new String[]{"yanzheng2.png", "yanzheng5.png","yanzheng7.png"});
+                result = mFairy.findPic(647, 500, 902, 714, new String[]{"yanzheng2.png", "yanzheng5.png", "yanzheng7.png"});
                 if (result.sim > 0.8f) {
                     break;
                 } else {
@@ -221,13 +221,12 @@ public class GamePublicFuntion {
             }
 
 
-         //好爱网址 http://feng.suanst.com/
+            //好爱网址 http://feng.suanst.com/
 
+            try {
+                String result_ha = answer.newHaoai(382, 77, 505, 640, "6005");
+                if (!result_ha.equals("") && result_ha != null) {
 
-            String result_ha =answer.haoai(382, 77, 505, 640,"6005");
-
-            if (!result_ha.equals("") && result_ha != null) {
-                try {
                     String[] aa = result_ha.split("\\|");
 
                     for (String st : aa) {
@@ -235,7 +234,8 @@ public class GamePublicFuntion {
                         Thread.sleep(500);
                     }
 
-                    mFairy.onTap(747,587,784,603, "确定", 3000);
+                    mFairy.onTap(747, 587, 784, 603, "确定", 500);
+                    mFairy.onTap(763,647,761,639, "确定", 3000);
 
                     result = mFairy.findPic("yanzheng2.png");
                     mFairy.onTap(0.8f, result, 485, 667, 518, 692, "没有验证出来,刷新", 5000);
@@ -248,16 +248,14 @@ public class GamePublicFuntion {
 
                     time_err = System.currentTimeMillis();
 
-                } catch (Exception e) {
-                    LtLog.e(mFairy.getLineInfo("验证报错!!!"));
-                    LtLog.e(mFairy.getLineInfo("验证报错!!!"));
-                    LtLog.e(mFairy.getLineInfo("验证报错!!!"));
+                } else {
+                    LtLog.e(mFairy.getLineInfo("验证为空!!!"));
                     yanzheng_err++;
                 }
-            } else {
-                LtLog.e(mFairy.getLineInfo("验证为空!!!"));
-                LtLog.e(mFairy.getLineInfo("验证为空!!!"));
-                LtLog.e(mFairy.getLineInfo("验证为空!!!"));
+            } catch (Exception e) {
+                LtLog.e(mFairy.getLineInfo("验证报错!!!"));
+
+                LtLog.e(mFairy.getLineInfo(e.getMessage()));
                 yanzheng_err++;
             }
         }

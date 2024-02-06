@@ -58,10 +58,21 @@ public class Abnormal {
             gamePublicFunction.automaticCombat(1);//开启战斗
         }
 
+        findResult =mFairy.findPic(1003,66,1208,217,"hdclose28.png");
+        mFairy.onTap(0.8f,findResult,"hdclose28",1000);
+
+
+        findResult =mFairy.findPic("hdclose27.png");
+        mFairy.onTap(0.8f,findResult,"hdclose27",1000);
 
         findResult =mFairy.findPic(1063,44,1246,137,"hdclose24.png");
         mFairy.onTap(0.8f,findResult,"hdclose24",1000);
 
+        findResult =mFairy.findPic("hdclose25.png");
+        mFairy.onTap(0.8f,findResult,"hdclose25",1000);
+
+        findResult =mFairy.findPic("hdclose26.png");
+        mFairy.onTap(0.8f,findResult,1184,17,1198,31,"hdclose26",1000);
 
         findResult =mFairy.findPic(384,252,752,428,"err6.png");
         mFairy.onTap(0.8f,findResult,484,459,527,481,"err6",1000);

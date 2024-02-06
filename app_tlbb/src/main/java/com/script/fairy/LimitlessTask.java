@@ -198,8 +198,6 @@ public class LimitlessTask {
                     joinRanks();
                 }
 
-
-
             } else if (this.location) {
                 time1 = System.currentTimeMillis() / 1000;
                 this.location = false;
@@ -247,8 +245,6 @@ public class LimitlessTask {
                 }
                 gamePublicFunction.closeWindow();
                 Thread.sleep(2000);
-
-
 
 
                 LtLog.i(publicFunction.getLineInfo() + "---------移动到神兽位置=" + ",mythicalMap=" + mythicalMap);
@@ -353,7 +349,7 @@ public class LimitlessTask {
         int map = 0;
         map = onHookMap;
         int k = 0;
-        //                1聚贤庄    2天龙寺      3燕子坞 4夜西湖    5擂鼓山    6缥缈峰     7-11燕王古墓  12-16秦皇地宫
+        //  1聚贤庄    2天龙寺      3燕子坞 4夜西湖    5擂鼓山    6缥缈峰     7-11燕王古墓  12-16秦皇地宫
         int[][] mapXY = {{610, 438}, {481, 549}, {703, 550}, {855, 588}, {374, 244}, {212, 206}, {485, 335}, {373, 433}};
         //x=1;
         //LtLog.i(publicFunction.getLineInfo() + "---------" + mapXY[0][0] + "," + mapXY[0][1]);

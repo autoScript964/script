@@ -656,7 +656,7 @@ public class GamePublicFunction {
                 Thread.sleep(300);
 
             }
-            result = publicFunction.localFindPic(582, 8, 721, 80, "activitiesWindow.png|activitiesWindow1.png|activitiesWindow2.png");
+            result = publicFunction.localFindPic(582, 8, 721, 80, "activitiesWindow.png"+"|"+"activitiesWindow1.png|activitiesWindow2.png");
             LtLog.i(publicFunction.getLineInfo() + "------openActivity--activityWindow>" + result);
             AtFairy2.OpencvResult result1 = publicFunction.localFindPicHLS(1033, 548, 1161, 643, "push.png");
             if (result.sim >= 0.8 || result1.sim >= 0.8) {
@@ -807,8 +807,9 @@ public class GamePublicFunction {
         for (int i = 0; i < 5; i++) {
             result1 = publicFunction.localFindPicHLS(859, 564, 914, 615, "automaticCombat-1.png");
             result = publicFunction.localToValueFindPic(859, 564, 914, 615, 127, 255, 3, "automaticCombat.png" + "|" + "automaticCombat-2.png");
-            LtLog.i(publicFunction.getLineInfo() + "-------------------------automaticCombat--->" + result + ",result1=" + result1);
-            if (result.sim >= 0.6 || result1.sim >= 0.75) {
+            long color = mFairy.getColorNum(871,592,898,595,"248,223,120",0.95f);
+            LtLog.i(publicFunction.getLineInfo() + "-------------------------automaticCombat--->" + result + ",result1=" + result1+"  color="+color);
+            if (result.sim >= 0.6 || result1.sim >= 0.75 || color>5) {
                 LtLog.i(publicFunction.getLineInfo() + "-------------------------automaticCombat--->" + result + ",result1=" + result1);
                 if (Combat_state == 0) {
                     return;
@@ -819,8 +820,10 @@ public class GamePublicFunction {
             }
 
             result = publicFunction.localFindPicHLS(859, 564, 914, 615, "automaticCombat1.png" + "|" + "automaticCombat1-1.png" + "|" + "automaticCombat1-2.png");
-            LtLog.i(publicFunction.getLineInfo() + "-------------------------automaticCombat1--->" + result);
-            if (result.sim >= 0.75) {
+            long color1 = mFairy.getColorNum(871,592,898,595,"254,254,253",0.95f);
+            LtLog.i(publicFunction.getLineInfo() + "-------------------------automaticCombat1--->" + result+"  color1="+color1);
+
+            if (result.sim >= 0.75 || color1>5) {
                 LtLog.i(publicFunction.getLineInfo() + "-------------------------automaticCombat1--->" + result);
                 if (Combat_state == 1) {
                     return;
@@ -860,7 +863,7 @@ public class GamePublicFunction {
 
         for (int i = 0; i < 4; i++) {
 //            result = publicFunction.localToValueFindPic(272, 239, 325, 287, 90, 255, 1, "follow.png");
-            result = publicFunction.localToValueFindPic(272, 239, 325, 287, 90, 255, 1, "follow.png|follow-1.png");
+            result = publicFunction.localToValueFindPic(272, 239, 325, 287, 90, 255, 1, "follow.png"+"|"+"follow-1.png");
             if (result.sim >= 0.75) {
                 LtLog.i(publicFunction.getLineInfo() + "-------------------------follow--->" + result);
                 if (x == 0) {
@@ -870,7 +873,7 @@ public class GamePublicFunction {
                 Thread.sleep(1000);
             }
 //            result = publicFunction.localToValueFindPic(272, 239, 325, 287, 240, 255, 0, "follow1.png");
-            result = publicFunction.localToValueFindPic(272, 239, 325, 287, 240, 255, 0, "follow1.png|follow1-1.png");
+            result = publicFunction.localToValueFindPic(272, 239, 325, 287, 240, 255, 0, "follow1.png"+"|"+"follow1-1.png");
             if (result.sim >= 0.75) {
                 LtLog.i(publicFunction.getLineInfo() + "------follow1->" + result);
                 if (x == 1) {

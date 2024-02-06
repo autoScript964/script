@@ -130,6 +130,7 @@ public class SingleTask {
 
     public int everydayTask() throws Exception {
         //日常单人任务
+
         Other other = new Other(mFairy);
 
         LtLog.i(publicFunction.getLineInfo() + "-------TaskMain.taskList>" + TaskMain.taskList);
@@ -230,8 +231,6 @@ public class SingleTask {
             } else {
                 LtLog.i(publicFunction.getLineInfo() + "当前执行任务=" + TaskMain.taskList.get(0));
             }
-
-
 
 
             findResult = mFairy.findPic(653,1,1104,96, "activity.png");
@@ -343,9 +342,11 @@ public class SingleTask {
                         return 99;
                     }
                 }
+
                 tongTask(publicFunction);
                 tongAndEveryday(publicFunction);
                 gamePublicFunction.luckDraw();
+
             } else if (("alchemy.png").equals(TaskMain.taskList.get(0))) {
                 //帮会炼金
                 int alchemyState = alchemy(publicFunction);
@@ -1141,7 +1142,6 @@ public class SingleTask {
             Thread.sleep(500);
         }
     }
-
 
     public void dian() throws Exception {
 

@@ -134,9 +134,11 @@ public class TeamTask extends TaskContent {
                         LtLog.e(mFairy.getLineInfo("调整目标界面"));
                         result = mFairy.findPic(334, 132, 639, 545, "ytl.png");
                         mFairy.onTap(0.8f, result, "目标为一条龙进行下一步", Sleep);
+
                         if (AtFairyConfig.getOption("dxr").equals("1")) {
                             mFairy.onTap(0.8f, result, 379, 559, 394, 568, "带新人", Sleep);
                         }
+
                         if (result.sim > 0.8f) {
                             mFairy.ranSwipe(730, 314, 730, 451, 100, 100);
                             mFairy.ranSwipe(730, 314, 730, 451, 100, 100);
@@ -159,7 +161,7 @@ public class TeamTask extends TaskContent {
                     } else {
                         result = mFairy.findPic("teaminterface.png");
                         mFairy.onTap(0.8f, result, 1163, 167, 1164, 168, "目标不对，切换目标", Sleep);
-                        mFairy.onTap(0.8f, result, 165, 116, 166, 117, "目标不对，切换目标", 2000);
+                        mFairy.onTap(0.8f, result, 158,95,164,103, "目标不对，切换目标", 2000);
                     }
                 }
             }

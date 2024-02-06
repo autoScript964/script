@@ -17,6 +17,20 @@ public class Abnormal extends TaskContent {
         mFairy = ypFairy;
     }
 
+
+    long time = System.currentTimeMillis();
+    public boolean timeYZ(FindResult findResult,long t)throws Exception{
+        if (findResult.sim>0.8f){
+            if(System.currentTimeMillis() - time>=t){
+                return true;
+            }
+        }else{
+            time = System.currentTimeMillis();
+        }
+
+        return false;
+    }
+
     String task_id = AtFairyConfig.getOption("task_id");
 
     int sign = 0;
@@ -137,9 +151,14 @@ public class Abnormal extends TaskContent {
 
 
         result = mFairy.findPic(790, 482, 1270, 706, "Rolelogon.png");
-        if (picCount(0.8f, result, "err角色登录") > 30) {
+        if(timeYZ(result,30000)){
             mFairy.onTap(0.8f, result, "err角色登录", Sleep);
         }
+
+
+      /*  if (picCount(0.8f, result, "err角色登录") > 30) {
+            mFairy.onTap(0.8f, result, "err角色登录", Sleep);
+        }*/
 
         result = mFairy.findPic(345, 222, 944, 501, "gxzy.png");
         mFairy.onTap(0.8f, result, 759, 428, 760, 429, "err更新资源", Sleep);
@@ -205,11 +224,11 @@ public class Abnormal extends TaskContent {
             mFairy.onTap(0.8f, result, 747, 420, 789, 438, "err同意队长申请", Sleep);
         }
 
-        result = mFairy.findPic("Rightrefusal.png");
+        result = mFairy.findPic(968,246,1095,442,"Rightrefusal.png");
         if (result.sim > 0.8f && AtFairyConfig.getOption("jjsq").equals("1")) {
-            mFairy.onTap(0.8f, result, "err左侧拒绝", Sleep);
+            mFairy.onTap(0.8f, result, "err右侧拒绝", Sleep);
         } else if (result.sim > 0.8f) {
-            mFairy.onTap(0.8f, result, 1164, 323, 1195, 340, "err左侧同意", Sleep);
+            mFairy.onTap(0.8f, result, 1158,378,1176,386, "err右侧同意", Sleep);
         }
 
 

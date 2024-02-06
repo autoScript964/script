@@ -12,7 +12,7 @@ import java.util.List;
  * Created by user on 2019/2/15.
  */
 
-public class GamePublicFuntion {
+public class GamePublicFuntion<T> {
     public AtFairyImpl mFairy;
     public FindResult result;
 
@@ -20,17 +20,25 @@ public class GamePublicFuntion {
         mFairy = ypFairy;
     }
 
-    public FindResult qx() throws Exception {
+    public  FindResult qx() throws Exception {
+
+        result = mFairy.findPic("llg.png");
+        if(result.sim>0.8f){
+            mFairy.onTap(732,431,752,440,"",1500);
+            return new FindResult();
+        }
+
+
         result = mFairy.findPic(389, 224, 639, 375, "xinbai.png");
         if (result.sim < 0.85f) {
             return mFairy.findPic(285, 271, 698, 664, new String[]{"qx.png","jujue.png"});
         }
 
+
         return new FindResult();
-    }//
+    }
 
     private int judgeStop = 0;
-
     public Boolean judgeStop(int m) throws Exception {
         //long num = mFairy.dazeTime(139,61,210,78, 1f, 0, "218,206,190");
         long num = mFairy.mMatTime(139, 61, 71, 17, 0.95f);
@@ -132,7 +140,7 @@ public class GamePublicFuntion {
         if(result.sim>0.8f){
             useClose();
         }else{
-            result = mFairy.findPic(1023, 527, 1117, 637, "use.png");
+            result = mFairy.findPic(1023, 527, 1117, 637, new String[]{"use.png","use2.png"});
             mFairy.onTap(0.8f, result, "使用", 1000);
         }
 
@@ -326,6 +334,11 @@ public class GamePublicFuntion {
             result=qx();
             mFairy.onTap(0.8f,result,"取消",500);
 
+            result = mFairy.findPic( "qd2.png");
+            mFairy.onTap(0.8f, result, "确定", 1000);
+
+            result = mFairy.findPic( "bangpai.png");
+            mFairy.onTap(0.8f, result, "确定", 1000);
 
             result = mFairy.findPic(1129,160,1271,549, "mj5.png");
             mFairy.onTap(0.8f, result, "秘境离开", 500);
@@ -333,10 +346,15 @@ public class GamePublicFuntion {
             result = mFairy.findPic("jia7.png");
             mFairy.onTap(0.8f, result, "聊天框", 1000);
 
+            result = mFairy.findPic("jia9.png");
+            mFairy.onTap(0.8f, result, "聊天框", 1000);
+
             result = mFairy.findPic("battle.png");
             if (result.sim > 0.8f) {
                 stopBattle();
             }
+
+
 
             result = mFairy.findPic(915, 4, 1155, 429, new String[]{"shi.png", "shi1.png"});
             mFairy.onTap(0.8f,result,673,313,698,335,"取消做事情",1000);

@@ -1,11 +1,9 @@
 package com.script.fairy;
 
+import com.script.framework.AtFairyImpl;
 import com.script.opencvapi.FindResult;
 import com.script.opencvapi.LtLog;
-import com.script.framework.AtFairyImpl;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -170,6 +168,10 @@ public abstract class TaskContent {
     }
 
     boolean timeMap(String key,long sheep,boolean init){
+        if(sheep<1){
+            return false;
+        }
+
         long s = System.currentTimeMillis();
         if(tm.containsKey(key)){
             if(s - tm.get(key)>=sheep){
@@ -250,6 +252,9 @@ public abstract class TaskContent {
     }
 
     boolean timeMap(String key, long sheep) {
+        if(sheep==-1){
+            return false;
+        }
         long s = System.currentTimeMillis();
         if (tm.containsKey(key)) {
             if (s - tm.get(key) >= sheep) {
@@ -261,6 +266,51 @@ public abstract class TaskContent {
             return true;
         }
         return false;
+    }
+
+    public static  long getTimeStamp(String string) throws Exception {
+
+        if(string.equals("")) {
+            return -1;
+        }
+
+        String[] arrstr = string.split("\\|\\|");
+        String[] new_arrstr;
+
+        LtLog.e("getTimeStamp---"+arrstr.toString());
+
+        if(arrstr[0].equals("0")){
+            return -1;
+        }
+
+        if (arrstr.length == 1) {
+            new_arrstr = arrstr[0].split(":");
+        } else {
+            new_arrstr = arrstr[1].split(":");
+        }
+
+        return (long) (Integer.parseInt(new_arrstr[0]) * 3600000
+                + Integer.parseInt(new_arrstr[1]) * 60000
+                + Integer.parseInt(new_arrstr[2]) * 1000);
+    }
+
+    public  static  int getNumberAssembly(String string) throws Exception {
+        if(string.equals("")){
+            return -1;
+        }
+
+        String[] arrstr = string.split("\\|\\|");
+        if (arrstr.length == 1) {
+            if(arrstr[0].equals("0")){
+                return -1;
+            }
+            return Integer.parseInt(arrstr[0]);
+        } else {
+            if(!arrstr[0].equals("1")){
+                return -1;
+            }
+            return Integer.parseInt(arrstr[1]);
+        }
     }
 
     /**

@@ -116,12 +116,15 @@ public class TeamTask {
                     result = mFairy.findPic("rank12.png");
                     mFairy.onTap(0.8f, result, 681, 632, 742, 658, "", 500);
 
-                    result = mFairy.findPic(327, 206, 1267, 472, "lixian1.png");
-                    mFairy.onTap(0.8f, result, "请离队伍", 1000);
+
 
                     result = mFairy.findPic(336, 391, 1112, 484, "lixian.png");
                     if (result.sim > 0.8f) {
                         mFairy.onTap(0.8f, result, "发现离线", 1000);
+
+                        result = mFairy.findPic(327, 206, 1267, 472, "lixian1.png");
+                        mFairy.onTap(0.8f, result, "请离队伍", 1000);
+
                         return;
                     }
 
@@ -165,6 +168,7 @@ public class TeamTask {
                 }
             }
 
+
             result = mFairy.findPic(228, 5, 747, 99, "activity.png");
             if (result.sim > 0.8f) {
                 err = 0;
@@ -178,7 +182,6 @@ public class TeamTask {
                     gamePublicFuntion.actLing();
                 }
 
-
                 FindResult act = mFairy.findPic(304, 80, 1144, 458, activityName);
                 LtLog.e(mFairy.getLineInfo("activityName :" + result.sim));
                 if (act.sim > 0.8f) {
@@ -190,6 +193,7 @@ public class TeamTask {
                     }
 
                     result = mFairy.findPic(act.x + 180, act.y - 20, act.x + 300, act.y + 70, "can.png");
+                    LtLog.e(mFairy.getLineInfo("参加："+result.sim));
                     if (result.sim > 0.75f) {
                         mFairy.onTap(0.75f, result, "参加", 500);
                         setTaskName(4);
@@ -319,9 +323,7 @@ public class TeamTask {
                             if (result.sim > 0.8f) {
                                 mFairy.onTap(0.8f, result, "str2", 500);
                                 break;
-
                             }
-
                         } else {
                             break;
                         }
@@ -486,6 +488,15 @@ public class TeamTask {
                         return;
                     }
 
+                    result = mFairy.findPic(fbName.x + 26, fbName.y + 370, fbName.x + 240, fbName.y + 481, "fb9.png");
+                    if (result.sim > 0.75f) {
+                        LtLog.e(mFairy.getLineInfo("未开启"));
+                        setTaskEnd();
+                        return;
+                    }
+
+
+
                     if (jin) {
                         mFairy.onTap(fbName.x + 100, fbName.y + 422, fbName.x + 141, fbName.y + 436, "进入", 3000);
                         setTaskName(4);
@@ -510,10 +521,10 @@ public class TeamTask {
     }
 
 
-
     int zg_count = 0;
 
     int failcount = 0;
+
     public void ddzg() throws Exception {
         new TeamContent(mFairy, "带队捉鬼") {
 
@@ -534,10 +545,12 @@ public class TeamTask {
             }
 
             void content_04() throws Exception {
-                if (timeCount(8, 0)) {
+                if (timeCount(15, 0)) {
                     gamePublicFuntion.home();
                     return;
                 }
+
+                Thread.sleep(1000);
 
                 result = mFairy.findPic(898, 4, 1258, 536, "ddzg3.png");
                 if (result.sim > 0.85f) {
@@ -642,7 +655,7 @@ public class TeamTask {
                     FindResult result = mFairy.findPic(act.x + 100, act.y + 16, act.x + 215, act.y + 76,
                             new String[]{"ddzg6.png", "ddzg7.png","ddzg8.png"});
                     LtLog.e(mFairy.getLineInfo("捉鬼活跃判断:"+result.sim));
-                    if (result.sim > 0.8f) {
+                    if (result.sim > 0.9f) {
 
                         return true;
                     }
@@ -799,8 +812,6 @@ public class TeamTask {
         };
     }//绿烟如梦-侠士
 
-
-
     public void thq() throws Exception {
         new TeamContent(mFairy, "蹈海去-普通") {
 
@@ -948,8 +959,6 @@ public class TeamTask {
         };
     }//蹈海去-侠士
 
-
-
     public void mzh() throws Exception {
         new TeamContent(mFairy, "明珠还-普通") {
 
@@ -1096,8 +1105,6 @@ public class TeamTask {
             }
         };
     }//明珠还-侠士
-
-
 
     public void lls() throws Exception {
         new TeamContent(mFairy, "琉璃碎-普通") {
@@ -1457,7 +1464,7 @@ public class TeamTask {
             }
 
             void content_03() throws Exception {
-                fb(1, "wzs3.png", true);
+                fb(2, "wzs3.png", true);
             }
 
             void content_04() throws Exception {
@@ -1627,7 +1634,6 @@ public class TeamTask {
             }
         };
     }//金蝉心-侠士
-
 
     public void txx() throws Exception {
         new TeamContent(mFairy, "踏西行-普通") {
@@ -2223,10 +2229,10 @@ public class TeamTask {
 
                 if (gamePublicFuntion.mainScene()) {
                     if (gamePublicFuntion.judgeStop(3)) {
-                        result = mFairy.findPic(1017, 151, 1179, 540, "ycmht4.png");
-                        if (result.sim > 0.75f) {
+                        result = mFairy.findPic(1017, 151, 1250, 540, "ycmht4.png");
+                        if (result.sim > 0.7f) {
                             err = 0;
-                            mFairy.onTap(0.75f, result, "迷魂塔", 1000);
+                            mFairy.onTap(0.7f, result, "迷魂塔", 1000);
                             return;
                         }
                         taskSlide.slideRange(new int[]{4, 5, 6}, 2, 0);

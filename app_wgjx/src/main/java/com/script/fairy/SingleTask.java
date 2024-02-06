@@ -1718,7 +1718,7 @@ public class SingleTask {
                     err = 0;
 
                     result = mFairy.findPic(703, 162, 1095, 214, "lmlw1.png");
-                    if (result.sim > 0.8f) {
+                    if (result.sim > 0.95f) {
                         frequencyInit("hongdian");
                         mFairy.onTap(result.x - 80, result.y + 12, result.x - 70, result.y + 15, "发现红点", 1500);
 
@@ -3520,6 +3520,9 @@ public class SingleTask {
 
                     while (mFairy.condit()) {
 
+                        Thread.sleep(1000);
+
+
                         result = mFairy.findPic(123, 401, 1243, 592, "sousuo1.png");
                         mFairy.onTap(0.8f, result, "搜索", 800);
 
@@ -3751,6 +3754,9 @@ public class SingleTask {
                 result = mFairy.findPic(2, 45, 1278, 638, "tansuo1.png");
                 mFairy.onTap(0.8f, result, "望远镜", 1000);
 
+                result = mFairy.findPic(2, 45, 1278, 638, "tansuo6.png");
+                mFairy.onTap(0.8f, result, "望远镜", 1000);
+
                 result = mFairy.findPic(2, 45, 1278, 638, "tansuo.png");
                 LtLog.e(mFairy.getLineInfo("探索sim:" + result.sim));
                 mFairy.onTap(0.7f, result, result.x, result.y + 65, result.x + 1, result.y + 70, "探索 - 帐篷", 500);
@@ -3888,6 +3894,7 @@ public class SingleTask {
                                 }
                             }
                         }
+
                     } else {
                         if (frequencyMap("baogao", 3)) {
                             mFairy.ranSwipe(205, 400, 205, 200, 500, 1500);
@@ -3910,17 +3917,17 @@ public class SingleTask {
                     mFairy.onTap(0.8f, result, 49, 642, 68, 662, "回城", 1000);
                 }
 
-                result = mFairy.findPic(468, 166, 819, 464, new String[]{"baogao4.png"});
-                if (result.sim > 0.8f) {
+                result = mFairy.findPic(583,245,694,380, new String[]{"baogao4.png"});
+                if (result.sim > 0.75f) {
                     err = 0;
-                    mFairy.onTap(0.8f, result, result.x, result.y + 58, result.x + 5, result.y + 65, "叹号", 1000);
+                    mFairy.onTap(0.75f, result, result.x, result.y + 58, result.x + 5, result.y + 65, "叹号", 1000);
                 }
 
-                result = mFairy.findPic(468, 166, 819, 464, "baogao6.png");
-                mFairy.onTap(0.85f, result, "部落宝箱", 1000);
+                result = mFairy.findPic(539,218,730,353, new String[]{"baogao6.png","baogao9.png"});
+                mFairy.onTap(0.75f, result,result.x,result.y+50,result.x+1,result.y+60, "部落宝箱", 1000);
 
                 result = mFairy.findPic(186, 37, 1186, 627, "baogao5.png");
-                mFairy.onTap(0.85f, result, "调查", 1000);
+                mFairy.onTap(0.8f, result, "调查", 1000);
 
                 result = mFairy.findPic(186, 37, 1186, 627, "baogao7.png");
                 if (result.sim > 0.8f) {

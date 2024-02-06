@@ -369,6 +369,15 @@ public class LimitlessTask extends TaskContent {
                         Thread.sleep(qxgs.timeMillis);
                         gameUtil.cancelFollowing();
                     }
+
+                    if (AtFairyConfig.getOption("gbgj").equals("1")) {
+                        result = mFairy.findPic("Hangup1.png");
+                        mFairy.onTap(0.7f, result, 1236, 335, 1237, 336, "关闭挂机", Sleep);
+                    } else {
+                        result = mFairy.findPic("Hangup.png");
+                        mFairy.onTap(0.7f, result, 1236, 335, 1237, 336, "开启挂机", Sleep);
+                    }
+
                 }
 
                 if (timekeep(0, 100000, "cancel")) {
@@ -600,6 +609,9 @@ public class LimitlessTask extends TaskContent {
                 result = mFairy.findPic(1071,326,1260,429,"tongyi1.png");
                 mFairy.onTap(0.8f,result,"同意",1000);
 
+                result = mFairy.findPic(684,422,901,539,"jqjr.png");
+                mFairy.onTap(0.8f,result,"同意进入",1000);
+
 
             }
 
@@ -693,6 +705,7 @@ public class LimitlessTask extends TaskContent {
                     if(AtFairyConfig.getOption("gqx").equals("1")) {
                         gameUtil.cancelFollowing();
                     }
+
 
                     if (AtFairyConfig.getOption("gbgj").equals("1")) {
                         result = mFairy.findPic("Hangup1.png");

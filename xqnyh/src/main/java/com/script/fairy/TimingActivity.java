@@ -901,10 +901,17 @@ public class TimingActivity extends TaskContent {
                         return;
                     }
 
+                    long color = mFairy.getColorNum(348 + (243 * scopeX), 112 + (87 * scopeY), 592 + (243 * scopeX), 201 + (87 * scopeY), "131,251,99",0.9f);
+                    if(color<1){
+                        LtLog.e(mFairy.getLineInfo("该蜃妖没有了"));
+                        setTaskEnd();
+                        return;
+                    }
+
 
                     result = mFairy.findPic(348 + (243 * scopeX), 112 + (87 * scopeY), 592 + (243 * scopeX), 201 + (87 * scopeY), "Getrich.png");
-                    if(result.sim>0.8f) {
-                        mFairy.onTap(0.8f, result, "前往", 5000);
+                    if(result.sim>0.9f) {
+                        mFairy.onTap(0.9f, result, "前往", 5000);
                         setTaskName(5);
                     }
 
@@ -942,10 +949,12 @@ public class TimingActivity extends TaskContent {
             public void content_6() throws Exception {
                 if (overtime(10, 4)) {
                     gameUtil.callToFollow();
+                    Thread.sleep(3000);
+                    gameUtil.callToFollow();
                     return;
                 }
 
-                Thread.sleep(500);
+                Thread.sleep(1000);
 
 
                 result = mFairy.findPic("sy7.png");
@@ -956,6 +965,8 @@ public class TimingActivity extends TaskContent {
                     }else{
                         result = mFairy.findPic("Hangup.png");
                         mFairy.onTap(0.7f, result, 1236, 335, 1237, 336, "开启挂机", Sleep);
+
+                        gameUtil.cancelFollowing();
                     }
                 }
 
@@ -2066,7 +2077,9 @@ public class TimingActivity extends TaskContent {
             }
 
             public void content_6() throws Exception {
-                if (overtime(6, 4)) {
+                if (overtime(15, 4)) {
+                    gameUtil.callToFollow();
+                    Thread.sleep(3000);
                     gameUtil.callToFollow();
                     return;
                 }
@@ -2091,6 +2104,9 @@ public class TimingActivity extends TaskContent {
                     mFairy.initMatTime();
                     result = mFairy.findPic("Hangup.png");
                     mFairy.onTap(0.7f, result, 1236, 335, 1237, 336, "副本中开启挂机", Sleep);
+
+                    gameUtil.cancelFollowing();
+
                 } else {
                     fbJudge++;
                     if (fbJudge > 2) {

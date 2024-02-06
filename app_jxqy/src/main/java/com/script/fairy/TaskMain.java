@@ -60,7 +60,7 @@ public class TaskMain {
 
         taskMap = new HashMap<String, Integer>();
         mFairy.setGameName("新剑侠情缘");
-        mFairy.setGameVersion(654);
+        mFairy.setGameVersion(658);
         publicFunction = new PublicFunction(mFairy);
 //      publicFunction=mFairy.publicFunction;
         limitlessTask = new LimitlessTask(mFairy);
@@ -295,7 +295,7 @@ public class TaskMain {
                 taskMap.put("OnHookMap", 999);
             } else {
                 //添加地图 需要修改的函数 goSecurity; selectMap2 ,initMapNameList,screenXY
-                for (int i = 1; i <= 44; i++) {
+                for (int i = 1; i <= 100; i++) {
                     if (AtFairyConfig.getOption("map" + Integer.toString(i)).equals("1")) {
                         taskMap.put("OnHookMap", i);
                         break;

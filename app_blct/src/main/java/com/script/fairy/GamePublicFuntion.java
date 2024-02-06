@@ -99,8 +99,6 @@ public class GamePublicFuntion {
             result = mFairy.findPic("zeng6.png");
             mFairy.onTap(0.8f, result, "关闭聊天框", 500);
 
-            result = mFairy.findPic("zeng6.png");
-            mFairy.onTap(0.8f, result, "关闭聊天框", 500);
 
             result = mFairy.findPic(10, 541, 784, 708, new String[]{"hui.png", "hui1.png"});
             mFairy.onTap(0.75f, result, "回营", 500);
@@ -147,8 +145,8 @@ public class GamePublicFuntion {
 
 
     public boolean judge_js() throws Exception {
-        long c = mFairy.getColorNum(160,386,183,406, "99,99,99", 0.95f);
-        if (c > 30) {
+        long c = mFairy.getColorNum(208,383,228,395, "186,186,186", 0.95f);
+        if (c > 5) {
             LtLog.e(mFairy.getLineInfo("出现灰色："+c));
             return true;
         }
@@ -165,11 +163,44 @@ public class GamePublicFuntion {
         return false;
     }
 
+    public FindResult getImgSim(FindResult result,float sim,int x, int y, int x1, int y1,String img,int i)throws Exception{
+
+        if(result.sim>sim){
+            return result;
+        }
+        FindResult r;
+        switch (img){
+            case "m":
+                    switch (i){
+                        case 0:
+                            r= mFairy.findPic(x, y, x1, y1,   "imgErr" + i + ".png");
+                            if(r.sim>sim){
+                                return r;
+                            }
+                        break;
+
+                        case 1:
+                           r = mFairy.findPic(x, y, x1, y1,   "imgErr" + i + ".png");
+                            if(r.sim>sim){
+                                return r;
+                            }
+                            break;
+
+                    }
+                break;
+
+        }
+
+        return null;
+    }
+
     public int get_number(float sim, int x, int y, int x1, int y1, int step, int min, int max, String img, String br) throws Exception {
         String str = "";
         while (true) {
 
             if (min < (x1 - x)) {
+
+                LtLog.e(mFairy.getLineInfo("范围：" + x + "," + y + "," + x1 + "," + y1));
 
                 for (int i = 9; i >= 0; i--) {
 
@@ -183,32 +214,30 @@ public class GamePublicFuntion {
 
                     result = mFairy.findPic(x, y, x1, y1, img + "" + i + ".png");
 
-                   // if(img.equals("m")) {
-                        //LtLog.e(mFairy.getLineInfo("范围：" + x + "," + y + "," + x1 + "," + y1 + " " + "sim:" + result.sim));
-                    //}
-
-                    if (result.sim > sim) {
+                    FindResult imgSim = getImgSim(result, sim, x, y, x1, y1, img, i);
+                    if (imgSim!=null) {
                         if (step >= 0) {
-                            x = result.x + result.width;
-                            x1 = result.x + (result.width * 2);
+                            x = imgSim.x + imgSim.width;
+                            x1 = imgSim.x + (imgSim.width +2);
                         } else {
-                            x = result.x - (result.width * 2);
-                            x1 = result.x;
+                            x = imgSim.x - (imgSim.width-2);
+                            x1 = imgSim.x;
                         }
 
                         str = str + i;
-                        //if(img.equals("m")) {
+                      /*  if(img.equals("m")) {190,100,205,130
                             LtLog.e(mFairy.getLineInfo("范围：" + x + "," + y + "," + x1 + "," + y1 + " " + "sim:" + result.sim));
-                            LtLog.e(mFairy.getLineInfo("判断成功:" + str));
-                        //}
+                        }*/
+                        LtLog.e(mFairy.getLineInfo("判断成功:" + str+","+imgSim.sim));
                         break;
                     }
+
                 }
             }
 
             if ((x1 - x) > max) {
-                LtLog.e(mFairy.getLineInfo("结束 范围："+x+","+y+","+x1+","+y1));
-                LtLog.e(mFairy.getLineInfo("这次循环完成了"));
+                //LtLog.e(mFairy.getLineInfo("结束 范围："+x+","+y+","+x1+","+y1));
+                //LtLog.e(mFairy.getLineInfo("这次循环完成了"));
                 if (str.equals("")) {
                     return 0;
                 } else {

@@ -96,6 +96,7 @@ public abstract class TaskContent {
      * 只执行一次
      */
     void create() throws Exception {
+        tm = new HashMap<String,Long>();
     }
 
 
@@ -229,6 +230,26 @@ public abstract class TaskContent {
             controlSplit.timeMillis = controlSplit.h * 3600000 + controlSplit.m * 60000 + controlSplit.s * 1000;
         }
         return controlSplit;
+    }
+    public  Map<String,Long> tm = new HashMap<>();
+    void timeMapInit(String key){
+        if (tm.containsKey(key)) {
+            tm.put(key, System.currentTimeMillis());
+        }
+    }
+
+    boolean timeMap(String key, long sheep) {
+        long s = System.currentTimeMillis();
+        if (tm.containsKey(key)) {
+            if (s - tm.get(key) >= sheep) {
+                tm.put(key, s);
+                return true;
+            }
+        } else {
+            tm.put(key, s);
+            return true;
+        }
+        return false;
     }
 
     void content_0() throws Exception {

@@ -26,8 +26,22 @@ public class Abnormal  {
          *
          */
 
+
+        result = mFairy.findPic("hdclose55.png");
+        mFairy.onTap(0.8f,result,"err hdclose55",1000);
+
+        result = mFairy.findPic("hdclose54.png");
+        mFairy.onTap(0.8f,result,"err hdclose54",1000);
+
+        result = mFairy.findPic("hdclose53.png");
+        mFairy.onTap(0.8f,result,"err hdclose53",1000);
+
         result = mFairy.findPic("hdclose51.png");
         mFairy.onTap(0.8f,result,1043,84,1060,112,"err hdclose51",1000);
+
+
+        result = mFairy.findPic("hdclose52.png");
+        mFairy.onTap(0.8f,result,976,104,994,126,"err hdclose52",1000);
 
         result = mFairy.findPic(366,246,940,401,"sm16.png");
         mFairy.onTap(0.8f,result,608,572,646,587,"err sm完成弹框",1000);
@@ -244,7 +258,7 @@ public class Abnormal  {
         result = mFairy.findPic("yanzheng.png");
         if(result.sim>0.8f){
             LtLog.e(mFairy.getLineInfo("验证界面"));
-            String position = answer.haoai(x,y,712,343,"8006");
+            String position = answer.newHaoai(x,y,712,343,"8006");
             if(!position.equals("") && position!=null){
 
                 String[] xy = position.split(",");

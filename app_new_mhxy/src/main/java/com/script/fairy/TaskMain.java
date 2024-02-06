@@ -31,7 +31,7 @@ public class TaskMain {
         gamePublicFuntion = new GamePublicFuntion(ypFairy);
         mFairy = ypFairy;
         mFairy.setGameName("梦幻西游");
-        mFairy.setGameVersion(415);
+        mFairy.setGameVersion(440);
         init();
         GamePublicFuntion.ACTLING = 1;
     }
@@ -139,6 +139,8 @@ public class TaskMain {
 
             long time = System.currentTimeMillis();
             while (mFairy.condit()){
+
+                Thread.sleep(500);
 
                 if(System.currentTimeMillis() - time >30000) {
                     LtLog.e(mFairy.getLineInfo("等待任务开启 >>>"));
@@ -491,9 +493,7 @@ public class TaskMain {
             }
 
             void init() throws Exception {
-                for (int i = 0; i < 3; i++) {
-                    gamePublicFuntion.close();
-                }
+                gamePublicFuntion.taskInit(0);
                 setTaskName(1);
             }
 
@@ -511,7 +511,7 @@ public class TaskMain {
 
                     err = 0;
 
-                    result = mFairy.findPic(215,573,1019,675,new String[]{"set3.png","qhzh.png"});
+                    result = mFairy.findPic(215,573,1019,675,new String[]{"set3.png","qhzh.png","qhzh1.png","qhzh2.png"});
                     mFairy.onTap(0.8f, result, "切换账号", 1500);
 
                     result = mFairy.findPic("set4.png");

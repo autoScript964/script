@@ -41,20 +41,23 @@ public class SingleTask {
         AtFairy2.OpencvResult result;
         long timex = 0;
 
+
         LtLog.i(publicFunction.getLineInfo() + "-------commerceNotTeam > " + TaskMain.taskMap.get("commerceNotTeam"));
+
+        gamePublicFunction.closeWindow();
 
         if (TaskMain.taskMap.get("commerceNotTeam") == 0) {
             //  commerceNotTeam     1 不退  0 退队
             gamePublicFunction.exitTeam(); //退出当前队伍
         }
 
-        gamePublicFunction.goSecurity();//回安全区
-
         findResult = mFairy.findPic(991, 29, 1122, 97, "jiayuan1.png");
         mFairy.onTap(0.8f, findResult, 1007, 222, 1024, 234, "离开家园", 5000);
 
-        findResult = mFairy.findPic("li3.png");
+        findResult = mFairy.findPic(1035,130,1187,360,"li3.png");
         mFairy.onTap(0.8f, findResult, "离开", 1000);
+
+        gamePublicFunction.goSecurity();//回安全区
 
         taskList = setTaskList();
 
@@ -72,7 +75,7 @@ public class SingleTask {
         }
 
         wsd = true;//武神殿领奖
-
+        tlqm_num=1;//田连阡陌
         while (mFairy.condit()) {
 
             if (Math.abs(random.nextInt()) % 100 >= 20) {
@@ -92,6 +95,9 @@ public class SingleTask {
             if (timex >= 120) {
                 LtLog.i(publicFunction.getLineInfo() + "超时打开活动：" + timex);
                 gamePublicFunction.openActivity();
+
+                tlqm_num=1;//田连阡陌
+
                 mFairy.initMatTime();
                 timex = 0;
             }
@@ -403,6 +409,10 @@ public class SingleTask {
             list.add("zhanlong");
         }
 
+        if (AtFairyConfig.getOption("tlqm").equals("1")) {//田连阡陌
+            list.add("tlqm");
+        }
+
 
         if (TaskMain.taskMap.get("Acer") == 1 || TaskMain.taskMap.get("BackReward") == 1 || TaskMain.taskMap.get("offline") == 1 || TaskMain.taskMap.get("hutSign") == 1) {
             acerAndBackRewardAndOffline();
@@ -706,6 +716,9 @@ public class SingleTask {
 
     private void selectTask(String str) throws Exception {
         switch (str) {
+            case "tlqm":
+                tlqm();
+                break;
             case "zjwsd":
                 zjwsd();
                 break;
@@ -1713,7 +1726,6 @@ public class SingleTask {
         }
     }
 
-
     /*
         战龙任务
      */
@@ -1800,7 +1812,6 @@ public class SingleTask {
     }
 
     boolean wsd = true;
-
 
     //武神殿
     private void Valkyrie() throws Exception {
@@ -1904,6 +1915,74 @@ public class SingleTask {
         }
 
     }
+
+    private int tlqm_num = 1;
+    //田连阡陌
+    private void tlqm() throws Exception {
+
+        LtLog.e(mFairy.getLineInfo("田连阡陌活动中----"+tlqm_num));
+
+        findResult = mFairy.findPic("tlqm2.png");
+        if(findResult.sim>0.8f){
+
+            findResult = mFairy.findPic(910,141,1028,347,"tlqm4.png");
+            if(findResult.sim>0.8f){
+                mFairy.onTap(0.8f,findResult,"松土",5000);
+                tlqm_num++;
+                if(tlqm_num>3){
+                    gamePublicFunction.closeWindow();
+                    mFairy.onTap(1088,181,1106,202,"离开",500);
+                    mFairy.onTap(1088,181,1106,202,"离开",1000);
+                    mFairy.onTap(1088,181,1106,202,"离开",3000);
+                    Thread.sleep(1000);
+                    gamePublicFunction.openActivity();
+                    tlqm_num=1;
+                    return;
+                }
+            }
+
+            mFairy.onTap(1195,80,1217,93,"点击地图",3000);
+
+        }
+
+        findResult = mFairy.findPic("tlqm3.png");
+        if(findResult.sim>0.8f){
+
+            switch (tlqm_num){
+                case 1:
+                    mFairy.tap(516,353);
+                    Thread.sleep(5000);
+                    break;
+                case 2:
+                    mFairy.tap(643,353);
+                    Thread.sleep(5000);
+                    break;
+                case 3:
+                    mFairy.tap(751,356);
+                    Thread.sleep(5000);
+                    break;
+            }
+            mFairy.onTap(941,38,956,50,"",1000);
+
+            for (int i = 0; i < 20; i++) {
+                Thread.sleep(1000);
+
+                findResult = mFairy.findPic(266,13,963,434,new String[]{"tl1.png","tl2.png","tl3.png"});
+                if(findResult.sim>0.72f){
+                    mFairy.onTap(findResult.x,findResult.y+120,findResult.x+1,findResult.y+170,"dian",3000);
+
+                    findResult = mFairy.findPic(910,141,1028,347,"tlqm4.png");
+                    if(findResult.sim>0.75f){
+                        return;
+                    }
+                }
+            }
+        }
+
+    }
+
+
+
 
     //战境武神殿
     private void zjwsd() throws Exception {
@@ -2478,7 +2557,6 @@ public class SingleTask {
         Thread.sleep(1000);
 
     }
-
 
     public void sgame() throws Exception {
 
