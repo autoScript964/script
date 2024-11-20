@@ -21,5 +21,7 @@ include ":opencvapi-debug", ':openCVLibrary341', ':scriptSdk', "scriptSdkProxy",
         //"app_rxcqmds",
         "app_ahphs",
         "collect",
-        "app_tlbb2"
+        "app_tlbb2",
+        "new-xycqexperience-master",
+        "new-ziyouhx-master"
 

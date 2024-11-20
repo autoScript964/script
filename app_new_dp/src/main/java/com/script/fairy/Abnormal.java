@@ -42,11 +42,20 @@ public class Abnormal {
             time_1 = System.currentTimeMillis();
         }
 
+
+        result = mFairy.findPic("hdclose2.png");
+        mFairy.onTap(0.85f, result, "hdclose2", 1000);
+
+        result = mFairy.findPic("hdclose1.png");
+        mFairy.onTap(0.85f, result, 1211,40,1224,62,"hdclose1", 1000);
+
+
         result = mFairy.findPic("hb.png");
         mFairy.onTap(0.85f, result, "err红包", 1000);
 
         result = mFairy.findPic("hb2.png");
         mFairy.onTap(0.85f, result, "err黄包", 1000);
+
 
         result = mFairy.findPic("new sure.png");
         mFairy.onTap(0.8f, result, "err新版qq隐私政策同意", 1000);

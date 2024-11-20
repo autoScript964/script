@@ -22,6 +22,7 @@ public class SingleTask {
     private PublicFunction publicFunction;
     private GamePublicFunction gamePublicFunction;
     private Random random = new Random(100);
+    
     private MatTime matTime;
     FindResult findResult;
     protected List<String> taskList = new ArrayList<>();
@@ -67,6 +68,22 @@ public class SingleTask {
         gamePublicFunction.taskOrTeam("task");
 
         gamePublicFunction.goMainCity();
+
+        //战境武神殿异常处理
+        if(taskList.get(0).equals("zjwsd")){
+            mFairy.ranSwipe(159,580,216,581,300,500);
+            for (int i = 0; i < 30; i++) {
+                LtLog.e(mFairy.getLineInfo("等待骑马中"));
+                Thread.sleep(500);
+                findResult = mFairy.findPic("qm.png");
+                if(findResult.sim>0.8f) {
+                    mFairy.onTap(0.8f, findResult, "骑马", 1000);
+                    break;
+                }
+            }
+        }
+
+
         gamePublicFunction.openActivity();
 
         if (TaskMain.taskMap.get("patrons") > 0) {
@@ -82,7 +99,7 @@ public class SingleTask {
                 LtLog.i(publicFunction.getLineInfo() + "【任务list:" + taskList + " 】");
             }
 
-            result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png");
+            result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png"+ "|" + "activity3.png");
             if (result.sim >= 0.8) {
 
                 LtLog.i(publicFunction.getLineInfo() + "【在主场景】");
@@ -94,6 +111,21 @@ public class SingleTask {
 
             if (timex >= 120) {
                 LtLog.i(publicFunction.getLineInfo() + "超时打开活动：" + timex);
+
+                if(taskList.get(0).equals("zjwsd")){
+                    mFairy.ranSwipe(159,580,216,581,300,500);
+                    for (int i = 0; i < 30; i++) {
+                        LtLog.e(mFairy.getLineInfo("等待骑马中"));
+                        Thread.sleep(500);
+                        findResult = mFairy.findPic("qm.png");
+                        if(findResult.sim>0.8f) {
+                            mFairy.onTap(0.8f, findResult, "骑马", 1000);
+                            break;
+                        }
+                    }
+                }
+
+
                 gamePublicFunction.openActivity();
 
                 tlqm_num=1;//田连阡陌
@@ -153,7 +185,7 @@ public class SingleTask {
             findResult = mFairy.findPic("nn1.png");
             mFairy.onTap(0.8f, findResult, 1211, 18, 1233, 38, "服饰关闭", 1000);
 
-            result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png");
+            result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png"+ "|" + "activity3.png");
             if (result.sim >= 0.8) {
                 timex = mFairy.mMatTime(1173, 134, 76, 23, 0.9f);
             }
@@ -521,7 +553,7 @@ public class SingleTask {
                 matTime.resetTime();
             }
 
-            result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png");
+            result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png"+ "|" + "activity3.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "主场景");
                 gamePublicFunction.taskOrTeam("task");
@@ -878,7 +910,7 @@ public class SingleTask {
         } else {
             findResult = resultList.get(resultList.size() - 1);
             if (findResult.x > 1041) {
-                mFairy.onTap(findResult.x - 685, findResult.y - 165, findResult.x - 680, findResult.y - 170, "签到", 1000);
+                mFairy.onTap(411, findResult.y + 165, 411, findResult.y + 170, "签到", 1000);
             } else {
                 mFairy.onTap(findResult.x + 115, findResult.y, findResult.x + 120, findResult.y + 1, "签到", 1000);
             }
@@ -1444,22 +1476,25 @@ public class SingleTask {
     private void commerce() throws Exception {
         AtFairy2.OpencvResult result;
 
+
+
+
         result = publicFunction.localFindPic(336, 315, 923, 610, "commerce1.png");
         if (result.sim >= 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "--------------------  commerce1=" + result);
             publicFunction.rndTapWH(result.x, result.y, 86, 28);
-            Thread.sleep(500);
+            Thread.sleep(1500);
         }
 
         result = publicFunction.localFindPic(336, 315, 923, 522, "commerce2.png");
         if (result.sim >= 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "--------------------  commerce2=" + result);
             publicFunction.rndTapWH(result.x, result.y, 86, 28);
-            Thread.sleep(500);
+            Thread.sleep(1500);
         }
 
 
-        result = publicFunction.localFindPic(533, 531, 635, 612, "reward.png");
+        result = publicFunction.localFindPic(550,429,627,607, "reward.png");
         if (result.sim >= 0.8) {
             //悬赏任务超过3 个 ，上划
             LtLog.i(publicFunction.getLineInfo() + "悬赏任务超过3个,上划");
@@ -1474,7 +1509,7 @@ public class SingleTask {
         if (result.sim >= 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "--------------------  commerce1=" + result);
             publicFunction.rndTapWH(result.x, result.y, 86, 28);
-            Thread.sleep(500);
+            Thread.sleep(1500);
         }
 
         result = publicFunction.localFindPic(364, 322, 578, 445, "commerce7.png");
@@ -1517,7 +1552,7 @@ public class SingleTask {
             Thread.sleep(2000);
         }
 
-        result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png");
+        result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png"+ "|" + "activity3.png");
         if (result.sim >= 0.8) {
 
             long sleepTime = matTime.mMatTime(1177, 140, 69, 15, 0.9f);
@@ -1538,11 +1573,11 @@ public class SingleTask {
             }
         }
 
-
         for (int i = 0; i <= 4; i++) {
             boolean taskState = true;
             result = publicFunction.localFindPic(0, 34, 109, 173, "commerce3.png");
             if (result.sim >= 0.8) {
+                mFairy.initMatTime();
                 LtLog.i(publicFunction.getLineInfo() + "商会任务界面");
                 taskState = commerce1();
                 LtLog.i(publicFunction.getLineInfo() + "--------------------  taskState=" + taskState + ", i=" + i);
@@ -1792,7 +1827,7 @@ public class SingleTask {
                     AtFairy2.OpencvResult result;
 
                     for (int i = 0; i < 10; i++) {
-                        result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png");
+                        result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png"+ "|" + "activity3.png");
                         if (result.sim >= 0.8) {
                             mFairy.onTap(1105, 38, 1117, 53, "", 2000);
                             break;
@@ -2238,7 +2273,7 @@ public class SingleTask {
                         publicFunction.rndTapWH(result.x, result.y, 28, 29);
                         Thread.sleep(500);
                     }
-                    result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png");
+                    result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png"+ "|" + "activity3.png");
                     LtLog.i(publicFunction.getLineInfo() + "--------------------  activity=" + colorNum);
                     if (result.sim >= 0.8) {
                         gamePublicFunction.openActivity();
@@ -2326,7 +2361,9 @@ public class SingleTask {
         }
 
         while (mFairy.condit()) {
+
             AtFairy2.OpencvResult resultLeave = gamePublicFunction.leave();
+
             sleepTime = matTime.mMatTime(1177, 140, 69, 15, 0.9f);
             LtLog.i(publicFunction.getLineInfo() + "------->sleepTime=" + sleepTime + ",,leave==" + resultLeave);
             if (sleepTime >= 60 && resultLeave.sim < 0.8) {
@@ -2353,6 +2390,7 @@ public class SingleTask {
                     Thread.sleep(6000);
                 }
             }
+
             result = publicFunction.localFindPic(710, 588, 889, 714, "invitation.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "------->invitation=" + result);

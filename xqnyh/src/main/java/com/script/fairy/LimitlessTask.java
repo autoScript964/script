@@ -824,7 +824,6 @@ public class LimitlessTask extends TaskContent {
         }
         for (int i = 0; i < 10; i++) {
 
-
             if (AtFairyConfig.getOption("4689").equals("1")) {
                 gameUtil.clearbag();
             }

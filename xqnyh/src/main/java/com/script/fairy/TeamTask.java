@@ -1,10 +1,10 @@
 package com.script.fairy;
 
+import com.script.framework.AtFairyImpl;
+import com.script.framework.TaskContent;
+import com.script.opencvapi.AtFairyConfig;
 import com.script.opencvapi.FindResult;
 import com.script.opencvapi.LtLog;
-import com.script.opencvapi.AtFairyConfig;
-import com.script.framework.TaskContent;
-import com.script.framework.AtFairyImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,7 +58,16 @@ public class TeamTask extends TaskContent {
             }
         }
 
+
+
         new TeamTask(mFairy) {
+
+            @Override
+            public void create() throws Exception {
+                super.create();
+                sb = true;
+            }
+
             @Override
             public void content_0() throws Exception {
                 setTaskName(1);
@@ -77,13 +86,15 @@ public class TeamTask extends TaskContent {
             }
 
             public void content_2() throws Exception {
-                result = mFairy.findPic(3, 184, 246, 447, new String[]{"Leftone.png", "Leftone1.png", "Leftone2.png", "Leftone3.png", "Leftone4.png"});
-                mFairy.onTap(0.7f, result, "左侧一条龙", Sleep);
-                if (result.sim > 0.7f) {
+                result = mFairy.findPic(3, 184, 246, 447, new String[]{"Leftone.png", "Leftone1.png", "Leftone2.png", "Leftone3.png", "Leftone4.png","Leftone5.png"});
+                LtLog.e(mFairy.getLineInfo("左侧一条龙sim"+result.sim));
+                if (result.sim > 0.65f) {
+                    mFairy.onTap(0.65f, result, "左侧一条龙", Sleep);
                     gameUtil.callToFollow();
                     setTaskName(7);
                     return;
                 }
+
                 super.content_2();
             }
 
@@ -155,7 +166,7 @@ public class TeamTask extends TaskContent {
                             setTaskName(5);
                             return;
                         } else {
-                            mFairy.taskSlid(err, new int[]{4, 6, 8}, 3, 452, 490, 471, 182, 200, 1000);
+                            mFairy.taskSlid(err, new int[]{4, 6, 8}, 3, 450, 470, 450, 180, 1000, 2000,1);
                             Thread.sleep(2000);
                         }
                     } else {
@@ -254,6 +265,7 @@ public class TeamTask extends TaskContent {
                 if (result.sim > 0.85f) {
                     LtLog.e(mFairy.getLineInfo("--------副本中"));
                     if (!AtFairyConfig.getOption("ls").equals("") && sb) {
+                        LtLog.e(mFairy.getLineInfo("开始领双"));
                         gameUtil.collarDouble();
                         sb = false;
                     }
@@ -292,8 +304,10 @@ public class TeamTask extends TaskContent {
                     result = mFairy.findPic("taskbar.png");
                     mFairy.onTap(0.8f, result, "任务栏", Sleep);
 
-                    result = mFairy.findPic(3, 184, 246, 447, new String[]{"Leftone.png", "Leftone1.png", "Leftone2.png", "Leftone3.png", "Leftone4.png"});
-                    mFairy.onTap(0.7f, result, "左侧一条龙", Sleep);
+                    result = mFairy.findPic(3, 184, 246, 447, new String[]{"Leftone.png", "Leftone1.png", "Leftone2.png",
+                            "Leftone3.png", "Leftone4.png","Leftone5.png"});
+                    LtLog.e(mFairy.getLineInfo("左侧一条龙sim"+result.sim));
+                    mFairy.onTap(0.65f, result, "左侧一条龙", Sleep);
 
                 }
 

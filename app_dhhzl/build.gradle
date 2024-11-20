@@ -7,8 +7,8 @@ android {
         applicationId "com.dhhzl.way"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 327
-        versionName "327"
+        versionCode 329
+        versionName "329"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 

@@ -63,7 +63,7 @@ public class LimitlessTask {
 
 
                 result = mFairy.findPic("nn5.png");
-                mFairy.onTap(0.8f, result, "奖励", 500);
+                mFairy.onTap(0.8f, result, "奖励", 1000);
 
                 result = mFairy.findPic("nn6.png");
                 if (result.sim > 0.8f) {
@@ -83,11 +83,11 @@ public class LimitlessTask {
 
                     result = mFairy.findPic(393, 251, 682, 414, "gmerr1.png");
                     if (result.sim > 0.8f) {
-                        mFairy.onTap(725, 426, 761, 440, "确定", 500);
+                        mFairy.onTap(725, 426, 761, 440, "确定", 1000);
                         return;
                     }
 
-                    mFairy.onTap(0.8f, qx, "取消", 500);
+                    mFairy.onTap(0.8f, qx, "取消", 1000);
                 }
             }//取消
 
@@ -124,11 +124,11 @@ public class LimitlessTask {
                             num = 20;
                         }
                         for (int i = 0; i < num; i++) {
-                            mFairy.onTap(1004, 636, 1042, 651, "领取", 500);
+                            mFairy.onTap(1004, 636, 1042, 651, "领取", 1000);
 
                             result = mFairy.findPic("guaji3.png");
                             if (result.sim > 0.75f) {
-                                mFairy.onTap(508, 410, 555, 424, "双倍点数不足", 500);
+                                mFairy.onTap(508, 410, 555, 424, "双倍点数不足", 1000);
                                 break;
                             }
                         }

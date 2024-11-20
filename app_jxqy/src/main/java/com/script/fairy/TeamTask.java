@@ -47,7 +47,7 @@ public class TeamTask {
                 LtLog.i(publicFunction.getLineInfo() + "【 timex=" + timex + " , 任务list:" + taskList+" 】");
             }
 
-            result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png");
+            result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png"+ "|" + "activity3.png");
             if (result.sim >= 0.8) {
 
                 LtLog.i(publicFunction.getLineInfo() + "【在主场景】");
@@ -93,7 +93,7 @@ public class TeamTask {
                     gamePublicFunction.recall(true);
                 }
 
-                result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png");
+                result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png"+ "|" + "activity3.png");
                 if (result.sim >= 0.8) {
                     LtLog.i(publicFunction.getLineInfo() + "【在主场景】");
                     gamePublicFunction.openActivity();
@@ -218,7 +218,7 @@ public class TeamTask {
                     timex=0;
                 }
             }
-            result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png");
+            result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png"+ "|" + "activity3.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "【主场景】");
                 gamePublicFunction.taskOrTeam("team");
@@ -478,7 +478,7 @@ return 0;
 
         AtFairy2.OpencvResult result;
         int index = 0;
-        result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png");
+        result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png"+ "|" + "activity3.png");
         if (result.sim < 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "【不在主场景】");
             return index;
@@ -601,7 +601,7 @@ return 0;
                 time = System.currentTimeMillis() / 1000;
             }
 
-            result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png");
+            result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png"+ "|" + "activity3.png");
             if (result.sim >= 0.8 && peopleNum >= 3) {
                 LtLog.i(publicFunction.getLineInfo() + "--------------------  activity=" + result);
                 //判断当前跟战人数

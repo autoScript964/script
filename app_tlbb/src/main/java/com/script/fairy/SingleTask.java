@@ -208,8 +208,6 @@ public class SingleTask {
         while (mFairy.condit()) {
             gamePublicFunction.follow(0);//取消跟随
 
-
-
             result = publicFunction.localFindPic(582, 8, 721, 80, "activitiesWindow.png" + "|" + "activitiesWindow1.png|activitiesWindow2.png");
             if (result.sim >= 0.8) {
                 //如果在
@@ -220,8 +218,6 @@ public class SingleTask {
                 //currentTask=taskList.get(0);
                 Thread.sleep(1000);
             }
-
-
 
 
             if (TaskMain.taskList.size() == 0) {
@@ -246,17 +242,6 @@ public class SingleTask {
                 mTime_i = 0;
             }
 
-            //LtLog.i(publicFunction.getLineInfo() + "坐标, SingleTask--xy>" + xy);
-
-          /*  if (xy != xy1 && xy > 0) {
-                xy1 = xy;
-                time = System.currentTimeMillis() / 1000;
-            } else if (xy == 0) {
-                time = System.currentTimeMillis() / 1000;
-            }*/
-
-
-            //timex = System.currentTimeMillis() / 1000 - time;
 
             LtLog.i(publicFunction.getLineInfo() + "超时计时:" + mTime_i);
             if (mTime_i >= 35) {
@@ -1031,11 +1016,13 @@ public class SingleTask {
     //帮会任务
     private void tongTask(PublicFunction publicFunction) throws Exception {
 
+        LtLog.i(mFairy.getLineInfo("TaskMain.tongSet:"+TaskMain.tongSet));
+
+        //1048, 135, 1149, 181
         if (TaskMain.tongSet >= 1 && TaskMain.tongSet <= 5) {
-            result = publicFunction.localFindPic(1048, 135 + ((TaskMain.tongSet - 1) * 82), 1149, 181 + ((TaskMain.tongSet - 1) * 82), "receive2.png");
-            if (result.sim >= 0.85) {
-                LtLog.i(publicFunction.getLineInfo() + "------SingleTask--tongTask--receive2>" + result);
-                publicFunction.rndTapWH(result.x, result.y, 45, 26);
+            findResult = mFairy.findPic(1048, 135 + ((TaskMain.tongSet - 1) * 82), 1149, 181 + ((TaskMain.tongSet - 1) * 82), "receive2.png");
+            if (findResult.sim >= 0.8f) {
+                mFairy.onTap(0.8f,findResult,"接取",1000);
                 Thread.sleep(1000);
                 result = publicFunction.localFindPic(1157, 30, 1238, 98, "fork1.png");
                 if (result.sim >= 0.8) {
@@ -1044,7 +1031,9 @@ public class SingleTask {
                     Thread.sleep(200);
                 }
             }
+
         } else if (TaskMain.tongSet == 6) {
+
             //找通宝最高的接
             result = publicFunction.localFindPic(546, 0, 764, 101, "tongTask1.png");
             if (result.sim >= 0.8) {
@@ -1068,6 +1057,7 @@ public class SingleTask {
                 }
             }
         }
+
         //稀世之宝
         result = publicFunction.localFindPic(577, 0, 736, 102, "shop2.png");
         if (result.sim >= 0.8) {
@@ -1135,6 +1125,11 @@ public class SingleTask {
             publicFunction.rndTapWH(result.x, result.y, 50, 20);
             Thread.sleep(300);
         }
+
+        findResult= mFairy.findPic(583,512,685,585,"submit3.png");
+        mFairy.onTap(0.8f,findResult,"提交",1000);
+
+
         result = publicFunction.localFindPic(602, 530, 683, 576, "submit.png");
         if (result.sim >= 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "提交");
@@ -2020,7 +2015,6 @@ public class SingleTask {
             Thread.sleep(2000);
         }
         gamePublicFunction.closeWindow();
-
 
     }
 

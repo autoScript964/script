@@ -70,13 +70,7 @@ public class TeamTask {
                 mTime_i=0;
             }
 
-            /*if (xy != xy1 && xy > 0) {
-                LtLog.i(publicFunction.getLineInfo() + "-------xy>" + xy);
-                xy1 = xy;
-                time = System.currentTimeMillis() / 1000;
-            }
 
-            timex = System.currentTimeMillis() / 1000 - time;*/
 
             LtLog.i(publicFunction.getLineInfo() + "在主场景,发呆时间为：" + mTime_i);
 

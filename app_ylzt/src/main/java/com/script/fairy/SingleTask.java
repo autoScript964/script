@@ -46,19 +46,26 @@ public class SingleTask {
         AtFairy2.OpencvResult result;
         MatTime matTime = new MatTime(mFairy);
         long sleepTime = 0;
+
         initialSet();//起始设置
+
         other.OtherFunction();//其他小任务功能
+
+
         if (TaskMain.taskList.indexOf("ZXY_everday") > -1) {
             other.ZXY_everday();
         }
         if (TaskMain.taskList.indexOf("quartermaster") > -1) {
             receiveQuartermasterTask(); //接取运镖 不去护送
         }
+
+
         gamePublicFunction.openActivity(gamePublicFunction.openActivity_dailt);
         while (mFairy.condit()) {
             sleepTime = matTime.mMatTime(1119, 54, 71, 15, 0.8);
             LtLog.i(publicFunction.getLineInfo() + "------sleepTime->" + sleepTime+"    当前任务："+TaskMain.taskList.get(0));
             if (sleepTime >= 30) {
+                gamePublicFunction.closeWindow();
                 gamePublicFunction.openActivity(gamePublicFunction.openActivity_dailt);
                 matTime.resetTime();
             }
@@ -529,6 +536,8 @@ public class SingleTask {
                 Thread.sleep(200);
             }
         }
+
+
         result = publicFunction.localFindPic(4, 252, 114, 434, "huangbang_over.png");
         if (result.sim >= 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "------huangbang_over->" + result);
@@ -547,18 +556,16 @@ public class SingleTask {
                 gamePublicFunction.closeWindow(1018, 17, 1216, 146);
             }
         }
+
+
         result = publicFunction.localFindPic(1005, 647, 1179, 715, "complete.png");
         if (result.sim >= 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "------complete->" + result);
             publicFunction.rndTapWH(result.x, result.y, 30, 22);
             Thread.sleep(500);
         }
-        result = publicFunction.localFindPic(1005, 647, 1179, 715, "complete.png");
-        if (result.sim >= 0.8) {
-            LtLog.i(publicFunction.getLineInfo() + "------complete->" + result);
-            publicFunction.rndTapWH(result.x, result.y, 30, 22);
-            Thread.sleep(500);
-        }
+
+
         result = publicFunction.localFindPic(828, 519, 988, 646, "receive.png");
         if (result.sim >= 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "------receive->" + result);

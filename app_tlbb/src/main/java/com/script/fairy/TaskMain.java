@@ -100,7 +100,7 @@ public class TaskMain {
         publicFunction = new PublicFunction(ypFairy);
         functionClass = new FunctionClass(ypFairy, mContext);
         mFairy.setGameName("天龙手游");
-        mFairy.setGameVersion(482);
+        mFairy.setGameVersion(501);
         singleTask = new SingleTask(mFairy);
         limitlessTask = new LimitlessTask(mFairy);
         timingActivity = new TimingActivity(mFairy);
@@ -117,8 +117,8 @@ public class TaskMain {
             gamePublicFunction.dianxues();
 
             Thread.sleep(50000);
-        }*/
 
+        }*/
 /*
         mFairy.setIme();*/
 
@@ -274,7 +274,7 @@ public class TaskMain {
             }
 
             tongSet = 0;
-            for (int i = 1; i < 7; i++) {
+            for (int i = 1; i <= 6; i++) {
                 if (AtFairyConfig.getOption("tong" + Integer.toString(i)).equals("1") == true) {
                     tongSet = i;
                 }
@@ -366,6 +366,12 @@ public class TaskMain {
             if (judgeSelected("xjl")) {
                 taskList.add("tongDrink.png");
             }
+
+            if (judgeSelected("bhzbrw")) {
+                taskList.add("bhzbrw.png");
+                taskList.add("bhzbrw1.png");
+            }
+
             if (judgeSelected("assassin")) {
                 //帮会杀星
                 taskList.add("tongAssassin.png");
@@ -737,6 +743,9 @@ public class TaskMain {
 
             while (mFairy.condit()) {
                 //进入游戏
+
+                LtLog.i(mFairy.getLineInfo("切换角色操作"));
+
                 result = publicFunction.localFindPic(822, 24, 954, 72, "activity.png");
                 if (result.sim >= 0.8) {
                     LtLog.i(publicFunction.getLineInfo() + "【主场景】");

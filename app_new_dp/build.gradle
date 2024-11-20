@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
+
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
 
@@ -8,8 +9,8 @@ android {
         applicationId "com.dpcq.hji"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 382
-        versionName "382"
+        versionCode 408
+        versionName "408"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -24,7 +25,6 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
     productFlavors {}
 
 }

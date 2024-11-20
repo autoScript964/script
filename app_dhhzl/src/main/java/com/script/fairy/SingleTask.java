@@ -590,7 +590,7 @@ public class SingleTask {
                     err = 0;
 
 
-                    result = mFairy.findPic("map2.png");
+                    result = mFairy.findPic(11,4,123,65,new String[]{"map2.png","map7.png"});
                     if (result.sim > 0.9f) {
 
                         /*if (onceJudge("slide")) {
@@ -812,6 +812,9 @@ public class SingleTask {
                     LtLog.e(mFairy.getLineInfo("home地图名称："+result.sim));
                     if (result.sim > 0.8f) {
                         mFairy.onTap(0.8f, result, "点击目标地图", 1500);
+
+                        result = mFairy.findPic(612,228,930,348, "zanli5.png");
+                        mFairy.onTap(0.8f, result, 737,454,757,464, "紧急拖航", 1500);
 
                         result = mFairy.findPic(379, 243, 750, 331, "jinji.png");
                         mFairy.onTap(0.8f, result, 740, 448, 752, 462, "紧急拖航", 1500);
@@ -1784,7 +1787,7 @@ public class SingleTask {
                         return;
                     }
 
-                    result = mFairy.findPic(new String[]{"map3.png", "map2.png"});
+                    result = mFairy.findPic(11,4,123,65,new String[]{"map2.png","map7.png"});
                     if (result.sim > 0.8f) {
                         mFairy.onTap(321, 24, 347, 35, "", 1000);
                         if (onceJudge("bsl")) {

@@ -516,7 +516,7 @@ public class GamePublicFuntion extends TaskContent {
             Thread.sleep(1000);
             
         //好爱网址 http://feng.suanst.com/
-            String result_ha = answer.haoai(382, 77, 505, 640,"6001");
+            String result_ha = answer.newHaoai(382, 77, 505, 640,"6001");
 
             if (!result_ha.equals("") && result_ha != null) {
                 try {

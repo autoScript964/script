@@ -60,7 +60,7 @@ public class TaskMain {
 
         taskMap = new HashMap<String, Integer>();
         mFairy.setGameName("新剑侠情缘");
-        mFairy.setGameVersion(658);
+        mFairy.setGameVersion(673);
         publicFunction = new PublicFunction(mFairy);
 //      publicFunction=mFairy.publicFunction;
         limitlessTask = new LimitlessTask(mFairy);

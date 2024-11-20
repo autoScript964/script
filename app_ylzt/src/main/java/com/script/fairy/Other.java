@@ -28,6 +28,7 @@ public class Other {
             Acer();
             TaskMain.taskList.remove("Acer");
         }
+
         // 福神参拜
         if (TaskMain.taskList.indexOf("blessingGod") > -1) {
             tripodAndMusicianAndBlessingGod("blessingGod");
@@ -75,7 +76,6 @@ public class Other {
     }
 
     // 福神参拜 //探访乐师 //镇国大鼎
-
     private void tripodAndMusicianAndBlessingGod(String taskName) throws Exception {
         AtFairy2.OpencvResult result;
         MatTime matTime = new MatTime(mFairy);
@@ -100,12 +100,12 @@ public class Other {
             case "musician":
                 target_x = 418;
                 target_y = 259;
-                talk = "musician1.png|musician.png";
+                talk = "musician1.png"+"|"+"musician.png";
                 break;
             case "tripod":
                 target_x = 400;
                 target_y = 240;
-                talk = "tripod.png|tripod1.png";
+                talk = "tripod.png"+"|"+"tripod1.png";
                 break;
 
         }
@@ -129,17 +129,22 @@ public class Other {
                 mFairy.tap(result.x + 29, result.y + 57);
                 Thread.sleep(1000);
             }
-            result = publicFunction.localFindPic(894, 619, 1250, 715, "reward6.png|reward2.png");
+            result = publicFunction.localFindPic(894, 619, 1250, 715, "reward6.png"+"|"+"reward2.png");
             if (result.sim >= 0.8 && sleepTime > 5) {
                 LtLog.i(publicFunction.getLineInfo() + "------reward2->" + result);
                 publicFunction.rndTapWH(result.x, result.y, 58, 27);
                 Thread.sleep(3000);
                 break;
             }
+
+
+
             Thread.sleep(1000);
         }
+
+
         for (int i = 0; i < 10; i++) {
-            result = publicFunction.localFindPic(894, 619, 1250, 715, "reward6.png|reward2.png");
+            result = publicFunction.localFindPic(894, 619, 1250, 715, "reward6.png"+"|"+"reward2.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "------reward2->" + result);
                 publicFunction.rndTap(880, 371, 932, 414);

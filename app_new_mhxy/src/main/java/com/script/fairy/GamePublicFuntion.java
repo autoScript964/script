@@ -306,7 +306,7 @@ public class GamePublicFuntion<T> {
                     result = mFairy.findPic(228, 5, 747, 99, "activity.png");
                     if (result.sim > 0.8f) {
                         TaskContent.err = 0;
-                        mFairy.onTap(0.8f, result, "活动", 2000);
+                        mFairy.onTap(0.8f, result, "活动", 3000);
                     }
                     result = mFairy.findPic(new String[]{"activity1.png","activity2.png"});
                     if (result.sim > 0.8f) {

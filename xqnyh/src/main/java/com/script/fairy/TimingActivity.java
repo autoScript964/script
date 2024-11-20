@@ -41,7 +41,7 @@ public class TimingActivity extends TaskContent {
         bhddlist.add(16);
         bhddlist.add(17);
         bhddlist.add(18);
-        bhddlist.add(19);
+
 
         gnlist.add(12);
         gnlist.add(20);
@@ -59,7 +59,6 @@ public class TimingActivity extends TaskContent {
 
 
     }
-
 
     public void inOperation() throws Exception {
         result = mFairy.findPic("Over drawing.png");
@@ -81,7 +80,6 @@ public class TimingActivity extends TaskContent {
         gameUtil.gdFBTeam();
 
     }
-
 
     public void rank() throws Exception {
 
@@ -230,7 +228,7 @@ public class TimingActivity extends TaskContent {
             return 1;
         }
         //科举
-        if (AtFairyConfig.getOption("kjxs").equals("1") && h >= 18 && w != 6 && w != 7 && kj == 0) {
+        if (AtFairyConfig.getOption("kjxs").equals("1") && h >= 18 && h < 22 && w != 6 && w != 7 && kj == 0) {
             local();
             kj = 1;
         }
@@ -421,7 +419,7 @@ public class TimingActivity extends TaskContent {
                             setTaskName(3);
                             return;
                         } else {
-                            mFairy.taskSlid(err, new int[]{4, 6, 8}, 3, 452, 490, 471, 182, 200, 1000);
+                            mFairy.taskSlid(err, new int[]{4, 6, 8}, 2, 450, 470, 450, 180, 1000, 2000,1);
                             mFairy.sleep(2000);
                         }
                     } else {
@@ -499,6 +497,7 @@ public class TimingActivity extends TaskContent {
 
                 result = mFairy.findPic(830, 76, 1125, 270, new String[]{"Miser2.png", "Miser4.png"});
                 if (result.sim > 0.8f) {
+                    err=0;
                     mFairy.onTap(0.8f, result, "守财奴刷新出来了", 2000);
                     result = mFairy.findPic("Fulloftimes.png");
                     if (result.sim > 0.8f) {
@@ -543,9 +542,9 @@ public class TimingActivity extends TaskContent {
                         return;
                     }
 
-                    result = mFairy.findPic("Hangup.png");
                     mFairy.onTap(0.7f, result, 1236, 335, 1237, 336, "开启挂机", Sleep);
 
+                    result = mFairy.findPic("Hangup.png");
                     gameUtil.cancelFollowing();
                     setTaskName(6);
                     return;
@@ -592,8 +591,6 @@ public class TimingActivity extends TaskContent {
             }
         }.taskContent(mFairy, "守财奴带队");
     }
-
-
 
     //封印蜃妖
     public void fysy() throws Exception {
@@ -781,7 +778,7 @@ public class TimingActivity extends TaskContent {
                             setTaskName(3);
                             return;
                         } else {
-                            mFairy.taskSlid(err, new int[]{4, 6, 8}, 3, 452, 490, 471, 182, 200, 1000);
+                            mFairy.taskSlid(err, new int[]{4, 6, 8}, 3, 450, 470, 450, 180, 1000, 2000,1);
                             mFairy.sleep(2000);
                         }
                     } else {
@@ -981,7 +978,6 @@ public class TimingActivity extends TaskContent {
         }.taskContent(mFairy, "封印蜃妖");
     }
 
-
     //采薇带队
     public void mined() throws Exception {
         new TimingActivity(mFairy) {
@@ -1071,7 +1067,7 @@ public class TimingActivity extends TaskContent {
                             setTaskName(3);
                             return;
                         } else {
-                            mFairy.taskSlid(err, new int[]{4, 6, 8}, 3, 452, 490, 471, 182, 200, 1000);
+                            mFairy.taskSlid(err, new int[]{4, 6, 8}, 3, 450, 470, 450, 180, 1000, 2000,1);
                             Thread.sleep(2000);
                         }
                     } else {
@@ -1329,7 +1325,7 @@ public class TimingActivity extends TaskContent {
                             setTaskName(3);
                             return;
                         } else {
-                            mFairy.taskSlid(err, new int[]{4, 6, 8}, 3, 452, 490, 471, 182, 200, 1000);
+                            mFairy.taskSlid(err, new int[]{4, 6, 8}, 3, 450, 470, 450, 180, 1000, 2000,1);
                             Thread.sleep(2000);
                         }
                     } else {
@@ -1603,7 +1599,6 @@ public class TimingActivity extends TaskContent {
             }
         }.taskContent(mFairy, "吉星高照带队");
     }
-
 
     boolean guan = false;
 
@@ -1948,7 +1943,7 @@ public class TimingActivity extends TaskContent {
                             setTaskName(3);
                             return;
                         } else {
-                            mFairy.taskSlid(err, new int[]{4, 6, 8}, 3, 452, 490, 471, 182, 200, 1000);
+                            mFairy.taskSlid(err, new int[]{4, 6, 8}, 3, 450, 470, 450, 180, 1000, 2000,1);
                             Thread.sleep(2000);
                         }
                     } else {

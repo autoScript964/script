@@ -26,6 +26,15 @@ public class Abnormal  {
          *
          */
 
+        result = mFairy.findPic("hdclose58.png");
+        mFairy.onTap(0.8f,result,"err hdclose58",1000);
+
+        result = mFairy.findPic("hdclose57.png");
+        mFairy.onTap(0.8f,result,1079,64,1101,78,"err hdclose57",1000);
+
+        result = mFairy.findPic("hdclose56.png");
+        mFairy.onTap(0.8f,result,"err hdclose56",1000);
+
 
         result = mFairy.findPic("hdclose55.png");
         mFairy.onTap(0.8f,result,"err hdclose55",1000);
@@ -83,9 +92,6 @@ public class Abnormal  {
         mFairy.onTap(0.8f,result,1057,121,1078,145,"err hdclose43",1000);
 
 
-
-
-
         result = mFairy.findPic(473,281,605,473,"hdclose42.png");
         mFairy.onTap(0.8f,result,"err hdclose42",1000);
 
@@ -97,10 +103,8 @@ public class Abnormal  {
         mFairy.onTap(0.8f,result,1135,29,1161,61,"err hdclose40",1000);
 
 
-
         result = mFairy.findPic(431,256,835,600,"login1.png");
         mFairy.onTap(0.8f,result,"err 豌豆荚",1000);
-
 
         result = mFairy.findPic("hdclose29.png");
         mFairy.onTap(0.8f,result,1132,22,1150,39,"err hdclose29",1000);
@@ -240,7 +244,13 @@ public class Abnormal  {
 
         if(TaskMain.QH==false) {
             result = mFairy.findPic("login.png");
-            mFairy.onTap(0.8f, result, "登录游戏", 500);
+            mFairy.onTap(0.8f, result, "登录游戏", 1500);
+
+            result = mFairy.findPic("login2.png");
+            mFairy.onTap(0.8f, result, "登录游戏", 1500);
+
+            result = mFairy.findPic("login3.png");
+            mFairy.onTap(0.8f, result, "登录游戏", 1500);
         }
 
 

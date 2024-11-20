@@ -71,7 +71,7 @@ public class TaskMain {
         functionClass = new FunctionClass(ypFairy, mContext);
 
         mFairy.setGameName("御龙在天");
-        mFairy.setGameVersion(170);
+        mFairy.setGameVersion(175);
 
     }
 

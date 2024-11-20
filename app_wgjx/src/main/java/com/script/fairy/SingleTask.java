@@ -1349,13 +1349,13 @@ public class SingleTask {
             void content_01() throws Exception {
                 timeCount(8, 0);
 
-                result = mFairy.findPic(784, 619, 1194, 719, "yz1.png");
+                result = mFairy.findPic(600, 619, 1194, 719, "yz1.png");
                 if (result.sim > 0.8f) {
                     err = 0;
                     mFairy.onTap(0.8f, result, "战役", 1000);
                 } else {
                     result = mFairy.findPic(new String[]{"lm2.png", "lm8.png"});
-                    mFairy.onTap(0.8f, result, "缩放栏", 1000);
+                    mFairy.onTap(0.8f, result, "缩放栏", 2000);
                 }
 
                 result = mFairy.findPic("yz2.png");
@@ -1593,7 +1593,7 @@ public class SingleTask {
             void content_01() throws Exception {
                 timeCount(10, 0);
 
-                result = mFairy.findPic(784, 619, 1194, 719, "yz1.png");
+                result = mFairy.findPic(600, 619, 1194, 719, "yz1.png");
                 if (result.sim > 0.8f) {
                     err = 0;
                     mFairy.onTap(0.8f, result, "战役", 1000);

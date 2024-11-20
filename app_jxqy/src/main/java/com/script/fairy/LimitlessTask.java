@@ -46,20 +46,20 @@ public class LimitlessTask {
 
     private void initMapNameList() {
         //在大地图中的地图
-        map_name_list.add("MAP_YDS.png");//0雁荡山,
-        map_name_list.add("MAP_WYS.png");//1武夷山
-        map_name_list.add("MAP_SYY.png");//2锁云渊,
-        map_name_list.add("MAP_DTHP.png");//3洞庭湖畔
-        map_name_list.add("MAP_ML.png");//4苗岭
-        map_name_list.add("MAP_DCS.png");//5点苍山
-        map_name_list.add("MAP_YLFX.png");//6夜郎废墟
-        map_name_list.add("MAP_XSD.png");//7响水洞
-        map_name_list.add("MAP_JMG.png");//8剑门关
-        map_name_list.add("MAP_JXF.png");//9见性峰
-        map_name_list.add("MAP_FLD.png");//10风陵渡
-        map_name_list.add("MAP_JJD.png");//11荐菊洞
-        map_name_list.add("MAP_GZC.png");//12古战场
-        map_name_list.add("MAP_FNS.png");//13伏牛山
+        map_name_list.add("MAP_YDS.png"+"|"+"HJF_MAP_YDS.png");//0雁荡山,
+        map_name_list.add("MAP_WYS.png"+"|"+"HJF_MAP_WYS.png");//1武夷山
+        map_name_list.add("MAP_SYY.png"+"|"+"HJF_MAP_SYY.png");//2锁云渊,
+        map_name_list.add("MAP_DTHP.png"+"|"+"HJF_MAP_DTHP.png");//3洞庭湖畔
+        map_name_list.add("MAP_ML.png"+"|"+"HJF_MAP_ML.png");//4苗岭
+        map_name_list.add("MAP_DCS.png"+"|"+"HJF_MAP_DCS.png");//5点苍山
+        map_name_list.add("MAP_YLFX.png"+"|"+"HJF_MAP_YLFX.png");//6夜郎废墟
+        map_name_list.add("MAP_XSD.png"+"|"+"HJF_MAP_XSD.png");//7响水洞
+        map_name_list.add("MAP_JMG.png"+"|"+"HJF_MAP_JMG.png");//8剑门关
+        map_name_list.add("MAP_JXF.png"+"|"+"HJF_MAP_JXF.png");//9见性峰
+        map_name_list.add("MAP_FLD.png"+"|"+"HJF_MAP_FLD.png");//10风陵渡
+        map_name_list.add("MAP_JJD.png"+"|"+"HJF_MAP_JJD.png");//11荐菊洞
+        map_name_list.add("MAP_GZC.png"+"|"+"HJF_MAP_GZC.png");//12古战场
+        map_name_list.add("MAP_FNS.png"+"|"+"HJF_MAP_FNS.png");//13伏牛山
         map_name_list.add("MAP_THGJ.png");//14太行古径
         map_name_list.add("MAP_QLS.png");//15祁连山
         map_name_list.add("MAP_SMYJ.png");//16沙漠遗迹
@@ -94,7 +94,7 @@ public class LimitlessTask {
         map_name_list.add("MAP_BZS.png");//43不周山
         map_name_list.add("MAP_RYS.png");//44日月山
         map_name_list.add("MAP_YMS.png");//45玉门山
-
+        map_name_list.add("MAP_DHS.png");//46大荒山
 
 
         //右上角的地图名称 图
@@ -144,9 +144,13 @@ public class LimitlessTask {
         current_map_name_list.add("CURRENT_MAP_BZS.png");//43不周山
         current_map_name_list.add("CURRENT_MAP_RYS.png");//44日月山
         current_map_name_list.add("CURRENT_MAP_YMS.png");//45玉门山
+        current_map_name_list.add("CURRENT_MAP_DHS.png");//46大荒山
         current_map_name_list.add("mainCity1.png");//襄阳
         current_map_name_list.add("mainCity.png");//临安
     }
+
+
+    long dwtime = System.currentTimeMillis();
 
     public int outdoorsOnHook() throws Exception {
 
@@ -179,6 +183,8 @@ public class LimitlessTask {
 
         int[] xy = {Integer.parseInt(TaskMain.xystr.split(",")[0]), Integer.parseInt(TaskMain.xystr.split(",")[1])};
 
+        dwtime = System.currentTimeMillis();
+
         while (mFairy.condit()) {
 
             timex = System.currentTimeMillis() / 1000 - time;
@@ -205,7 +211,10 @@ public class LimitlessTask {
 //                location = true;
 //            }
 
-            if (!judgeMap(TaskMain.taskMap.get("OnHookMap"))) {
+
+
+
+            if (!judgeMap(TaskMain.taskMap.get("OnHookMap")) && System.currentTimeMillis()-dwtime>120000) {
                 LtLog.i(publicFunction.getLineInfo() + "---------time1x=" + time1x + ",location=" + location);
                 location = true;
             }
@@ -251,18 +260,14 @@ public class LimitlessTask {
                 gamePublicFunction.closeWindow();
 
                 for (int i = 0; i < 10; i++) {
-                    if (publicFunction.judgeMatChange(1177, 136, 70, 21, 0.95, 2000) == false) {
+                    if (publicFunction.judgeMatChange(1177, 136, 70, 21, 0.95, 1500) == false) {
                         LtLog.i(publicFunction.getLineInfo() + "【到达坐标地点,开始挂机】");
                         break;
                     }
-                    Thread.sleep(1000);
+                    Thread.sleep(500);
                 }
 
-//                if (discriminate) {
-//                    //识别当前坐标与用户设置坐标是否匹配
-//                    discriminateNumber(click_screen_xy);
-//                    discriminate=false;
-//                }
+//
                 gamePublicFunction.manualOrAutomatic("automatic");//自动战斗
 
                 gamePublicFunction.taskOrTeam("team");//切换到队伍栏
@@ -317,6 +322,8 @@ public class LimitlessTask {
                         }*/
                     }
                 }
+
+                dwtime = System.currentTimeMillis();
             }
 
             result = publicFunction.localFindPic(900, 618, 1018, 720, "tong.png" + "|" + "tong2.png");
@@ -536,7 +543,7 @@ public class LimitlessTask {
                 LtLog.i(publicFunction.getLineInfo() + "【传送中】");
                 Thread.sleep(4000);
             } else {
-                result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png");
+                result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png"+ "|" + "activity3.png");
                 if (result.sim >= 0.8 && i > 5) {
                     //没有在传送读条 并且 有活动按钮 证明传送完毕 ，退出循环
                     LtLog.i(publicFunction.getLineInfo() + "---------activity.png=" + result);
@@ -661,8 +668,9 @@ public class LimitlessTask {
 
         //山河战境
         if (currentSun.equals("星期二") || currentSun.equals("星期六")) {
+
             if(currentlyTIME >= 1259 && currentlyTIME <= 1290){
-                if(AtFairyConfig.getOption("8669").equals("1")){
+                if(AtFairyConfig.getOption("shzj").equals("1")){
                     LtLog.i(publicFunction.getLineInfo() + "开始山河战境");
                     LtLog.i(publicFunction.getLineInfo() + "开始山河战境");
                     LtLog.i(publicFunction.getLineInfo() + "开始山河战境");
@@ -673,7 +681,6 @@ public class LimitlessTask {
         }
 
       /*
-
       //灰谷矿脉
         if (currentSun.equals("星期一")) {
             if((currentlyTIME >= 989 && currentlyTIME <= 995) ||  (currentlyTIME >= 1229 && currentlyTIME <= 1235)){
@@ -703,8 +710,6 @@ public class LimitlessTask {
                 }
             }
         }
-
-
 
         //粮秣行
         if (currentSun.equals("星期日")) {
@@ -934,7 +939,7 @@ public class LimitlessTask {
                     gamePublicFunction.closeWindow();
 
                     for (int i = 0; i < 10; i++) {
-                        result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png");
+                        result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png"+ "|" + "activity3.png");
                         if (result.sim >= 0.8) {
                             mFairy.onTap(1105,38,1117,53,"",2000);
                         }
@@ -952,7 +957,7 @@ public class LimitlessTask {
                     gamePublicFunction.closeWindow();
 
                     for (int i = 0; i < 5; i++) {
-                        result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png");
+                        result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png"+ "|" + "activity3.png");
                         if (result.sim >= 0.8) {
                             break;
                         }else{
@@ -1023,7 +1028,7 @@ public class LimitlessTask {
         }
         for (int i = 0; i < 5; i++) {
 
-            AtFairy2.OpencvResult result1 = publicFunction.localFindPic(1010, 195, 1097, 291, "mainCity3.png");//识别临安
+            AtFairy2.OpencvResult result1 = publicFunction.localFindPic(924,205,1101,339, "mainCity3.png"+"|"+"hjfla.png");//识别临安
 
             result = publicFunction.localFindPic(195, 275, 321, 528, "map2Features.png");//
 
@@ -1094,7 +1099,7 @@ public class LimitlessTask {
 
         LtLog.i(publicFunction.getLineInfo() + "【开始选择地图："+targetMap+"】" );
         int map = targetMap;
-        result = publicFunction.localFindPic(0, 95, 130, 283, "map.png");
+        result = publicFunction.localFindPic(0, 95, 130, 283, "map.png"+"|"+"hjfmap.png");
         if (result.sim < 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "【没有在地图界面】");
             return;
@@ -1125,13 +1130,13 @@ public class LimitlessTask {
                 if (result.sim > 0.8) {
                     map_xy = new int[2];
                     //给目标地图的固定位置赋值
-                    map_xy[0] = result.x - 34;
-                    map_xy[1] = result.y + 30;
+                    map_xy[0] = result.x - 20;
+                    map_xy[1] = result.y + 20;
                     break;
                 }
 
 
-                result = publicFunction.localFindPic(0, 95, 130, 283, "map.png");
+                result = publicFunction.localFindPic(0, 95, 130, 283, "map.png"+"|"+"hjfmap.png");
                 if (result.sim < 0.8) {
                     //不在世界地图，返回
                     LtLog.i(publicFunction.getLineInfo() + "【没有在地图界面】");
@@ -1160,7 +1165,7 @@ public class LimitlessTask {
 
         AtFairy2.OpencvResult result;
 //        LtLog.i(publicFunction.getLineInfo() + "------->targetMap=" + targetMap);
-        result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png");
+        result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png"+ "|" + "activity3.png");
         if (result.sim < 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "------->activity=" + result);
             return false;
@@ -1379,6 +1384,9 @@ public class LimitlessTask {
         }else if(map == 46){
             x=x_1 *4.125+y_1 *-4.4052+650.819;
             y=x_1 *-4.3125+y_1 *-4.3319+662.8836;
+        }else if(map == 47){
+            x=x_1 *4.0817+y_1 *-4.1074+642.0593;
+            y=x_1 *-3.8606+y_1 *-3.9087+660.5913;
         }
 
 

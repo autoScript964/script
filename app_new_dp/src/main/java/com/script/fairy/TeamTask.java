@@ -116,7 +116,7 @@ public class TeamTask {
 
             result = mFairy.findPic("activity.png");
             if (result.sim > 0.8f) {
-                mFairy.onTap(0.8f, result, "活动", 1000);
+                mFairy.onTap(0.8f, result, "活动", 3500);
                 oneJudgeCount = 0;
             }
             result = mFairy.findPic(new String[]{"UIactivity.png", "UIactivity1.png"});
@@ -354,7 +354,7 @@ public class TeamTask {
             result = mFairy.findPic("activity.png");
             if (result.sim > 0.8f) {
                 err = 0;
-                mFairy.onTap(0.8f, result, "活动", 1000);
+                mFairy.onTap(0.8f, result, "活动", 3500);
                 oneJudgeCount = 0;
             }
             result = mFairy.findPic(new String[]{"UIactivity.png", "UIactivity1.png"});
@@ -1536,7 +1536,7 @@ public class TeamTask {
 
                 result = mFairy.findPic("activity.png");
                 if (result.sim > 0.8f) {
-                    mFairy.onTap(0.8f, result, "活动", 1000);
+                    mFairy.onTap(0.8f, result, "活动", 3500);
                     oneJudgeCount = 0;
                 }
                 result = mFairy.findPic(new String[]{"UIactivity.png", "UIactivity1.png"});
@@ -1758,7 +1758,7 @@ public class TeamTask {
 
                 result = mFairy.findPic("activity.png");
                 if (result.sim > 0.8f) {
-                    mFairy.onTap(0.8f, result, "活动", 1000);
+                    mFairy.onTap(0.8f, result, "活动", 3500);
                     oneJudgeCount = 0;
                 }
                 result = mFairy.findPic(new String[]{"UIactivity.png", "UIactivity1.png"});

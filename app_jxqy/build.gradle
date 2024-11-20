@@ -8,8 +8,8 @@ android {
         applicationId "com.jxqy.qwe.jxqy"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 658
-        versionName "658"
+        versionCode 673
+        versionName "673"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -19,7 +19,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
 
     compileOptions{
         sourceCompatibility JavaVersion.VERSION_1_8

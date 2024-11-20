@@ -58,15 +58,25 @@ public class Abnormal {
             gamePublicFunction.automaticCombat(1);//开启战斗
         }
 
+        findResult =mFairy.findPic("hdclose31.png");
+        mFairy.onTap(0.8f,findResult,"hdclose31",1000);
+
+        findResult =mFairy.findPic("hdclose30.png");
+        mFairy.onTap(0.8f,findResult,"hdclose30",1000);
+
+        findResult =mFairy.findPic("hdclose29.png");
+        mFairy.onTap(0.8f,findResult,1114,38,1137,50,"hdclose29",1000);
+
         findResult =mFairy.findPic(1003,66,1208,217,"hdclose28.png");
         mFairy.onTap(0.8f,findResult,"hdclose28",1000);
+
 
 
         findResult =mFairy.findPic("hdclose27.png");
         mFairy.onTap(0.8f,findResult,"hdclose27",1000);
 
         findResult =mFairy.findPic(1063,44,1246,137,"hdclose24.png");
-        mFairy.onTap(0.8f,findResult,"hdclose24",1000);
+        mFairy.onTap(0.92f,findResult,"hdclose24",1000);
 
         findResult =mFairy.findPic("hdclose25.png");
         mFairy.onTap(0.8f,findResult,"hdclose25",1000);
@@ -448,19 +458,16 @@ public class Abnormal {
             Thread.sleep(500);
         }
 
-        result = publicFunction.localFindPic(371,537,904,673, "login2.png");
-        if (result.sim >= 0.8) {
-            LtLog.i(publicFunction.getLineInfo() + "登录界面 进入游戏" + result);
+        FindResult findResult1 = mFairy.findPic(371,537,904,673, "login2.png");
+        if (findResult1.sim >= 0.8f) {
+            LtLog.i(publicFunction.getLineInfo() + "登录界面 进入游戏" + findResult1);
 
             findResult = mFairy.findPic("gou.png");
             mFairy.onTap(0.8f,findResult,"打勾",1000);
 
-
-
-            publicFunction.rndTapWH(result.x, result.y, 116, 27);
-            Thread.sleep(500);
+            publicFunction.rndTapWH(findResult1.x, findResult1.y, 116, 27);
+            Thread.sleep(5000);
         }
-
 
         findResult = mFairy.findPic(1000, 614, 1269, 698, new String[]{"playGame.png","playGame2.png"});
         if (findResult.sim >= 0.8f) {

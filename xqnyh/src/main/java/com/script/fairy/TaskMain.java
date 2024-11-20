@@ -15,10 +15,6 @@ import static com.script.opencvapi.AtFairy2.TASK_STATE_FINISH;
 
 /**
  *
- *
- *
- *
- *
  * Created by Administrator on 2019/1/24 0024.
  *
  *
@@ -34,13 +30,12 @@ public class TaskMain {
     LimitlessTask limitlessTask;
     TimingActivity timingActivity;
     OtherGame otherGame;
-
     static List<String> list = new ArrayList<>();
 
     public TaskMain(AtFairyImpl ypFairy) throws Exception {
         mFairy = ypFairy;
         mFairy.setGameName("新倩女幽魂");
-        mFairy.setGameVersion(685);
+        mFairy.setGameVersion(714);
         init();
         gameUtil = new GameUtil(mFairy);
         teamTask = new TeamTask(mFairy);
@@ -60,9 +55,7 @@ public class TaskMain {
 
         String[] arrstr = string.split("\\|\\|");
         if (arrstr.length < 2) {
-
             return;
-
         } else {
 
             if (!arrstr[0].equals("1")) {
@@ -121,6 +114,9 @@ public class TaskMain {
         }
 
         switch (task_id) {
+            case 2861:
+                //gameUtil.collarDouble();
+                break;
             case 2733:
                 singleTask.diaoyu();
                 break;

@@ -18,9 +18,6 @@ public class MainActivity extends AppCompatActivity {
         LtLog.e("onCreate >>>>");
         super.onCreate(savedInstanceState);
 
-
-
-
         //设置LOG开关，默认为false
         UMConfigure.setLogEnabled(true);
 

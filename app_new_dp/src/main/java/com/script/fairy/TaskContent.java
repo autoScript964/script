@@ -277,7 +277,7 @@ public abstract class TaskContent {
         String[] arrstr = string.split("\\|\\|");
         String[] new_arrstr;
 
-        LtLog.e("getTimeStamp---"+arrstr.toString());
+        //LtLog.e("getTimeStamp---"+arrstr.toString());
 
         if(arrstr[0].equals("0")){
             return -1;

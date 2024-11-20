@@ -29,7 +29,7 @@ public class TaskMain {
         limitlessTask = new LimitlessTask(ypFairy);
         mFairy = ypFairy;
         mFairy.setGameName("new斗破苍穹");
-        mFairy.setGameVersion(382);
+        mFairy.setGameVersion(408);
         init();
     }
 
@@ -37,14 +37,11 @@ public class TaskMain {
     private int hour;
     public void main() throws Exception {
 
-        /* while (mFairy.condit()){
 
-            private int minute;
-            result = mFairy.findPic("battleH.png");
-            LtLog.e(""+result.sim);
-        }*/
-
-        if(taskId!=1226 || taskId!=2855){singleTask.setup();}
+        if(taskId!=2863 && taskId!=2855){
+            LtLog.i(mFairy.getLineInfo("taskid:"+taskId));
+            singleTask.setup();
+        }
 
         switch (taskId) {
             case 2855:
@@ -56,6 +53,10 @@ public class TaskMain {
                 }
                 break;
             case 1591:
+                if(AtFairyConfig.getOption("hbll").equals("1")){
+                    singleTask.hbll();
+                }
+
                 if (AtFairyConfig.getOption("sz").equals("1")) {
                     singleTask.xz();
                 }
@@ -75,15 +76,29 @@ public class TaskMain {
                 if (AtFairyConfig.getOption("jzxklc").equals("1")) {
                     singleTask.jzxklc();
                 }
+
+                if (AtFairyConfig.getOption("ykzl").equals("1")) {
+                    singleTask.ykzl();
+                }
+
+                if (AtFairyConfig.getOption("klcl").equals("1")) {
+                    singleTask.klcl();
+                }
+
                 if (AtFairyConfig.getOption("jzsx").equals("1")) {
                     singleTask.jzsx();
                 }
                 if (!AtFairyConfig.getOption("jzps").equals("")) {
                     singleTask.jzps();
                 }
-                if (AtFairyConfig.getOption("jzps").equals("1")) {
-                    singleTask.ykzl();
+
+                if (AtFairyConfig.getOption("klcl").equals("1")) {
+                    singleTask.klcl();
                 }
+
+                /*if (AtFairyConfig.getOption("ykzl").equals("1")) {
+                    singleTask.ykzl();
+                }*/
                 if (!AtFairyConfig.getOption("yhs").equals("")) {
                     singleTask.slyh();
                 }
@@ -166,7 +181,6 @@ public class TaskMain {
 
 
 
-
                 if (AtFairyConfig.getOption("ybc").equals("1")) {
                     teamTask.ybc();
                 }
@@ -190,7 +204,7 @@ public class TaskMain {
                     singleTask.xb();
                 }
                 break;
-            case 1226:
+            case 2863:
                 if (AtFairyConfig.getOption("zx").equals("1")) {
                     singleTask.ThreadTask();
                 }

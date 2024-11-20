@@ -305,7 +305,7 @@ public class TimingActivity {
                         gamePublicFunction.closeWindow();
                     }
 
-                    result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png");
+                    result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png"+ "|" + "activity3.png");
                     if (result.sim >= 0.8) {
                         if (mat1 != null) {
                             mat1.release();
@@ -329,7 +329,7 @@ public class TimingActivity {
                 if (result.sim >= 0.8) {
                     LtLog.i(publicFunction.getLineInfo() + "----------------------门派竞技中------>=");
                 } else {
-                    result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png");
+                    result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png"+ "|" + "activity3.png");
                     if (result.sim >= 0.8) {
                         LtLog.i(publicFunction.getLineInfo() + "------activity--->=" + result);
                         if (mat1 != null) {
@@ -365,7 +365,7 @@ public class TimingActivity {
                 }
 
                 //九点活动..每日定时活动 退出条件
-                result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png");
+                result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png"+ "|" + "activity3.png");
                 if (result.sim >= 0.8) {
                     if (activityButtonTime(10)) {
                         LtLog.i(publicFunction.getLineInfo() + "------activity--->=" + result);
@@ -382,7 +382,7 @@ public class TimingActivity {
                             gamePublicFunction.closeWindow();
 
                             for (int i = 0; i < 10; i++) {
-                                result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png");
+                                result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png"+ "|" + "activity3.png");
                                 if (result.sim >= 0.8) {
                                     mFairy.onTap(1105, 38, 1117, 53, "", 2000);
                                 }
@@ -400,7 +400,7 @@ public class TimingActivity {
                             gamePublicFunction.closeWindow();
 
                             for (int i = 0; i < 5; i++) {
-                                result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png");
+                                result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png"+ "|" + "activity3.png");
                                 if (result.sim >= 0.8) {
                                     break;
                                 } else {
@@ -432,7 +432,7 @@ public class TimingActivity {
                         break;
                     }
 
-                    result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png");
+                    result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png"+ "|" + "activity3.png");
                     if (result.sim > 0.8) {
                         break;
                     }
@@ -948,7 +948,7 @@ public class TimingActivity {
             if (currentlyTIME >= 1290) {
                 break;
             } else if (currentlyTIME > 1261) {
-                result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png");
+                result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png"+ "|" + "activity3.png");
                 if (result.sim >= 0.8) {
                     LtLog.i(publicFunction.getLineInfo() + "在主场景时间超时,end!");
                     break;
@@ -1002,7 +1002,7 @@ public class TimingActivity {
             LtLog.i(publicFunction.getLineInfo() + "山河战境活动中");
 
             int currentlyTIME = publicFunction.getMinuteNumber();
-            if (currentlyTIME >= 1291) {
+            if (currentlyTIME > 1290) {
                 break;
             }
 
@@ -1054,44 +1054,8 @@ public class TimingActivity {
                 Thread.sleep(1000);
             }
 
-            findResult = mFairy.findPic(750, 556, 1250, 679, "shzj2.png");
+            findResult = mFairy.findPic( "shzj2.png");
             mFairy.onTap(0.8f, findResult, "参展", 1000);
-
-            findResult = mFairy.findPic(13, 19, 107, 249, "shzj1.png");
-            if (findResult.sim > 0.8f) {
-                switch (AtFairyConfig.getOption("shmap")) {
-                    case "1":
-                        mFairy.onTap(325,178,342,198, "临潢府", 2000);
-                        break;
-                    case "2":
-                        mFairy.onTap(589,214,616,227, "顺州", 2000);
-                        break;
-                    case "3":
-                        mFairy.onTap(920,189,946,208, "上京", 2000);
-                        break;
-                    case "4":
-                        mFairy.onTap(264,328,288,350, "西京", 2000);
-                        break;
-                    case "5":
-                        mFairy.onTap(400,422,430,445, "涿州", 2000);
-                        break;
-                    case "6":
-                        mFairy.onTap(583,359,609,374, "中都", 2000);
-                        break;
-                    case "7":
-                        mFairy.onTap(865,385,892,399, "河北东", 2000);
-                        break;
-                    case "8":
-                        mFairy.onTap(267,555,289,573, "河北西", 2000);
-                        break;
-                    case "9":
-                        mFairy.onTap(929,558,951,572, "大名府", 2000);
-                        break;
-                    case "10":
-                        mFairy.onTap(688,425,709,445, "蓟州", 2000);
-                        break;
-                }
-            }
 
             findResult = mFairy.findPic(969, 5, 1156, 78, "shzj3.png");
             if (findResult.sim > 0.8f) {
@@ -1445,7 +1409,7 @@ public class TimingActivity {
                 gamePublicFunction.closeWindow();
 
                 if(fb){
-                    result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png");
+                    result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png"+ "|" + "activity3.png");
                     if (result.sim >= 0.8) {
                         LtLog.e(mFairy.getLineInfo("活动完成"));
                         return;
@@ -1572,7 +1536,7 @@ public class TimingActivity {
                 gamePublicFunction.closeWindow();
 
                 if(fb){
-                    result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png");
+                    result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png"+ "|" + "activity3.png");
                     if (result.sim >= 0.8) {
                         LtLog.e(mFairy.getLineInfo("活动完成"));
                         return;
@@ -1805,7 +1769,7 @@ public class TimingActivity {
         if (result.sim >= 0.8) {
             gamePublicFunction.switchSkillOrTong("skill");
             LtLog.i(publicFunction.getLineInfo() + "------leave--->=" + result);
-            result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png");
+            result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png"+ "|" + "activity3.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "------->activity=" + result);
             } else if (skillState == false) {
@@ -2612,7 +2576,7 @@ public class TimingActivity {
         long time = System.currentTimeMillis() / 1000;
         long timex = 0;
         while (mFairy.condit()) {
-            result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png");
+            result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png"+ "|" + "activity3.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "------activity--->=" + result);
                 timex = System.currentTimeMillis() / 1000 - time;
@@ -3016,7 +2980,7 @@ public class TimingActivity {
     public void GoSecurityXiakeIsland() throws Exception {
         AtFairy2.OpencvResult result, result1;
         result = publicFunction.localFindPic(1164, 0, 1279, 36, "xiakeIsland.png");
-        result1 = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png");
+        result1 = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png"+ "|" + "activity3.png");
         LtLog.i(publicFunction.getLineInfo() + "------xiakeIsland--->=" + result + ", activity : " + result1);
         if (result.sim >= 0.8 && result1.sim < 0.8) {
             //在侠客岛中,需要回到安全区,然后离开。
@@ -3035,7 +2999,7 @@ public class TimingActivity {
             }
             gamePublicFunction.clickDetermine();
             Thread.sleep(2000);
-            result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png");
+            result = publicFunction.localFindPic(914, 0, 1040, 100, "activity.png" + "|" + "activity2.png"+ "|" + "activity3.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "------activity--->=" + result);
                 break;

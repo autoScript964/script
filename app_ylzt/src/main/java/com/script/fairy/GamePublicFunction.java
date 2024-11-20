@@ -62,15 +62,7 @@ public class GamePublicFunction {
                 publicFunction.rndTap(1143, 104, 1191, 164);
                 Thread.sleep(500);
             }
-//            result = publicFunction.localFindPic(961, 606, 1167, 720, "nationalGeography.png");
-//            if (result.sim >= 0.8) {
-//                LtLog.i(publicFunction.getLineInfo() + "------nationalGeography->" + result);
-//                if (str.equals("current")) {
-//                    break;
-//                }
-//                publicFunction.rndTapWH(result.x, result.y, 106, 25);
-//                Thread.sleep(500);
-//            }
+
             result = publicFunction.localFindPic(961, 606, 1167, 720, "nationalGeography.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "------nationalGeography->" + result);
@@ -187,6 +179,7 @@ public class GamePublicFunction {
         if(list1.size()<=0){
             return list1;
         }
+
         int mType=TaskType;
         AtFairy2.OpencvResult result;
         AtFairy2.OpencvResult result1;
@@ -198,7 +191,9 @@ public class GamePublicFunction {
             return list1;
         }
         rewardReceive();//领取奖励
+
         int mTime=publicFunction.getMinuteNumber();
+
         if(list1.get(0).equals("anchor")){
             if(mTime<=600 && mTime>=0){//在0：00 点到 10:00 不能做 主播任务
                 list1.remove("anchor");
@@ -214,30 +209,23 @@ public class GamePublicFunction {
                 list1.remove("learn");
             }
         }
+
+
         if (list1.get(0).equals("travel") || list1.get(0).equals("anchor")){
             //周游列国和主播陪你玩,这两个任务是在其他任务里面，但是我把他归类到日常，所以这两个任务做特殊处理
             mType=openActivity_other;
-            for (int i = 1; i <=7 ; i++) {
-                int colorNunber= publicFunction.getColorNunber2(175, 96 + ((i - 1) * 72), 89, 56,"125,6,0",0.9);
-                //判断当前窗口类型是否是传入的类型，如果不是就重新定位
-                LtLog.i(publicFunction.getLineInfo() + "------colorNunber->" + colorNunber);
-                if (colorNunber >= 100) {
-                    LtLog.i(publicFunction.getLineInfo() + "------mType->" + mType);
-                    if(i!=mType){
-                        openActivity(mType);
-                        Thread.sleep(2000);
-                        break;
-                    }
-                }
-            }
+            openActivity(mType);
         }
+
+
+
         LtLog.i(publicFunction.getLineInfo() + "-------mType>" + mType);
         Thread.sleep(3000);
         while (mFairy.condit()) {
             result = publicFunction.localFindPic(365, 138, 498, 582, list1.get(0) + ".png");
             LtLog.i(publicFunction.getLineInfo() + "-------lookupTask--list1.get(0)>" + list1.get(0) + "=" + result);
             if (result.sim >= 0.8) {
-                result1 = publicFunction.localFindPic(result.x + 609, result.y, result.x + 763, result.y + 71, "attend.png|attend1.png|attend2.png");
+                result1 = publicFunction.localFindPic(result.x + 609, result.y, result.x + 763, result.y + 71, "attend.png"+"|"+"attend1.png"+"|"+"attend2.png");
                 //接任务
                 if (result1.sim >= 0.8) {
                     LtLog.i(publicFunction.getLineInfo() + "-------attend>" + result1);
@@ -308,10 +296,10 @@ public class GamePublicFunction {
                 return list1;
             }
             for (int i = 1; i <=7 ; i++) {
-                int colorNunber= publicFunction.getColorNunber2(175, 96 + ((i - 1) * 72), 89, 56,"125,6,0",0.9);
+                int colorNunber= publicFunction.getColorNunber2(175, 96 + ((i - 1) * 72), 89, 56,"193,169,103",0.9);
                 //判断当前窗口类型是否是传入的类型，如果不是就重新定位
                 LtLog.i(publicFunction.getLineInfo() + "------colorNunber->" + colorNunber);
-                if (colorNunber >= 100) {
+                if (colorNunber >= 10) {
                     LtLog.i(publicFunction.getLineInfo() + "------mType->" + mType);
                     if(i!=mType){
                         openActivity(mType);
@@ -351,18 +339,6 @@ public class GamePublicFunction {
         AtFairy2.OpencvResult result,result1;
 
         switchDaily();
-        result = publicFunction.localFindPic(890, 0, 1020, 123, "activity.png");
-        result1 = publicFunction.localFindPic(121, 0, 249, 115, "dailt.png");
-        if (result.sim >= 0.8) {
-            LtLog.i(publicFunction.getLineInfo() + "------activity->" + result);
-            publicFunction.rndTapWH(result.x, result.y, 30, 31);
-            Thread.sleep(500);
-        } else {
-            if(result1.sim<0.8){
-                return;
-            }
-
-        }
 
         for (int i = 0; i < 3; i++) {
             result = publicFunction.localFindPic(890, 0, 1020, 123, "activity.png");
@@ -374,8 +350,6 @@ public class GamePublicFunction {
             result = publicFunction.localFindPic(121, 0, 249, 115, "dailt.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "------dailt->" + result);
-                //publicFunction.rndTapWH(187, 113 + ((windowType - 1) * 84), 54, 30);
-
                 publicFunction.rndTapWH(181, 105 + ((windowType - 1) * 72), 54, 30);
                 Thread.sleep(500);
                 return;
@@ -411,13 +385,13 @@ public class GamePublicFunction {
     public void Resurrection() throws Exception {
         LtLog.i(publicFunction.getLineInfo() + "------Resurrection->");
         AtFairy2.OpencvResult result;
-        result = publicFunction.localFindPic(520, 297, 758, 390, "Resurrection1.png|Resurrection2.png|Resurrection3.png");
+        result = publicFunction.localFindPic(520, 297, 758, 390, "Resurrection1.png"+"|"+"Resurrection2.png"+"|"+"Resurrection3.png");
         if (result.sim >= 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "------Resurrection1->" + result);
             publicFunction.rndTap(result.x, result.y, result.x + 30, result.y + 10);
             Thread.sleep(1000);
         }
-        result = publicFunction.localFindPic(284, 295, 498, 393, "Resurrection.png|Resurrection4.png");
+        result = publicFunction.localFindPic(284, 295, 498, 393, "Resurrection.png"+"|"+"Resurrection4.png");
         if (result.sim < 0.8) {
             return;
         }else if (TaskMain.invisible){
@@ -504,7 +478,7 @@ public class GamePublicFunction {
 
     public void closeWindow() throws Exception {
         AtFairy2.OpencvResult result;
-        result = publicFunction.localFindPic(719,0,1280,437, "fork.png");
+        result = publicFunction.localFindPic(719,0,1280,437, "fork.png"+"|"+"fork1.png");
         LtLog.i(publicFunction.getLineInfo() + "------fork->" + result);
         if (result.sim >= 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "------fork->" + result);
@@ -515,7 +489,7 @@ public class GamePublicFunction {
 
     public void closeWindow(int x1, int y1, int x2, int y2) throws Exception {
         AtFairy2.OpencvResult result;
-        result = publicFunction.localFindPic(x1, y1, x2, y2, "fork.png");
+        result = publicFunction.localFindPic(x1, y1, x2, y2, "fork.png"+"|"+"fork1.png");
         if (result.sim >= 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "------fork->" + result);
             publicFunction.rndTapWH(result.x, result.y, 29, 29);

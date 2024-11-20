@@ -211,16 +211,16 @@ public class GamePublicFunction {
                 break;
             }
             if (slidingLookup == 0) {
-                if (second >= 5) {
+                if (second >= 8) {
                     LtLog.i(publicFunction.getLineInfo() + "---------从上往下滑动=" + result);
-                    publicFunction.RanSwipe(232, 187, 717, 445, 0, 500);
+                    mFairy.ranSwipe(232,187,232,445,1000,1000);
                 } else {
                     LtLog.i(publicFunction.getLineInfo() + "---------从下往上滑动=" + result);
-                    publicFunction.RanSwipe(232, 187, 717, 445, 2, 500);
+                    mFairy.ranSwipe(232,445,232,187,1000,1000);
                 }
-                Thread.sleep(1000);
+                Thread.sleep(100);
                 second = second + 1;
-                if (second >= 10) {
+                if (second >= 16) {
                     second = 0;
                 }
                 Thread.sleep(100);
@@ -845,13 +845,22 @@ public class GamePublicFunction {
         }
     }
 
-    public int outDungeons() {
+    public int outDungeons()throws Exception {
         //判断是否在副本中
         PublicFunction publicFunction = new PublicFunction(mFairy);
-        AtFairy2.OpencvResult result = publicFunction.localFindManyPic(1018, 158, 1279, 362, new String[]{"outDungeons.png", "outDungeons1.png", "outDungeons2.png"});
-        if (result.sim >= 0.8) {
+        AtFairy2.OpencvResult result = publicFunction.localFindManyPic(1018, 158, 1279, 362,
+                new String[]{"outDungeons.png", "outDungeons1.png", "outDungeons2.png"});
+        if (result.sim >= 0.7) {
+            LtLog.e(mFairy.getLineInfo("副本中"));
             return 1;
         }
+
+        findResult = mFairy.findPic(1018, 158, 1279, 362,new String[]{"fb.png","fb1.png"});
+        if (findResult.sim >= 0.7f) {
+            LtLog.e(mFairy.getLineInfo("副本中"));
+            return 1;
+        }
+
         return 0;
     }
 
@@ -944,8 +953,8 @@ public class GamePublicFunction {
     public void exitTeam() throws Exception {
         //退出队伍
         AtFairy2.OpencvResult result, result1, result2;
-        result = publicFunction.localFindPic(61, 2, 104, 61, "captain.png|captain-1.png");
-        result1 = publicFunction.localFindPic(61, 2, 104, 61, "teamMember.png|teamMember-1.png");
+        result = publicFunction.localFindPic(61, 2, 104, 61, "captain.png"+"|"+"captain-1.png");
+        result1 = publicFunction.localFindPic(61, 2, 104, 61, "teamMember.png"+"|"+"teamMember-1.png");
         result2 = publicFunction.localFindPic(186, 620, 310, 660, "exitTeam.png");
         if (result.sim >= 0.8 || result1.sim >= 0.8 || result2.sim >= 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "------------captain=" + result + ",teamMember=" + result1);

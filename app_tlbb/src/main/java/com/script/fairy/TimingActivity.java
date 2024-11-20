@@ -1,9 +1,9 @@
 package com.script.fairy;
 
+import com.script.framework.AtFairyImpl;
+import com.script.opencvapi.AtFairy2;
 import com.script.opencvapi.FindResult;
 import com.script.opencvapi.LtLog;
-import com.script.opencvapi.AtFairy2;
-import com.script.framework.AtFairyImpl;
 
 import org.json.JSONException;
 import org.opencv.core.Mat;
@@ -62,11 +62,13 @@ public class TimingActivity {
     }
 
     private void weekTimingTask() throws Exception {
+
         //8点周活动
         String currSun = publicFunction.getCurrSun();
         int currtime = publicFunction.getMinuteNumber();
         LtLog.i(publicFunction.getLineInfo() + "---------currtime>" + currtime);
         LtLog.i(publicFunction.getLineInfo() + "---------currSun>" + currSun);
+
         if (currSun.equals("星期一") || currSun.equals("星期四")) {
             //演武堂周一 四 日 11:00-11:30  17：00-17：30  21：30-22：00
             //|| gamePublicFunction.outDungeons() == 1
@@ -80,6 +82,7 @@ public class TimingActivity {
                 }
             }
         }
+
         if (currSun.equals("星期日")) {
             LtLog.i(publicFunction.getLineInfo() + "---------currtime>" + currtime);
             //16:00-18:00  ,, 21:20-23:20
@@ -90,6 +93,8 @@ public class TimingActivity {
                 }
             }
         }
+
+
         if (currtime >= 1200 && currtime < 1300) {
             list.clear();
             LtLog.i(publicFunction.getLineInfo() + "---------currtime>" + currtime);
@@ -97,6 +102,7 @@ public class TimingActivity {
             //如果不在 20点到22点间 退出
             return;
         }
+
         //String[] weekDays = { "星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六" };
         switch (currSun) {
             case "星期一":
@@ -221,7 +227,6 @@ public class TimingActivity {
         }
 
 
-
         if ((currentTime >= 750 && currentTime < 810) || (currentTime > 1230 && currentTime < 1280)) {
             //帮会运镖  12:30-13:30 20：30-21：30 帮会运镖与珍珑棋局有时间冲突
             if (TaskMain.taskList.indexOf("tongYB.png") != -1) {
@@ -292,6 +297,30 @@ public class TimingActivity {
                 timingActivitySingle();
             }
         }
+
+        //帮会战备任务
+        if (currentTime >= 1200 && currentTime < 1320) {
+            //帮会战备任务 20：00-22：00
+            if (TaskMain.taskList.indexOf("bhzbrw.png") != -1) {
+                LtLog.i(publicFunction.getLineInfo() + "----------帮会战备任务-------------------->");
+                list.add("bhzbrw.png");
+                timingActivitySingle();
+                exitZD();
+            }
+        }
+
+        //帮会战备任务- 叫嚣
+        if (currentTime >= 1200 && currentTime < 1320) {
+            //帮会战备任务 20：00-22：00
+            if (TaskMain.taskList.indexOf("bhzbrw1.png") != -1) {
+                LtLog.i(publicFunction.getLineInfo() + "----------帮会战备任务1-------------------->");
+                list.add("bhzbrw1.png");
+                timingActivitySingle();
+                exitZD();
+            }
+        }
+
+
         if (currentTime >= 1154 && currentTime < 1190) {
             //"帮会练功19:15-20:00"
             LtLog.i(publicFunction.getLineInfo() + "----------帮会练功-------------------->");
@@ -349,7 +378,7 @@ public class TimingActivity {
                 gamePublicFunction.automaticCombat(1);//开启自动战斗
                 time = System.currentTimeMillis() / 1000;
             } else {
-                result = publicFunction.localFindPic(653,1,1104,96, "activity.png");
+                result = publicFunction.localFindPic(653, 1, 1104, 96, "activity.png");
                 if (result.sim > 0.8) {
                     //没有活动按钮 不识别坐标
                     LtLog.i(publicFunction.getLineInfo() + "---------activity.png>" + result);
@@ -402,7 +431,7 @@ public class TimingActivity {
             } else if (timex >= 15) {
                 //如果不在组队界面
                 LtLog.i(publicFunction.getLineInfo() + "-------list.get(0).equals(indiana.png)>" + list.get(0).equals("indiana.png"));
-                result = publicFunction.localFindPic(653,1,1104,96, "activity.png");
+                result = publicFunction.localFindPic(653, 1, 1104, 96, "activity.png");
                 LtLog.i(publicFunction.getLineInfo() + "-------activity>" + result);
                 if (list.get(0).equals("indiana.png") && result.sim >= 0.8) {
                     for (int i = 0; i < 3; i++) {
@@ -504,6 +533,78 @@ public class TimingActivity {
         }
     }
 
+    private boolean goBHZD(int num) throws Exception {
+        for (int i = 0; i < 30; i++) {
+
+            LtLog.i(mFairy.getLineInfo("前往阵地循环" + i));
+
+            Thread.sleep(1000);
+
+            gamePublicFunction.switchSkillOrSet("set");
+
+            result = publicFunction.localFindPic(932, 179, 1267, 702, "tong2.png");
+            if (result.sim >= 0.8) {
+                LtLog.i(publicFunction.getLineInfo() + "帮会" + result);
+                publicFunction.rndTapWH(result.x, result.y, 29, 32);
+                Thread.sleep(2000);
+            }
+            findResult = mFairy.findPic(576, 617, 1123, 688, "bhzd.png");
+            if (findResult.sim >= 0.8) {
+                mFairy.onTap(0.8f, findResult, "前往阵地", 3000);
+                gamePublicFunction.closeWindow();
+                i = 0;
+            }
+            //
+
+            switch (num) {
+                case 1:
+                    findResult = mFairy.findPic(474, 346, 716, 515, "bhzd2.png");
+                    mFairy.onTap(0.8f, findResult, "敌对阵地", 3000);
+                    break;
+                default:
+                    findResult = mFairy.findPic(474, 346, 716, 515, "bhzd1.png");
+                    mFairy.onTap(0.8f, findResult, "本地阵地", 5000);
+                    break;
+            }
+
+            findResult = mFairy.findPic("bhzd3.png");
+            if (findResult.sim >= 0.8f) {
+                return true;
+            }
+
+            FindResult jinru = mFairy.findPic("bhzd5.png");
+            if (jinru.sim >= 0.8f) {
+
+                findResult = mFairy.findPic("bhzd4.png");
+                if (findResult.sim >= 0.8f) {
+                    mFairy.onTap(869, 155, 886, 169, "没有敌对阵地", 1000);
+                    return false;
+                }
+
+                mFairy.onTap(612, 211, 651, 222, "", 1500);
+
+                mFairy.onTap(0.8f, jinru, "进入", 5000);
+            }
+
+        }
+
+        return false;
+    }
+
+    private void removeListTask() throws Exception {
+        gamePublicFunction.closeWindow();
+
+        if (TaskMain.taskList.size() > 0 && list.size() > 0) {
+            LtLog.i(publicFunction.getLineInfo() + "------- remove >" + list.get(0));
+            TaskMain.taskList.remove(list.get(0));
+        }
+
+        if (list.size() > 0) {
+            LtLog.i(publicFunction.getLineInfo() + "------- remove >" + list.get(0));
+            list.remove(0);
+        }
+    }
+
     private void timingActivitySingle() throws Exception {
         //单人活动
         //帮会行酒令
@@ -516,10 +617,12 @@ public class TimingActivity {
         //门派竞技
         //吃鸡
         //首次进入
-
+        //帮会备战任务 bhzbrw
 
         Mat mat1 = null, mat2 = null;
-        if (list.get(0).equals("tongYB.png") || list.get(0).equals("tongDrink.png") || list.get(0).equals("sports.png") || list.get(0).equals("secret.png")) {
+
+        if (list.get(0).equals("tongYB.png") || list.get(0).equals("tongDrink.png") || list.get(0).equals("sports.png")
+                || list.get(0).equals("secret.png") || list.get(0).equals("bhzbrw.png") || list.get(0).equals("bhzbrw1.png")) {
             gamePublicFunction.exitTeam();//退出队伍
         }
 
@@ -527,40 +630,55 @@ public class TimingActivity {
             LtLog.i(publicFunction.getLineInfo() + "-------在副本中>");
         } else {
             LtLog.i(publicFunction.getLineInfo() + "-------不在副本中>");
+            gamePublicFunction.closeWindow();
             gamePublicFunction.openActivity(2);//打开限时活动
         }
 
         while (mFairy.condit()) {
-            LtLog.i(publicFunction.getLineInfo() +"任务循环中...currTime:"+time);
+            LtLog.i(publicFunction.getLineInfo() + "任务循环中..." + list.get(0) + "   currTime:" + timex);
 
             timex = System.currentTimeMillis() / 1000 - time;
             if (timex >= 50) {
+                gamePublicFunction.closeWindow();
                 gamePublicFunction.openActivity(2);//打开限时活动
+                Thread.sleep(2000);
                 time = System.currentTimeMillis() / 1000;
+            } else if (timex >= 20) {
+                //如果发呆20秒 首先查看任务栏是否有任务
 
-            } else if (timex >= 10) {
-                //如果发呆15秒 首先查看任务栏是否有任务
-                lookUpTaskbar();
+                result = publicFunction.localFindPic(822, 24, 954, 72, "activity.png");
+                if (result.sim < 0.8) {
+                    LtLog.i(publicFunction.getLineInfo() + "------openActivity--activity>" + result);
+                    return;
+                }
+
+                int result = lookUpTaskbar();
+
+                if (result == 2) {
+                    LtLog.i(mFairy.getLineInfo("左侧任务没有找到"));
+                    removeListTask();
+                    return;
+                } else if (result == 1) {
+                    time = System.currentTimeMillis() / 1000;
+                }
+
+                if (list.get(0) == "bhzbrw1.png") {
+                    findResult = mFairy.findPic("bhzd3.png");
+                    if (findResult.sim >= 0.8f) {
+                        mFairy.onTap(1130, 391, 1153, 409, "背包", 1000);
+                        time = System.currentTimeMillis() / 1000;
+                    }
+                }
             }
 
             int minuteNumber = publicFunction.getMinuteNumber();
+
             int state = lookUpTask(list);//查看任务
             if (state == 2) {
                 gamePublicFunction.closeWindow();
                 return;
             } else if (state == 1) {
-
-                gamePublicFunction.closeWindow();
-
-                if (TaskMain.taskList.size() > 0 && list.size() > 0) {
-                    LtLog.i(publicFunction.getLineInfo() + "------- remove >" + list.get(0));
-                    TaskMain.taskList.remove(list.get(0));
-                }
-
-                if (list.size() > 0) {
-                    LtLog.i(publicFunction.getLineInfo() + "------- remove >" + list.get(0));
-                    list.remove(0);
-                }
+                removeListTask();
                 return;
             }
 
@@ -569,15 +687,14 @@ public class TimingActivity {
                 gamePublicFunction.automaticCombat(1);//开启自动战斗
                 time = System.currentTimeMillis() / 1000;
             } else {
-                result = publicFunction.localFindPic(130, 154, 263, 270, "haveTem.png");
-                if (list.get(0).equals("tongYB.png") || list.get(0).equals("tongDrink.png") || list.get(0).equals("sports.png") && result.sim >= 0.8 || list.get(0).equals("combatFFJ.png")) {
+                /*result = publicFunction.localFindPic(130, 154, 263, 270, "haveTem.png");
+                if (list.get(0).equals("tongYB.png") || list.get(0).equals("tongDrink.png") || list.get(0).equals("bhzbrw.png")|| list.get(0).equals("sports.png")
+                        && result.sim >= 0.8 || list.get(0).equals("combatFFJ.png")) {
                     LtLog.i(publicFunction.getLineInfo() + "-------result>" + result);
                     gamePublicFunction.exitTeam();//退出队伍
-                }
+                }*/
 
-
-
-                result = publicFunction.localFindPic(653,1,1104,96, "activity.png");
+                result = publicFunction.localFindPic(653, 1, 1104, 96, "activity.png");
                 if (result.sim >= 0.8) {
                     boolean matSim = false;
                     mat1 = mFairy.getScreenMat(1121, 27, 66, 22, 1, 0, 0, 1);
@@ -599,6 +716,8 @@ public class TimingActivity {
 
                 }
             }
+
+
             if (list.get(0) == "SLDZ.png") {
                 result = publicFunction.localFindPic(1117, 3, 1209, 27, "SLDZ2.png");
                 if (result.sim >= 0.8) {
@@ -609,9 +728,86 @@ public class TimingActivity {
             }
 
 
+            if (list.get(0) == "bhzbrw.png" || list.get(0) == "bhzbrw1.png") {
+                findResult = mFairy.findPic(540, 489, 725, 540, "bz4.png");
+                if (result.sim >= 0.8) {
+                    LtLog.i(publicFunction.getLineInfo() + "正在备战...");
+                    time = System.currentTimeMillis() / 1000;
+                }
+            }
+
             LtLog.i(publicFunction.getLineInfo() + "------------list.get(0).png=" + list.get(0));
 
+            findResult = mFairy.findPic("qian2.png");
+            mFairy.onTap(0.8f, findResult, 1216, 84, 1228, 96, "关闭签到界面", 3000);
+
             switch (list.get(0)) {
+                case "bhzbrw.png":
+
+                    findResult = mFairy.findPic(517, 361, 588, 552, "bz.png");
+                    if (findResult.sim > 0.8f) {
+
+                        findResult = mFairy.findPic(439, 354, 1053, 549, "bz1.png");
+                        mFairy.onTap(0.8f, findResult, "练兵", 2000);
+
+                        mFairy.onTap(728, 404, 756, 428, "再次对话", 2000);
+
+                        findResult = mFairy.findPic(439, 354, 1053, 549, "bz2.png");
+                        mFairy.onTap(0.8f, findResult, "巡查", 2000);
+
+                        if (goBHZD(0) == false) {
+                            removeListTask();
+                            return;
+                        }
+                    }
+
+                    findResult = mFairy.findPic(new String[]{"bz5.png", "bz6.png"});
+                    mFairy.onTap(0.8f, findResult, "备战操作", 3000);
+
+                    break;
+                case "bhzbrw1.png":
+
+                    findResult = mFairy.findPic(517, 361, 588, 552, "bz.png");
+                    if (findResult.sim > 0.8f) {
+
+                        findResult = mFairy.findPic(439, 354, 1053, 549, "bz7.png");
+                        mFairy.onTap(0.8f, findResult, "示威", 2000);
+
+                        if (goBHZD(1) == false) {
+                            removeListTask();
+                            return;
+                        }
+
+                        findResult = mFairy.findPic("bhzd3.png");
+                        if (findResult.sim >= 0.8f) {
+                            mFairy.onTap(1130, 391, 1153, 409, "背包", 1000);
+                        }
+                    }
+
+
+                    findResult = mFairy.findPic("pack.png");
+                    if (findResult.sim > 0.8f) {
+                        mFairy.onTap(1085, 92, 1108, 103, "其他", 1000);
+
+                        for (int i = 0; i < 10; i++) {
+                            findResult = mFairy.findPic(686, 139, 1155, 528, "shiwei.png");
+                            if (findResult.sim > 0.8f) {
+                                mFairy.onTap(0.8f, findResult, "示威", 2500);
+
+                                findResult = mFairy.findPic(381, 132, 693, 358, "shiwei1.png");
+                                if (findResult.sim > 0.8f) {
+                                    mFairy.onTap(0.8f, findResult, "使用", 2500);
+                                    return;
+                                }
+
+                            } else {
+                                mFairy.ranSwipe(925, 450, 925, 160, 1000, 2000);
+                            }
+                        }
+                        gamePublicFunction.closeWindow();
+                    }
+                    break;
+
                 case "tongYB.png":
                     tongYB();
                     break;
@@ -662,9 +858,24 @@ public class TimingActivity {
                 LtLog.i(publicFunction.getLineInfo() + "-------召唤跟随>");
                 gamePublicFunction.follow(1);
             }
+
             Thread.sleep(100);
         }
     }
+
+    //退出阵地
+    private void exitZD() throws Exception {
+        for (int i = 0; i < 10; i++) {
+            gamePublicFunction.closeWindow();
+
+            findResult = mFairy.findPic("bhzd3.png");
+            if (findResult.sim > 0.8f) {
+                mFairy.onTap(0.8f, findResult, "退出阵地", 10000);
+                return;
+            }
+        }
+    }
+
 
     //要诀争夺战
     private void secret() throws Exception {
@@ -682,6 +893,10 @@ public class TimingActivity {
     //大战扶风郡
     private void combatFFJ() throws Exception {
         AtFairy2.OpencvResult result;
+
+        findResult = mFairy.findPic("ffg.png");
+        mFairy.onTap(0.8f, findResult, "npc", 1000);
+
         result = publicFunction.localFindPic(461, 354, 1008, 545, "combatFFJ1.png");
         if (result.sim >= 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "-------combatFFJ1>" + result);
@@ -694,6 +909,7 @@ public class TimingActivity {
         if (result.sim >= 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "-------selectSkill>" + result);
 //            494,240,573,268 ,,238
+            time = System.currentTimeMillis() / 1000;
             Random random = new Random();
             for (int i = 0; i < 3; i++) {
                 int index = random.nextInt(3);
@@ -703,8 +919,10 @@ public class TimingActivity {
             publicFunction.rndTap(594, 560, 686, 581);
             Thread.sleep(1000);
         }
+
         result = publicFunction.localFindPic(1098, 0, 1244, 26, "combatFFJ2.png");
         if (result.sim >= 0.8) {
+            time = System.currentTimeMillis() / 1000;
             LtLog.i(publicFunction.getLineInfo() + "-------combatFFJ2>" + result);
             for (int i = 0; i < 5; i++) {
                 // 点技能 点攻击
@@ -719,9 +937,29 @@ public class TimingActivity {
                     Thread.sleep(200);
                 }
             }
+
             publicFunction.rndTap(1178, 94, 1223, 129);
             Thread.sleep(1000);
         }
+
+
+        findResult = mFairy.findPic(948, 300, 1270, 372, "ffg1.png");
+        if (findResult.sim > 0.8f) {
+
+            switch ((int) (Math.random() * 2) + 1) {
+                case 1:
+                    mFairy.onTap(1062, 230, 1078, 248, "1", 1000);
+                    break;
+                case 2:
+                    mFairy.onTap(1137, 233, 1172, 246, "2", 1000);
+                    break;
+               /* default:
+                    mFairy.onTap(1189,236,1224,246, "3", 1000);
+                    break;*/
+            }
+            Thread.sleep(4000);
+        }
+
         result = publicFunction.localFindPic(517, 7, 791, 78, "combatFFJ3.png");
         if (result.sim >= 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "-------combatFFJ3>" + result);
@@ -890,19 +1128,37 @@ public class TimingActivity {
         }
 
 
-        result = publicFunction.localFindPic(1029, 244, 1275, 287, "battleING.png");
+        findResult = mFairy.findPic(1029, 244, 1275, 287, "battleING.png");
         LtLog.i(publicFunction.getLineInfo() + "------------battleING.png=" + result);
-        if (result.sim < 0.8) {
+        if (findResult.sim > 0.8f) {
+            mFairy.onTap(0.8f, findResult, "激战中", 5000);
             return;
         }
 
+        findResult = mFairy.findPic(952, 279, 1265, 362, "sljia.png");
+        if (findResult.sim > 0.8f) {
 
-        gamePublicFunction.automaticCombat(0);
+            switch ((int) (Math.random() * 2) + 1) {
+                case 1:
+                    mFairy.onTap(1054, 231, 1061, 241, "1", 1000);
+                    break;
+                case 2:
+                    mFairy.onTap(1139, 238, 1146, 245, "2", 1000);
+                    break;
+                default:
+                    mFairy.onTap(1220, 236, 1230, 242, "3", 1000);
+                    break;
+            }
+            Thread.sleep(4000);
+        }
+
+
+        /*gamePublicFunction.automaticCombat(0);
         Thread.sleep(500);
         for (int i = 0; i < 60; i++) {
-            result = publicFunction.localFindPic(1029, 244, 1275, 287, "battleING.png");
-//            result1 = publicFunction.localOptimalFindPic(859, 564, 914, 615, 80, 255, 1, "automaticCombat.png|automaticCombat-1.png");
-            result1 = publicFunction.localFindPicHLS(859, 564, 914, 615, "automaticCombat.png|automaticCombat-1.png");
+            findResult = mFairy.findPic(1029, 244, 1275, 287,  "battleING.png");
+
+            result1 = publicFunction.localFindPicHLS(859, 564, 914, 615, "automaticCombat.png"+"|"+"automaticCombat-1.png");
             if (result.sim >= 0.8 && gamePublicFunction.outDungeons() == 1 && result1.sim >= 0.75) {
                 LtLog.i(publicFunction.getLineInfo() + "------------automaticCombat.png=" + result1);
                 LtLog.i(publicFunction.getLineInfo() + "------------battleING.png=" + result);
@@ -922,14 +1178,15 @@ public class TimingActivity {
                     break;
                 }
 
-                result = publicFunction.localFindPic(1156, 49, 1240, 124, "song.png|liao.png");
+                result = publicFunction.localFindPic(1156, 49, 1240, 124, "song.png"+"|"+"liao.png");
                 if (result.sim >= 0.8) {
                     LtLog.i(publicFunction.getLineInfo() + "------------song.png|liao.png=" + result);
                     break;
                 }
             }
+
             Thread.sleep(300);
-        }
+        }*/
     }
 
     private void HSLJ() throws Exception {
@@ -949,7 +1206,7 @@ public class TimingActivity {
         }
 
         findResult = mFairy.findPic("hslj2.png");
-        if(findResult.sim>0.8f){
+        if (findResult.sim > 0.8f) {
             gamePublicFunction.automaticCombat(1);//开启战斗
         }
     }
@@ -1049,7 +1306,7 @@ public class TimingActivity {
                 gamePublicFunction.closeWindow();
                 return;
             }
-            result = publicFunction.localFindPic(653,1,1104,96, "activity.png");
+            result = publicFunction.localFindPic(653, 1, 1104, 96, "activity.png");
             if (result.sim > 0.8) {
                 //没有活动按钮 不识别坐标
                 LtLog.i(publicFunction.getLineInfo() + "---------activity.size()>" + result);
@@ -1109,7 +1366,7 @@ public class TimingActivity {
                 publicFunction.rndTap(739, 460, 796, 488);//点击确认
                 Thread.sleep(500);
             }
-            result = publicFunction.localFindPic(653,1,1104,96, "activity.png");
+            result = publicFunction.localFindPic(653, 1, 1104, 96, "activity.png");
             if (result.sim >= 0.8) {
                 this.tongPractice = this.tongPractice + 1;
                 LtLog.i(publicFunction.getLineInfo() + "------------activity=" + result);
@@ -1143,11 +1400,9 @@ public class TimingActivity {
         }
 
 
-
-
-
-        findResult = mFairy.findPic(767, 608, 985, 686,"kaiqi.png");
+        findResult = mFairy.findPic(767, 608, 985, 686, "kaiqi.png");
         if (findResult.sim >= 0.8) {
+            time = System.currentTimeMillis() / 1000;
             LtLog.i(publicFunction.getLineInfo() + "开启运镖" + findResult);
 
             result1 = publicFunction.localFindPic(361, 520, 406, 547, "rndYB.png");
@@ -1156,7 +1411,7 @@ public class TimingActivity {
                 publicFunction.rndTap(405, 642, 468, 657);
                 Thread.sleep(1000);
             } else {
-                publicFunction.rndTap(1020,456,1043,464);//点领取运镖
+                publicFunction.rndTap(1020, 456, 1043, 464);//点领取运镖
                 Thread.sleep(2000);
 
                 result1 = publicFunction.localFindPic(423, 283, 629, 402, "notToken.png");
@@ -1177,7 +1432,7 @@ public class TimingActivity {
             Thread.sleep(1000);
         }
 
-        findResult = mFairy.findPic(670,428,875,568,"kaiqi1.png");
+        findResult = mFairy.findPic(670, 428, 875, 568, "kaiqi1.png");
         if (findResult.sim >= 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "开启运镖" + result);
             publicFunction.rndTap(findResult.x, findResult.y, findResult.x + 50, findResult.y + 21);
@@ -1246,23 +1501,27 @@ public class TimingActivity {
         // 未到参加时间  return 2 ;
         List<String> list1 = list;
         int second = 0;
-        result = publicFunction.localFindPic(582, 8, 721, 80, "activitiesWindow.png"+"|"+"activitiesWindow1.png"+"|"+"activitiesWindow2.png");
+        result = publicFunction.localFindPic(582, 8, 721, 80, "activitiesWindow.png" + "|" + "activitiesWindow1.png" + "|" + "activitiesWindow2.png");
         if (result.sim < 0.8) {
+            LtLog.i(publicFunction.getLineInfo() + "不在活动界面 ");
             //如不在活动界面
             return 0;
         }
 
-        LtLog.i(publicFunction.getLineInfo() + "-------lookupTask--activitiesWindow>" + result + "," + list1);
+        LtLog.i(publicFunction.getLineInfo() + "查看活动 " + list1.toString());
         Thread.sleep(1000);
 
         long time = System.currentTimeMillis() / 1000, timex = 0;
         while (mFairy.condit()) {
             int slidingLookup = 0;
+
             LtLog.i(publicFunction.getLineInfo() + "查找活动中 " + list1.size() + ",timex=" + timex);
             for (int i = 0; i < list1.size(); i++) {
-                result = publicFunction.localFindPic(237, 126, 670, 455, list1.get(i));
+
+                result = publicFunction.localFindPic(237, 126, 700, 455, list1.get(i));
                 LtLog.i(publicFunction.getLineInfo() + "活动sim:" + list1.get(i) + "=" + result);
                 if (result.sim >= 0.8) {
+
                     //找到任务
                     LtLog.i(publicFunction.getLineInfo() + "找到任务--list1.get(i)>" + list1.get(i) + "=" + result);
                     AtFairy2.OpencvResult result1;
@@ -1271,10 +1530,10 @@ public class TimingActivity {
                         //点击参加
                         LtLog.i(publicFunction.getLineInfo() + "点击参加" + result);
                         publicFunction.rndTap(result1.x, result1.y, result1.x + 44, result1.y + 21);
-                        Thread.sleep(500);
+                        Thread.sleep(2000);
                         return 3;
                     } else {
-                        result1 = publicFunction.localFindPic(result.x, result.y, result.x + 273, result.y + 127, "complete1.png"+"|"+"complete1-1.png");
+                        result1 = publicFunction.localFindPic(result.x, result.y, result.x + 273, result.y + 127, "complete1.png" + "|" + "complete1-1.png");
                         if (result1.sim >= 0.8) {
                             LtLog.i(publicFunction.getLineInfo() + "已完成" + result);
                             //已完成
@@ -1305,6 +1564,7 @@ public class TimingActivity {
                         }
                     }
                 } else {
+
                     if (list1.get(0) == "tongAssassin.png" || list1.get(0) == "tongMeal.png") {
                         result = publicFunction.localFindPic(237, 126, 670, 455, "tongMeal.png");
                         if (result.sim >= 0.8) {
@@ -1321,6 +1581,8 @@ public class TimingActivity {
 
                     }
                 }
+
+
             }
             result = publicFunction.localFindPic(582, 8, 721, 80, "activitiesWindow.png|activitiesWindow1.png|activitiesWindow2.png");
             AtFairy2.OpencvResult result1 = publicFunction.localFindPicHLS(1033, 548, 1161, 643, "push.png");
@@ -1329,6 +1591,7 @@ public class TimingActivity {
                 LtLog.i(publicFunction.getLineInfo() + "---------------------不在活动窗口---------result1=" + result1);
                 return 0;
             }
+
             if (slidingLookup == 0) {
                 if (second >= 3) {
                     publicFunction.RanSwipe(232, 187, 717, 445, 0, 500);
@@ -1356,37 +1619,65 @@ public class TimingActivity {
         return 0;
     }
 
-    private void lookUpTaskbar() throws Exception {
+    private int lookUpTaskbar() throws Exception {
         //查看任务栏
-        int[] range = new int[3];
-        String currentTask = "";
+        String[] currentTask;
+        int[] range;
+
         if (list.get(0) == null) {
-            return;
+            return 0;
         }
+
         switch (list.get(0)) {
             case "tongYB.png":
-                currentTask = "tongYB2.png"+"|"+"tongYB3.png";
+
                 range = new int[]{87, 277, 135, 447};
+
+                for (int i = 0; i < 10; i++) {
+                    result = publicFunction.localOptimalFindPic(range[0], range[1], range[2], range[3], 140, 255.0, 0, "tongYB2.png" + "|" + "tongYB3.png");
+                    LtLog.i(publicFunction.getLineInfo() + result);
+                    if (result.sim >= 0.75) {
+                        LtLog.i(publicFunction.getLineInfo() + "-------everydayTask>" + result);
+                        time = System.currentTimeMillis() / 1000;
+                        publicFunction.rndTap(result.x, result.y, result.x + 138, result.y + 20);
+                        for (int j = 0; j < 11; j++) {
+                            Thread.sleep(500);
+                        }
+                        break;
+                    }
+                    Thread.sleep(300);
+                }
+                return 0;
+            case "bhzbrw.png":
+                currentTask = new String[]{"bz3.png"};
+                range = new int[]{3, 227, 56, 464};
                 break;
             default:
-                return;
+                return 0;
         }
-        for (int i = 0; i < 10 && currentTask != ""; i++) {
-            result = publicFunction.localOptimalFindPic(range[0], range[1], range[2], range[3], 140, 255.0, 0, currentTask);
-            LtLog.i(publicFunction.getLineInfo() + "-------currentTask>" + currentTask + "result=" + result);
-            if (result.sim >= 0.75) {
-                LtLog.i(publicFunction.getLineInfo() + "-------everydayTask>" + result);
-                time = System.currentTimeMillis() / 1000;
-                publicFunction.rndTap(result.x, result.y, result.x + 138, result.y + 20);
-                for (int j = 0; j < 11; j++) {
-                    Thread.sleep(500);
+
+        Thread.sleep(1000);
+
+        LtLog.i(mFairy.getLineInfo("发呆时间过长,滑动找任务"));
+        for (int i = 0; i < 10; i++) {
+
+            findResult = mFairy.findPic(range[0], range[1], range[2], range[3], currentTask);
+            if (findResult.sim > 0.75f) {
+                mFairy.onTap(0.75f, findResult, "找到任务", 5000);
+                return 1;
+            } else {
+                if (i == 0) {
+                    for (int j = 0; j < 5; j++) {
+                        mFairy.ranSwipe(100, 253, 100, 439, 1000, 1000);
+                    }
+                    Thread.sleep(1000);
+                } else {
+                    mFairy.ranSwipe(100, 439, 100, 253, 1000, 2000);
                 }
-                break;
             }
-            Thread.sleep(300);
         }
 
-
+        return 2;
     }
 
     private boolean lookBox() throws Exception {
@@ -1413,7 +1704,7 @@ public class TimingActivity {
         LtLog.i(publicFunction.getLineInfo() + "-------home>");
         AtFairy2.OpencvResult result;
         gamePublicFunction.switchSkillOrSet("set");
-        result = publicFunction.localFindPic(936,170,1271,704, "home.png");
+        result = publicFunction.localFindPic(936, 170, 1271, 704, "home.png");
         if (result.sim >= 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "-------home.png>" + result);
             publicFunction.rndTapWH(result.x, result.y, 23, 42);
@@ -1638,7 +1929,7 @@ public class TimingActivity {
                 publicFunction.rndTapWH(result.x, result.y, 73, 19);
                 Thread.sleep(500);
             }
-            result = publicFunction.localFindPic(936,170,1271,704, "home.png");
+            result = publicFunction.localFindPic(936, 170, 1271, 704, "home.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "-------home>" + "==" + result);
                 return;
@@ -1652,7 +1943,7 @@ public class TimingActivity {
         LtLog.i(publicFunction.getLineInfo() + "-------openHome>");
         for (int i = 0; i < 5; i++) {
             gamePublicFunction.switchSkillOrSet("set");
-            result = publicFunction.localFindPic(936,170,1271,704, "home.png");
+            result = publicFunction.localFindPic(936, 170, 1271, 704, "home.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "-------home.png>" + result);
                 publicFunction.rndTapWH(result.x, result.y, 23, 42);
@@ -1938,20 +2229,20 @@ public class TimingActivity {
         result = publicFunction.localFindPic(284, 619, 314, 652, "redDot.png");
         LtLog.i(publicFunction.getLineInfo() + "------redDot = " + result);
         if (result.sim >= 0.8) {
-            publicFunction.rndTap(result.x - 50, result.y + 5, result.x - 10, result.y +20);
+            publicFunction.rndTap(result.x - 50, result.y + 5, result.x - 10, result.y + 20);
             Thread.sleep(100);
         }
         for (int i = 0; i < 30; i++) {
             result = publicFunction.localFindPic(622, 57, 733, 128, "answeringQuestion.png");
             LtLog.i(publicFunction.getLineInfo() + "------answeringQuestion = " + result);
             if (result.sim >= 0.8) {
-                publicFunction.rndTap(797,329,973,348);//点击第一个答案
+                publicFunction.rndTap(797, 329, 973, 348);//点击第一个答案
                 Thread.sleep(100);
             }
-            if (i>20 && result.sim >= 0.8){
-                publicFunction.rndTap(1073,88,1102,107);//关闭答疑窗口
+            if (i > 20 && result.sim >= 0.8) {
+                publicFunction.rndTap(1073, 88, 1102, 107);//关闭答疑窗口
                 Thread.sleep(100);
-            }else if(i>20){
+            } else if (i > 20) {
                 break;
             }
             Thread.sleep(1000);
@@ -1982,7 +2273,7 @@ public class TimingActivity {
                     publicFunction.rndTap(333, 552, 361, 577);//点加号
                     Thread.sleep(1000);
                 }
-                result = publicFunction.localFindPic(244,416,824,496, "add.png");
+                result = publicFunction.localFindPic(244, 416, 824, 496, "add.png");
                 LtLog.i(publicFunction.getLineInfo() + "------add = " + result);
                 if (result.sim >= 0.8) {
                     publicFunction.rndTap(result.x, result.y, result.x + 30, result.y + 10);//点加号
@@ -2007,51 +2298,45 @@ public class TimingActivity {
         }
 
 
-        for (int i = 0; i <5 ; i++) {
-            result = publicFunction.localFindPic(173,92,309,135, "dailyWork.png");
+        for (int i = 0; i < 5; i++) {
+            result = publicFunction.localFindPic(173, 92, 309, 135, "dailyWork.png");
             LtLog.i(publicFunction.getLineInfo() + "------dailyWork = " + result);
-            if (result.sim >= 0.8){
-                result = publicFunction.localFindPic(result.x+91,result.y-25,result.x+127,result.y+10, "redDot.png");
+            if (result.sim >= 0.8) {
+                result = publicFunction.localFindPic(result.x + 91, result.y - 25, result.x + 127, result.y + 10, "redDot.png");
                 LtLog.i(publicFunction.getLineInfo() + "------redDot = " + result);
-                if(result.sim>0.8){
-                    publicFunction.rndTap(result.x-40, result.y+10, result.x-10, result.y + 15);
+                if (result.sim > 0.8) {
+                    publicFunction.rndTap(result.x - 40, result.y + 10, result.x - 10, result.y + 15);
                     Thread.sleep(1000);
                 }
             }
-            result = publicFunction.localFindPic(923,559,1074,623, "pick.png");
+            result = publicFunction.localFindPic(923, 559, 1074, 623, "pick.png");
             LtLog.i(publicFunction.getLineInfo() + "------pick = " + result);
-            if (result.sim >= 0.8){
+            if (result.sim >= 0.8) {
                 publicFunction.rndTap(result.x, result.y, result.x + 30, result.y + 10);
                 Thread.sleep(1000);
             }
 
-            result = publicFunction.localFindPic(626,313,986,356, "submit1.png");
+            result = publicFunction.localFindPic(626, 313, 986, 356, "submit1.png");
             LtLog.i(publicFunction.getLineInfo() + "------submit1 = " + result);
-            if (result.sim >= 0.8){
+            if (result.sim >= 0.8) {
                 publicFunction.rndTap(result.x, result.y, result.x + 10, result.y + 10);
                 Thread.sleep(1000);
-            }else {
-                result = publicFunction.localFindPic(849,540,973,601, "close.png");
+            } else {
+                result = publicFunction.localFindPic(849, 540, 973, 601, "close.png");
                 LtLog.i(publicFunction.getLineInfo() + "------close = " + result);
-                if (result.sim >= 0.8){
+                if (result.sim >= 0.8) {
                     publicFunction.rndTap(result.x, result.y, result.x + 10, result.y + 10);
                     Thread.sleep(1000);
                 }
             }
-            result = publicFunction.localFindPic(669,573,830,631, "submit2.png");
+            result = publicFunction.localFindPic(669, 573, 830, 631, "submit2.png");
             LtLog.i(publicFunction.getLineInfo() + "------submit2 = " + result);
-            if (result.sim >= 0.8){
+            if (result.sim >= 0.8) {
                 publicFunction.rndTap(result.x, result.y, result.x + 10, result.y + 10);
                 Thread.sleep(1000);
             }
             Thread.sleep(1000);
         }
-
-
-
-
-
-
 
 
         for (int i = 0; i < 10; i++) {

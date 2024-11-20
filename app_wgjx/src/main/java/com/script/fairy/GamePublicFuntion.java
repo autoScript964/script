@@ -260,6 +260,64 @@ public class GamePublicFuntion {
             }
         }
 
+
+
+        FindResult yan4 = mFairy.findPic(570,501,710,577, new String[]{"yanzheng8.png"});
+        if (yan4.sim > 0.85f ) {
+
+            list.add(df.format(new Date()));
+
+            LtLog.e(mFairy.getLineInfo("验证记录：" + list.size()));
+
+            for (String str : list) {
+                LtLog.e(mFairy.getLineInfo(str));
+            }
+
+            //好爱网址 http://feng.suanst.com/359,44,559,442
+
+            try {
+                String result_ha = answer.newHaoai(359,44,559,442, "6005");
+                if (!result_ha.equals("") && result_ha != null) {
+
+                    String[] aa = result_ha.split("\\|");
+
+                    for (String st : aa) {
+                        mFairy.tap(Integer.parseInt(st.split(",")[0]) + 359, Integer.parseInt(st.split(",")[1]) + 44);
+                        Thread.sleep(500);
+                    }
+
+                    mFairy.onTap(613,534,631,548, "确定", 500);
+                    mFairy.onTap(613,534,631,548, "确定", 3000);
+
+                    result = mFairy.findPic(570,501,710,577, new String[]{"yanzheng8.png"});
+                    mFairy.onTap(0.8f, result, 457,634,474,652, "没有验证出来,刷新", 5000);
+
+                    if (System.currentTimeMillis() - time_err < 180000) {
+                        yanzheng_err++;
+                    } else {
+                        yanzheng_err = 0;
+                    }
+
+                    time_err = System.currentTimeMillis();
+
+                } else {
+                    LtLog.e(mFairy.getLineInfo("验证为空!!!"));
+                    yanzheng_err++;
+                }
+            } catch (Exception e) {
+                LtLog.e(mFairy.getLineInfo("验证报错!!!"));
+
+                LtLog.e(mFairy.getLineInfo(e.getMessage()));
+                yanzheng_err++;
+            }
+        }
+
+
+
+
+
+
+
         if (yanzheng_err >= 3) {
             ImageJudgeThread.EXIT = true;
             mFairy.finish(AtFairyConfig.getTaskID(), 58801);

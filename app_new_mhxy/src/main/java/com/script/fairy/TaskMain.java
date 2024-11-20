@@ -24,16 +24,16 @@ public class TaskMain {
     FindResult result;
 
     public TaskMain(AtFairyImpl ypFairy) throws Exception {
-
         singleTask = new SingleTask(ypFairy);
         teamTask = new TeamTask(ypFairy);
         limitlessTask = new LimitlessTask(ypFairy);
         gamePublicFuntion = new GamePublicFuntion(ypFairy);
         mFairy = ypFairy;
         mFairy.setGameName("梦幻西游");
-        mFairy.setGameVersion(440);
+        mFairy.setGameVersion(459);
         init();
         GamePublicFuntion.ACTLING = 1;
+
     }
 
     public void main() throws Exception {
@@ -43,6 +43,10 @@ public class TaskMain {
         }
 
         taskStartTime(AtFairyConfig.getOption("start_time"));
+
+
+
+        singleTask.setUp();
 
         switch (taskId) {
 
@@ -140,7 +144,7 @@ public class TaskMain {
             long time = System.currentTimeMillis();
             while (mFairy.condit()){
 
-                Thread.sleep(500);
+                Thread.sleep(1000);
 
                 if(System.currentTimeMillis() - time >30000) {
                     LtLog.e(mFairy.getLineInfo("等待任务开启 >>>"));
@@ -186,6 +190,8 @@ public class TaskMain {
                 LtLog.e(mFairy.getLineInfo("角色已被隔离！！！"));
                 LtLog.e(mFairy.getLineInfo("角色已被隔离！！！"));
             } else {
+                singleTask.setUp();
+
                 if (AtFairyConfig.getOption("cb").equals("1")) {
                     singleTask.cb();
                 }
@@ -489,17 +495,19 @@ public class TaskMain {
 
             void create() throws Exception {
                 super.create();
-                QH = true;
+                gamePublicFuntion.taskInit(0);
             }
 
             void init() throws Exception {
-                gamePublicFuntion.taskInit(0);
+                gamePublicFuntion.close();
                 setTaskName(1);
+                QH = false;
             }
 
             void content_01() throws Exception {
-                timeCount(15, 0);
-
+                timeCount(40, 0);
+                Thread.sleep(1000);
+                QH = true;
                 result = mFairy.findPic("bpqd1.png");
                 mFairy.onTap(0.8f, result, "加号", 1500);
 
@@ -518,13 +526,15 @@ public class TaskMain {
                     mFairy.onTap(0.8f, result, "登出", 8000);
                 }
 
-                result = mFairy.findPic(666, 340, 869, 483, "set6.png");
+                result = mFairy.findPic(666, 340, 869, 483, new String[]{"set6.png","set14.png","set15.png"});
                 mFairy.onTap(0.8f, result, "点击选服", 1500);
+
+
 
                 result = mFairy.findPic("set7.png");
                 if (result.sim > 0.8f) {
                     err = 0;
-                    result = mFairy.findPic("set8.png");
+                    result = mFairy.findPic(378,52,625,150,"set8.png");
                     if (result.sim > 0.8f) {
                         if (AtFairyConfig.getOption("yc").equals("1")) {
                             result = mFairy.findPic("set11.png");
@@ -533,42 +543,43 @@ public class TaskMain {
                             result = mFairy.findPic("set10.png");
                             mFairy.onTap(0.9f, result, "不隐藏角色", 1000);
                         }
-                        mFairy.ranSwipe(656, 215, 656, 540, 500, 1000);
+                        mFairy.ranSwipe(656, 215, 656, 540, 1000, 1000);
 
                         switch (qh_bool()) {
                             case 1:
-                                mFairy.onTap(484, 246, 526, 295, "1", 500);
+                                mFairy.onTap(484, 246, 526, 295, "1", 1000);
                                 mFairy.onTap(484, 246, 526, 295, "1", 4000);
                                 qh1 = 0;
                                 break;
                             case 2:
-                                mFairy.onTap(720, 219, 810, 298, "2", 500);
+                                mFairy.onTap(720, 219, 810, 298, "2", 1000);
                                 mFairy.onTap(720, 219, 810, 298, "2", 4000);
                                 qh2 = 0;
                                 break;
                             case 3:
-                                mFairy.onTap(1005, 259, 1045, 301, "3", 500);
+                                mFairy.onTap(1005, 259, 1045, 301, "3", 1000);
                                 mFairy.onTap(1005, 259, 1045, 301, "3", 4000);
                                 qh3 = 0;
                                 break;
                             case 4:
-                                mFairy.onTap(457, 520, 549, 613, "4", 500);
+                                mFairy.onTap(457, 520, 549, 613, "4", 1000);
                                 mFairy.onTap(457, 520, 549, 613, "4", 4000);
                                 qh4 = 0;
                                 break;
                             case 5:
-                                mFairy.onTap(718, 483, 770, 553, "5", 500);
+                                mFairy.onTap(718, 483, 770, 553, "5", 1000);
                                 mFairy.onTap(718, 483, 770, 553, "5", 4000);
                                 qh5 = 0;
                                 break;
                             case 6:
-                                mFairy.onTap(979, 525, 1034, 581, "6", 500);
+                                mFairy.onTap(979, 525, 1034, 581, "6", 1000);
                                 mFairy.onTap(979, 525, 1034, 581, "6", 4000);
                                 qh6 = 0;
                                 break;
                         }
                         QH = false;
                         setTaskEnd();
+                        Thread.sleep(10000);
                         return;
                     } else {
                         result = mFairy.findPic(170, 26, 358, 588, "set9.png");

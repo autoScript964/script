@@ -1,15 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.tlbb.rty.tlbb"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 482
-        versionName "482"
+        versionCode 501
+        versionName "501"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -56,8 +55,6 @@ android {
         implementation "com.umeng.umsdk:common:9.4.2"
         implementation "com.umeng.umsdk:asms:1.4.0"
         implementation "com.umeng.umsdk:apm:1.4.1"
-
-
 
     }
 }
