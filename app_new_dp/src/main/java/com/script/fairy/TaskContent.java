@@ -268,7 +268,7 @@ public abstract class TaskContent {
         return false;
     }
 
-    public static  long getTimeStamp(String string) throws Exception {
+    public static long getTimeStamp(String string) throws Exception {
 
         if(string.equals("")) {
             return -1;

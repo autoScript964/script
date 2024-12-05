@@ -60,10 +60,10 @@ public class LimitlessTask {
         map_name_list.add("MAP_JJD.png"+"|"+"HJF_MAP_JJD.png");//11荐菊洞
         map_name_list.add("MAP_GZC.png"+"|"+"HJF_MAP_GZC.png");//12古战场
         map_name_list.add("MAP_FNS.png"+"|"+"HJF_MAP_FNS.png");//13伏牛山
-        map_name_list.add("MAP_THGJ.png");//14太行古径
-        map_name_list.add("MAP_QLS.png");//15祁连山
-        map_name_list.add("MAP_SMYJ.png");//16沙漠遗迹
-        map_name_list.add("MAP_DHGC.png");//17敦煌古城
+        map_name_list.add("MAP_THGJ.png"+"|"+"HJF_MAP_THGJ.png");//14太行古径
+        map_name_list.add("MAP_QLS.png"+"|"+"HJF_MAP_QLS.png");//15祁连山
+        map_name_list.add("MAP_SMYJ.png"+"|"+"HJF_MAP_SMYJ.png");//16沙漠遗迹
+        map_name_list.add("MAP_DHGC.png"+"|"+"HJF_MAP_DHGC.png");//17敦煌古城
         map_name_list.add("MAP_KXMZ.png");//18昆虚脉藏
         map_name_list.add("MAP_YWG.png");//19药王谷
         map_name_list.add("MAP_MBCY.png");//20漠北草原

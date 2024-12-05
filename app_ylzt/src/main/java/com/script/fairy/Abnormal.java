@@ -35,9 +35,9 @@ public class Abnormal {
         publicFunction = new PublicFunction(mFairy);
         gamePublicFunction = new GamePublicFunction(mFairy);
         functionClass = new FunctionClass(ypFairy, ypFairy.getContext());
-        answer_picTime = new PicTime(396, 269, 584, 389, "answer.png|answer1.png", 0.8, mFairy);
-        pic_ok = new PicTime(516, 577, 778, 696, "ok.png", 0.8, mFairy);
-        fork_picTime = new PicTime(643, 5, 1278, 445, "fork.png", 0.8, mFairy);
+        answer_picTime = new PicTime(396, 269, 584, 389, "answer.png"+"|"+"answer1.png", 0.8, mFairy);
+        pic_ok = new PicTime(516, 577, 778, 696, "ok.png|ok2.png", 0.8, mFairy);
+        fork_picTime = new PicTime(643, 5, 1278, 445, "fork.png"+"|"+"gzclose.png", 0.8, mFairy);
         Resurrection_picTime = new PicTime(284, 295, 498, 393, "Resurrection4.png"+"|"+"Resurrection.png", 0.8, mFairy);
         delivery1_picTime = new PicTime(517, 289, 857, 410, "delivery1.png", 0.8, mFairy);
         cat_picTime = new PicTime(666, 215, 808, 353, "cat.png", 0.8, mFairy);
@@ -57,12 +57,10 @@ public class Abnormal {
             LtLog.i(publicFunction.getLineInfo() + "******abnormal start ing> ");
         }
 
-
         if (pic_ok.getPicTime() > 20) {//获取新副将的确定按钮
             LtLog.i(publicFunction.getLineInfo() + "******pic_ok> ");
             publicFunction.rndTap(621, 636, 662, 650);
         }
-
 
         if (answer_picTime.getPicTime() >= 30) {
             LtLog.i(publicFunction.getLineInfo() + "******answer_picTime > 60->");
@@ -121,17 +119,22 @@ public class Abnormal {
             Thread.sleep(1000);
         }
 
-
+        findResult = mFairy.findPic(579,439,684,506,"ok1.png");
+        mFairy.onTap(0.8f,findResult,"中间的确定",1000);
 
         findResult = mFairy.findPic("hdclose.png");
        mFairy.onTap(0.8f,findResult,"hdclose",1000);
 
-        findResult = mFairy.findPic("hdclose1.png");
-        mFairy.onTap(0.8f,findResult,940,270,950,289,"hdclose1",1000);
+        findResult = mFairy.findPic(529,478,670,564,"hdclose1.png");
+        mFairy.onTap(0.8f,findResult,943,295,952,306,"hdclose1",1000);
 
 
         findResult = mFairy.findPic("sd.png");
         mFairy.onTap(0.8f,findResult,1217,22,1239,36,"商店界面",1000);
+
+        findResult = mFairy.findPic(814,619,859,654,"bc.png");
+        mFairy.onTap(0.8f,findResult,"镖车完成",1000);
+
 
         //温泉
         result = publicFunction.localFindPic(597, 269, 832, 386, "hot_spring2.png");//温泉经验上限
@@ -175,7 +178,7 @@ public class Abnormal {
     public void land() throws Exception {
         AtFairy2.OpencvResult result;
         //登陆相关
-        result = publicFunction.localFindPic(286, 744, 500, 1076, "Land.png|Land1.png|Land2.png");
+        result = publicFunction.localFindPic(286, 744, 500, 1076, "Land.png"+"|"+"Land1.png|Land2.png");
         if (result.sim >= 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "******Land=" + result);
             publicFunction.rndTap(result.x, result.y, result.x + 10, result.y + 10);

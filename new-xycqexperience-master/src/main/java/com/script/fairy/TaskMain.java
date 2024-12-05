@@ -30,7 +30,7 @@ public class TaskMain extends TaskContent {
      public  TaskMain (AtFairyImpl ATFairy) throws Exception {
          mFairy = ATFairy;
          mFairy.setGameName("新轩辕传奇正式服任务");
-         mFairy.setGameVersion(1378);
+         mFairy.setGameVersion(1379);
          init();
          gameUtil = new GameUtil(mFairy);
          singleTask=new SingleTask(mFairy);
@@ -211,6 +211,7 @@ public class TaskMain extends TaskContent {
                  singleTask.novice();
                  break;
              case 1999:
+
                  /*LtLog.e("打雪仗选择中");
                  if (mFairy.dateHour()<10){
                      if (AtFairyConfig.getOption("gddxz").equals("1")){
@@ -222,18 +223,24 @@ public class TaskMain extends TaskContent {
                  }*/
 
                  LtLog.e("冰雪节");
+
                  gameUtil.goCity("轩辕");
+
                  if (AtFairyConfig.getOption("ddds").equals("1")){
                      otherGame.diaoyu();
+
                  }if (AtFairyConfig.getOption("cyrb").equals("1")){
                      otherGame.cyrb();
                  }
+
                  if (AtFairyConfig.getOption("cfdzz").equals("1")){
                      otherGame.cfdzz();
                  }
+
                  if (AtFairyConfig.getOption("yytp").equals("1")){
                      otherGame.yytp();
                  }
+
                  break;
              case 2779:
                  LtLog.e("上古迷城中");

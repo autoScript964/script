@@ -9,8 +9,8 @@ android {
         applicationId "com.xqnyh.haj"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 714
-        versionName "714"
+        versionCode 718
+        versionName "718"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 //X1016105907

@@ -338,6 +338,7 @@ public class GameUtil extends TaskContent {
                 }
 
                 for (int i = 0; i < j; i++) {
+                    Thread.sleep(500);
                     /*mFairy.condit();*/
                     if (close == 1) {
 
@@ -398,13 +399,14 @@ public class GameUtil extends TaskContent {
                     mFairy.onTap(0.8f, result, "关叉1", 300);
 
                     result1=mFairy.findPic(1031,4,1275,171,new String[]{"cha21.png","cha10.png","bxcha.png","bxcha1.png","fxcha.png","shcha.png","rxcha.png","rxcha1.png"});
-                    mFairy.onTap(0.9f,result1,"关叉2",300);
+                    mFairy.onTap(0.7f,result1,"关叉2",1500);
 
                     result = mFairy.findPic(443,224,1108,533, new String[]{"cha16.png","zuocecha.png","cha3.png","cha4.png","cha6.png","cha2.png","cha.png","quxiao.png","cha5.png"});//"ymzjcha.png",
-                    mFairy.onTap(0.8f, result, "关叉3", 300);
+                    mFairy.onTap(0.7f, result, "关叉3", 1500);
 
-                    result2 = mFairy.findPic(427,6,1275,311, new String[]{"cha01.png","hdcha1.png","cha20.png","cha19.png","cha18.png","cha17.png","cha8.png","chawq.png"});//"ymzjcha.png",
-                    mFairy.onTap(0.8f, result2, "关叉4", 300);
+                    result2 = mFairy.findPic(427,6,1275,311, new String[]{"cha01.png","hdcha1.png","cha20.png",
+                            "cha19.png","cha18.png","cha17.png","cha8.png","chawq.png","jiaclose.png"});//"ymzjcha.png",
+                    mFairy.onTap(0.7f, result2, "关叉4", 1500);
 
 
                     if (result.sim > 0.8f || result1.sim > 0.8f || result2.sim > 0.8f) {

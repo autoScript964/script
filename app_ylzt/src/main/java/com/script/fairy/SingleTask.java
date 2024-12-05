@@ -21,7 +21,7 @@ import java.util.List;
  * Created by Administrator on 2018-10-18.
  */
 
-public class SingleTask {
+public class SingleTask{
 
     private AtFairyImpl mFairy;
     private PublicFunction publicFunction;
@@ -36,6 +36,7 @@ public class SingleTask {
 
     public SingleTask(AtFairyImpl ypFairy) {
         mFairy = ypFairy;
+
         publicFunction = new PublicFunction(ypFairy);
         gamePublicFunction = new GamePublicFunction(ypFairy);
         functionClass = new FunctionClass(ypFairy, ypFairy.getContext());
@@ -43,6 +44,7 @@ public class SingleTask {
     }
 
     public int everydayTask() throws Exception {
+
         AtFairy2.OpencvResult result;
         MatTime matTime = new MatTime(mFairy);
         long sleepTime = 0;
@@ -50,7 +52,6 @@ public class SingleTask {
         initialSet();//起始设置
 
         other.OtherFunction();//其他小任务功能
-
 
         if (TaskMain.taskList.indexOf("ZXY_everday") > -1) {
             other.ZXY_everday();
@@ -61,6 +62,7 @@ public class SingleTask {
 
 
         gamePublicFunction.openActivity(gamePublicFunction.openActivity_dailt);
+
         while (mFairy.condit()) {
             sleepTime = matTime.mMatTime(1119, 54, 71, 15, 0.8);
             LtLog.i(publicFunction.getLineInfo() + "------sleepTime->" + sleepTime+"    当前任务："+TaskMain.taskList.get(0));
@@ -208,6 +210,7 @@ public class SingleTask {
             if (gamePublicFunction.taskStart() || task.size() == 0) {
                 break;
             }
+
             result = publicFunction.localFindPic(769, 571, 901, 701, "quartermasterAttend.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "------quartermasterAttend->" + result);
@@ -441,6 +444,10 @@ public class SingleTask {
                 receiveCrusade();//使用讨伐令策略
             }
         }
+
+
+
+
         TaskMain.taskList.remove(0);
 
 
@@ -632,6 +639,10 @@ public class SingleTask {
         }
 
 
+        findResult = mFairy.findPic(563,429,721,470,"bj.png");
+        mFairy.onTap(0.8f,findResult,626,511,652,526,"边境指挥官",5000);
+
+
         findResult = mFairy.findPic(506,258,889,404,"jingshu.png");
         if(findResult.sim>0.8f){
             mFairy.onTap(628,463,658,476,"已经是最高品质了",3000);
@@ -734,6 +745,9 @@ public class SingleTask {
             Thread.sleep(500);
         }
 
+        findResult = mFairy.findPic(563,429,721,470,"bj.png");
+        mFairy.onTap(0.8f,findResult,626,511,652,526,"边境指挥官",5000);
+
         result = publicFunction.localFindPic(64, 254, 147, 448, "dragon2.png");
         if (result.sim >= 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "------dragon2->" + result);
@@ -768,6 +782,11 @@ public class SingleTask {
             Thread.sleep(3000);
             feather_start = changeFeather();
         }
+
+
+        findResult = mFairy.findPic(563,429,721,470,"bj.png");
+        mFairy.onTap(0.8f,findResult,626,511,652,526,"边境指挥官",5000);
+
         result = publicFunction.localFindPic(62, 249, 174, 316, "feather2.png");
         if (result.sim >= 0.8 && feather_start) {
             LtLog.i(publicFunction.getLineInfo() + "------feather2->" + result);
@@ -806,6 +825,8 @@ public class SingleTask {
                 publicFunction.rndTap(result.x, result.y, result.x + 10, result.y + 10);
                 Thread.sleep(5000);
             }
+
+
             result = publicFunction.localFindPic(501, 53, 775, 136, "featherNO.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "------featherNO->" + result);
@@ -838,6 +859,11 @@ public class SingleTask {
             publicFunction.rndTapWH(result.x, result.y, 74, 22);
             Thread.sleep(500);
         }
+
+
+        findResult = mFairy.findPic(563,429,721,470,"bj.png");
+        mFairy.onTap(0.8f,findResult,626,511,652,526,"边境指挥官",5000);
+
 
     }
 
@@ -930,6 +956,9 @@ public class SingleTask {
             publicFunction.rndTapWH(result.x, result.y, 57, 27);
             Thread.sleep(500);
         }
+
+
+
         result = publicFunction.localFindPic(544, 39, 990, 127, "HP.png");
         if (result.sim >= 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "------HP->" + result);
@@ -945,9 +974,10 @@ public class SingleTask {
                 }
                 Thread.sleep(1000);
             }
-
-
         }
+
+
+
         result = publicFunction.localFindPic(712, 371, 903, 461, "free.png");
         if (result.sim >= 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "------free->" + result);
@@ -961,8 +991,11 @@ public class SingleTask {
                 publicFunction.rndTap(result.x, result.y, result.x + 30, result.y + 10);
                 Thread.sleep(1000);
             }
-
         }
+
+
+
+
         result = publicFunction.localFindPic(480, 610, 609, 720, "leave1.png");
         if (result.sim >= 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "------leave1->" + result);
@@ -996,6 +1029,9 @@ public class SingleTask {
                 Thread.sleep(1000);
             }
         }
+
+
+
         result = publicFunction.localFindPic(561, 556, 686, 680, "determine2.png");
         if (result.sim >= 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "------determine2->" + result);
@@ -1008,13 +1044,14 @@ public class SingleTask {
 
     private void guanduTask() throws Exception {
         AtFairy2.OpencvResult result;
-        result = publicFunction.localFindPic(756, 593, 879, 719, "visit2.png");
 
+        result = publicFunction.localFindPic(756, 593, 879, 719, "visit2.png");
         if (result.sim >= 0.8) {
             LtLog.i(publicFunction.getLineInfo() + "------visit2->" + result);
             publicFunction.rndTapWH(result.x, result.y, 23, 26);
             Thread.sleep(500);
         }
+
 
         result = publicFunction.localFindPic(712, 371, 903, 461, "free.png");
         if (result.sim >= 0.8) {
@@ -1127,8 +1164,8 @@ public class SingleTask {
 
             if (sleepTime >= 30) {
 
-                result = publicFunction.localFindPic(0, 212, 110, 332, "main_task1.png|main_task2.png");
-                if (result.sim >= 0.750) {
+                result = publicFunction.localFindPic(0, 212, 110, 332, "main_task1.png"+"|"+"main_task2.png");
+                if (result.sim >= 0.7) {
                     LtLog.i(publicFunction.getLineInfo() + "------main_task1->" + result);
                     publicFunction.rndTapWH(result.x, result.y, 44, 20);
                     Thread.sleep(500);
@@ -1137,6 +1174,8 @@ public class SingleTask {
                 }
                 matTime.resetTime();
             }
+
+
             result = publicFunction.localFindPic(474, 409, 630, 535, "main_task.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "------main_task->" + result);

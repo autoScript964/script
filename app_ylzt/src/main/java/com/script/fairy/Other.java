@@ -291,21 +291,19 @@ public class Other {
         AtFairy2.OpencvResult result;
         for (int i = 0; i < 5; i++) {
             gamePublicFunction.openActivity(gamePublicFunction.openActivity_retrieve);
+
             result = publicFunction.localFindPic(592, 571, 787, 693, "retrieve.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "------retrieve->" + result);
                 publicFunction.rndTapWH(result.x, result.y, 95, 22);
                 Thread.sleep(1000);
-            }
-            result = publicFunction.localFindPic(440, 268, 629, 389, "retrieve1.png");
-            if (result.sim >= 0.8) {
-                LtLog.i(publicFunction.getLineInfo() + "------retrieve1->" + result);
-                publicFunction.rndTap(755, 461, 808, 485);//点确认
-                Thread.sleep(1000);
+                mFairy.onTap(758,463,766,479,"确定",2000);
                 break;
             }
+
             Thread.sleep(1000);
         }
+
         for (int i = 0; i < 3; i++) {
             gamePublicFunction.closeWindow();
         }
@@ -396,6 +394,8 @@ public class Other {
                     Thread.sleep(2000);
                 }
             }
+
+
             result = publicFunction.localFindPic(751, 411, 877, 535, "determine.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "------determine->" + result);
@@ -461,8 +461,6 @@ public class Other {
                 publicFunction.rndTapWH(result.x, result.y, 26, 24);
                 Thread.sleep(2000);
             }
-
-
         }
     }
 
@@ -480,6 +478,8 @@ public class Other {
                 publicFunction.rndTapWH(result.x, result.y, 72, 33);
                 Thread.sleep(2000);
             }
+
+
             result = publicFunction.localFindPic(297, 604, 455, 720, "determine3.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "------sell->" + mFairy);
@@ -515,7 +515,7 @@ public class Other {
                 LtLog.i(publicFunction.getLineInfo() + "------sell->" + mFairy);
                 break;
             }
-            result = publicFunction.localFindPic(810, 618, 945, 720, "package.png");
+            result = publicFunction.localFindPic(810, 618, 945, 719, "package.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "------package->" + mFairy);
                 publicFunction.rndTapWH(result.x, result.y, 35, 20);

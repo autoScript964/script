@@ -9,8 +9,8 @@ android {
         applicationId "com.dpcq.hji"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 408
-        versionName "408"
+        versionCode 411
+        versionName "411"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -26,12 +26,10 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     productFlavors {}
-
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-
     testImplementation 'junit:junit:4.12'
     implementation 'com.lzy.net:okhttputils:1.8.1'
     implementation project(':openCVLibrary341')

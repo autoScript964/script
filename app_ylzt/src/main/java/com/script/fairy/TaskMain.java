@@ -71,12 +71,11 @@ public class TaskMain {
         functionClass = new FunctionClass(ypFairy, mContext);
 
         mFairy.setGameName("御龙在天");
-        mFairy.setGameVersion(175);
+        mFairy.setGameVersion(185);
 
     }
 
     public void main() throws Exception {
-
 
         setTaskList();
 

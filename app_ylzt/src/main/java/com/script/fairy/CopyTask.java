@@ -73,10 +73,12 @@ public class CopyTask {
                     break;
 
             }
-//            addTaskList("regain");
-//            addTaskList("helpmaster");
-//            addTaskList("dreamland");
-//            addTaskList("defend");
+
+
+
+
+
+
             result = publicFunction.localFindPic(1181, 133, 1280, 246, "leave.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "------leave->" + result);
@@ -260,7 +262,7 @@ public class CopyTask {
         }
 
         result = publicFunction.localFindPic(807, 445, 1061, 590, "continue.png");
-        if (result.sim >= 0.8) {
+        if (result.sim >= 0.7) {
             LtLog.i(publicFunction.getLineInfo() + "------continue->" + result);
             publicFunction.rndTapWH(result.x, result.y, 20, 20);
             Thread.sleep(2000);

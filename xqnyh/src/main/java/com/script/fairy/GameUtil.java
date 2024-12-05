@@ -130,7 +130,7 @@ public class GameUtil extends TaskContent {
                 result = mFairy.findPic("ca.png");
                 mFairy.onTap(0.8f,result,1222,40,1232,51,"",2000);
 
-                result = mFairy.findPic(749,66,1171,158,new String[]{"Activeinterface.png"});
+                result = mFairy.findPic(71,638,556,705,new String[]{"Activeinterface.png"});
                 if (result.sim > 0.7f) {
                     err = 0;
                     LtLog.e(mFairy.getLineInfo(0.7f, result, "活动界面"));

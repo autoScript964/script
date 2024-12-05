@@ -60,7 +60,7 @@ public class TaskMain {
 
         taskMap = new HashMap<String, Integer>();
         mFairy.setGameName("新剑侠情缘");
-        mFairy.setGameVersion(673);
+        mFairy.setGameVersion(674);
         publicFunction = new PublicFunction(mFairy);
 //      publicFunction=mFairy.publicFunction;
         limitlessTask = new LimitlessTask(mFairy);
@@ -72,15 +72,12 @@ public class TaskMain {
         functionClass = new FunctionClass(mFairy, mFairy.getContext());
     }
 
-
-
-
-
     private int week;
     private int hour;
     private int minute;
     public void main() throws Exception {
 
+        taskStartTime(AtFairyConfig.getOption("start_time"));
         taskStartTime(AtFairyConfig.getOption("start_time"));
 
         LtLog.e(mFairy.getLineInfo("start:"+AtFairyConfig.getOption("task_id")));
@@ -88,10 +85,6 @@ public class TaskMain {
         if(AtFairyConfig.getOption("task_id").equals("2751")){
             mTask = "sgame";
         }else if(AtFairyConfig.getOption("task_id").equals("2715")){
-
-
-
-
 
             mTask = "juan";
             taskMap = new HashMap<>();

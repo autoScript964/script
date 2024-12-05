@@ -8,8 +8,8 @@ android {
         applicationId "com.ylzt.uio.ylm"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 175
-        versionName "175"
+        versionCode 185
+        versionName "185"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 

@@ -1,5 +1,6 @@
 package com.script.fairy;
 
+import com.script.opencvapi.FindResult;
 import com.script.opencvapi.LtLog;
 import com.script.opencvapi.AtFairy2;
 import com.script.framework.AtFairyImpl;
@@ -23,8 +24,7 @@ public class GamePublicFunction {
     public static final int openActivity_other = 5;//其他
     public static final int openActivity_reward = 6;//悬赏
     public static final int openActivity_retrieve = 7;//找回
-
-
+    private FindResult findResult;
     public GamePublicFunction(AtFairyImpl ypFairy) {
         mFairy = ypFairy;
         publicFunction = new PublicFunction(ypFairy);
@@ -438,7 +438,11 @@ public class GamePublicFunction {
         AtFairy2.OpencvResult result;
         result = publicFunction.localFindPic(552, 40, 686, 174, "car.png");
         if (result.sim >= 0.8) {
+
             LtLog.i(publicFunction.getLineInfo() + "------car->" + result);
+
+
+
             result = publicFunction.localFindPic(642, 171, 766, 575, "green.png");
             if (result.sim >= 0.8) {
                 LtLog.i(publicFunction.getLineInfo() + "------green->" + result);
@@ -446,11 +450,10 @@ public class GamePublicFunction {
                 Thread.sleep(1000);
                 return;
             }
-            result = publicFunction.localFindPic(642, 171, 766, 575, "red.png");
-            if (result.sim >= 0.8) {
-                LtLog.i(publicFunction.getLineInfo() + "------red->" + result);
-                publicFunction.rndTap(result.x, result.y, result.x + 10, result.y + 10);
-                Thread.sleep(1000);
+
+            findResult = mFairy.findPic(642, 171, 766, 575,"guo.png");
+            if(findResult.sim>0.8f){
+                mFairy.onTap(0.8f,findResult,"红色国标",3000);
                 return;
             }
 

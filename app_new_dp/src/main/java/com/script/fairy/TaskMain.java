@@ -29,14 +29,13 @@ public class TaskMain {
         limitlessTask = new LimitlessTask(ypFairy);
         mFairy = ypFairy;
         mFairy.setGameName("new斗破苍穹");
-        mFairy.setGameVersion(408);
+        mFairy.setGameVersion(411);
         init();
     }
 
     private int week;
     private int hour;
     public void main() throws Exception {
-
 
         if(taskId!=2863 && taskId!=2855){
             LtLog.i(mFairy.getLineInfo("taskid:"+taskId));

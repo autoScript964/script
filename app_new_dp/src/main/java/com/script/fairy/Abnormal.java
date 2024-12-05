@@ -67,7 +67,6 @@ public class Abnormal {
         mFairy.onTap(0.8f, result, "err新版qq登陆", 1000);
 
 
-
         result = mFairy.findPic("jia4.png");
         mFairy.onTap(0.9f, result, 1206,41,1234,66,"err 关闭 分享有礼", 1000);
 

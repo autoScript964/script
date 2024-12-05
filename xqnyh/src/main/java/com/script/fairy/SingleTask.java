@@ -3149,6 +3149,7 @@ public class SingleTask extends TaskContent {
                 } else {
                     LtLog.e(mFairy.getLineInfo("发呆时间=" + dazeTime));
 
+
                     result = mFairy.findPic(950, 50, 1245, 564, "zhanlong.png");
                     if (result.sim > 0.8f) {
                         mFairy.onTap(0.8f, result, "进入战龙帮会", 1000);
