@@ -2,11 +2,9 @@
 .gradle
 .externalNativeBuild
 local.properties
-.DS_Store
+.DS_Sto re
 build
-gradle
 captures
 .idea
-gradle*
 answer
 key.jks
